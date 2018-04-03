@@ -1,0 +1,30 @@
+[
+	{ "name": "Computer Science",
+	  "designation": "COS",
+	  "type": "BSE",
+	  "requirements":
+		[
+			{"type": "course", "department": "COS", "number": "126"},
+			{"type": "course", "department": "COS", "number": "226"},
+			{"type": "course", "department": "COS", "number": "217"},
+			{"type": "list", "quantity": 2, "name": "Computer Systems",
+				"courses":
+					[
+						{"type": "course", "department": "COS", "number": "217"},
+						{"type": "course", "department": "COS", "number": "217"},
+						{"type": "course", "department": "COS", "number": "217"}
+					]
+			}
+		]
+	}, 
+	
+	{ "name": "English",
+	  "designation": "ENG?"
+	  "type": "AB",
+	  "requirements":
+		{
+			...
+		}
+	
+	}
+]
