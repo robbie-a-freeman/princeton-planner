@@ -19,10 +19,14 @@ def main():
     # copy repo vagrant files to local machine.
     print("Copying new vagrant files...")
     shutil.copytree(".", targetPath)
+    # Prevent against accidental recursive setup.
+    os.remove(targetPath + "/setup.py")
+    os.rename(targetPath + "/Vagrantfile_Src", targetPath + "/Vagrantfile")
 
     # navigate to new directory and execute vagrant
     os.chdir(targetPath)
     print("Starting vagrant instance...")
     call(["vagrant", "up"])
+    call(["vagrant", "ssh"])
 
 main()
