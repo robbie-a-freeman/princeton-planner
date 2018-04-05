@@ -51,6 +51,9 @@ sudo aptitude -y install poppler-utils
 # Install python project requirements
 sudo pip install -r /vagrant/requirements.txt
 
+# Install beautifulsoup for scraper.py
+sudo pip install beautifulsoup4
+
 # If we needed to, we could start a server (such as Django) this way
 # start the server
 #screen -dmS djangoproc bash -c 'python /vagrant/projectname/manage.py runserver 0.0.0.0:8000'
