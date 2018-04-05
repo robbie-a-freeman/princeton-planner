@@ -6,3 +6,4 @@ Current Priorities
 - Input the results of utils/scraper.py into the MongoDB server
 - Input data/all.yaml from CourseGenie into the MongoDB server (possibly by first parsing into json)
 - Finalize frontend design and begin to implement
+- Set up Heroku Server and then finalize frameworks (what is a framework???)
