@@ -30,6 +30,13 @@ sudo aptitude -y install python-requests
 ## sudo aptitude -y install libpq-dev
 ## sudo aptitude -y install python-psycopg2
 
+# Install MongoDB
+# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/ when something breaks
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+
 # lxml package dependencies
 sudo aptitude -y install libxml2-dev
 sudo aptitude -y install libxslt-dev
@@ -47,6 +54,9 @@ sudo pip install -r /vagrant/requirements.txt
 # If we needed to, we could start a server (such as Django) this way
 # start the server
 #screen -dmS djangoproc bash -c 'python /vagrant/projectname/manage.py runserver 0.0.0.0:8000'
+
+# Start MongoDB
+sudo service mongod start
 
 # then quit with
 #screen -S djangoproc -X quit
