@@ -33,6 +33,7 @@ TERM_CODE = 1154  # spring 2015
 TERM_CODE = 1174  # spring 2017
 TERM_CODE = 1184  # spring 2018
 TERM_CODE = 1182  # fall 2017 ??
+TERM_CODE = 1192  # fall 2018
 
 URL_PREFIX = "http://registrar.princeton.edu/course-offerings/"
 LIST_URL = URL_PREFIX + "search_results.xml?term={term}"
