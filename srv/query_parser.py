@@ -8,6 +8,9 @@
 # query, or repackaging the results for use in the frontend HTMLself.
 
 
+# Reconsider design. Could greatly simplify using the MongoPy library!
+
+
 # ======================================================================
 #   Query String Types: (all case-insensitive)
 #
@@ -29,6 +32,9 @@
 #
 # =====================================================================
 
+import re
+
+
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ARC", "ART", "ASA", "AST", "ATL", "BCS", "CBE",
                 "CEE", "CGS", "CHI", "CHM", "CHV", "CLA", "CLG",
@@ -36,7 +42,18 @@ dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ECO", "ECS", "EEB", "EGR", "ELE", "ENE", "ENG",
                 "ENT", "ENV", "EPS", "FIN", "FRE", "FRS", "GEO",
                 "GER", "GHP", "GLS", "GSS", "HEB", "HIN", "HIS",
-                
+                "HLS", "HOS", "HPD", "HUM", "ISC", "ITA", "JDS",
+                "JPN", "JRN", "KOR", "LAO", "LAS", "LAT", "LCA",
+                "LIN", "MAE", "MAT", "MED", "MOD", "MOG", "MOL",
+                "MSE", "MTD", "MUS", "NES", "NEU", "ORF", "PAW",
+                "PER", "PHI", "PHY", "PLS", "POL", "POP", "POR",
+                "PSY", "QCB", "REL", "RES", "RUS", "SAN", "SAS",
+                "SLA", "SML", "SOC", "SPA", "STC", "SWA", "THR",
+                "TPP", "TRA", "TUR", "TWI", "URB", "URD", "VIS",
+                "WRI", "WWS"))
+
+num_re =
+
 
 # Sanitize the input string.
 # MUST IMPLEMENT THIS!!!
@@ -47,6 +64,7 @@ def sanitize(unsafe):
 # Given a single sub-part of the query string, generate the
 # corresponding Mongo query.
 def convertOneWord(word):
+    if
 
 
 # Split the sanitized query string into sub-parts and
