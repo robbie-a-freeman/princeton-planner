@@ -37,6 +37,9 @@ echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.6 main" | sudo
 sudo apt-get update
 sudo apt-get install -y mongodb-org
 
+# Install emacs
+sudo apt-get -y install emacs
+
 # lxml package dependencies
 sudo aptitude -y install libxml2-dev
 sudo aptitude -y install libxslt-dev
@@ -49,14 +52,23 @@ sudo aptitude -y install libjpeg-dev
 sudo aptitude -y install poppler-utils
 
 # Install python project requirements
-sudo pip install -r /vagrant/requirements.txt
+sudo pip install -r /vagrant/vagrant/requirements.txt
 
 # If we needed to, we could start a server (such as Django) this way
 # start the server
 #screen -dmS djangoproc bash -c 'python /vagrant/projectname/manage.py runserver 0.0.0.0:8000'
 
+# then quit with
+#screen -S djangoproc -X quit
+
 # Start MongoDB
 sudo service mongod start
 
-# then quit with
-#screen -S djangoproc -X quit
+# Scrape courses.json using scraper.py (or use backup if this fails)
+# python /vagrant/utils/scraper.py > /vagrant/utils/current_courses.json
+
+# Populate MongoDB with /vagrant/data/courses.json
+mongoimport --db=test --collection=courses --drop --file=/vagrant/data/courses.json --jsonArray
+
+# Set will's .bashrc profile.
+cp -f /vagrant/vagrant/.bashrc ~/.bashrc

@@ -21,7 +21,7 @@ import string
 import sqlite3
 import sys
 import urllib2
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 TERM_CODE = 1122  # seems to be fall 11-12
 TERM_CODE = 1124  # so 1124 would be spring 11-12
@@ -160,7 +160,7 @@ def scrape_id(id):
 def scrape_all():
   """
   Return an iterator over all courses listed on the registrar's site.
-  
+
   Which courses are retrieved are governed by the globals at the top of this module,
   most importantly LIST_URL and TERM_CODE.
 
