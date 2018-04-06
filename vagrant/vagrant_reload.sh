@@ -12,4 +12,5 @@ sudo service mongod start
 mongoimport --db=test --collection=courses --drop --file=/vagrant/data/courses.json --jsonArray
 
 # Set will's .bashrc profile.
-cp -f /vagrant/vagrant/.bashrc ~/.bashrc
+echo 'Copying bash profile...'
+cp -fv /vagrant/vagrant/.bashrc ~/.bashrc || echo 'Copy successful'

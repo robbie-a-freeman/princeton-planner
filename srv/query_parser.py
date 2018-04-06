@@ -16,6 +16,8 @@
 #   Reconsider return format of the query functions:
 #           Perhaps it would be better for the frontend if we returned something like:
 #        {"tag": "COS126/PHI201", "name": "Computer Science: An Interdisciplinary Approach"}
+#   Revise so that it is possible to return searches from multiple categories
+#       i.e. "COS" would match EITHER the dept id or the course name, returning both results lists
 #
 
 
@@ -34,6 +36,7 @@
 #   Any other string X(Y) (len <= 2) NOT a distr. or dept. id:
 #       Match against "title" : X(Y) OR
 #       match against dept id: "listings" : [ {"dept": XY} ]
+#       or match against number
 #
 #   Any other string (not dept id, not distr, len >= 3)
 #       match against  Match against "title" : str
@@ -64,26 +67,45 @@ dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "TPP", "TRA", "TUR", "TWI", "URB", "URD", "VIS",
                 "WRI", "WWS"))
 
+dist_ids = set(("EC", "EM", "HA", "LA", "QR", "SA", "STL", "STN"))
+
 # Sanitize the input string.
 # MUST IMPLEMENT THIS!!!
 def sanitize(unsafe):
+
     # This doesn't do much sanitizing right now!
-    return unsafe
+    # make uppercase to introduce case insensitivity
+    return unsafe.upper()
 
 # Given a single sub-part of the query string, generate the
 # corresponding Mongo query, and return the results of the
 # Mongo query, as a json-style object.
 def queryOneWord(word):
+    re_obj = {"$regex":word, "$options":"i"}
+
     # Dept. ID:
     if word in dept_ids:
         return courses.find( {"listings.dept":word} )
 
     # Course number:
-    if re.match("\d\d\d", word) is not None:
+    elif re.match("\d\d\d", word) is not None:
         return courses.find( {"listings.number":word} )
 
-    return []
+    # Dist. ID:
+    elif word in dist_ids:
+        return courses.find( {"area": word})
 
+    # Len <= 2:
+    elif len(word) <= 2:
+        return courses.find( {"listings.dept":   re_obj} ) +\
+               courses.find( {"listings.number": re_obj} ) +\
+               courses.find( {"title":           re_obj} )
+
+    # Len >= 3:
+    else:
+        return courses.find( {"title": re_obj} )
+
+    return []
 
 # Split the sanitized query string into sub-parts and
 # generate a mongo query for eachself.
@@ -94,6 +116,8 @@ def queryAllWords(safe):
         results.append(queryOneWord(word))
     return results
 
+### Helper functions
+
 # Return the 6-digit course tag (COS333) for a json result
 # If a course is cross listed, return all applicable course tags, separated by '/'
 def getCourseTag(result):
@@ -101,8 +125,8 @@ def getCourseTag(result):
     listingTags = [listing['dept'] + listing['number'] for listing in listings]
     return '/'.join(listingTags)
 
-# Unit Testing
-
+### Unit Testing
+# Run a single query for the given testWord and print result tags
 def queryOneTest(testWord):
     print("Querying MongoDB for \"%s\"..." % testWord)
     results = queryOneWord(testWord)
@@ -110,6 +134,7 @@ def queryOneTest(testWord):
         print(getCourseTag(result))
     print("\n")
 
+# Run several queries and print results.
 def main():
     queryOneTest("COS")
     queryOneTest("333")
@@ -117,5 +142,7 @@ def main():
     queryOneTest("ABC")
     queryOneTest("MUS")
     queryOneTest("DAN")
+    queryOneTest("IMPLICATIONS")
+
 
 main()
