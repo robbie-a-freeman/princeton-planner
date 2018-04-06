@@ -80,6 +80,7 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
   config.vm.provision :shell, path: "vagrant_up.sh", args: ENV['NETID']
+  config.vm.provision :shell, path: "vagrant_reload.sh", run: "always"
 
   if Vagrant.has_plugin?("vagrant-triggers")
     config.trigger.before :destroy do
