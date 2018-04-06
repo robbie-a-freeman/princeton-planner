@@ -78,10 +78,11 @@ def queryOneWord(word):
     if word in dept_ids:
         return courses.find( {"listings.dept":word} )
 
-
     # Course number:
+    if re.match("\d\d\d", word) is not None:
+        return courses.find( {"listings.number":word} )
 
-    #
+    return []
 
 
 # Split the sanitized query string into sub-parts and
@@ -100,9 +101,21 @@ def getCourseTag(result):
     listingTags = [listing['dept'] + listing['number'] for listing in listings]
     return '/'.join(listingTags)
 
-def main():
-    results = queryOneWord("COS")
+# Unit Testing
+
+def queryOneTest(testWord):
+    print("Querying MongoDB for \"%s\"..." % testWord)
+    results = queryOneWord(testWord)
     for result in results:
         print(getCourseTag(result))
+    print("\n")
+
+def main():
+    queryOneTest("COS")
+    queryOneTest("333")
+    queryOneTest("600")
+    queryOneTest("ABC")
+    queryOneTest("MUS")
+    queryOneTest("DAN")
 
 main()
