@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Set will's .bashrc profile.
-cp -f /vagrant/vagrant/.bashrc ~/.bashrc
-
 # Set non-interactive installs and updates
 sudo dpkg-reconfigure -f noninteractive debconf
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y update
@@ -41,7 +38,7 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 
 # Install emacs
-sudo apt-get install emacs
+sudo apt-get -y install emacs
 
 # lxml package dependencies
 sudo aptitude -y install libxml2-dev
@@ -72,3 +69,6 @@ sudo service mongod start
 
 # Populate MongoDB with /vagrant/data/courses.json
 mongoimport --db=test --collection=courses --drop --file=/vagrant/data/courses.json --jsonArray
+
+# Set will's .bashrc profile.
+cp -f /vagrant/vagrant/.bashrc ~/.bashrc
