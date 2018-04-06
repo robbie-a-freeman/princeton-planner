@@ -1,3 +1,6 @@
+# This program is basically useless in its current version (after vagrant setup was revamped.)
+# Nothing would break if we got rid of it.
+
 import shutil
 import os
 from subprocess import call
