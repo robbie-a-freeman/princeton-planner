@@ -12,6 +12,12 @@
 #   Add in support for querying ANY semester's courses, not just the most recent one.
 #   Add in support for upper/lower case-insensitivity
 #   Modify getCourseTag() to account for cross listings ('COS333/MUS211/EGR209')
+#   Add error checking -- What if Mongo refuses to connect? It likes to do this a lot for some reason.
+#   Reconsider return format of the query functions:
+#           Perhaps it would be better for the frontend if we returned something like:
+#        {"tag": "COS126/PHI201", "name": "Computer Science: An Interdisciplinary Approach"}
+#
+
 
 # ======================================================================
 #   Query String Types: (all case-insensitive)
@@ -88,9 +94,11 @@ def queryAllWords(safe):
     return results
 
 # Return the 6-digit course tag (COS333) for a json result
-# Primarily for debugging right now.
+# If a course is cross listed, return all applicable course tags, separated by '/'
 def getCourseTag(result):
-    return result['listings'][0]['dept'] + result['listings'][0]['number']
+    listings = result['listings']
+    listingTags = [listing['dept'] + listing['number'] for listing in listings]
+    return '/'.join(listingTags)
 
 def main():
     results = queryOneWord("COS")
