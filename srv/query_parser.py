@@ -7,9 +7,11 @@
 # Sending the MongoDB query to MongoDB, or receiving the results of the mongodb
 # query, or repackaging the results for use in the frontend HTMLself.
 
-
-# Reconsider design. Could greatly simplify using the MongoPy library!
-
+# TO DO:
+#   Reconsider design. Could greatly simplify using the MongoPy library!
+#   Add in support for querying ANY semester's courses, not just the most recent one.
+#   Add in support for upper/lower case-insensitivity
+#   Modify getCourseTag() to account for cross listings ('COS333/MUS211/EGR209')
 
 # ======================================================================
 #   Query String Types: (all case-insensitive)
@@ -33,7 +35,11 @@
 # =====================================================================
 
 import re
+from pymongo import MongoClient
 
+client = MongoClient('localhost', 27017)
+db = client.test      # Remember to change in vagrant_up if this changes
+courses = db.courses
 
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ARC", "ART", "ASA", "AST", "ATL", "BCS", "CBE",
@@ -52,9 +58,6 @@ dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "TPP", "TRA", "TUR", "TWI", "URB", "URD", "VIS",
                 "WRI", "WWS"))
 
-num_re =
-
-
 # Sanitize the input string.
 # MUST IMPLEMENT THIS!!!
 def sanitize(unsafe):
@@ -62,11 +65,36 @@ def sanitize(unsafe):
     return unsafe
 
 # Given a single sub-part of the query string, generate the
-# corresponding Mongo query.
-def convertOneWord(word):
-    if
+# corresponding Mongo query, and return the results of the
+# Mongo query, as a json-style object.
+def queryOneWord(word):
+    # Dept. ID:
+    if word in dept_ids:
+        return courses.find( {"listings.dept":word} )
+
+
+    # Course number:
+
+    #
 
 
 # Split the sanitized query string into sub-parts and
 # generate a mongo query for eachself.
-def convertAllWords(safe):
+def queryAllWords(safe):
+    words = safe.split(" ")
+    results = []
+    for word in words:
+        results.append(queryOneWord(word))
+    return results
+
+# Return the 6-digit course tag (COS333) for a json result
+# Primarily for debugging right now.
+def getCourseTag(result):
+    return result['listings'][0]['dept'] + result['listings'][0]['number']
+
+def main():
+    results = queryOneWord("COS")
+    for result in results:
+        print(getCourseTag(result))
+
+main()
