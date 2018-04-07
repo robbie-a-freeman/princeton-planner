@@ -114,10 +114,11 @@ function output_init() {
   var button = document.createElement("button");
   button.onclick = submit_handler;
   button.appendChild(text("Generate"));
+  button.classList.add("submit_button");
   output_div.append(button);
 
   // Add blank space
-  output_div.appendChild(newlines(4));
+  output_div.appendChild(newlines(2));
 
   // Add the output area
   var results = document.createElement("textarea")

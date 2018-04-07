@@ -34,3 +34,29 @@
     border: 1px solid #ccc;
     border-top: none;
 }
+
+.submit_button {
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  padding: 10px 18px;
+  font-size: 25
+}
+
+.submit_button:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+
+input[type="text"], textarea {
+  padding: 6px 10px;
+  border: 2px solid #bfbfbf;
+  border-radius: 4px;
+  display: inline-block;
+  /* margin: 3px 0; */
+
+}
+
+body {
+/*  background-color: #eeeeee */
+}
