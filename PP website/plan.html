@@ -1,17 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
 <style>
-h2 {
-    font-size: 18px;
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+margin-bottom: 0;
+border-radius: 0;
 }
 
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+padding-top: 20px;
+background-color: #f1f1f1;
+height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+background-color: #555;
+color: white;
+padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+.sidenav {
+    height: auto;
+    padding: 15px;
+}
+.row.content {height:auto;} 
+}
+
+
+h3 {
+font-size: 18px;
+text-align: center
+}
+h4 {
+font-size: 18px;
+}
+  
+.icon-bad {
+    color: red;
+}
+.icon-good {
+    color: #5CB85C;
+}
 .panel-heading .accordion-toggle:after {
     /* symbol for "opening" panels */
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
@@ -22,24 +65,26 @@ h2 {
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+    float: right;
 }
 .accordion-toggle:hover {
     text-decoration: none;
 }
 .panel .panel-heading {
-    font-weight: bold;
-    font-size: 20px;
     font-family: verdana;
     border-radius:0;
-    padding:0;
+    padding: 0px;
+    
 }
 .panel .panel-heading a{
     display:block;
     background: rgb(255, 193, 59);
     color: white;
-    padding:10px 15px;
-    border-radius:3px;
+    padding:5px 10px 5px 10px;
+    border-radius:0px;
     text-decoration:none;
+    font-size: 12px;
+    
 }
 .panel .panel-heading a:hover {
     background: rgb(247, 169, 2);
@@ -52,202 +97,408 @@ h2 {
     color:white;
     transition:background 2s ease;
 }
+.panel-body {
+    font-size: 12px;
+    padding:5px 10px;
+}
+.table td {
+   text-align: left;
+   font-size: 12px;
+   background: white;   
+}
+
 </style>
-
-
+</head>
 <body>
 
-<div class="container">
-    <h2>School of Engineering and Applied Science</h2>
-    <div style="width: 30%;float:left" class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse1">
-                        Calculus (2 needed)
-                    </a>
-                </h4>
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+    </button>
+    <a class="navbar-brand" href="index.html">Princeton Planner</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+        
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal"><span class="glyphicon glyphicon-bell"></span>   About</a></li>
+        <li class="active"><a href="#" data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign"></span>   Help</a></li>
+        <li class="active"><a href="index.html"><span class="glyphicon glyphicon-th-large"></span>   Index</a></li>
+        <li class="active"><a href="#" data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span>   pyoon</a></li>
+
+        <!-- Help Pop up! -->
+        <div class="modal fade" id="helpModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">It appears you need help...</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Better ask WSWEENY!!!!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
-            <div id="collapse1" class="panel-collapse collapse">
-                <div class="panel-body">MAT 103</div>
-                <div class="panel-body">MAT 104</div>
+        </div>
+
+        <!-- About Pop up! -->
+        <div class="modal fade" id="aboutModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">About Princeton Planner</h4>
+                </div>
+                <div class="modal-body">
+                    <p>R : Responsible</p>
+                    <p>O : Oriental</p>
+                    <p>B : Beautiful</p>
+                    <p>B : Bossy</p>
+                    <p>I : Ingenious</p>
+                    <p>E : Edible</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+                
             </div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse2">
-                        Multivariable Calculus (1 needed)
-                    </a>
-                </h4>
+        </div>
+
+        <!-- User pop up! -->
+        <div class="modal fade" id="userModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit user profile</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Idk, should we have this? LOL</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+                
             </div>
-            <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body">MAT 201</div>
-                <div class="panel-body">MAT 203</div>
-                <div class="panel-body">MAT 218</div>
-                <div class="panel-body">EGR 192</div>
+        </div>
+    </ul>
+    </div>
+</div>
+</nav>
+
+<div class="container-fluid text-center">    
+<div class="row content">
+    <div class="col-sm-2 sidenav">
+        
+        <h3>Select semester!</h3>
+        <form>
+            <div class="form-group">
+            <!-- <label for="sel1">Select semester:</label> -->
+            <select class="form-control" id="sel1">
+                <optgroup label="Current and Previous Semesters">
+                    <option>Fall 2018</option>
+                    <option>Spring 2018</option>
+                    <option>Fall 2017</option>
+                    <option>Spring 2017</option>
+                    <option>Fall 2016</option>
+                    <option>Spring 2016</option>
+                    <option>Fall 2015</option>
+                    <option>Spring 2015</option>
+                    <option>Fall 2014</option>
+                </optgroup>
+                <optgroup label="Future semesters (WARNING: May not be accurate)">
+                    <option>Spring 2018</option>
+                    <option>Fall 2019</option>
+                    <option>Spring 2019</option>
+                    <option>Fall 2020</option>
+                    <option>Spring 2020</option>
+                    <option>Fall 2021</option>
+                    <option>Spring 2021</option>
+                </optgroup>
+            </select>
             </div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse3">
-                        Linear Algebra (1 needed)
-                    </a>
-                </h4>
+        </form>
+
+        <h3>Search for courses!</h3>
+        <form action="#" method="GET">            
+            <div class="input-group pull-left" id="sea1">
+                <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
             </div>
-            <div id="collapse3" class="panel-collapse collapse">
-                <div class="panel-body">MAT 202</div>
-                <div class="panel-body">MAT 204</div>
-            </div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse4">
-                        Physics 1 (1 needed)
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse4" class="panel-collapse collapse">
-                <div class="panel-body">PHY 103</div>
-                <div class="panel-body">PHY 105</div>
-                <div class="panel-body">EGR 191</div>
-            </div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse5">
-                        Physics 2 (1 needed)
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse5" class="panel-collapse collapse">
-                <div class="panel-body">PHY 104</div>
-                <div class="panel-body">PHY 106</div>
-            </div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse6">
-                        Computer Proficiency (1 needed)
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse6" class="panel-collapse collapse">
-                <div class="panel-body">COS 126</div>
-                <div class="panel-body">COS 226</div>
-                <div class="panel-body">COS 217</div>
-            </div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse7">
-                        Chemistry (1 needed)
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse7" class="panel-collapse collapse">
-                <div class="panel-body">CHM 201</div>
-                <div class="panel-body">CHM 207</div>
-            </div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse8">
-                        Distribution Areas (4 needed)
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse8" class="panel-collapse collapse">
-                <div class="panel-body">aEC</div>
-                <div class="panel-body">aEM</div>
-                <div class="panel-body">aHA</div>
-                <div class="panel-body">aLA</div>
-                <div class="panel-body">aSA</div>
-                <div class="panel-body">aFL</div>
-            </div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse9">
-                        Additional Distribution Areas (3 needed)
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse9" class="panel-collapse collapse">
-                <div class="panel-body">aEC</div>
-                <div class="panel-body">aEM</div>
-                <div class="panel-body">aHA</div>
-                <div class="panel-body">aLA</div>
-                <div class="panel-body">aSA</div>
-                <div class="panel-body">aFL</div>
+        </form>
+        <br>
+        <br>
+        <h3>Enrolled courses</h3>
+        <table class="table table-bordered">
+            <tbody>
+                <tr><td>COS 333</td></tr>
+                <tr><td>PHY 103</td></tr>
+                <tr><td>CHM 201</td></tr>
+                <tr><td>WRI 150</td></tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col-sm-2 text-left"> 
+        <h3>School of Engineering and Applied Science</h3>
+        <div style="float:left" class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse1">
+                            Calculus (2)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                        MAT 103
+                    </div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        MAT 104
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse2">
+                            Multivariable Calculus (1)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">MAT 201</div>
+                    <div class="panel-body">MAT 203</div>
+                    <div class="panel-body">MAT 218</div>
+                    <div class="panel-body">EGR 192</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse3">
+                            Linear Algebra (1)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body">MAT 202</div>
+                    <div class="panel-body">MAT 204</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse4">
+                            Physics 1 (1)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                    <div class="panel-body">PHY 103</div>
+                    <div class="panel-body">PHY 105</div>
+                    <div class="panel-body">EGR 191</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse5">
+                            Physics 2 (1)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
+                    <div class="panel-body">PHY 104</div>
+                    <div class="panel-body">PHY 106</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse6">
+                            Computer Proficiency (1)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        COS 126
+                    </div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        COS 226
+                    </div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        COS 217
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse7">
+                            Chemistry (1)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse7" class="panel-collapse collapse">
+                    <div class="panel-body">CHM 201</div>
+                    <div class="panel-body">CHM 207</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse8">
+                            Distribution Areas (4)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse8" class="panel-collapse collapse">
+                    <div class="panel-body">aEC</div>
+                    <div class="panel-body">aEM</div>
+                    <div class="panel-body">aHA</div>
+                    <div class="panel-body">aLA</div>
+                    <div class="panel-body">aSA</div>
+                    <div class="panel-body">aFL</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse9">
+                            Additional Distribution Areas (3)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse9" class="panel-collapse collapse">
+                    <div class="panel-body">aEC</div>
+                    <div class="panel-body">aEM</div>
+                    <div class="panel-body">aHA</div>
+                    <div class="panel-body">aLA</div>
+                    <div class="panel-body">aSA</div>
+                    <div class="panel-body">aFL</div>
+                </div> 
             </div> 
-        </div> 
-    </div>
-
-<!-- <div class="column">
-<div class="container"> -->
-<h2>Computer Science (COS BSE)</h2>
-<div style="width: 30%;float:left" class="panel-group" id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse10">
-                    Prerequisite (3 needed)
-                </a>
-            </h4>
-        </div>
-        <div id="collapse10" class="panel-collapse collapse">
-            <div class="panel-body">COS 126</div>
-            <div class="panel-body">COS 226</div>
-            <div class="panel-body">COS 217</div>
-        </div>
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse11">
-                    Theory (2 needed)
-                </a>
-            </h4>
-        </div>
-        <div id="collapse11" class="panel-collapse collapse">
-            <div class="panel-body">lots of stuff</div>
-        </div>
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse12">
-                    Systems (2 needed)
-                </a>
-            </h4>
-        </div>
-        <div id="collapse12" class="panel-collapse collapse">
-            <div class="panel-body">lots of stuff</div>
-        </div>
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse13">
-                    Applications (2 needed)
-                </a>
-            </h4>
-        </div>
-        <div id="collapse13" class="panel-collapse collapse">
-            <div class="panel-body">lots of stuff</div>
-        </div>
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse14">
-                    Departmentals (2 needed)
-                </a>
-            </h4>
-        </div>
-        <div id="collapse14" class="panel-collapse collapse">
-            <div class="panel-body">LOTS AND LOTS OF STUFF</div>
-        </div>
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse15">
-                    Independent Work (1 needed)
-                </a>
-            </h4>
-        </div>
-        <div id="collapse15" class="panel-collapse collapse">
-            <div class="panel-body">COS 397 | COS 398 | COS 497 | COS 498</div>
         </div>
     </div>
+    <div class="col-sm-2 text-left"> 
+        <h3>Computer Science (COS BSE)</h3>
+        <div style="float:left" class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse10">
+                            Prerequisites (3)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse10" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        COS 126
+                    </div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        COS 226
+                    </div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        COS 217
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse11">
+                            Theory (2)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse11" class="panel-collapse collapse">
+                    <div class="panel-body">lots of stuff</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse12">
+                            Systems (2)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse12" class="panel-collapse collapse">
+                    <div class="panel-body">lots of stuff</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse13">
+                            Applications (2)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse13" class="panel-collapse collapse">
+                    <div class="panel-body">lots of stuff</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse14">
+                            Departmentals (2)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse14" class="panel-collapse collapse">
+                    <div class="panel-body">LOTS AND LOTS OF STUFF</div>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse15">
+                            Independent Work (1)
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse15" class="panel-collapse collapse">
+                    <div class="panel-body">COS 397</div>
+                    <div class="panel-body">COS 398</div>
+                    <div class="panel-body">COS 497</div>
+                    <div class="panel-body">COS 498</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2 text-left"> 
+    </div>
+    <div class="col-sm-2 text-left"> 
+    </div>
+    <div class="col-sm-2 sidenav">
+        <h3>Search for majors/certificates!</h3>
+        <form action="#" method="GET">            
+            <div class="input-group pull-left" id="sea1">
+                <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <br>
+        <br>
+        <h3>Current majors/certificates</h3>
+        <table class="table table-bordered">
+            <tbody>
+                <tr><td>School of Engineering and Applied Science</td></tr>
+                <tr><td>Computer Science (COS BSE)</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </div>
 
-</div> 
-</div> 
-</div>
+<footer class="container-fluid text-center">
+<p>Footer Text</p>
+</footer>
 
 </body>
 </html>
