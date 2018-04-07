@@ -7,6 +7,7 @@ var fields_obj =
 // ===               YOUR JSON GOES BELOW THIS LINE                        ===
 // ===========================================================================
 
+/* // Sample majors json
 {
   "first":      ["name",
                  "is_pdf",
@@ -22,10 +23,37 @@ var fields_obj =
                  "min",
                  "max"]
 };
+*/
+// Sample Courses JSON
+{
+  "Courses":     ["profs",
+                  "title",
+                  "courseid",
+                  "listings",
+                  "area",
+                  "prereqs",
+                  "descrip",
+                  "classes"],
+  "Profs":        ["uid",
+                   "name"],
+  "Classes":      ["classnum",
+                   "enroll",
+                   "limit",
+                   "starttime",
+                   "section",
+                   "endtime",
+                   "roomnum",
+                   "days",
+                   "bldg"]
+
+}
 
 // ===========================================================================
 // ===               END OF JSON FORMAT                                    ===
 // ===========================================================================
+
+// Auto-copy the generated json to clipboard if true.
+var copy_enable = true;
 
 // ===================== Initializers ======================
 // on-load top level function
@@ -86,10 +114,11 @@ function output_init() {
   var button = document.createElement("button");
   button.onclick = submit_handler;
   button.appendChild(text("Generate"));
+  button.classList.add("submit_button");
   output_div.append(button);
 
   // Add blank space
-  output_div.appendChild(newlines(4));
+  output_div.appendChild(newlines(2));
 
   // Add the output area
   var results = document.createElement("textarea")
@@ -100,17 +129,26 @@ function output_init() {
 }
 
 // ======================== Handlers ============================
+// Handles button presses of the submit button
+// Generates the json output, and copies to clipboard
 function submit_handler() {
   var obj = {};
   var activeTab = $(".tablinks.active")[0].innerText;
   var fields = fields_obj[activeTab];
-  console.log(fields);
+  // console.log(fields);
   for (var i = 0; i < fields.length; i++) {
     obj[fields[i]]=value(fields[i]);
   }
   $("#dump")[0].value=JSON.stringify(obj, null, 4);
+
+  // Copy the result to clipboard
+  if (copy_enable) {
+    $("#dump")[0].select();
+    document.execCommand("Copy");
+  }
 }
 
+// Handles presses of the tab buttons.
 function tab_handler(event, id) {
   var name = but_name(id);
   //console.log(name);
@@ -168,6 +206,6 @@ function value(name) {
 }
 
 function but_name(but_id) {
-  console.log(typeof but_id)
+  // console.log(typeof but_id)
   return but_id.substring(7);
 }
