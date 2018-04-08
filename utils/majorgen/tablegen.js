@@ -3,18 +3,86 @@
 var UID_count = 0;
 
 // ==================== Initiializer =============================
-var TEST_OBJ = { "profs": [{"uid": "str", "name":"str"}],
-                "title": "str",
-                "courseid": "str",
-                "tag": {
-                          "dept":"str",
-                          "number":"str"
-                       },
-                "list": ["str"]
-               };
+var FORMAT_OBJ =
 
+// ============ Format code goes below! ==========================
+{
+      "debug":          {   "profs": [{"uid": "str", "name":"str"}],
+                            "title": "str",
+                            "courseid": "str",
+                            "tag": {
+                                      "dept":"str",
+                                      "number":"str"
+                            },
+                            "list": ["str"]
+                          },
+      "Major":            {  "type":    "str",
+                             "name":    "str",
+                             "code":    "str",
+                             "degree":  "str",
+                             "year":    "str",
+                             "urls":   ["str"],
+                             "req_list": [ {"name":"str", "req_list":{} } ]
+                          },
+      "Requirement":      {  "name":            "str",
+                             "max_counted":     "str",
+                             "min_needed":      "str",
+                             "description":     "str",
+                             "explanation":     "str",
+                             "double_counting_allowed": "str",
+                             "pdf_allowed":     "str",
+                             "req_list": [ {"name":"str", "req_list":{} } ]
+                           },
+      "CourseList":        {  "course_list": ["str"]
+                           }
+
+      }
+// =========================== End format code ==============================
+
+
+// ========================= Initializers ===================================
 function tablegen_init() {
-  $("#__fields__")[0].appendChild(createTable(TEST_OBJ));
+  var keys = Object.keys(FORMAT_OBJ);
+
+  // Create each tab
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+
+    // Create the tab button and setup its properties.
+    var button = document.createElement("button");
+    button.classList.add("tablinks");
+    button.appendChild(text(key));
+    button.tab_name=key;
+    button.onclick = function() { tab_handler(event, this.tab_name); };
+
+    // Add the button to the tabs div.
+    $("#__tabs__")[0].appendChild(button);
+
+    // Create div associated with each tab.
+    field_init(FORMAT_OBJ[key], key, button);
+  }
+  // $("#__fields__")[0].appendChild(createTable(TEST_OBJ));
+}
+
+// Initialize the single field form specified by format_obj, adding it
+// to a subdiv of the main format div. Set it up for use with tabs.
+function field_init(format_obj, tab_name, button) {
+  var fields_div = $("#__fields__")[0];
+
+  // Create a subdiv to hold each of the tabbed options.
+  var subdiv = document.createElement("div");
+  subdiv.id = tab_name;
+  subdiv.classList.add("tabcontent");
+
+  // Fill a single subdiv.
+  var table = createTable(format_obj);
+
+  // Inform the button of the table's root ID for event handling
+  button.root_id = table.id;
+
+  // Add the table to subdiv and subdiv to doc.
+  subdiv.appendChild(table);
+  fields_div.appendChild(subdiv);
 }
 
 // =================== Creators ==================================
@@ -110,23 +178,6 @@ function createTableRow(label, content) {
   return tr;
 }
 
-// Add a row to the specified table based on given input strings
-/*
-function createTableRow(name, uid) {
-  var tr = document.createElement("tr");
-  var td_name = document.createElement("td");
-  var td_text = document.createElement("td");
-
-  td_name.appendChild(text(name));
-  td_text.appendChild(createInputField(50, name, uid));
-
-  tr.appendChild(td_name);
-  tr.appendChild(td_text);
-
-  return tr;
-}
-*/
-
 // Add an input field corresponding to name to the target DOM element
 function createInputField(size, name, uid) {
   var input = document.createElement("input");
@@ -148,7 +199,6 @@ function addRowAbove(table_id) {
   table.removeChild(button_tr);
 
   // Add in a new row based on the format_obj;
-  // TODO Add a button to remove this content
 
   // Create a remove row button
   var button = document.createElement("button");
@@ -168,11 +218,22 @@ function addRowAbove(table_id) {
 
 }
 
+// Remove the row containing the pressed button.
 function removeRow(table_id, button) {
   var table = $("#"+table_id)[0];
   var button_td = button.parentElement;
   var button_tr = button_td.parentElement;
   table.removeChild(button_tr);
+}
+
+// Handles presses of the tab buttons.
+function tab_handler(event, tab_name) {
+  var name = tab_name;
+  //console.log(name);
+  $(".tabcontent").css('display', 'none'); // Hide all tab content
+  $(".tablinks").removeClass("active");    // Deactivate active tab
+  $("#"+name).css('display', 'block');     // Show the desired tab
+  event.currentTarget.className += " active";  // Activate the desired tab.
 }
 
 
