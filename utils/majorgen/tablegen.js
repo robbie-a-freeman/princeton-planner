@@ -205,7 +205,7 @@ function addRowAbove(table_id) {
   var button = document.createElement("button");
   button.table_id = table_id;
   button.onclick = function() {removeRow(this.table_id, this)} // Likely bugged.
-  button.appendChild(text("-"));
+  button.appendChild(text("\u2716"));
   button.classList.add("minusbutton");
   button.setAttribute("tabindex", "-1"); // disable tabbing onto this button
 

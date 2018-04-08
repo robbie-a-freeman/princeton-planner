@@ -61,11 +61,28 @@ input[type="text"], textarea {
 }
 
 .plusbutton {
-  background-color: lime
+  font-weight: bold;
+  text-align:center;
+  vertical-align:middle;
+  padding: 0px;
+  background-color: lime;
+  border: 2px solid green;
+  border-radius: 7px;
+  height: 25px;
+  width: 25px;
+
 }
 
 .minusbutton {
-  background-color: red
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  .padding: 0px;
+  border: 2px solid #aa0000;
+  background-color: red;
+  border-radius: 7px;
+  height: 25px;
+  width: 25px;
 }
 
 body {
