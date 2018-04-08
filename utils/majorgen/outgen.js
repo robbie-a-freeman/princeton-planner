@@ -1,6 +1,4 @@
-
-// The ID of the top-level table.
-var ROOT_ID = "000000";
+// SEVERE: arrays of objects no longer work!
 
 // Whether or not to automatically copy output to clipboard
 var copy_enable = true;
@@ -29,7 +27,8 @@ function outgen_init() {
 }
 
 function submit_handler() {
-  var root = $("#" + ROOT_ID)[0];
+  var active_root_id = $(".active")[0].root_id;
+  var root = $("#" + active_root_id)[0]; // bugged currently.
   var obj = getTableAsObj(root);
 
   // Set value of output field.
@@ -58,47 +57,6 @@ function getTableAsObj(table) {
 
     // Add this row's data into the overall object.
     Object.assign(obj, rowObj);
-
-    // For each row, three (four) cases:
-
-  /*
-  // tr.type == "string"
-  if (tr.type == "string") {
-    var key = getKey(tr);
-    var right = getRight(tr);
-    var value = getValue(right);
-    obj[key] = value;
-  }
-
-  // tr.type == "array"
-  else if (tr.type == "array") {
-    var arr = [];
-    var entries = right(tr);
-    // length - 1 because the last row is just the add button.
-    for (var i = 0; i < entries.length - 1; i++) {
-      // Get a value from each row and push to arr.
-
-    }
-    continue;
-  }
-  // tr.type == "object"
-  else if (tr.type == "object") {
-    var key = getKey(tr);
-    var right = getRight(tr);
-    var value = getTableAsJSON(right);
-    obj[key] = value;
-
-    console.log(right);
-    console.log(value);
-    console.log("Key: " + key + " Value: " + value)
-  }
-
-  // tr.type == "none"
-  else if (tr.type == "none")
-    // yikes
-    continue;
-  }
-  */
   }
 
   return obj;
@@ -134,7 +92,8 @@ function getRowAsObj(tr, parentKey, parentArr) {
     var key = parentKey;
     var right = getRight(tr);
     var value = getTableAsObj(right); // recursive call for objects in array
-    if (value.value == undefined) {
+    // If 
+    if ("value" in right) {
       value = right.value; // Just a single text box, no need for recursion.
     }
     parentArr.push(value);
