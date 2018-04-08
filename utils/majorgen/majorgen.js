@@ -1,30 +1,14 @@
 // document.getElementById("name").childNodes[1].childNodes[0].valu
 
 // Defines the tab and field structure used by the majorgen program
-var fields_obj =
+var json_format =
 
 // ===========================================================================
 // ===               YOUR JSON GOES BELOW THIS LINE                        ===
 // ===========================================================================
 
-/* // Sample majors json
-{
-  "first":      ["name",
-                 "is_pdf",
-                 "year",
-                 "req_list"],
-  "second":     ["course1",
-                 "course2",
-                 "course3",
-                 "course4"],
-  "third":      ["name",
-                 "descrip",
-                 "prof",
-                 "min",
-                 "max"]
-};
-*/
 // Sample Courses JSON
+/*
 {
   "Courses":     ["profs",
                   "title",
@@ -47,6 +31,17 @@ var fields_obj =
                    "bldg"]
 
 }
+*/
+
+// Sample Courses JSON:
+{
+  "Courses":    { "profs": [{"uid": "str", "name":"str"}],
+                  "title": "str",
+                  "courseid": "str"},
+  "Courses":    { "profs": [{"uid": "str", "name":"str"}],
+                  "title": "str",
+                  "courseid": "str"},
+}
 
 // ===========================================================================
 // ===               END OF JSON FORMAT                                    ===
@@ -54,6 +49,9 @@ var fields_obj =
 
 // Auto-copy the generated json to clipboard if true.
 var copy_enable = true;
+
+// Counter for generating unique Element IDs
+//var UID_count = 0;
 
 // ===================== Initializers ======================
 // on-load top level function
@@ -63,19 +61,12 @@ function init() {
 }
 
 function tabs_init() {
-  var keys = Object.keys(fields_obj);
+  var tab_names = Object.keys(json_format);
 
   // Create each tab
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    var button = document.createElement("button");
-    button.classList.add("tablinks");
-    //console.log(key);
-    button.appendChild(text(key));
-    button.id="button_"+key;
-    //console.log(button.id);
-    button.onclick = function() { tab_handler(event, this.id); };
-    $("#__tabs__")[0].appendChild(button);
+  for (var i = 0; i < tab_names.length; i++) {
+    var tab_name = tab_names[i];
+    $("#__tabs__")[0].appendChild(createTabButton(tab_name));
 
     // Create div associated with each tab.
     fields_init(keys[i]);
@@ -96,10 +87,29 @@ function fields_init(fields_key) {
   table.style = "width:80%";
 
   // Add a row of the table for each line of input
-  var fields = fields_obj[fields_key];
-  for (var f = 0; f < fields.length; f++) {
-    table.appendChild(createTableRow(fields[f]));
+  var fieldObj = json_format[fields_key];
+  var keys = Object.keys(fieldObj);
+  for (var  i= 0; f < keys.length; i++) {
+    var key = keys[i];
+    var targetData = fieldObj[key];
+    console.log(targetData);
+    if (typeof targetData == "string")
+        // Add a single row
+        table.appendChild(createTableRow(keys[i]));
+    else if (Arrays.isArray()) {
+        // Add a row capable of replicating
+    }
+    else if (typeof targetData == "object") {
+        // Add a fixed number of rows.
+
+    }
+    else {
+      console.log("Illegal data type passed to fields_init")
+    }
+
   }
+    // table.appendChild(createTableRow(fields[i]));
+
 
   // Add the table to subdiv and subdiv to doc.
   subdiv.appendChild(table);
@@ -134,7 +144,7 @@ function output_init() {
 function submit_handler() {
   var obj = {};
   var activeTab = $(".tablinks.active")[0].innerText;
-  var fields = fields_obj[activeTab];
+  var fields = json_format[activeTab];
   // console.log(fields);
   for (var i = 0; i < fields.length; i++) {
     obj[fields[i]]=value(fields[i]);
@@ -159,29 +169,74 @@ function tab_handler(event, id) {
 }
 
 // =================== Creators ==================================
-// Add an input field corresponding to name to the target DOM element
-function createInputField(size, id) {
-  var input = document.createElement("input");
-  input.type = "text";
-  input.size = size;
-  input.placeholder = id;
-  input.id = id;
-  return input;
+// Given an object obj representing json data, return an html
+// table with one input field for each of obj's fields.
+/*
+function createTable(obj) {
+  // Create the containing table.
+  var table = document.createElement("table");
+  table.style = "width:80%";
+
+  // Iterate over keys of obj.
+  var keys = Object.keys(obj);
+  console.log(keys);
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    var val = obj[key];
+
+    // Check what type is associated with the current key.
+    if (typeof val == "string") {
+      // console.log("Key " + key + " associated with value of type string");
+      // Add a single table row corresponding to the string.
+      table.appendChild(createTableRow(key, UID()));
+    }
+    // Array check must come before obj check b/c arrays are objects!
+    else if (Array.isArray(val)) {
+      // console.log("Key " + key + " associated with value of type array");
+
+    }
+    else if (typeof val == "object") {
+      // console.log("Key " + key + " associated with value of type object");
+    }
+  }
 }
 
 // Add a row to the specified table based on given input strings
-function createTableRow(name) {
+function createTableRow(name, uid) {
   var tr = document.createElement("tr");
   var td_name = document.createElement("td");
   var td_text = document.createElement("td");
 
   td_name.appendChild(text(name));
-  td_text.appendChild(createInputField(50, name));
+  td_text.appendChild(createInputField(50, name, uid));
 
   tr.appendChild(td_name);
   tr.appendChild(td_text);
 
   return tr;
+}
+
+// Add an input field corresponding to name to the target DOM element
+function createInputField(size, name, uid) {
+  var input = document.createElement("input");
+  input.type = "text";
+  input.size = size;
+  input.placeholder = name;
+  input.id = uid;
+  return input;
+}
+*/
+
+// Create a button for the tab listing, with the given name
+function createTabButton(name) {
+  var button = document.createElement("button");
+  button.classList.add("tablinks");
+  //console.log(key);
+  button.appendChild(text(key));
+  button.id="button_"+key;
+  //console.log(button.id);
+  button.onclick = function() { tab_handler(event, this.id); };
+  return button;
 }
 
 // ================= Simple Helpers ===========================
@@ -209,3 +264,22 @@ function but_name(but_id) {
   // console.log(typeof but_id)
   return but_id.substring(7);
 }
+
+/*
+// Convert num to base 36
+function numToUID(num) {
+  var b36str = num.toString(36);
+  // Pad with 0 on left until 6 chars long.
+  while (b36str.length < 6) {
+    b36str = "0" + b36str;
+  }
+  return b36str;
+}
+
+// Generate a new UID and increment the counter.
+function UID() {
+  var uid = numToUID(UID_count);
+  UID_count++;
+  return uid;
+}
+*/
