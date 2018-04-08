@@ -75,7 +75,7 @@ function field_init(format_obj, tab_name, button) {
   subdiv.classList.add("tabcontent");
 
   // Fill a single subdiv.
-  var table = createTable(format_obj);
+  var table = createTable(format_obj, tab_name);
 
   // Inform the button of the table's root ID for event handling
   button.root_id = table.id;
@@ -88,14 +88,13 @@ function field_init(format_obj, tab_name, button) {
 // =================== Creators ==================================
 // Given an object obj representing json data, return an html
 // table with one input field for each of obj's fields.
-function createTable(obj) {
+function createTable(obj, name) {
   // Create the containing table.
   var table = document.createElement("table");
   table.style = "width:80%";
   table.id = UID();
 
   // Iterate over keys of obj
-
   if (typeof obj == "string"){
     return createInputField(50, name, UID());
   }
@@ -107,7 +106,7 @@ function createTable(obj) {
     // Check what type is associated with the current key.
     if (typeof val == "string") {
       // Add a single table row corresponding to the string.
-      var inputField = createInputField(50, name, UID());
+      var inputField = createInputField(50, key, UID());
       var row = createTableRow(text(key), inputField);
       row.type = "string";
       table.appendChild(row);
@@ -130,6 +129,7 @@ function createTable(obj) {
       // Using val[0] error prone (what if empty?) and not general (what if >1 exist?)
       // This limitation implies all elements in an array must have homogenous json structure.
       inner_table.format_obj = val[0];
+      inner_table.array_name = key;
 
       var filler_td = document.createElement("td");
       var button_td = document.createElement("td");
@@ -158,7 +158,7 @@ function createTable(obj) {
       table.appendChild(tr);
     }
     else if (typeof val == "object") {
-      var tr = createTableRow(text(key), createTable(val));
+      var tr = createTableRow(text(key), createTable(val, key));
       tr.type = "object";
       table.appendChild(tr);
     }
@@ -183,12 +183,13 @@ function createInputField(size, name, uid) {
   var input = document.createElement("input");
   input.type = "text";
   input.size = size;
-  input.placeholder = name;
+  input.setAttribute("placeholder", name);
   input.id = uid;
   return input;
 }
 
 // ================= Handlers =================================
+// Used by array-type tables to expand their element count.
 function addRowAbove(table_id) {
 
   // Store the table and button row for later use
@@ -208,7 +209,7 @@ function addRowAbove(table_id) {
   button.classList.add("minusbutton");
   button.setAttribute("tabindex", "-1"); // disable tabbing onto this button
 
-  var content = createTable(table.format_obj);
+  var content = createTable(table.format_obj, table.array_name);
   var new_tr = createTableRow(button, content);
   new_tr.type = "array_entry"; // Double check this is correct
   table.appendChild(new_tr);
