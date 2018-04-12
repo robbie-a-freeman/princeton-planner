@@ -9,8 +9,10 @@ def process():
 @app.route("/", methods = ["GET", "POST"])
 def index():
     if request.method == 'POST':
+        # Calculate what value to returned
+        # (Replace this dummy code with a call to srv/query_parser.py)
         name = request.form['input']
-        return name;
+        return "Got a post! " + str(name);
     return render_template('index.html');
     # return ("Hello!")
 
