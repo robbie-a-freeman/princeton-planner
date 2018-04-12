@@ -116,6 +116,10 @@ def queryAllWords(safe):
         results.append(queryOneWord(word))
     return results
 
+# public alias for queryAllWords
+def db_query(safe):
+    return queryAllWords(safe);
+
 ### Helper functions
 
 # Return the 6-digit course tag (COS333) for a json result
