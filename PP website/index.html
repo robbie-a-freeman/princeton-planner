@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +9,15 @@
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
-  <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/animate.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.bxslider.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <!-- =======================================================
     Theme Name: Baker
     Theme URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
@@ -81,7 +85,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="img/ser01.png">
+                <img src="{% static 'img/ser01.png' %}">
               </div>
               <h3 class="pad-bt15">Creative Concept</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -90,7 +94,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="img/ser02.png">
+                <img src="{% static 'img/ser02.png' %}">
               </div>
               <h3 class="pad-bt15">Amazing Design</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -99,7 +103,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="img/ser03.png">
+                <img src="{% static 'img/ser03.png' %}">
               </div>
               <h3 class="pad-bt15">Cost effective</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -108,7 +112,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="img/ser04.png">
+                <img src="{% static 'img/ser04.png' %}">
               </div>
               <h3 class="pad-bt15">Secure</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -172,7 +176,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
             <figure>
-              <img src="img/port01.jpg" class="img-responsive">
+              <img src="{% static 'img/port01.jpg' %}" class="img-responsive">
               <figcaption>
                 <h2>Project For Everyone</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
@@ -181,7 +185,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
             <figure>
-              <img src="img/port02.jpg" class="img-responsive">
+              <img src="{% static 'img/port02.jpg' %}" class="img-responsive">
               <figcaption>
                 <h2>Project For Everyone</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
@@ -190,7 +194,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
             <figure>
-              <img src="img/port03.jpg" class="img-responsive">
+              <img src="{% static 'img/port03.jpg' %}" class="img-responsive">
               <figcaption>
                 <h2>Project For Everyone</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
@@ -199,7 +203,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
             <figure>
-              <img src="img/port04.jpg" class="img-responsive">
+              <img src="{% static 'img/port04.jpg' %}" class="img-responsive">
               <figcaption>
                 <h2>Project For Everyone</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
@@ -208,7 +212,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
             <figure>
-              <img src="img/port05.jpg" class="img-responsive">
+              <img src="{% static 'img/port05.jpg' %}" class="img-responsive">
               <figcaption>
                 <h2>Project For Everyone</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
@@ -217,7 +221,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
             <figure>
-              <img src="img/port06.jpg" class="img-responsive">
+              <img src="{% static 'img/port06.jpg' %}" class="img-responsive">
               <figcaption>
                 <h2>Project For Everyone</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
@@ -237,28 +241,28 @@
               <ul class="bxslider">
                 <li>
                   <blockquote>
-                    <img src="img/thumb.png" class="img-responsive">
+                    <img src="{% static 'img/thumb.png' %}" class="img-responsive">
                     <p>Come a day there won't be room for naughty men like us to slip about at all. This job goes south, there well may not be another. </p>
                   </blockquote>
                   <small>Shaun Paul, Client</small>
                 </li>
                 <li>
                   <blockquote>
-                    <img src="img/thumb.png" class="img-responsive">
+                    <img src="{% static 'img/thumb.png' %}" class="img-responsive">
                     <p>So here is us, on the raggedy edge. Don't push me, and I won't push you. </p>
                   </blockquote>
                   <small>Marry Smith, Client</small>
                 </li>
                 <li>
                   <blockquote>
-                    <img src="img/thumb.png" class="img-responsive">
+                    <img src="{% static 'img/thumb.png' %}" class="img-responsive">
                     <p>Come a day there won't be room for naughty men like us to slip about at all. This job goes south, there well may not be another.</p>
                   </blockquote>
                   <small>Vivek Singh, Client</small>
                 </li>
                 <li>
                   <blockquote>
-                    <img src="img/thumb.png" class="img-responsive">
+                    <img src="{% static 'img/thumb.png' %}" class="img-responsive">
                     <p>So here is us, on the raggedy edge. Don't push me, and I won't push you.</p>
                   </blockquote>
                   <small>John Doe, Client</small>
@@ -282,7 +286,7 @@
             <div class="blog-sec">
               <div class="blog-img">
                 <a href="">
-                  <img src="img/blog01.jpg" class="img-responsive">
+                  <img src="{% static 'img/blog01.jpg' %}" class="img-responsive">
                 </a>
               </div>
               <div class="blog-info">
@@ -302,7 +306,7 @@
             <div class="blog-sec">
               <div class="blog-img">
                 <a href="">
-                  <img src="img/blog02.jpg" class="img-responsive">
+                  <img src="{% static 'img/blog02.jpg' %}" class="img-responsive">
                 </a>
               </div>
               <div class="blog-info">
@@ -322,7 +326,7 @@
             <div class="blog-sec">
               <div class="blog-img">
                 <a href="">
-                  <img src="img/blog03.jpg" class="img-responsive">
+                  <img src="{% static 'img/blog03.jpg' %}" class="img-responsive">
                 </a>
               </div>
               <div class="blog-info">
@@ -414,13 +418,16 @@
     </footer>
     <!---->
   </div>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery.easing.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/wow.js"></script>
-  <script src="js/jquery.bxslider.min.js"></script>
-  <script src="js/custom.js"></script>
-  <script src="contactform/contactform.js"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/wow.js' %}"></script>
+  <script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script src="{% static 'contactform/contactform.js' %}"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
 
 </body>
 </html>
