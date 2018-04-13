@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bootstrap Example</title>
+<title>Princeton Planner</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -40,15 +40,27 @@ padding: 15px;
 .row.content {height:auto;} 
 }
 
-
 h3 {
-font-size: 18px;
-text-align: center
+    font-size: 18px;
+    text-align: center
 }
 h4 {
-font-size: 18px;
+    font-size: 18px;
+}
+h5 {
+    font-size: 12px;
 }
   
+.popover{
+    max-width: none; /* Max Width of the popover (depending on the container!) */
+    white-space: pre-wrap;   
+    overflow-y:auto;
+    
+}
+.popover-content {
+    font-size: 12px;
+    word-wrap: break-word;
+}
 .icon-bad {
     color: red;
 }
@@ -60,12 +72,12 @@ font-size: 18px;
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
     content: "\e114";    /* adjust as needed, taken from bootstrap.css */
     float: right;
-    color: white;         /* adjust as needed */
+    position: static;
+    color: white;
 }
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
-    float: right;
 }
 .accordion-toggle:hover {
     text-decoration: none;
@@ -84,7 +96,6 @@ font-size: 18px;
     border-radius:0px;
     text-decoration:none;
     font-size: 12px;
-    
 }
 .panel .panel-heading a:hover {
     background: rgb(247, 169, 2);
@@ -266,7 +277,7 @@ font-size: 18px;
                 </div>
                 <div id="collapse1" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
                         MAT 103
                     </div>
                     <div class="panel-body">
@@ -282,10 +293,10 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse2" class="panel-collapse collapse">
-                    <div class="panel-body">MAT 201</div>
-                    <div class="panel-body">MAT 203</div>
-                    <div class="panel-body">MAT 218</div>
-                    <div class="panel-body">EGR 192</div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        MAT 201
+                    </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -295,8 +306,10 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse3" class="panel-collapse collapse">
-                    <div class="panel-body">MAT 202</div>
-                    <div class="panel-body">MAT 204</div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        MAT 204
+                    </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -306,9 +319,10 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse4" class="panel-collapse collapse">
-                    <div class="panel-body">PHY 103</div>
-                    <div class="panel-body">PHY 105</div>
-                    <div class="panel-body">EGR 191</div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        EGR 191
+                    </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -318,8 +332,10 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse5" class="panel-collapse collapse">
-                    <div class="panel-body">PHY 104</div>
-                    <div class="panel-body">PHY 106</div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                        <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="PHY 104<br />PHY 106">Find a course!</a>
+                    </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -333,14 +349,6 @@ font-size: 18px;
                         <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
                         COS 126
                     </div>
-                    <div class="panel-body">
-                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                        COS 226
-                    </div>
-                    <div class="panel-body">
-                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                        COS 217
-                    </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -350,8 +358,10 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse7" class="panel-collapse collapse">
-                    <div class="panel-body">CHM 201</div>
-                    <div class="panel-body">CHM 207</div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                        <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="CHM 201<br />CHM 208">Find a course!</a>
+                    </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -419,7 +429,14 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse11" class="panel-collapse collapse">
-                    <div class="panel-body">lots of stuff</div>
+                        <div class="panel-body">
+                            <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                            COS 340
+                        </div>
+                        <div class="panel-body">
+                            <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                            <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="COS 423<br />COS 433<br />COS 445<br />COS 451<br />COS 487<br />COS 488<br />COS 510 | COS 441 | COS 516<br />COS 511">Find a course!</a>
+                        </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -429,7 +446,14 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse12" class="panel-collapse collapse">
-                    <div class="panel-body">lots of stuff</div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        ELE 206 | COS 306
+                    </div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        COS 333
+                    </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -449,7 +473,14 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse14" class="panel-collapse collapse">
-                    <div class="panel-body">LOTS AND LOTS OF STUFF</div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        ORF 309
+                    </div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                        COS 461
+                    </div>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -459,10 +490,10 @@ font-size: 18px;
                     </h4>
                 </div>
                 <div id="collapse15" class="panel-collapse collapse">
-                    <div class="panel-body">COS 397</div>
-                    <div class="panel-body">COS 398</div>
-                    <div class="panel-body">COS 497</div>
-                    <div class="panel-body">COS 498</div>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                        <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="COS 397<br />COS 398<br />COS 497<br />COS 498">Find a course!</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -501,4 +532,19 @@ font-size: 18px;
 </footer>
 
 </body>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({ html : true, container: 'body'});   
+});
+$('body').on('click', function (e) {
+    $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+        }
+    });
+});
+</script>
 </html>
