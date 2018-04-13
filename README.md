@@ -23,6 +23,8 @@ In Progress
 - Keep track of user data (From Henry - I think this is where models.py might play a role - MongoDB database)
 - Testing! - Start writing tests
 
+- Wait... shoot... MUS 213 counts twice for music performance certificate, how do we account for that? I have an idea
+
 Completed
 ====================
 - Configure Vagrant so it can run utils/scraper.py and a MongoDB server
