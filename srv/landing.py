@@ -1,10 +1,10 @@
 import cgi, cgitb
 from flask import Flask, render_template, request
 from query_parser import db_query
-app = Flask(__name__)
-#app = Flask(__name__, template_folder="../website")
+#app = Flask(__name__)
+app = Flask(__name__, template_folder="../web")
 
-@app.route('/vagrant/srv', methods = ["POST"]) #Where 'vagrant/srv' is the local directory of the file. 
+@app.route('/vagrant/srv', methods = ["POST"]) #Where 'vagrant/srv' is the local directory of the file.
 def process():
     return 'Hello, World!'
 
@@ -13,10 +13,13 @@ def index():
     if request.method == 'POST':
         # Calculate what value to returned
         # (Replace this dummy code with a call to srv/query_parser.py)
-        name = request.form['input']
-        # return db_query(request.form['search_query']) # If search_query is the name attribute of the HTML form.
-        return "Got a post! " + str(name);
-    return render_template('index.html');
+        # name = request.form['input']
+        #return db_query(request.form['search_query']) # If search_query is the name attribute of the HTML form.
+        #return "Got a post! " + str(name)
+
+        query = request.form['search_query']
+        return "Got a post!" + str(query)
+    return render_template('indexs.html')
     # return ("Hello!")
 
 

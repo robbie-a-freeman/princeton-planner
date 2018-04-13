@@ -8,7 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-/* Remove the navbar's default margin-bottom and rounded borders */ 
+/* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 margin-bottom: 0;
 border-radius: 0;
@@ -37,7 +37,7 @@ padding: 15px;
     height: auto;
     padding: 15px;
 }
-.row.content {height:auto;} 
+.row.content {height:auto;}
 }
 
 
@@ -48,7 +48,7 @@ text-align: center
 h4 {
 font-size: 18px;
 }
-  
+
 .icon-bad {
     color: red;
 }
@@ -74,7 +74,7 @@ font-size: 18px;
     font-family: verdana;
     border-radius:0;
     padding: 0px;
-    
+
 }
 .panel .panel-heading a{
     display:block;
@@ -84,7 +84,7 @@ font-size: 18px;
     border-radius:0px;
     text-decoration:none;
     font-size: 12px;
-    
+
 }
 .panel .panel-heading a:hover {
     background: rgb(247, 169, 2);
@@ -104,7 +104,7 @@ font-size: 18px;
 .table td {
    text-align: left;
    font-size: 12px;
-   background: white;   
+   background: white;
 }
 
 </style>
@@ -117,13 +117,13 @@ font-size: 18px;
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="index.html">Princeton Planner</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-        
+
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal"><span class="glyphicon glyphicon-bell"></span>   About</a></li>
@@ -169,7 +169,7 @@ font-size: 18px;
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -188,7 +188,7 @@ font-size: 18px;
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                 </div>
-                
+
             </div>
         </div>
     </ul>
@@ -196,10 +196,10 @@ font-size: 18px;
 </div>
 </nav>
 
-<div class="container-fluid text-center">    
+<div class="container-fluid text-center">
 <div class="row content">
     <div class="col-sm-2 sidenav">
-        
+
         <h3>Select semester!</h3>
         <form>
             <div class="form-group">
@@ -230,11 +230,11 @@ font-size: 18px;
         </form>
 
         <h3>Search for courses!</h3>
-        <form action="#" method="GET">            
+        <form action="../srv/landing.py" method="POST">
             <div class="input-group pull-left" id="sea1">
-                <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
+                <input type="text" name="search_query" class="form-control" placeholder="Search" id="txtSearch"/>
                 <div class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
+                    <button name="submit" class="btn btn-primary" type="submit">
                     <span class="glyphicon glyphicon-search"></span>
                     </button>
                 </div>
@@ -253,7 +253,7 @@ font-size: 18px;
         </table>
 
     </div>
-    <div class="col-sm-2 text-left"> 
+    <div class="col-sm-2 text-left">
         <h3>School of Engineering and Applied Science</h3>
         <div style="float:left" class="panel-group" id="accordion">
             <div class="panel panel-default">
@@ -382,11 +382,11 @@ font-size: 18px;
                     <div class="panel-body">aLA</div>
                     <div class="panel-body">aSA</div>
                     <div class="panel-body">aFL</div>
-                </div> 
-            </div> 
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-sm-2 text-left"> 
+    <div class="col-sm-2 text-left">
         <h3>Computer Science (COS BSE)</h3>
         <div style="float:left" class="panel-group" id="accordion">
             <div class="panel panel-default">
@@ -467,13 +467,13 @@ font-size: 18px;
             </div>
         </div>
     </div>
-    <div class="col-sm-2 text-left"> 
+    <div class="col-sm-2 text-left">
     </div>
-    <div class="col-sm-2 text-left"> 
+    <div class="col-sm-2 text-left">
     </div>
     <div class="col-sm-2 sidenav">
         <h3>Search for majors/certificates!</h3>
-        <form action="#" method="GET">            
+        <form action="#" method="GET">
             <div class="input-group pull-left" id="sea1">
                 <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
                 <div class="input-group-btn">
