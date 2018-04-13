@@ -166,7 +166,7 @@ HEADER
 
 .navbar-brand {
   padding: 0px;
-  font-size: 24px;
+  font-size: 36px;
   text-transform: uppercase;
   padding: 15px 0px;
   margin-top: 6px;
@@ -231,6 +231,17 @@ h2.bnr-sub-title {
   padding: 10px 30px;
   border-radius: 60px;
   margin: 50px 10px 0 0;
+  outline: none !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: all 0.3s;
+}
+
+.btn-plan, .btn-plan:focus {
+  color: #fff;
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 60px;
   outline: none !important;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -810,7 +821,7 @@ Responsive media queries
   body {
     font-size: 14px;
   }
-  .btn-download, .btn-more, .btn-download:hover, .btn-more:hover, .btn-download:focus, .btn-more:focus {
+  .btn-download, .btn-more, .btn-plan, .btn-download:hover, .btn-more:hover, .btn-download:focus, .btn-more:focus, .btn-plan:focus {
     font-size: 12px;
     padding: 7px 18px;
   }
