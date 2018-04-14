@@ -27,6 +27,7 @@ In Progress
 
 For Front End (Meeting with Jeremie)
 - hourclock for semesters that are upcoming 
+- distinguish between already taken courses and anticipated courses
 - (1/2) to show how many requirements are fulfilled
 - More succinct captions
 - tooltips
