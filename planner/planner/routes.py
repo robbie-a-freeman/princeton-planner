@@ -1,39 +1,23 @@
-from . import app#, db, cas
+from . import app
 from flask import render_template, redirect
-#from flask_cas import login_required
-#from .forms import StartMealExchangeForm
-#from .models import User, MealExchange
+from course_search import course_db_query
 
 
 @app.route("/")
-#@login_required
 def main():
-    #me = User.query.filter_by(username=cas.username).first()
-    #hosted_mxchanges = MealExchange.query.filter_by(
-    #    start_host=me).all()
-    #guested_mxchanges = MealExchange.query.filter_by(start_guest=me)
-    return render_template('index.html')#,
-                           #hosted_mxchanges=hosted_mxchanges,
-                           #guested_mxchanges=guested_mxchanges)
+    return render_template('index.html')
 
 
-@app.route('/plan.html')#, methods=('GET', 'POST'))
-#@login_required
-def start():
-    #form = StartMealExchangeForm()
-    #if form.validate_on_submit():
-    #    guest = User.query.filter_by(username=form.guest.data).first()
-    #    host = User.query.filter_by(username=cas.username).first()
-        # We will want to actually do something here later
-    #    if guest is not None and host is not None:
-    #        mxchange = MealExchange(
-    #            start_date=form.date.data, start_host=host,
-    #            start_guest=guest, meal=form.meal.data)
-    #        db.session.add(mxchange)
-    #        db.session.commit()
-    #        return redirect('/')
-    return render_template('plan.html')#, form=form)
+@app.route('/plan.html', methods = ["GET", "POST"])
+def plan():
+    if request.method == 'POST':
+        query = request.form['course_query']
+        # return db_query(request.form['search_query']) # If search_query is the name attribute of the HTML form.
+
+        return "Got a post! " + str(name);
+    # Normal GET: Return our beautiful planning page.
+    return render_template('plan.html')
 
 @app.route('/index.html')
-def corner():
+def index():
     return redirect('/')

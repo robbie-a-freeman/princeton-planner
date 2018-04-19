@@ -17,13 +17,13 @@
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="index.html">Princeton Planner</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-        
+
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal"><span class="glyphicon glyphicon-bell"></span>   About</a></li>
@@ -69,7 +69,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -88,7 +88,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                 </div>
-                
+
             </div>
         </div>
     </ul>
@@ -96,10 +96,10 @@
 </div>
 </nav>
 
-<div class="container-fluid text-center">    
+<div class="container-fluid text-center">
 <div class="row content">
     <div class="col-sm-2 sidenav">
-        
+
         <h3>Select semester!</h3>
         <div class="form-group">
         <select class="form-control" id="semester" form="abcdefg" onchange="myFunction()">
@@ -124,11 +124,11 @@
         </select>
         </div>
 
-
+        <!-- Searching for courses --------------------------------------------------------------------->
         <h3>Search for courses!</h3>
-        <form action="#" method="GET" form="abcdefg">           
+        <form action="/plan.html" method="POST">
             <div class="input-group pull-left" id="sea1">
-                <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
+                <input type="text" class="form-control" placeholder="Search" id="txtSearch" name="course_query"/>
                 <div class="input-group-btn">
                     <button class="btn btn-primary" type="submit">
                     <span class="glyphicon glyphicon-search"></span>
@@ -146,7 +146,7 @@
         </table>
 
     </div>
-    <div class="col-sm-2 text-left"> 
+    <div class="col-sm-2 text-left">
         <h3>School of Engineering and Applied Science</h3>
         <div style="float:left" class="panel-group" id="accordion">
             <div class="panel panel-default">
@@ -274,11 +274,11 @@
                     <div class="panel-body">aLA</div>
                     <div class="panel-body">aSA</div>
                     <div class="panel-body">aFL</div>
-                </div> 
-            </div> 
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-sm-2 text-left"> 
+    <div class="col-sm-2 text-left">
         <h3>Computer Science (COS BSE)</h3>
         <div style="float:left" class="panel-group" id="accordion">
             <div class="panel panel-default">
@@ -380,13 +380,13 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-2 text-left"> 
+    <div class="col-sm-2 text-left">
     </div>
-    <div class="col-sm-2 text-left"> 
+    <div class="col-sm-2 text-left">
     </div>
     <div class="col-sm-2 sidenav">
         <h3>Search for majors/certificates!</h3>
-        <form action="#" method="GET">            
+        <form action="#" method="GET">
             <div class="input-group pull-left" id="sea1">
                 <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
                 <div class="input-group-btn">
@@ -418,7 +418,7 @@
 <script src="{{ url_for('static', filename = 'js/fruits.js') }}"></script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="popover"]').popover({ html : true, container: 'body'});   
+    $('[data-toggle="popover"]').popover({ html : true, container: 'body'});
 });
 $('body').on('click', function (e) {
     $('[data-toggle="popover"]').each(function () {

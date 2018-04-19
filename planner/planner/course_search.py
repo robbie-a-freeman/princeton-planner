@@ -127,7 +127,7 @@ def queryAllWords(safe):
 
 
 # public variant of queryAllWords called by landing.py
-def db_query(safe):
+def course_db_query(safe):
     # return "query to query_parser was: " + safe
     results = queryOneWord(safe) # queryAllWords bugged for some reason. TODO
     output_strings = [getCourseTag(result) for result in results]
