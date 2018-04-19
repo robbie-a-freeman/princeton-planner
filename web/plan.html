@@ -5,120 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/land.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-/* Remove the navbar's default margin-bottom and rounded borders */ 
-.navbar {
-margin-bottom: 0;
-border-radius: 0;
-}
-
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 450px}
-
-/* Set gray background color and 100% height */
-.sidenav {
-padding-top: 20px;
-background-color: #f1f1f1;
-height: 100%;
-}
-
-/* Set black background color, white text and some padding */
-footer {
-background-color: #555;
-color: white;
-padding: 15px;
-}
-
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-.sidenav {
-    height: auto;
-    padding: 15px;
-}
-.row.content {height:auto;} 
-}
-
-h3 {
-    font-size: 18px;
-    text-align: center
-}
-h4 {
-    font-size: 18px;
-}
-h5 {
-    font-size: 12px;
-}
-  
-.popover{
-    max-width: none; /* Max Width of the popover (depending on the container!) */
-    white-space: pre-wrap;   
-    overflow-y:auto;
-    
-}
-.popover-content {
-    font-size: 12px;
-    word-wrap: break-word;
-}
-.icon-bad {
-    color: red;
-}
-.icon-good {
-    color: #5CB85C;
-}
-.panel-heading .accordion-toggle:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-    float: right;
-    position: static;
-    color: white;
-}
-.panel-heading .accordion-toggle.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
-}
-.accordion-toggle:hover {
-    text-decoration: none;
-}
-.panel .panel-heading {
-    font-family: verdana;
-    border-radius:0;
-    padding: 0px;
-    
-}
-.panel .panel-heading a{
-    display:block;
-    background: rgb(255, 193, 59);
-    color: white;
-    padding:5px 10px 5px 10px;
-    border-radius:0px;
-    text-decoration:none;
-    font-size: 12px;
-}
-.panel .panel-heading a:hover {
-    background: rgb(247, 169, 2);
-    color: white;
-    text-decoration:none;
-}
-#accordion .highlight a{
-    background:rgb(255, 193, 59);/* change colour of selected bar here if needed */
-    box-shadow:0 0 10px rgba(0,0,0,0.3);
-    color:white;
-    transition:background 2s ease;
-}
-.panel-body {
-    font-size: 12px;
-    padding:5px 10px;
-}
-.table td {
-   text-align: left;
-   font-size: 12px;
-   background: white;   
-}
-
-</style>
 </head>
 <body>
 
@@ -212,36 +101,32 @@ h5 {
     <div class="col-sm-2 sidenav">
         
         <h3>Select semester!</h3>
-        <form>
-            <div class="form-group">
-            <!-- <label for="sel1">Select semester:</label> -->
-            <select class="form-control" id="sel1">
-                <optgroup label="Current and Previous Semesters">
-                    <option>Fall 2018</option>
-                    <option>Spring 2018</option>
-                    <option>Fall 2017</option>
-                    <option>Spring 2017</option>
-                    <option>Fall 2016</option>
-                    <option>Spring 2016</option>
-                    <option>Fall 2015</option>
-                    <option>Spring 2015</option>
-                    <option>Fall 2014</option>
-                </optgroup>
-                <optgroup label="Future semesters (WARNING: May not be accurate)">
-                    <option>Spring 2018</option>
-                    <option>Fall 2019</option>
-                    <option>Spring 2019</option>
-                    <option>Fall 2020</option>
-                    <option>Spring 2020</option>
-                    <option>Fall 2021</option>
-                    <option>Spring 2021</option>
-                </optgroup>
-            </select>
-            </div>
-        </form>
+        <div class="form-group">
+        <select class="form-control" id="semester" form="abcdefg" onchange="myFunction()">
+            <optgroup label="Current and Previous Semesters">
+                <option>Fall 2018</option>
+                <option>Spring 2018</option>
+                <option>Fall 2017</option>
+                <option>Spring 2017</option>
+                <option>Fall 2016</option>
+                <option>Spring 2016</option>
+                <option>Fall 2015</option>
+                <option>Spring 2015</option>
+                <option>Fall 2014</option>
+            </optgroup>
+            <optgroup label="Future semesters (WARNING: May not be accurate)">
+                <option>Spring 2019</option>
+                <option>Fall 2019</option>
+                <option>Spring 2020</option>
+                <option>Fall 2020</option>
+                <option>Spring 2021</option>
+            </optgroup>
+        </select>
+        </div>
+
 
         <h3>Search for courses!</h3>
-        <form action="#" method="GET">            
+        <form action="#" method="GET" form="abcdefg">           
             <div class="input-group pull-left" id="sea1">
                 <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
                 <div class="input-group-btn">
@@ -254,12 +139,9 @@ h5 {
         <br>
         <br>
         <h3>Enrolled courses</h3>
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="enrolled">
             <tbody>
-                <tr><td>COS 333</td></tr>
-                <tr><td>PHY 103</td></tr>
-                <tr><td>CHM 201</td></tr>
-                <tr><td>WRI 150</td></tr>
+                <tr><td>EMPTY</td></tr>
             </tbody>
         </table>
 
@@ -333,7 +215,7 @@ h5 {
                 </div>
                 <div id="collapse5" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                        <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
                         <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="PHY 104<br />PHY 106">Find a course!</a>
                     </div>
                 </div>
@@ -359,7 +241,7 @@ h5 {
                 </div>
                 <div id="collapse7" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                        <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
                         <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="CHM 201<br />CHM 208">Find a course!</a>
                     </div>
                 </div>
@@ -434,7 +316,7 @@ h5 {
                             COS 340
                         </div>
                         <div class="panel-body">
-                            <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                            <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
                             <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="COS 423<br />COS 433<br />COS 445<br />COS 451<br />COS 487<br />COS 488<br />COS 510 | COS 441 | COS 516<br />COS 511">Find a course!</a>
                         </div>
                 </div>
@@ -491,7 +373,7 @@ h5 {
                 </div>
                 <div id="collapse15" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <span class="glyphicon glyphicon-remove icon-bad pull-right"></span>
+                        <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
                         <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="COS 397<br />COS 398<br />COS 497<br />COS 498">Find a course!</a>
                     </div>
                 </div>
@@ -528,11 +410,12 @@ h5 {
 </div>
 
 <footer class="container-fluid text-center">
-<p>Footer Text</p>
+    <p id="demo">Hello</p>
 </footer>
 
 </body>
 
+<script src="js/fruits.js"></script>
 <script>
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({ html : true, container: 'body'});   
