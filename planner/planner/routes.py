@@ -1,5 +1,6 @@
 from . import app
 from flask import render_template, redirect, request
+from flask_cas import login_required
 from . import course_search
 
 
@@ -9,6 +10,7 @@ def main():
 
 
 @app.route('/plan.html', methods = ["GET", "POST"])
+@login_required
 def plan():
     if request.method == 'POST':
         query = request.form['course_query']
@@ -21,3 +23,8 @@ def plan():
 @app.route('/index.html')
 def index():
     return redirect('/')
+
+@app.route('login')
+@login_required
+def login():
+    return render_template('plan.html')
