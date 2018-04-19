@@ -19,6 +19,22 @@
 #   Revise so that it is possible to return searches from multiple categories
 #       i.e. "COS" would match EITHER the dept id or the course name, returning both results lists
 #
+#   We consider a type of search which is a slightly more complex form of the intersection
+#   of queries that we implemented in reg.py. We will consider the query string types
+#   and take the intersection of the courses in each query string type.
+#   For example, if the query string is "COS 333 ENG", then we could have two types:
+#   DEPT: set(["COS", "ENG"])
+#   NUMBER: set([333])
+#   We take the intersection of the courses to obtain the final result list.
+#
+#   However, we need to consider names/titles of courses. If there is any query longer than 4 letters...
+#
+#
+#   For example, if "COS" is contained within the title of a course, then check department. IF "COS"
+#   is a department, then dont' check titles.
+#   However, if we have a query like "SYS", then we check if the "SYS" department exists. If it doesn't,
+#   then check the titles.
+#
 
 
 # ======================================================================
@@ -119,7 +135,7 @@ def queryOneWord(word):
 # Split the sanitized query string into sub-parts and
 # generate a mongo query for eachself.
 def queryAllWords(safe):
-    words = safe.split(" ")
+    words = safe.split()
     results = []
     for word in words:
         results.append(queryOneWord(word))
