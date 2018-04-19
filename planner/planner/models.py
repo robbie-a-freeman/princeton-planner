@@ -1,7 +1,7 @@
-from . import db
+#from . import db
 from datetime import datetime
 
-
+"""
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True,
@@ -37,4 +37,4 @@ class MealExchange(db.Model):
 
     def __repr__(self):
         return '<MealExchange {} between {} and {}>'.format(
-            self.id, self.start_host.username, self.start_guest.username)
+            self.id, self.start_host.username, self.start_guest.username)"""

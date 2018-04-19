@@ -1,5 +1,5 @@
-from mxchange import db, models
-
+#from planner import db, models
+"""
 db.create_all()
 db.session.commit()
 charter = models.Club(name='Charter')
@@ -19,4 +19,4 @@ leilac = models.User(username="leilac", club=terrace)
 me = models.User(username="mynetid", club=quad)
 db.session.add(leilac)
 db.session.add(me)
-db.session.commit()
+db.session.commit()"""

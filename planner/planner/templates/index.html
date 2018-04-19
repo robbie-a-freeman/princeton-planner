@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +16,11 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
-  <link rel="stylesheet" type="text/css" href="{% static 'term/css/jquery.bxslider.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'term/css/font-awesome.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'term/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'term/css/animate.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'term/css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/jquery.bxslider.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/font-awesome.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/animate.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
   <!-- =======================================================
     Theme Name: Baker
     Theme URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
@@ -90,7 +89,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="{% static 'term/img/ser01.png' %}">
+                <img src="{{ url_for('static', filename = 'img/ser01.png') }}">
               </div>
               <h3 class="pad-bt15">Discover</h3>
               <p>Find classes that you haven't even heard of and fit them into your future.</p>
@@ -99,7 +98,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="{% static 'term/img/ser02.png' %}">
+                <img src="{{ url_for('static', filename = 'img/ser02.png') }}">
               </div>
               <h3 class="pad-bt15">Create</h3>
               <p>Make robust, flexible plans that fulfill your goals and organize your life.</p>
@@ -108,7 +107,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="{% static 'term/img/ser03.png' %}">
+                <img src="{{ url_for('static', filename = 'img/ser03.png') }}">
               </div>
               <h3 class="pad-bt15">Customize</h3>
               <p>Take ultimate control over your plans with our intuitive, easy-to-use interface.</p>
@@ -117,7 +116,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="{% static 'term/img/ser04.png' %}">
+                <img src="{{ url_for('static', filename = 'img/ser04.png') }}">
               </div>
               <h3 class="pad-bt15">Succeed</h3>
               <p>Reach the goals you set for yourself and watch your plan evolve over time.</p>
@@ -138,7 +137,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="item-img">
-              <img src="{% static 'term/img/robbie.png' %}">
+              <img src="{{ url_for('static', filename = 'img/robbie.png') }}">
             </div>
             <div class="service-item">
               <h3>Robert Freeman</h3>
@@ -147,7 +146,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="item-img">
-              <img src="{% static 'term/img/phillip.png' %}">
+              <img src="{{ url_for('static', filename = 'img/phillip.png') }}">
             </div>
             <div class="service-item">
               <h3>Phillip Yoon</h3>
@@ -156,7 +155,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="item-img">
-              <img src="{% static 'term/img/henry.png' %}">
+              <img src="{{ url_for('static', filename = 'img/henry.png') }}">
             </div>
             <div class="service-item">
               <h3>Henry Wang</h3>
@@ -165,7 +164,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="item-img">
-              <img src="{% static 'term/img/will.png' %}">
+              <img src="{{ url_for('static', filename = 'img/will.png') }}">
             </div>
             <div class="service-item">
               <h3>William Sweeny</h3>
@@ -254,13 +253,13 @@
   <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="{% static 'term/js/jquery.min.js' %}"></script>
-  <script src="{% static 'term/js/jquery.easing.min.js' %}"></script>
-  <script src="{% static 'term/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'term/js/wow.js' %}"></script>
-  <script src="{% static 'term/js/jquery.bxslider.min.js' %}"></script>
-  <script src="{% static 'term/js/custom.js' %}"></script>
-  <script src="{% static 'term/contactform/contactform.js' %}"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.easing.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/wow.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.bxslider.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/custom.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'contactform/contactform.js') }}"></script>
 
 </body>
 </html>

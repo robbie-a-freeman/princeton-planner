@@ -36,4 +36,4 @@ def start():
 
 @app.route('/index.html')
 def corner():
-    return redirect('/')
+    return render_template('index.html')
