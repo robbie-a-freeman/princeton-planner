@@ -1,4 +1,3 @@
-import cgi, cgitb
 from flask import Flask, render_template, request
 from query_parser import db_query
 #app = Flask(__name__)
