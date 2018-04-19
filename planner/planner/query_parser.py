@@ -43,12 +43,21 @@
 #
 # =====================================================================
 
-import re
+import re, os
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
-db = client.test      # Remember to change in vagrant_up if this changes
+
+#client = MongoClient('localhost', 27017)
+#db = client.test      # Remember to change in vagrant_up if this changes
+#courses = db.courses
+
+
+# Fetch the URI from environment variable to avoid leaking credentials.
+mongoURI = os.environ.get('MONGOLAB_URI')
+client = MongoClient(mongoURI)
+db = client.plannerdb
 courses = db.courses
+
 
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ARC", "ART", "ASA", "AST", "ATL", "BCS", "CBE",
@@ -116,9 +125,14 @@ def queryAllWords(safe):
         results.append(queryOneWord(word))
     return results
 
-# public alias for queryAllWords
+
+# public variant of queryAllWords called by landing.py
 def db_query(safe):
-    return queryAllWords(safe);
+    # return "query to query_parser was: " + safe
+    results = queryOneWord(safe) # queryAllWords bugged for some reason. TODO
+    output_strings = [getCourseTag(result) for result in results]
+    return "Query: %s <br>\n" % safe + "<br>\n".join(output_strings)
+
 
 ### Helper functions
 
@@ -149,4 +163,4 @@ def main():
     queryOneTest("IMPLICATIONS")
 
 
-main()
+# main()
