@@ -14,7 +14,7 @@ function courseSearchSubmit() {
   var courseSearchForm = $("#courseSearchForm");
   $.post('/plan.html',
          courseSearchForm.serialize(),
-         updateCourseResults(data)
+         updateCourseResults
        );
 }
 
