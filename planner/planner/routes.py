@@ -1,5 +1,5 @@
 from . import app
-from flask import render_template, redirect
+from flask import render_template, redirect, request
 from . import course_search
 
 
