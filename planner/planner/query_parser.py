@@ -43,12 +43,21 @@
 #
 # =====================================================================
 
-import re
+import re, os
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
-db = client.test      # Remember to change in vagrant_up if this changes
+
+#client = MongoClient('localhost', 27017)
+#db = client.test      # Remember to change in vagrant_up if this changes
+#courses = db.courses
+
+
+# Fetch the URI from environment variable to avoid leaking credentials.
+mongoURI = os.environ.get('MONGOLAB_URI')
+client = MongoClient(mongoURI)
+db = client.plannerdb
 courses = db.courses
+
 
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ARC", "ART", "ASA", "AST", "ATL", "BCS", "CBE",
