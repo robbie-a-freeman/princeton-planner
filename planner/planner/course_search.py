@@ -97,7 +97,7 @@ def queryOneWord(word):
         return courses.find( {"listings.dept":word} )
 
     # Course number:
-    elif re.match("\d\d\d", word) is not None:
+    elif re.match("\d\d\d", word):
         return courses.find( {"listings.number":word} )
 
     # Dist. ID:

@@ -12,13 +12,14 @@ def main():
 @app.route('/plan.html', methods = ["GET", "POST"])
 @login_required
 def plan():
+    user = {'netid': 'htwang'}
     if request.method == 'POST':
         query = request.form['course_query']
         # return db_query(request.form['search_query']) # If search_query is the name attribute of the HTML form.
 
         return "Got a post! " + str(course_search.course_db_query(query));
     # Normal GET: Return our beautiful planning page.
-    return render_template('plan.html')
+    return render_template('plan.html', user=user)
 
 @app.route('/index.html')
 def index():
