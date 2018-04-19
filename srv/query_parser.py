@@ -116,9 +116,14 @@ def queryAllWords(safe):
         results.append(queryOneWord(word))
     return results
 
-# public alias for queryAllWords
+
+# public variant of queryAllWords called by landing.py
 def db_query(safe):
-    return queryAllWords(safe);
+    # return "query to query_parser was: " + safe
+    results = queryOneWord(safe) # queryAllWords bugged for some reason. TODO
+    output_strings = [getCourseTag(result) for result in results]
+    return "Query: %s <br>\n" % safe + "<br>\n".join(output_strings)
+
 
 ### Helper functions
 
@@ -149,4 +154,4 @@ def main():
     queryOneTest("IMPLICATIONS")
 
 
-main()
+# main()
