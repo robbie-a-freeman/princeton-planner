@@ -1,11 +1,15 @@
 from flask import Flask
 from flask_cas import CAS
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
 app.config['CAS_SERVER'] = 'https://fed.princeton.edu'
 app.config['CAS_AFTER_LOGIN'] = 'main'
+
+login = LoginManager(app)
+
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
 #    'DATABASE_URL') or 'sqlite:////tmp/mxchange.db'
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

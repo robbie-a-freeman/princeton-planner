@@ -24,7 +24,7 @@ def plan():
 def index():
     return redirect('/')
 
-@app.route('login')
+@app.route('/login')
 @login_required
 def login():
     return render_template('plan.html')
