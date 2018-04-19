@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/land.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/land.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -415,7 +415,7 @@
 
 </body>
 
-<script src="js/fruits.js"></script>
+<script src="{{ url_for('static', filename = 'js/fruits.js') }}"></script>
 <script>
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({ html : true, container: 'body'});   
@@ -432,6 +432,5 @@ $('body').on('click', function (e) {
 $('body').on('hidden.bs.popover', function (e) {
     $(e.target).data("bs.popover").inState = { click: false, hover: false, focus: false }
 });
-
 </script>
 </html>
