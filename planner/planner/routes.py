@@ -1,6 +1,6 @@
 from . import app
 from flask import render_template, redirect
-from course_search import course_db_query
+from . import course_search
 
 
 @app.route("/")
