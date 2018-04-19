@@ -23,6 +23,19 @@ In Progress
 - Keep track of user data (From Henry - I think this is where models.py might play a role - MongoDB database)
 - Testing! - Start writing tests
 
+- Wait... shoot... MUS 213 counts twice for music performance certificate, how do we account for that? I have an idea
+
+For Front End (Meeting with Jeremie)
+- hourclock for semesters that are upcoming 
+- distinguish between already taken courses and anticipated courses
+- (1/2) to show how many requirements are fulfilled
+- More succinct captions
+- tooltips
+- simulate workflow of user
+- Limit caption size for requirements
+- Include term that you have taken a course
+- When you click course, you go to that semester's editing page
+
 Completed
 ====================
 - Configure Vagrant so it can run utils/scraper.py and a MongoDB server
