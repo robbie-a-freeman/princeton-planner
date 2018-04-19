@@ -146,8 +146,10 @@ def queryAllWords(safe):
 def course_db_query(safe):
     # return "query to query_parser was: " + safe
     results = queryOneWord(safe) # queryAllWords bugged for some reason. TODO
-    output_strings = [getCourseTag(result) for result in results]
-    return "Query: %s <br>\n" % safe + "<br>\n".join(output_strings)
+    out_results = [result for result in results]
+    return out_results
+    #output_strings = [getCourseTag(result) for result in results]
+    #return "Query: %s <br>\n" % safe + "<br>\n".join(output_strings)
 
 
 ### Helper functions

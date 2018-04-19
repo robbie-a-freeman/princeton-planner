@@ -19,17 +19,23 @@ function courseSearchSubmit() {
 }
 
 
-/* Function to take in a jsonResponse from an XHR request and to
+/* Function to take in a jsonResponse string from an XHR request and to
  * process that json into an HTML <ul> element, then display
  * the final result on the DOM.
  */
 function updateCourseResults(jsonResponse) {
+  // It's incredible hacky to do this way. JSON5 would be preferable.
+  //jsonResponse = jsonResponse.replace(/\"/g, "");
+  //jsonResponse = jsonResponse.replace(/\'/g,"\"");
+  jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
+
+  results = JSON5.parse(jsonResponse);
   var resultUL = document.createElement("ul");
 
   // Generate a list entry for each search result.
-  for (var i = 0; i < jsonResponse.length; i++) {
+  for (var i = 0; i < results.length; i++) {
     var li = document.createElement("li");
-    var label = text(createCourseTag(jsonResponse[i]));
+    var label = text(createCourseTag(results[i]));
 
 
     li.appendChild(label);
@@ -51,6 +57,7 @@ function updateCourseResults(jsonResponse) {
  * Return a string of the form COS333 for the given json entry
  */
 function createCourseTag(courseJSON) {
+    console.log(courseJSON)
     var listings = courseJSON['listings']
     var listingArr = [];
     for (var i = 0; i < listings.length; i++) {
