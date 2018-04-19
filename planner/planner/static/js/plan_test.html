@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Princeton Planner</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/land.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="plan.js"></script>
+
+
+<body onload = plan_init()>
+
+
+
+  <h3>Search for courses!</h3>
+  <form action="/plan.html" method="POST" id = "courseSearchForm">
+      <div class="input-group pull-left" id="sea1">
+          <input type="text" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
+          <div class="input-group-btn">
+              <button class="btn btn-primary" type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+              </button>
+          </div>
+      </div>
+  </form>
+
+
+  <div id = "courseSearchResults">
+  </div>
+
+</body>
+</html>
