@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <p><a href="/start"> Start a new meal exchange </a></p>
+    <h3>Exchanges I need to finish at my club</h3>
+    <ul>
+      {% for mxchange in guested_mxchanges %}
+      <li><a href="/mxchange/{{ mxchange.id }}">With: {{ mxchange.start_host.username }} - Started: {{ mxchange.start_date }}<a></li>
+      {% endfor %}
+    </ul>
+    <h3>Exchanges I need to finish at another club</h3>
+    <ul>
+      {% for mxchange in hosted_mxchanges %}
+      <li><a href="/mxchange/{{ mxchange.id }}">With: {{ mxchange.start_guest.username }} - Started: {{ mxchange.start_date }}<a></li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
