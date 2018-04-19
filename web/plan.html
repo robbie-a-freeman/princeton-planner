@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/search.js"></script>
 <link href="css/plan.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -131,17 +130,33 @@
             </div>
         </form>
 
+        <!-- COURSE SEARCH BOX FUNCTIONALITY --------------------------------------------------->
         <h3>Search for courses!</h3>
-        <form action="/" method="POST">
+        <form action="/" method="POST" id = "txtSearchForm">
             <div class="input-group pull-left" id="sea1">
-                <input type="text" name="search_query" class="form-control" placeholder="Search" id="txtSearch" onkeypress=""/>
+                <input type="text" name="search_query" class="form-control" placeholder="Search" id="txtSearch"/>
                 <div class="input-group-btn">
-                    <button name="submit" class="btn btn-primary" type="submit">
+                    <button name="btnSubmit" class="btn btn-primary" type="submit">
                     <span class="glyphicon glyphicon-search"></span>
                     </button>
                 </div>
             </div>
         </form>
+
+        <!-- Auto-searching script -->
+        <script>
+          var searchBox = $("#txtSearch")[0];
+          var searchForm = $("#txtSearchForm")[0];
+          searchBox.addEventListener("keypress", submitForm);
+
+          function submitForm() {
+            searchForm.submit();
+          }
+
+        </script>
+
+
+
         <br>
         <br>
         <h3>Enrolled courses</h3>
