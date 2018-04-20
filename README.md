@@ -5,11 +5,12 @@ Current Priorities
 - Input data/all.yaml from CourseGenie into the MongoDB server (possibly by first parsing into json)
 - Finalize frontend design and begin to implement
 - Set up a minimalistic frontend UI that takes in user search strings and sends them to server.
-- Add README.md files to each directory as a form of documentation. 
+- Add README.md files to each directory as a form of documentation.
 - Get requirements database! (Recursive stuff)
 - Hammer down intricacies of design - details of implementation (INTERFACE INTERCONNECTION)
 - CAS Authentication
 - Logout button
+- Sometimes the heroku site doesn't load correctly.. it incorrectly redirects to /plan.html/ instead
 
 In Progress
 ====================
@@ -26,7 +27,7 @@ In Progress
 - Wait... shoot... MUS 213 counts twice for music performance certificate, how do we account for that? I have an idea
 
 For Front End (Meeting with Jeremie)
-- hourclock for semesters that are upcoming 
+- hourclock for semesters that are upcoming
 - distinguish between already taken courses and anticipated courses
 - (1/2) to show how many requirements are fulfilled
 - More succinct captions
@@ -40,7 +41,7 @@ Completed
 ====================
 - Configure Vagrant so it can run utils/scraper.py and a MongoDB server
 - Load MongoDB with courses.json data.
-- Set up Heroku Server. 
+- Set up Heroku Server.
 - Get Django and bootstrap to work -> put on Heroku!
 - We know what a framework is! yay lol (Django and Flask)
 - Got basic frontend design down!
