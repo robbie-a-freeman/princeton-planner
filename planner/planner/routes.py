@@ -10,7 +10,7 @@ def main():
 
 
 @app.route('/plan.html', methods = ["GET", "POST"])
-@login_required
+#@login_required
 def plan():
     if request.method == 'POST':
         query = request.form['course_query']
