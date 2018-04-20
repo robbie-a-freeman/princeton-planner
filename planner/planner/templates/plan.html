@@ -11,14 +11,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/land.css') }}">
 <script src="{{ url_for('static', filename = 'js/fruits.js') }}"></script>
 <!-- <script src="C:\Users\Phillip\Documents\GitHub\princeton-planner\planner\planner\static\js\fruits.js"></script> -->
 <!-- <link rel="stylesheet" type="text/css" href="C:\Users\Phillip\Documents\GitHub\princeton-planner\planner\planner\static\css\land.css"> -->
 
+=======
+<script src="{{ url_for('static', filename = 'js/plan.js') }}"></script>
+>>>>>>> 7fa6d45a09eacd0bd41fd02540548492b092ec50
 </head>
-<body>
+<body onload = plan_init()>
 
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
@@ -135,9 +139,9 @@
 
         <!-- Searching for courses -->
         <h3>Search for courses!</h3>
-        <form action="/plan.html" method="POST">
+        <form onsubmit=courseSearchSubmit id = "courseSearchForm">
             <div class="input-group pull-left" id="sea1">
-                <input type="text" class="form-control" placeholder="Search" id="txtSearch" name="course_query"/>
+                <input type="text" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
                 <div class="input-group-btn">
                     <button class="btn btn-primary" type="submit">
                     <span class="glyphicon glyphicon-search"></span>
@@ -146,6 +150,8 @@
             </div>
         </form>
         <br>
+        <div id = "courseSearchResults">
+        </div>
         <br>
         <h3>Enrolled courses</h3>
         <table class="table table-bordered" id="enrolled">
