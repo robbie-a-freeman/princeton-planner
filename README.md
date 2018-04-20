@@ -5,6 +5,8 @@ Recommendations
 - From Alvin:
 - Maybe have majors first, since that's what we're offering the most functionality for.
 - Hence, have majors first, and then have searching courses on the right side.
+- From Jeremie:
+- Use same data source, but write your own parser!
 
 Current Priorities
 ===================
