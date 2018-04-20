@@ -41,28 +41,45 @@ function courseSearchSubmit() {
  * the final result on the DOM.
  */
 function updateCourseResults(jsonResponse) {
-  // It's incredible hacky to do this way. JSON5 would be preferable.
-  //jsonResponse = jsonResponse.replace(/\"/g, "");
-  //jsonResponse = jsonResponse.replace(/\'/g,"\"");
+
+  // Preprocess the JSON response so it is suitable for parsing
   jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
-
   results = JSON5.parse(jsonResponse);
-  var resultUL = document.createElement("ul");
 
-  // Generate a list entry for each search result.
-  for (var i = 0; i < results.length; i++) {
-    var li = document.createElement("li");
+  // Create the results header
+  var resultHeading = document.createElement("h3");
+  var numResults = results.length;
+  resultHeading.appendChild(text(numResults + " Search Results"));
+
+  // Create the results elements
+  var resultTableDiv = document.createElement("div");
+  resultTableDiv.id = "course-table-scroll";
+  var resultTable = document.createElement("table");
+  var resultTableBody = document.createElement("tbody");
+
+  // Add them to each other
+  resultTableDiv.appendChild(resultTable);
+  resultTable.appendChild(resultTableBody);
+
+
+  // Generate a table row + entry for each search result.
+  for (var i = 0; i < numResults; i++) {
+    // Create elements for each row
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
     var label = text(createCourseTag(results[i]));
 
-
-    li.appendChild(label);
-    resultUL.appendChild(li);
+    // Add elements to each other
+    td.appendChild(label);
+    tr.appendChild(td);
+    resultTableBody.appendChild(tr);
   }
 
   // Clear old results, and insert new ones.
   results = $("#courseSearchResults");
   results.empty();
-  results[0].appendChild(resultUL);
+  results[0].appendChild(resultHeading);
+  results[0].appendChild(resultTableDiv);
 }
 
 

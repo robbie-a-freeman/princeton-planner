@@ -99,13 +99,13 @@ dist_ids = set(("EC", "EM", "HA", "LA", "QR", "SA", "STL", "STN"))
 def sanitize(unsafe):
 
     # This doesn't do much sanitizing right now!
-    # make uppercase to introduce case insensitivity
-    return unsafe.upper()
+    return unsafe
 
 # Given a single sub-part of the query string, generate the
 # corresponding Mongo query, and return the results of the
 # Mongo query, as an array of json objects (strings or objects?)
 def queryOneWord(word):
+    word = word.upper()
     results = []
 
     re_obj = {"$regex":word, "$options":"i"}
