@@ -10,7 +10,7 @@ def main():
 
 
 @app.route('/plan.html', methods = ["GET", "POST"])
-@login_required
+#@login_required
 def plan():
     user = {'netid': 'htwang'}
     if request.method == 'POST':
