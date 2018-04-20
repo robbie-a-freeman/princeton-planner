@@ -1,8 +1,25 @@
 // Initial function called to setup HTML elements, listeners, etc.
 function plan_init() {
   var courseSearchBox = $("#courseSearch")[0];
-  courseSearchBox.addEventListener("keypress", courseSearchSubmit);
+  //courseSearchBox.addEventListener("keypress", courseSearchSubmit);
+  courseSearchBox.addEventListener("keyup", keyEventHandler);
 
+}
+
+function keyEventHandler(event) {
+  var key = event.key;
+
+  if (isConsiderableKey(key)) {
+    courseSearchSubmit();
+  }
+}
+
+// Return true if we'd like to respond to this key being pressed; else false.
+// TODO make space a considerable key!!
+function isConsiderableKey(key) {
+    return ((key >= '0' && key <= '9') |
+            (key >= 'a' && key <= 'z') |
+            (key == "Backspace"));
 }
 
 /* Function called on keystroke to send an XHR request to the server
@@ -57,14 +74,13 @@ function updateCourseResults(jsonResponse) {
  * Return a string of the form COS333 for the given json entry
  */
 function createCourseTag(courseJSON) {
-    console.log(courseJSON)
     var listings = courseJSON['listings']
     var listingArr = [];
     for (var i = 0; i < listings.length; i++) {
       var listing = listings[i];
       listingArr.push(listing['dept'] + listing['number']);
     }
-    return listingArr[0];
+    // return listingArr[0];
     return listingArr.join("/");
 }
 
