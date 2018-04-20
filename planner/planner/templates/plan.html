@@ -10,6 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/json5@^1.0.0"></script>
 <script src="{{ url_for('static', filename = 'js/plan.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/fruits.js') }}"></script>
 </head>
 <body onload = plan_init()>
 
@@ -126,7 +127,7 @@
         </select>
         </div>
 
-        <!-- Searching for courses --------------------------------------------------------------------->
+        <!-- Searching for courses -->
         <h3>Search for courses!</h3>
         <form onsubmit=courseSearchSubmit id = "courseSearchForm">
             <div class="input-group pull-left" id="sea1">
@@ -419,7 +420,6 @@
 
 </body>
 
-<script src="{{ url_for('static', filename = 'js/fruits.js') }}"></script>
 <script>
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({ html : true, container: 'body'});
