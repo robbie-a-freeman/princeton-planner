@@ -78,8 +78,11 @@ function updateCourseResults(jsonResponse) {
   // Clear old results, and insert new ones.
   results = $("#courseSearchResults");
   results.empty();
-  results[0].appendChild(resultHeading);
   results[0].appendChild(resultTableDiv);
+
+  resultsHeaderDiv = $("#courseSearchHeader");
+  resultsHeaderDiv.empty();
+  resultsHeaderDiv[0].appendChild(resultHeading);
 }
 
 
@@ -98,7 +101,7 @@ function createCourseTag(courseJSON) {
       listingArr.push(listing['dept'] + listing['number']);
     }
     // return listingArr[0];
-    return listingArr.join("/");
+    return listingArr.join(" / ");
 }
 
 /*
