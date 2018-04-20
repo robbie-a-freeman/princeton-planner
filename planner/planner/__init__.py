@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 app.config['CAS_SERVER'] = 'https://fed.princeton.edu'
-app.config['CAS_AFTER_LOGIN'] = 'main'
+app.config['CAS_AFTER_LOGIN'] = 'plan'
 
 login = LoginManager(app)
 
