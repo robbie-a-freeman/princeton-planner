@@ -12,11 +12,8 @@ def main():
 @app.route('/plan.html', methods = ["GET", "POST"])
 #@login_required
 def plan():
-<<<<<<< HEAD
     user = {'netid': 'htwang'}
-=======
     user = {'netid': cas.username}
->>>>>>> autosearch
     if request.method == 'POST':
         query = request.form['course_query']
         # return db_query(request.form['search_query']) # If search_query is the name attribute of the HTML form.
