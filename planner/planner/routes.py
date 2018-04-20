@@ -8,11 +8,9 @@ from . import course_search
 def main():
     return render_template('index.html')
 
-
 @app.route('/plan.html', methods = ["GET", "POST"])
-#@login_required
+@login_required
 def plan():
-    user = {'netid': 'htwang'}
     user = {'netid': cas.username}
     if request.method == 'POST':
         query = request.form['course_query']

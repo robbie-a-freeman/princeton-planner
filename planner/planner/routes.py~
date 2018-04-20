@@ -1,4 +1,4 @@
-from . import app
+from . import app, cas
 from flask import render_template, redirect, request
 from flask_cas import login_required
 from . import course_search
@@ -12,17 +12,15 @@ def main():
 @app.route('/plan.html', methods = ["GET", "POST"])
 #@login_required
 def plan():
+    user = {'netid': 'htwang'}
+    user = {'netid': cas.username}
     if request.method == 'POST':
         query = request.form['course_query']
         # return db_query(request.form['search_query']) # If search_query is the name attribute of the HTML form.
 
-<<<<<<< HEAD
-        return "Got a post! " + str(course_search.course_db_query(query));
-=======
         return str(course_search.course_db_query(query))
->>>>>>> autosearch
     # Normal GET: Return our beautiful planning page.
-    return render_template('plan.html')
+    return render_template('plan.html', user=user)
 
 @app.route('/index.html')
 def index():
