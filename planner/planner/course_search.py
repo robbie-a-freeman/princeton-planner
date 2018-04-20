@@ -104,33 +104,38 @@ def sanitize(unsafe):
 
 # Given a single sub-part of the query string, generate the
 # corresponding Mongo query, and return the results of the
-# Mongo query, as a json-style object.
+# Mongo query, as an array of json objects (strings or objects?)
 def queryOneWord(word):
+    results = []
+
     re_obj = {"$regex":word, "$options":"i"}
 
+    if len(word) <= 1:
+        return results
+
     # Dept. ID:
-    if word in dept_ids:
-        return courses.find( {"listings.dept":word} )
+    elif word in dept_ids:
+        results = [course for course in courses.find( {"listings.dept":word} ) ]
 
     # Course number:
     elif re.match("\d\d\d", word):
-        return courses.find( {"listings.number":word} )
+        results = [course for course in courses.find( {"listings.number":word} ) ]
 
     # Dist. ID:
     elif word in dist_ids:
-        return courses.find( {"area": word})
+        results = [course for course in courses.find( {"area": word}) ]
 
     # Len <= 2:
     elif len(word) <= 2:
-        return courses.find( {"listings.dept":   re_obj} ) +\
-               courses.find( {"listings.number": re_obj} ) +\
-               courses.find( {"title":           re_obj} )
+        results  = [course for course in courses.find( {"listings.dept":   re_obj} )]
+        results += [course for course in courses.find( {"listings.number": re_obj} )]
+        results += [course for course in courses.find( {"title":           re_obj} )]
 
     # Len >= 3:
     else:
-        return courses.find( {"title": re_obj} )
+        results = [course for course in courses.find( {"title":           re_obj} )]
 
-    return []
+    return results
 
 # Split the sanitized query string into sub-parts and
 # generate a mongo query for eachself.
@@ -144,10 +149,17 @@ def queryAllWords(safe):
 
 # public variant of queryAllWords called by landing.py
 def course_db_query(safe):
+    print(safe)
+    return queryOneWord(safe)
+    ### Debug version
     # return "query to query_parser was: " + safe
-    results = queryOneWord(safe) # queryAllWords bugged for some reason. TODO
-    output_strings = [getCourseTag(result) for result in results]
-    return "Query: %s <br>\n" % safe + "<br>\n".join(output_strings)
+    ### Old version
+    #results = queryOneWord(safe) # queryAllWords bugged for some reason. TODO
+    #out_results = [result for result in results]
+    #return out_results
+    ### Very old version (it's very old for a reason)
+    #output_strings = [getCourseTag(result) for result in results]
+    #return "Query: %s <br>\n" % safe + "<br>\n".join(output_strings)
 
 
 ### Helper functions
