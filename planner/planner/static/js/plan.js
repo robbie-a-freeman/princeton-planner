@@ -1,17 +1,24 @@
 // Initial function called to setup HTML elements, listeners, etc.
 function plan_init() {
   var courseSearchBox = $("#courseSearch")[0];
-  //courseSearchBox.addEventListener("keypress", courseSearchSubmit);
   courseSearchBox.addEventListener("keyup", keyEventHandler);
+
+  var programSearchBox = $("#programSearch")[0];
+  programSearchBox.addEventListener("keyup", keyEventHandler);
 
 }
 
 function keyEventHandler(event) {
   var key = event.key;
 
-  if (isConsiderableKey(key)) {
+  // TODO check who called the keyeventhandler.
+  if (this.id == "courseSearch" && isConsiderableKey(key)) {
     courseSearchSubmit();
   }
+  else if (this.id == "programSearch" && isConsiderableKey(key)) {
+    programSearchSubmit();
+  }
+
 }
 
 // Return true if we'd like to respond to this key being pressed; else false.
@@ -19,6 +26,8 @@ function keyEventHandler(event) {
 function isConsiderableKey(key) {
     return ((key >= '0' && key <= '9') |
             (key >= 'a' && key <= 'z') |
+            (key >= 'A' && key <= 'Z') |
+            (key == "Space") |
             (key == "Backspace"));
 }
 
@@ -35,21 +44,55 @@ function courseSearchSubmit() {
        );
 }
 
-
 /* Function to take in a jsonResponse string from an XHR request and to
  * process that json into an HTML <ul> element, then display
  * the final result on the DOM.
  */
 function updateCourseResults(jsonResponse) {
+  updateResults(jsonResponse, "course");
+}
 
+// XHR POST handling function for program searches.
+function programSearchSubmit() {
+  var programSearchForm = $("#programSearchForm");
+  $.post('/plan.html',
+         programSearchForm.serialize(),
+         updateProgramResults
+       );
+}
+
+// Function for displaying results.
+function updateProgramResults(jsonResponse) {
+  updateResults(jsonResponse, "program");
+}
+
+function updateResults(jsonResponse, type) {
   // Preprocess the JSON response so it is suitable for parsing
-  jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
-  results = JSON5.parse(jsonResponse);
+  results = parseJSON(jsonResponse);
+
+  var resultsTableID = "#" + type + "SearchResults";
+  var resultsHeaderID = "#" + type + "SearchHeader";
 
   // Create the results header
   var resultHeading = document.createElement("h3");
   var numResults = results.length;
   resultHeading.appendChild(text(numResults + " Search Results"));
+
+  resultTableDiv = createResultsTable(results, type);
+
+  // Clear old results, and insert new ones.
+  results = $(resultsTableID);
+  results.empty();
+  results[0].appendChild(resultTableDiv);
+
+  resultsHeaderDiv = $(resultsHeaderID);
+  resultsHeaderDiv.empty();
+  resultsHeaderDiv[0].appendChild(resultHeading);
+}
+
+// GIven a parsed JSON object, return a table to
+// display the results.
+function createResultsTable(resultsObj, resultsType) {
 
   // Create the results elements
   var resultTableDiv = document.createElement("div");
@@ -63,11 +106,16 @@ function updateCourseResults(jsonResponse) {
 
 
   // Generate a table row + entry for each search result.
-  for (var i = 0; i < numResults; i++) {
+  for (var i = 0; i < resultsObj.length; i++) {
     // Create elements for each row
     var tr = document.createElement("tr");
     var td = document.createElement("td");
-    var label = text(createCourseTag(results[i]));
+
+    var label = null;
+    if (resultsType == "course")
+      label = text(createCourseTag(results[i]));
+    else if (resultsType = "program")
+      label = text(createProgramTag(results[i]));
 
     // Add elements to each other
     td.appendChild(label);
@@ -75,18 +123,24 @@ function updateCourseResults(jsonResponse) {
     resultTableBody.appendChild(tr);
   }
 
-  // Clear old results, and insert new ones.
-  results = $("#courseSearchResults");
-  results.empty();
-  results[0].appendChild(resultHeading);
-  results[0].appendChild(resultTableDiv);
+  return resultTableDiv;
 }
 
 
-
-
-
 // =========================== HELPER FUNCTIONS =========================
+
+function parseJSON(jsonResponse) {
+  // Preprocess the JSON response so it is suitable for parsing
+  jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
+
+  //  these few should be unnecessary as it's technically a bug in the data.
+  jsonResponse = jsonResponse.replace(/False/g, "false");
+  jsonResponse = jsonResponse.replace(/None/g, "null");
+
+  results = JSON5.parse(jsonResponse);
+  return results;
+}
+
 /*
  * Return a string of the form COS333 for the given json entry
  */
@@ -98,8 +152,15 @@ function createCourseTag(courseJSON) {
       listingArr.push(listing['dept'] + listing['number']);
     }
     // return listingArr[0];
-    return listingArr.join("/");
+    return listingArr.join(" / ");
 }
+
+/* Create a string containing name of major for given json entry
+ */
+function createProgramTag(programJSON) {
+  return programJSON['name'];
+}
+
 
 /*
  * Creates a DOM child text node containing the given str

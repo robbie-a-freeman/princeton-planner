@@ -1,0 +1,89 @@
+import re, os
+from pymongo import MongoClient
+
+
+#client = MongoClient('localhost', 27017)
+#db = client.test      # Remember to change in vagrant_up if this changes
+#courses = db.courses
+
+
+# Fetch the URI from environment variable to avoid leaking credentials.
+mongoURI = os.environ.get('MONGOLAB_URI')
+client = MongoClient(mongoURI)
+db = client.plannerdb
+programs = db.programs
+
+# Sanitize the input string.
+# MUST IMPLEMENT THIS!!!
+def sanitize(unsafe):
+
+    # This doesn't do much sanitizing right now!
+    return unsafe
+
+# Given a single sub-part of the query string, generate the
+# corresponding Mongo query, and return the results of the
+# Mongo query, as an array of json objects (strings or objects?)
+def queryOneWord(word):
+    word = word.upper()
+    results = []
+
+    re_obj = {"$regex":word, "$options":"i"}
+
+    # Ignore short queries
+    if len(word) <= 1:
+        return results
+
+    # Combine code & fullname searches
+    else:
+    # TODO fix bug where courses satisfying mutliple conditions are duplicated (use sets)
+        results  = [prog for prog in programs.find( {"name":re_obj} ) ]
+        results += [prog for prog in programs.find( {"code":re_obj} ) ]
+
+    return results
+
+# Split the sanitized query string into sub-parts and
+# generate a mongo query for eachself.
+### NOTE NOT YET IMPLEMENTED!!!!
+def queryAllWords(safe):
+    words = safe.split()
+    results = []
+    for word in words:
+        results.append(queryOneWord(word))
+    return results
+
+
+# public variant of queryAllWords called by landing.py
+def program_db_query(safe):
+    return queryOneWord(safe)
+
+
+### Helper functions
+### NOTE NOT IMPLEMENTED FOR PROGRAM_SEARCH
+# Return the 6-digit course tag (COS333) for a json result
+# If a course is cross listed, return all applicable course tags, separated by '/'
+def getCourseTag(result):
+    listings = result['listings']
+    listingTags = [listing['dept'] + listing['number'] for listing in listings]
+    return '/'.join(listingTags)
+
+### Unit Testing
+# Run a single query for the given testWord and print result tags
+def queryOneTest(testWord):
+    print("Querying MongoDB for \"%s\"..." % testWord)
+    results = queryOneWord(testWord)
+    for result in results:
+        print(getCourseTag(result))
+    print("\n")
+
+# Run several queries and print results.
+def main():
+    queryOneTest("COS")
+    queryOneTest("333")
+    queryOneTest("600")
+    queryOneTest("ABC")
+    queryOneTest("MUS")
+    queryOneTest("DAN")
+    queryOneTest("IMPLICATIONS")
+
+
+# main()

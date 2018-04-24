@@ -127,6 +127,7 @@ def queryOneWord(word):
 
     # Len <= 2:
     elif len(word) <= 2:
+        # TODO fix bug where courses satisfying mutliple conditions are duplicated (use a set)
         results  = [course for course in courses.find( {"listings.dept":   re_obj} )]
         results += [course for course in courses.find( {"listings.number": re_obj} )]
         results += [course for course in courses.find( {"title":           re_obj} )]
