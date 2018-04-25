@@ -258,6 +258,7 @@ function createAccordion(resultsObj) {
         collapseToggle.classList.add("collapsed");
         collapseToggle.setAttribute("data-toggle", "collapse");
         collapseToggle.setAttribute("href", "#collapse" + i);
+        collapseToggle.appendChild(text(resultsObj["requirements"][i]["type"]));
         // append
         panelTitle.appendChild(collapseToggle);
 
@@ -300,11 +301,13 @@ function createAccordion(resultsObj) {
                 dataContent += resultsObj["requirements"][i]["courses"][k];
             }
             popover.setAttribute("data-content", dataContent);
+            popover.appendChild(text("Find a course!"));
+
             // Append
             panelBody.appendChild(popover);
 
         }
     }
 
-    return resultAccordionDiv;
+    return resultDiv;
 }
