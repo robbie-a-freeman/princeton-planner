@@ -8,6 +8,8 @@ function plan_init() {
 
 }
 
+// ============================== EVENT HANDLERS =========================
+// Handles keyup events for search boxes.
 function keyEventHandler(event) {
   var key = event.key;
 
@@ -18,8 +20,23 @@ function keyEventHandler(event) {
   else if (this.id == "programSearch" && isConsiderableKey(key)) {
     programSearchSubmit();
   }
-
 }
+
+// Called when program search results are clicked.
+function programResultHandler(event) {
+  console.log('program clicked');
+}
+
+// Called when course search results are clicked.
+function courseResultHandler(event) {
+  console.log('course clicked');
+
+  // Make a post request for the given table and fetch via python OR
+  // cache results of search locally and do it in JS.
+  // I like the JS idea because JSON support will be better,
+  // along with native DOM integration.
+}
+
 
 // Return true if we'd like to respond to this key being pressed; else false.
 // TODO make space a considerable key!!
@@ -31,6 +48,7 @@ function isConsiderableKey(key) {
             (key == "Backspace"));
 }
 
+// ============================= POST SUBMITTERS =======================
 /* Function called on keystroke to send an XHR request to the server
  * and await a reply.
  * Note that currently manual form submission is not bound to this
@@ -76,11 +94,17 @@ function updateResults(jsonResponse, type) {
   // Create the results header
   var resultHeading = document.createElement("h3");
   var numResults = results.length;
-  resultHeading.appendChild(text(numResults + " Search Results"));
+
+  var label = null;
+  if (numResults == 1) label = text(numResults + " Search Result");
+  else                 label = text(numResults + " Search Results");
+
+  resultHeading.appendChild(label);
 
   resultTableDiv = createResultsTable(results, type);
 
   // Clear old results, and insert new ones.
+  // NOTE dangerous--accidentaly variable overload!
   results = $(resultsTableID);
   results.empty();
   results[0].appendChild(resultTableDiv);
@@ -108,22 +132,35 @@ function createResultsTable(resultsObj, resultsType) {
   // Generate a table row + entry for each search result.
   for (var i = 0; i < resultsObj.length; i++) {
     // Create elements for each row
-    var tr = document.createElement("tr");
-    var td = document.createElement("td");
-
-    var label = null;
-    if (resultsType == "course")
-      label = text(createCourseTag(results[i]));
-    else if (resultsType = "program")
-      label = text(createProgramTag(results[i]));
-
-    // Add elements to each other
-    td.appendChild(label);
-    tr.appendChild(td);
+    var tr = createTableRow(results[i], resultsType);
     resultTableBody.appendChild(tr);
   }
 
   return resultTableDiv;
+}
+
+function createTableRow(result, resultsType) {
+  var tr = document.createElement("tr");
+  var td = document.createElement("td");
+
+  // Assign type-specific elements and attributes.
+  var label = null;
+  // Create course-type labels.
+  if (resultsType == "course") {
+    label = text(createCourseTag(result));
+    tr.addEventListener("click", courseResultHandler);
+  }
+  // Create program-type labels.
+  else if (resultsType = "program") {
+    label = text(createProgramTag(result));
+    tr.addEventListener("click", programResultHandler);
+
+  }
+
+  // Add elements to each other
+  td.appendChild(label);
+  tr.appendChild(td);
+  return tr;
 }
 
 
@@ -145,7 +182,7 @@ function parseJSON(jsonResponse) {
  * Return a string of the form COS333 for the given json entry
  */
 function createCourseTag(courseJSON) {
-    var listings = courseJSON['listings']
+    var listings = courseJSON['listings'];
     var listingArr = [];
     for (var i = 0; i < listings.length; i++) {
       var listing = listings[i];
