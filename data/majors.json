@@ -1,0 +1,4660 @@
+[{
+		"name": "Mechanical and Aerospace Engineering",
+		"track": "Dynamics Systems and Design",
+		"short_name": "MAE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "intro MAE",
+				"number": 5,
+				"score": 2,
+				"notes": "normally completed by end of sophomore year",
+				"courses": [
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 223",
+					"MAE 224"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAT 202",
+					"MAT 204"
+				]
+			},
+			{
+				"type": "required math",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAE 305"
+				]
+			},
+			{
+				"type": "math elective",
+				"number": 1,
+				"score": 1,
+				"notes": "alternatives must be approved by the Departmental Representative",
+				"courses": [
+					"MAE 306",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"COS 323",
+					"COS 340",
+					"MAT 330",
+					"MAT 393",
+					"PHY 403"
+				]
+			},
+			{
+				"type": "core",
+				"number": 2,
+				"score": 2,
+				"courses": [
+					"MAE 433",
+					"MAE 321"
+				]
+			},
+			{
+				"type": "MAE 324 or MSE 301",
+				"name": "MAE 324 or MSE 301",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAE 324",
+					"MSE 201"
+				]
+			},
+			{
+				"type": "MAE 335",
+				"number": 1,
+				"score": 2,
+				"notes": "CBE 341 can replace MAE 423",
+				"courses": [
+					"MAE 335"
+				]
+			},
+			{
+				"type": "CEE 361 or CEE 312",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"CEE 361",
+					"CEE 312"
+				]
+			},
+			{
+				"type": "electives",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"MAE 331",
+					"MAE 341",
+					"MAE 345",
+					"MAE 434",
+					"MAE 328",
+					"MAE 336",
+					"MAE 426",
+					"MAE 427",
+					"CBE 341",
+					"CEE 362",
+					"CEE 364",
+					"MAE 332",
+					"MAE 342",
+					"MAE 344",
+					"CEE 461",
+					"MAE 546"
+				]
+			},
+			{
+				"type": "MAE 412",
+				"number": 1,
+				"score": 1,
+				"notes": "CEE 477 can be a substitute if you are gettng the Sustainable Energy Certificate",
+				"courses": [
+					"MAE 412"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Mechanical and Aerospace Engineering",
+		"track": "Energy Sciences",
+		"short_name": "MAE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "intro MAE",
+				"number": 5,
+				"score": 2,
+				"notes": "normally completed by end of sophomore year",
+				"courses": [
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 223",
+					"MAE 224"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAT 202",
+					"MAT 204"
+				]
+			},
+			{
+				"type": "required math",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAE 305"
+				]
+			},
+			{
+				"type": "math elective",
+				"number": 1,
+				"score": 1,
+				"notes": "alternatives must be approved by the Departmental Representative",
+				"courses": [
+					"MAE 306",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"COS 323",
+					"COS 340",
+					"MAT 330",
+					"MAT 393",
+					"PHY 403"
+				]
+			},
+			{
+				"type": "core",
+				"number": 2,
+				"score": 2,
+				"courses": [
+					"MAE 433",
+					"MAE 321"
+				]
+			},
+			{
+				"type": "MAE 324 or MSE 301",
+				"name": "MAE 324 or MSE 301",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAE 324",
+					"MSE 201"
+				]
+			},
+			{
+				"type": "MAE 335 or MAE 423",
+				"number": 1,
+				"score": 2,
+				"notes": "CBE 341 can replace MAE 423",
+				"courses": [
+					"MAE 335",
+					"MAE 423"
+				]
+			},
+			{
+				"type": "CEE 361 or CEE 312",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"CEE 361",
+					"CEE 312"
+				]
+			},
+			{
+				"type": "electives",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"MAE 331",
+					"MAE 341",
+					"MAE 345",
+					"MAE 434",
+					"MAE 328",
+					"MAE 336",
+					"MAE 426",
+					"MAE 427",
+					"CBE 341",
+					"CEE 362",
+					"CEE 364"
+				]
+			},
+			{
+				"type": "MAE 322 OR MAE 412",
+				"number": 1,
+				"score": 1,
+				"notes": "CEE 477 can be a substitute if you are gettng the Sustainable Energy Certificate",
+				"courses": [
+					"MAE 322",
+					"MAE 412"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Mechanical and Aerospace Engineering",
+		"track": "Mechanical Engineering",
+		"short_name": "MAE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "intro MAE",
+				"number": 5,
+				"score": 2,
+				"notes": "normally completed by end of sophomore year",
+				"courses": [
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 223",
+					"MAE 224"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAT 202",
+					"MAT 204"
+				]
+			},
+			{
+				"type": "required math",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAE 305"
+				]
+			},
+			{
+				"type": "math elective",
+				"number": 1,
+				"score": 1,
+				"notes": "alternatives must be approved by the Departmental Representative",
+				"courses": [
+					"MAE 306",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"COS 323",
+					"COS 340",
+					"MAT 330",
+					"MAT 393",
+					"PHY 403"
+				]
+			},
+			{
+				"type": "core",
+				"number": 2,
+				"score": 2,
+				"courses": [
+					"MAE 433",
+					"MAE 321"
+				]
+			},
+			{
+				"type": "MAE 324 or MSE 301",
+				"name": "MAE 324 or MSE 301",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAE 324",
+					"MSE 201"
+				]
+			},
+			{
+				"type": "MAE 335 or MAE 423",
+				"number": 1,
+				"score": 2,
+				"notes": "CBE 341 can replace MAE 423",
+				"courses": [
+					"MAE 335",
+					"MAE 423"
+				]
+			},
+			{
+				"type": "CEE 361 or CEE 312",
+				"score": 2,
+				"number": 1,
+				"courses": [
+					"CEE 361",
+					"CEE 312"
+				]
+			},
+			{
+				"type": "engineering science electives",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"MAE 331",
+					"MAE 341",
+					"MAE 345",
+					"MAE 434",
+					"MAE 328",
+					"MAE 336",
+					"MAE 426",
+					"MAE 427",
+					"CBE 341",
+					"CEE 362",
+					"CEE 364"
+				]
+			},
+			{
+				"type": "MAE 322 OR MAE 412",
+				"number": 1,
+				"score": 2,
+				"notes": "CEE 477 can be a substitute if you are gettng the Sustainable Energy Certificate",
+				"courses": [
+					"MAE 322",
+					"MAE 412"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Mechanical and Aerospace Engineering",
+		"track": "Aerospace Engineering",
+		"short_name": "MAE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "intro MAE",
+				"number": 5,
+				"score": 2,
+				"notes": "normally completed by end of sophomore year",
+				"courses": [
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 223",
+					"MAE 224"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAT 202",
+					"MAT 204"
+				]
+			},
+			{
+				"type": "required math",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAE 305"
+				]
+			},
+			{
+				"type": "math elective",
+				"number": 1,
+				"score": 1,
+				"notes": "alternatives must be approved by the Departmental Representative",
+				"courses": [
+					"MAE 306",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"COS 323",
+					"COS 340",
+					"MAT 330",
+					"MAT 393",
+					"PHY 403"
+				]
+			},
+			{
+				"type": "core",
+				"number": 2,
+				"score": 2,
+				"courses": [
+					"MAE 433",
+					"MAE 321"
+				]
+			},
+			{
+				"type": "MAE 324 or MSE 301",
+				"name": "MAE 324 or MSE 301",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAE 324",
+					"MSE 201"
+				]
+			},
+			{
+				"type": "CEE 312 or CEE 361",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"CEE 312",
+					"CEE 361"
+				]
+			},
+			{
+				"type": "MAE 426 or 427",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAE 426",
+					"MAE 427"
+				]
+			},
+			{
+				"type": "core flight requirements",
+				"number": 1,
+				"score": 2,
+				"courses": [
+					"MAE 331",
+					"MAE 341"
+				]
+			},
+			{
+				"type": "MAE 332 or MAE 342",
+				"number": 1,
+				"score": 2,
+				"notes": "CEE 477 can be a substitute if you are gettng the Sustainable Energy Certificate",
+				"courses": [
+					"MAE 332",
+					"MAE 342"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Computer Science",
+		"short_name": "COS",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "prerequisite",
+				"number": 3,
+				"score": 2,
+				"courses": [
+					"COS 126",
+					"COS 217",
+					"COS 226"
+				]
+			},
+			{
+				"type": "theory",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"COS 340",
+					"COS 423",
+					"COS 433",
+					"COS 445",
+					"COS 451",
+					"COS 487",
+					"COS 488",
+					"COS 510 | COS 441 | COS 516",
+					"COS 511"
+				]
+			},
+			{
+				"type": "systems",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"COS 306",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 375",
+					"COS 418",
+					"COS 425",
+					"COS 461",
+					"COS 475"
+				]
+			},
+			{
+				"type": "applications",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"COS 314",
+					"COS 323",
+					"COS 325",
+					"COS 326",
+					"COS 401",
+					"COS 402",
+					"COS 424",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 435",
+					"COS 436",
+					"COS 455"
+				]
+			},
+			{
+				"type": "departmentals",
+				"number": 2,
+				"score": 0,
+				"notes": "Also includes \"any 300- or 400- level Math or ELE or Physics or ORF course that does not duplicate COS content\" and some 500 level COS courses upon approval",
+				"courses": [
+					"COS >= 300",
+					"MOL 437",
+					"ECO 326",
+					"ECO 312",
+					"CHM 303",
+					"MAE 345",
+					"PHI 312",
+					"ORF 309"
+				]
+			},
+			{
+				"type": "independent",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"COS 397 | COS 398 | COS 497 | COS 498"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Circuits and Systems",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "req-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 304"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"ELE 341",
+					"ELE 375",
+					"ELE 461",
+					"ELE 462",
+					"ELE 464",
+					"ELE 482"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Data and Information",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "ele-concentration",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"ELE 381",
+					"ELE 477",
+					"ELE 482",
+					"ELE 486",
+					"ELE 488",
+					"ELE 535"
+				]
+			},
+			{
+				"type": "misc-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 381",
+					"ELE 477",
+					"ELE 482",
+					"ELE 486",
+					"ELE 488",
+					"ELE 535",
+					"ORF 309",
+					"COS 402",
+					"COS 424",
+					"COS 429"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Computer Systems",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "req-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 375"
+				]
+			},
+			{
+				"type": "ele-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 461",
+					"ELE 462",
+					"ELE 464",
+					"ELE 470",
+					"ELE 475"
+				]
+			},
+			{
+				"type": "misc-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 461",
+					"ELE 462",
+					"ELE 464",
+					"ELE 470",
+					"ELE 475",
+					"COS 318",
+					"COS 320",
+					"COS 461"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Robotics and Cyber-physical Systems",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "ele-concentration",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"ELE 304",
+					"ELE 375",
+					"ELE 464",
+					"ELE 488"
+				]
+			},
+			{
+				"type": "misc-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 304",
+					"ELE 375",
+					"ELE 464",
+					"ELE 488",
+					"COS 402",
+					"COS 429",
+					"MAE 345",
+					"MAE 433"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Quantum Information and Applied Physics",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "req-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 342"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"ELE 396",
+					"ELE 441",
+					"ELE 453",
+					"ELE 456",
+					"ELE 568"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Security and Privacy",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "req-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 432"
+				]
+			},
+			{
+				"type": "ele-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 375",
+					"ELE 464",
+					"ELE 470"
+				]
+			},
+			{
+				"type": "misc-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 375",
+					"ELE 464",
+					"ELE 470",
+					"COS 424",
+					"COS 433",
+					"COS 461"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Electronic Devices and Materials",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "req-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 341"
+				]
+			},
+			{
+				"type": "ele-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 304",
+					"ELE 342",
+					"ELE 431",
+					"ELE 441"
+				]
+			},
+			{
+				"type": "misc-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 304",
+					"ELE 342",
+					"ELE 431",
+					"ELE 441",
+					"MSE 301",
+					"MSE 302",
+					"MSE 505",
+					"MAE 324"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Biomedical Engineering",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "ele-concentration",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"ELE 304",
+					"ELE 452",
+					"ELE 455",
+					"ELE 480",
+					"ELE 488"
+				]
+			},
+			{
+				"type": "misc-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 304",
+					"ELE 452",
+					"ELE 455",
+					"ELE 480",
+					"ELE 488",
+					"COS 455",
+					"MAE 344",
+					"NEU 427",
+					"NEU 437"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Optics and Photonics",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "req-concentration",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"ELE 351"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"ELE 342",
+					"ELE 452",
+					"ELE 453",
+					"ELE 454",
+					"ELE 455",
+					"ELE 456"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Electrical Engineering",
+		"track": "Energy and the Environment",
+		"short_name": "ELE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ELE 201",
+					"ELE 203",
+					"ELE 206",
+					"ELE 208",
+					"ELE 301",
+					"ELE 302"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"notes": "ORF 309 can be used to fulfill the math requirement or a concentration requirement, but not both",
+				"courses": [
+					"MAT >= 300",
+					"MAE 305",
+					"MAE 306",
+					"ORF 309",
+					"COS 340"
+				]
+			},
+			{
+				"type": "dept-elective",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"ELE >= 300",
+					"COS 318",
+					"COS 320",
+					"COS 333",
+					"COS 402",
+					"COS 426",
+					"COS 429",
+					"COS 432",
+					"COS 441",
+					"COS 461",
+					"PHY 208"
+				]
+			},
+			{
+				"type": "science",
+				"number": 1,
+				"score": 1,
+				"notes": "the following is a non-exhaustive list of possibilities; course used to satisfy the Engineering Science requirement can’t be used to satisfy the concentration or breadth requirements, and can’t be counted as a Departmental requirement",
+				"courses": [
+					"COS 217",
+					"COS 226",
+					"COS 320",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"COS 444",
+					"COS 451",
+					"COS 487",
+					"MAE 206",
+					"MAE 221",
+					"MAE 222",
+					"MAE 324",
+					"MAE 328",
+					"MAE 344",
+					"MAE 345",
+					"MAE 433",
+					"MAE 434",
+					"CEE 205",
+					"CEE 303",
+					"CEE 305",
+					"CEE 471",
+					"MSE 301",
+					"MSE 302",
+					"CBE 245",
+					"CBE 246",
+					"CBE 341",
+					"CBE 415",
+					"CBE 445",
+					"CBE 447",
+					"ORF 307",
+					"ORF 311",
+					"ORF 405",
+					"ORF 406",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "ele-departmental",
+				"number": 5,
+				"score": 0,
+				"courses": [
+					"ELE >= 300"
+				]
+			},
+			{
+				"type": "misc-departmental",
+				"number": 3,
+				"score": 0,
+				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
+				"courses": [
+					"CEE >= 300",
+					"CHM >= 300",
+					"CBE >= 300",
+					"COS >= 300",
+					"EEB >= 300",
+					"ELE >= 300",
+					"MAE >= 300",
+					"MAT >= 300",
+					"MOL >= 300",
+					"MSE >= 300",
+					"ORF >= 300",
+					"PHY >= 300"
+				]
+			},
+			{
+				"type": "design",
+				"number": 1,
+				"score": 1,
+				"notes": "this requirement may also be satisfied with junior or senior independent work, if that work contains a substantial design component",
+				"courses": [
+					"ELE 352",
+					"ELE 375",
+					"ELE 404",
+					"ELE 454",
+					"ELE 462",
+					"ELE 465",
+					"ELE 475",
+					"ELE 482",
+					"COS 426",
+					"COS 436"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 3,
+				"score": 1,
+				"courses": [
+					"ELE 341",
+					"ELE 431",
+					"ELE 455",
+					"ELE 557",
+					"MAE 424"
+				]
+			}
+		]
+	},
+
+
+
+
+
+
+	{
+		"name": "Civil and Environmental Engineering",
+		"track": "Architecture and Engineering - Structural",
+		"url": "https://www.princeton.edu/cee/forms/Yellow_Book_for_Class_of_2019_Sept.2016.pdf",
+		"short_name": "CEE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "thesis",
+				"name": "Senior Thesis",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CEE 478"
+				]
+			},
+			{
+				"type": "engineering-science",
+				"name": "Engineering Science",
+				"number": 8,
+				"score": 2,
+				"courses": [
+					"CEE 205",
+					"CEE 262A",
+					"CEE 207 | CEE 302 | CEE 304 | CEE 306",
+					"CEE 312",
+					"CEE 361",
+					"CEE 364",
+					"CEE 365",
+					"ARC 374 | CEE 463"
+				]
+			},
+			{
+				"type": "engineering-design",
+				"name": "Engineering Design",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"CEE 366",
+					"CEE 461 | CEE 462"
+				]
+			},
+			{
+				"type": "track-specific",
+				"name": "Track Specific",
+				"number": 3,
+				"score": 2,
+				"courses": [
+					"ARC 203",
+					"ARC 204",
+					"ARC 350"
+				]
+			},
+			{
+				"type": "statistics",
+				"name": "Statistics (Additional Math)",
+				"number": 1,
+				"score": 1,
+				"notes": "waived with 5 in AP STAT",
+				"courses": [
+					"ORF 245",
+					"ORF 309"
+				]
+			},
+			{
+				"type": "additional-math",
+				"name": "Additional Math",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAE 305"
+				]
+			},
+			{
+				"type": "additional-science",
+				"name": "Additional Science",
+				"number": 1,
+				"score": 1,
+				"notes": "waived with 5 in AP BIO",
+				"courses": [
+					"EEB 211",
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "elective",
+				"name": "Program Electives",
+				"number": 1,
+				"score": 0,
+				"courses": [
+					"CEE 439",
+					"CEE 460",
+					"CEE 463",
+					"CEE 467",
+					"CEE 477",
+					"CEE 540",
+					"CEE 566",
+					"CEE 568",
+					"ORF 307",
+					"ORF 309"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Civil and Environmental Engineering",
+		"track": "Architecture and Engineering - Architecture",
+		"url": "https://www.princeton.edu/cee/forms/Yellow_Book_for_Class_of_2019_Sept.2016.pdf",
+		"short_name": "CEE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "thesis",
+				"name": "Senior Thesis",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CEE 478"
+				]
+			},
+			{
+				"type": "engineering-science",
+				"name": "Engineering Science",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"CEE 205",
+					"CEE 262A",
+					"CEE 312 | CEE 361",
+					"CEE 364",
+					"ARC 311",
+					"ARC 374 | CEE 463"
+				]
+			},
+			{
+				"type": "engineering-design",
+				"name": "Engineering Design",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"CEE 366",
+					"CEE 461 | CEE 462"
+				]
+			},
+			{
+				"type": "track-specific",
+				"name": "Track Specific",
+				"number": 6,
+				"score": 2,
+				"notes": "ARC 350 is junior indepent work; ARC 351 is senior independent work",
+				"courses": [
+					"ARC 203",
+					"ARC 204",
+					"ARC 403",
+					"ARC 404",
+					"ARC 350",
+					"ARC 351"
+				]
+			},
+			{
+				"type": "elective",
+				"name": "Program Electives",
+				"number": 2,
+				"score": 0,
+				"courses": [
+					"CEE 439",
+					"CEE 460",
+					"CEE 463",
+					"CEE 467",
+					"CEE 477",
+					"CEE 540",
+					"CEE 566",
+					"CEE 568",
+					"ORF 307",
+					"ORF 309",
+					"ARC 201",
+					"ARC 202",
+					"ARC 302",
+					"ARC 304",
+					"ARC 305",
+					"ARC 308",
+					"ARC 401",
+					"ARC 406",
+					"ARC 492",
+					"ART 206",
+					"ART 230",
+					"ART 242",
+					"ART 250",
+					"ART 308",
+					"ART 315",
+					"ART 320",
+					"ART 332",
+					"ART 333",
+					"ART 337",
+					"ART 351",
+					"ART 443",
+					"ART 445",
+					"ART 458",
+					"URB 201"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Civil and Environmental Engineering",
+		"track": "Environmental Engineering",
+		"url": "https://www.princeton.edu/cee/forms/Yellow_Book_for_Class_of_2019_Sept.2016.pdf",
+		"short_name": "CEE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "thesis",
+				"name": "Senior Thesis",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CEE 478"
+				]
+			},
+			{
+				"type": "engineering-science",
+				"name": "Engineering Science",
+				"number": 8,
+				"score": 2,
+				"courses": [
+					"CEE 205",
+					"CEE 207 | CEE 304",
+					"CEE 305",
+					"CEE 306",
+					"CEE 308",
+					"CEE 311",
+					"CEE 364 | CEE 365"
+				]
+			},
+			{
+				"type": "statistics",
+				"name": "Statistics (Additional Math)",
+				"number": 1,
+				"score": 1,
+				"notes": "waived with 5 in AP STAT",
+				"courses": [
+					"ORF 245",
+					"ORF 309"
+				]
+			},
+			{
+				"type": "additional-math",
+				"name": "Additional Math",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAE 305"
+				]
+			},
+			{
+				"type": "additional-science",
+				"name": "Additional Science",
+				"number": 1,
+				"score": 1,
+				"notes": "waived with 5 in AP BIO",
+				"courses": [
+					"EEB 211",
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "engineering-design",
+				"name": "Engineering Design",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"CEE 471",
+					"CEE 477"
+				]
+			},
+			{
+				"type": "elective",
+				"name": "Program Electives",
+				"number": 3,
+				"score": 0,
+				"courses": [
+					"CEE 334",
+					"CEE 361",
+					"CEE 460",
+					"CEE 487",
+					"CEE 566",
+					"MAE 328",
+					"GEO 363",
+					"GEO 418",
+					"ORF 309",
+					"ELE 455",
+					"ELE 428",
+					"MAE*",
+					"CBE*",
+					"ORF*",
+					"GEO*",
+					"BIO*",
+					"CHM*"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Civil and Environmental Engineering",
+		"track": "Geological Engineering",
+		"url": "https://www.princeton.edu/cee/forms/Yellow_Book_for_Class_of_2019_Sept.2016.pdf",
+		"short_name": "CEE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "thesis",
+				"name": "Senior Thesis",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CEE 478"
+				]
+			},
+			{
+				"type": "engineering-science",
+				"name": "Engineering Science",
+				"number": 8,
+				"score": 2,
+				"courses": [
+					"CEE 205",
+					"CEE 207 | CEE 302",
+					"CEE 304",
+					"CEE 305 | CEE 311",
+					"CEE 306",
+					"CEE 308 | GEO 300",
+					"CEE 365 | CEE 370",
+					"CEE 360 | GEO 363 | GEO 366 | CEE 417 | GEO 418 | CEE 424 | GEO 430 | GEO 441 | GEO 470 | GEO 499"
+				]
+			},
+			{
+				"type": "statistics",
+				"name": "Statistics (Additional Math)",
+				"number": 1,
+				"score": 1,
+				"notes": "waived with 5 in AP STAT",
+				"courses": [
+					"ORF 245",
+					"ORF 309"
+				]
+			},
+			{
+				"type": "additional-math",
+				"name": "Additional Math",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAE 305"
+				]
+			},
+			{
+				"type": "additional-science",
+				"name": "Additional Science",
+				"number": 1,
+				"score": 1,
+				"notes": "waived with 5 in AP BIO",
+				"courses": [
+					"GEO 203",
+					"EEB 211",
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "engineering-design",
+				"name": "Engineering Design",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"CEE 471",
+					"CEE 477"
+				]
+			},
+			{
+				"type": "elective",
+				"name": "Program Electives",
+				"number": 3,
+				"score": 1,
+				"courses": [
+					"CEE 311",
+					"CEE 460",
+					"CEE 566",
+					"CEE 423",
+					"MAE*",
+					"CBE*",
+					"APC*",
+					"ORF*",
+					"GEO*",
+					"EEB*",
+					"CHM*"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Civil and Environmental Engineering",
+		"track": "Structural Engineering",
+		"url": "https://www.princeton.edu/cee/forms/Yellow_Book_for_Class_of_2019_Sept.2016.pdf",
+		"short_name": "CEE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "thesis",
+				"name": "Senior Thesis",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CEE 478"
+				]
+			},
+			{
+				"type": "engineering-science",
+				"name": "Engineering Science",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"CEE 205",
+					"CEE 262A",
+					"CEE 312",
+					"CEE 361",
+					"CEE 207 | CEE 302 | CEE 304",
+					"CEE 305 | CEE 306"
+				]
+			},
+			{
+				"type": "engineering-science-additional",
+				"name": "Engineering Science",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"CEE 364",
+					"CEE 365",
+					"CEE 308"
+				]
+			},
+			{
+				"type": "statistics",
+				"name": "Statistics (Additional Math)",
+				"number": 1,
+				"score": 1,
+				"notes": "waived with 5 in AP STAT",
+				"courses": [
+					"ORF 245",
+					"ORF 309"
+				]
+			},
+			{
+				"type": "additional-math",
+				"name": "Additional Math",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAE 305"
+				]
+			},
+			{
+				"type": "additional-science",
+				"name": "Additional Science",
+				"number": 1,
+				"score": 1,
+				"notes": "waived with 5 in AP BIO",
+				"courses": [
+					"GEO 203",
+					"EEB 211",
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "engineering-design",
+				"name": "Engineering Desing",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"CEE 366",
+					"CEE 461"
+				]
+			},
+			{
+				"type": "elective",
+				"name": "Program Electives",
+				"number": 3,
+				"score": 0,
+				"courses": [
+					"CEE 376",
+					"CEE 439",
+					"CEE 460",
+					"CEE 363",
+					"CEE 467",
+					"CEE 477",
+					"CEE 540",
+					"CEE 560",
+					"ORF 307",
+					"ORF 309",
+					"MAE*",
+					"APC*",
+					"ORF*",
+					"GEO*"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Civil and Environmental Engineering",
+		"track": "Engineering and the Liberal Arts",
+		"url": "https://www.princeton.edu/cee/forms/Yellow_Book_for_Class_of_2019_Sept.2016.pdf",
+		"short_name": "CEE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "thesis",
+				"name": "Senior Thesis",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CEE 478"
+				]
+			},
+			{
+				"type": "engineering-science",
+				"name": "Engineering Science",
+				"number": 3,
+				"score": 2,
+				"courses": [
+					"CEE*"
+				]
+			},
+			{
+				"type": "engineering-science-300",
+				"name": "Engineering Science",
+				"number": 2,
+				"score": 1,
+				"courses": [
+					"CEE>=300"
+				]
+			},
+			{
+				"type": "engineering-science-300-stl",
+				"name": "Engineering Science",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CEE[STL]>=300"
+				]
+			},
+			{
+				"type": "elective",
+				"name": "Program Electives",
+				"number": 4,
+				"score": 0,
+				"courses": [
+					"*"
+				]
+			},
+			{
+				"type": "elective-300",
+				"name": "Program Electives",
+				"number": 3,
+				"score": 0,
+				"courses": [
+					"*>=300"
+				]
+			},
+			{
+				"type": "300+",
+				"name": "8 300+ Level Courses",
+				"number": 8,
+				"score": 1,
+				"courses": [
+					"*>=300"
+				],
+				"unique": false
+			}
+		]
+	},
+
+	{
+		"name": "Operations Research and Financial Engineering",
+		"short_name": "ORFE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 6,
+				"score": 2,
+				"courses": [
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"ORF 405",
+					"ORF 335",
+					"ORF 411"
+				]
+			},
+			{
+				"type": "math",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"MAT 320",
+					"MAT 322",
+					"MAT 375",
+					"MAT 377",
+					"MAT 378",
+					"MAT 385",
+					"MAT 391",
+					"MAT 392",
+					"MAT 427",
+					"MAT 486",
+					"MAT 522"
+				]
+			},
+			{
+				"type": "departmental",
+				"number": 8,
+				"score": 0,
+				"courses": [
+					"ORF 311",
+					"ORF 350",
+					"ORF 360",
+					"ORF 363",
+					"ORF 375",
+					"ORF 376",
+					"ORF 401",
+					"ORF 406",
+					"ORF 407",
+					"ORF 409",
+					"ORF 417",
+					"ORF 418",
+					"ORF 435",
+					"ORF 455",
+					"ORF 467",
+					"ORF 473",
+					"ORF 474",
+					"CEE 304",
+					"CEE 460",
+					"CHM 303",
+					"CHM 304",
+					"COS 217",
+					"COS 226",
+					"COS 323",
+					"COS 340",
+					"COS 402",
+					"COS 423",
+					"COS 425",
+					"ECO 310",
+					"ECO 311",
+					"ECO 312",
+					"ECO 317",
+					"ECO 332",
+					"ECO 341",
+					"ECO 342",
+					"ECO 361",
+					"ECO 362",
+					"ECO 363",
+					"ECO 418",
+					"ECO 462",
+					"ECO 464",
+					"ECO 466",
+					"ECO 467",
+					"EEB 324",
+					"ELE 381",
+					"ELE 486",
+					"ENV 302",
+					"MAE 433",
+					"MOL 345",
+					"NEU 437",
+					"NEU 330"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Chemical and Biological Engineering",
+		"track": "Bioengineering and Biotechnology",
+		"short_name": "CBE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 8,
+				"score": 2,
+				"notes": "must take 2 semesters of senior thesis in area of concentration, or take 1 semester independent work + approved technical elective",
+				"courses": [
+					"CBE 245",
+					"CBE 246",
+					"CBE 250",
+					"CBE 341",
+					"CBE 346",
+					"CBE 441",
+					"CBE 442",
+					"CBE 454"
+				]
+			},
+			{
+				"type": "advanced-stem-differential-equations",
+				"number": 1,
+				"score": 1,
+				"notes": "must be completed by end of fall term junior year",
+				"courses": [
+					"MAE 305",
+					"MAT 427",
+					"APC 350"
+				]
+			},
+			{
+				"type": "advanced-stem-chemistry",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CHM 304",
+					"CHM 305",
+					"CHM 306",
+					"CHM 333",
+					"CHM 345",
+					"CHM 371",
+					"CHM 403",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"CHM 440",
+					"CHM 470",
+					"CHM 502",
+					"CHM 504",
+					"CHM 516",
+					"CHM 521",
+					"CHM 524",
+					"CHM 525",
+					"CHM 529",
+					"CHM 532",
+					"CHM 534",
+					"CHM 541",
+					"CHM 544",
+					"CBE 415",
+					"CBE 421",
+					"GEO 363",
+					"GEO 418"
+				]
+			},
+			{
+				"type": "advanced-chemical-engineering",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CBE >= 300"
+				]
+			},
+			{
+				"type": "advanced-stem-organic-chemistry",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CHM 303",
+					"CHM 304",
+					"CHM 304B"
+				]
+			},
+			{
+				"type": "advanced-stem-molecular-biology",
+				"score": 1,
+				"number": 1,
+				"courses": [
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 3,
+				"score": 2,
+				"courses": [
+					"CBE 419",
+					"CBE 423",
+					"CBE 432",
+					"CBE 433",
+					"CBE 438",
+					"MOL 438",
+					"CBE 439",
+					"CBE 440",
+					"CBE 443",
+					"CBE 447",
+					"CBE 573",
+					"CHM 412",
+					"CHM 440",
+					"CHM 515",
+					"CHM 538",
+					"CHM 542",
+					"CHM 543",
+					"CHM 544",
+					"EEB 320",
+					"EEB 325",
+					"EEB 327",
+					"ENV 418",
+					"GEO 428",
+					"ISC 326",
+					"MAE 344",
+					"MOL 340",
+					"MOL 342",
+					"MOL 345",
+					"MOL 348",
+					"MOL 408",
+					"MOL 410",
+					"MOL 433",
+					"MOL 434",
+					"MOL 435",
+					"MOL 437",
+					"MOL 448",
+					"CHM 448",
+					"MOL 455",
+					"MOL 457",
+					"MOL 459",
+					"MOL 523",
+					"NEU 258",
+					"NEU 259B",
+					"NEU 408",
+					"NEU 437",
+					"PSY 406",
+					"PSY 407",
+					"QCB 511"
+				]
+			},
+			{
+				"type": "breadth",
+				"number": 2,
+				"score": 0,
+				"notes": "please double check that these two courses are from different tracks outside your concentration",
+				"courses": [
+					"CBE 260",
+					"CEE 334",
+					"CEE 460",
+					"CHV 331",
+					"COS 432",
+					"ECO 310",
+					"ECO 311",
+					"EGR 437",
+					"MAE 437",
+					"ELE 437",
+					"EGR 492",
+					"EGR 494",
+					"EGR 495",
+					"EGR 497",
+					"ELE 491",
+					"ENV 324",
+					"EGR 324",
+					"GEO 366",
+					"ORF 245",
+					"ORF 335",
+					"ORF 435",
+					"WWS 373",
+					"AST 309",
+					"CBE 335",
+					"CEE 207",
+					"CEE 304",
+					"CEE 306",
+					"CEE 308",
+					"CEE 311",
+					"CEE 334",
+					"CEE 471",
+					"CEE 474",
+					"CEE 477",
+					"ENE 477",
+					"CHM 333",
+					"CHM 525",
+					"ECO 429",
+					"ELE 431",
+					"ENE 414",
+					"ENE 418",
+					"ENE 558",
+					"ENV 201A",
+					"ENV 202A",
+					"ENV 204",
+					"ENV 324",
+					"EGR 324",
+					"ENV 531",
+					"GEO 220A",
+					"GEO 322",
+					"GEO 361",
+					"GEO 363",
+					"GEO 364",
+					"GEO 366",
+					"GEO 418",
+					"GEO 423",
+					"GEO 424",
+					"GEO 470",
+					"MAE 328",
+					"MAE 424",
+					"MAE 427",
+					"WWS 306",
+					"CBE 415",
+					"CBE 422",
+					"CBE 423",
+					"CBE 425",
+					"CBE 433",
+					"CBE 526",
+					"CEE 364",
+					"CHM 403",
+					"CHM 409",
+					"ELE 341",
+					"ELE 342",
+					"ELE 455",
+					"ELE 441",
+					"ELE 442",
+					"ELE 449",
+					"GEO 378",
+					"MAE 324",
+					"MAE 334",
+					"MSE 301",
+					"MSE 302",
+					"MSE 504",
+					"MSE 531",
+					"CBE 422",
+					"CBE 445",
+					"CBE 448",
+					"CBE 520",
+					"CBE 527",
+					"COS 217",
+					"COS 226",
+					"COS 323",
+					"COS 333",
+					"COS 402",
+					"COS 424",
+					"ECO 317",
+					"EEB 355",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"ORF 311",
+					"ORF 406",
+					"ORF 409",
+					"ORF 411",
+					"ORF 417",
+					"CBE 342",
+					"CBE 425",
+					"MAE 306",
+					"MAE 336",
+					"MAE 423",
+					"CBE 421",
+					"CHM 302",
+					"CHM 305",
+					"CHM 306",
+					"CHM 403",
+					"CHM 405",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"PHY 203",
+					"PHY 208",
+					"PHY 301",
+					"PHY 304",
+					"PHY 305",
+					"ELE 206",
+					"ELE 208",
+					"ELE 341",
+					"ELE 342",
+					"ELE 441",
+					"ELE 442"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Chemical and Biological Engineering",
+		"track": "Entrepreneurship and Management",
+		"short_name": "CBE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 8,
+				"score": 2,
+				"notes": "must take 2 semesters of senior thesis in area of concentration, or take 1 semester independent work + approved technical elective",
+				"courses": [
+					"CBE 245",
+					"CBE 246",
+					"CBE 250",
+					"CBE 341",
+					"CBE 346",
+					"CBE 441",
+					"CBE 442",
+					"CBE 454"
+				]
+			},
+			{
+				"type": "advanced-stem-differential-equations",
+				"number": 1,
+				"score": 1,
+				"notes": "must be completed by end of fall term junior year",
+				"courses": [
+					"MAE 305",
+					"MAT 427",
+					"APC 350"
+				]
+			},
+			{
+				"type": "advanced-stem-chemistry",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CHM 304",
+					"CHM 305",
+					"CHM 306",
+					"CHM 333",
+					"CHM 345",
+					"CHM 371",
+					"CHM 403",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"CHM 440",
+					"CHM 470",
+					"CHM 502",
+					"CHM 504",
+					"CHM 516",
+					"CHM 521",
+					"CHM 524",
+					"CHM 525",
+					"CHM 529",
+					"CHM 532",
+					"CHM 534",
+					"CHM 541",
+					"CHM 544",
+					"CBE 415",
+					"CBE 421",
+					"GEO 363",
+					"GEO 418"
+				]
+			},
+			{
+				"type": "advanced-chemical-engineering",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CBE >= 300"
+				]
+			},
+			{
+				"type": "advanced-stem-organic-chemistry",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CHM 303",
+					"CHM 304",
+					"CHM 304B"
+				]
+			},
+			{
+				"type": "advanced-stem-molecular-biology",
+				"score": 1,
+				"number": 1,
+				"courses": [
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 3,
+				"score": 2,
+				"courses": [
+					"CBE 260",
+					"CEE 334",
+					"CEE 460",
+					"CHV 331",
+					"COS 432",
+					"ECO 310",
+					"ECO 311",
+					"EGR 437",
+					"MAE 437",
+					"ELE 437",
+					"EGR 492",
+					"EGR 494",
+					"EGR 495",
+					"EGR 497",
+					"ELE 491",
+					"ENV 324",
+					"EGR 324",
+					"GEO 366",
+					"ORF 245",
+					"ORF 335",
+					"ORF 435",
+					"WWS 373"
+				]
+			},
+			{
+				"type": "breadth",
+				"number": 2,
+				"score": 0,
+				"notes": "please double check that these two courses are from different tracks outside your concentration",
+				"courses": [
+					"CBE 419",
+					"CBE 423",
+					"CBE 432",
+					"CBE 433",
+					"CBE 438",
+					"MOL 438",
+					"CBE 439",
+					"CBE 440",
+					"CBE 443",
+					"CBE 447",
+					"CBE 573",
+					"CHM 412",
+					"CHM 440",
+					"CHM 515",
+					"CHM 538",
+					"CHM 542",
+					"CHM 543",
+					"CHM 544",
+					"EEB 320",
+					"EEB 325",
+					"EEB 327",
+					"ENV 418",
+					"GEO 428",
+					"ISC 326",
+					"MAE 344",
+					"MOL 340",
+					"MOL 342",
+					"MOL 345",
+					"MOL 348",
+					"MOL 408",
+					"MOL 410",
+					"MOL 433",
+					"MOL 434",
+					"MOL 435",
+					"MOL 437",
+					"MOL 448",
+					"CHM 448",
+					"MOL 455",
+					"MOL 457",
+					"MOL 459",
+					"MOL 523",
+					"NEU 258",
+					"NEU 259B",
+					"NEU 408",
+					"NEU 437",
+					"PSY 406",
+					"PSY 407",
+					"QCB 511",
+					"AST 309",
+					"CBE 335",
+					"CEE 207",
+					"CEE 304",
+					"CEE 306",
+					"CEE 308",
+					"CEE 311",
+					"CEE 334",
+					"CEE 471",
+					"CEE 474",
+					"CEE 477",
+					"ENE 477",
+					"CHM 333",
+					"CHM 525",
+					"ECO 429",
+					"ELE 431",
+					"ENE 414",
+					"ENE 418",
+					"ENE 558",
+					"ENV 201A",
+					"ENV 202A",
+					"ENV 204",
+					"ENV 324",
+					"EGR 324",
+					"ENV 531",
+					"GEO 220A",
+					"GEO 322",
+					"GEO 361",
+					"GEO 363",
+					"GEO 364",
+					"GEO 366",
+					"GEO 418",
+					"GEO 423",
+					"GEO 424",
+					"GEO 470",
+					"MAE 328",
+					"MAE 424",
+					"MAE 427",
+					"WWS 306",
+					"CBE 415",
+					"CBE 422",
+					"CBE 423",
+					"CBE 425",
+					"CBE 433",
+					"CBE 526",
+					"CEE 364",
+					"CHM 403",
+					"CHM 409",
+					"ELE 341",
+					"ELE 342",
+					"ELE 455",
+					"ELE 441",
+					"ELE 442",
+					"ELE 449",
+					"GEO 378",
+					"MAE 324",
+					"MAE 334",
+					"MSE 301",
+					"MSE 302",
+					"MSE 504",
+					"MSE 531",
+					"CBE 422",
+					"CBE 445",
+					"CBE 448",
+					"CBE 520",
+					"CBE 527",
+					"COS 217",
+					"COS 226",
+					"COS 323",
+					"COS 333",
+					"COS 402",
+					"COS 424",
+					"ECO 317",
+					"EEB 355",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"ORF 311",
+					"ORF 406",
+					"ORF 409",
+					"ORF 411",
+					"ORF 417",
+					"CBE 342",
+					"CBE 425",
+					"MAE 306",
+					"MAE 336",
+					"MAE 423",
+					"CBE 421",
+					"CHM 302",
+					"CHM 305",
+					"CHM 306",
+					"CHM 403",
+					"CHM 405",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"PHY 203",
+					"PHY 208",
+					"PHY 301",
+					"PHY 304",
+					"PHY 305",
+					"ELE 206",
+					"ELE 208",
+					"ELE 341",
+					"ELE 342",
+					"ELE 441",
+					"ELE 442"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Chemical and Biological Engineering",
+		"track": "Energy and Environmental Technology",
+		"short_name": "CBE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 8,
+				"score": 2,
+				"notes": "must take 2 semesters of senior thesis in area of concentration, or take 1 semester independent work + approved technical elective",
+				"courses": [
+					"CBE 245",
+					"CBE 246",
+					"CBE 250",
+					"CBE 341",
+					"CBE 346",
+					"CBE 441",
+					"CBE 442",
+					"CBE 454"
+				]
+			},
+			{
+				"type": "advanced-stem-differential-equations",
+				"number": 1,
+				"score": 1,
+				"notes": "must be completed by end of fall term junior year",
+				"courses": [
+					"MAE 305",
+					"MAT 427",
+					"APC 350"
+				]
+			},
+			{
+				"type": "advanced-stem-chemistry",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CHM 304",
+					"CHM 305",
+					"CHM 306",
+					"CHM 333",
+					"CHM 345",
+					"CHM 371",
+					"CHM 403",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"CHM 440",
+					"CHM 470",
+					"CHM 502",
+					"CHM 504",
+					"CHM 516",
+					"CHM 521",
+					"CHM 524",
+					"CHM 525",
+					"CHM 529",
+					"CHM 532",
+					"CHM 534",
+					"CHM 541",
+					"CHM 544",
+					"CBE 415",
+					"CBE 421",
+					"GEO 363",
+					"GEO 418"
+				]
+			},
+			{
+				"type": "advanced-chemical-engineering",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CBE >= 300"
+				]
+			},
+			{
+				"type": "advanced-stem-organic-chemistry",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CHM 303",
+					"CHM 304",
+					"CHM 304B"
+				]
+			},
+			{
+				"type": "advanced-stem-molecular-biology",
+				"score": 1,
+				"number": 1,
+				"courses": [
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 3,
+				"score": 1,
+				"courses": [
+					"AST 309",
+					"CBE 335",
+					"CEE 207",
+					"CEE 304",
+					"CEE 306",
+					"CEE 308",
+					"CEE 311",
+					"CEE 334",
+					"CEE 471",
+					"CEE 474",
+					"CEE 477",
+					"ENE 477",
+					"CHM 333",
+					"CHM 525",
+					"ECO 429",
+					"ELE 431",
+					"ENE 414",
+					"ENE 418",
+					"ENE 558",
+					"ENV 201A",
+					"ENV 202A",
+					"ENV 204",
+					"ENV 324",
+					"EGR 324",
+					"ENV 531",
+					"GEO 220A",
+					"GEO 322",
+					"GEO 361",
+					"GEO 363",
+					"GEO 364",
+					"GEO 366",
+					"GEO 418",
+					"GEO 423",
+					"GEO 424",
+					"GEO 470",
+					"MAE 328",
+					"MAE 424",
+					"MAE 427",
+					"WWS 306"
+				]
+			},
+			{
+				"type": "breadth",
+				"number": 2,
+				"score": 0,
+				"notes": "please double check that these two courses are from different tracks outside your concentration",
+				"courses": [
+					"CBE 419",
+					"CBE 423",
+					"CBE 432",
+					"CBE 433",
+					"CBE 438",
+					"MOL 438",
+					"CBE 439",
+					"CBE 440",
+					"CBE 443",
+					"CBE 447",
+					"CBE 573",
+					"CHM 412",
+					"CHM 440",
+					"CHM 515",
+					"CHM 538",
+					"CHM 542",
+					"CHM 543",
+					"CHM 544",
+					"EEB 320",
+					"EEB 325",
+					"EEB 327",
+					"ENV 418",
+					"GEO 428",
+					"ISC 326",
+					"MAE 344",
+					"MOL 340",
+					"MOL 342",
+					"MOL 345",
+					"MOL 348",
+					"MOL 408",
+					"MOL 410",
+					"MOL 433",
+					"MOL 434",
+					"MOL 435",
+					"MOL 437",
+					"MOL 448",
+					"CHM 448",
+					"MOL 455",
+					"MOL 457",
+					"MOL 459",
+					"MOL 523",
+					"NEU 258",
+					"NEU 259B",
+					"NEU 408",
+					"NEU 437",
+					"PSY 406",
+					"PSY 407",
+					"QCB 511",
+					"CBE 260",
+					"CEE 334",
+					"CEE 460",
+					"CHV 331",
+					"COS 432",
+					"ECO 310",
+					"ECO 311",
+					"EGR 437",
+					"MAE 437",
+					"ELE 437",
+					"EGR 492",
+					"EGR 494",
+					"EGR 495",
+					"EGR 497",
+					"ELE 491",
+					"ENV 324",
+					"EGR 324",
+					"GEO 366",
+					"ORF 245",
+					"ORF 335",
+					"ORF 435",
+					"WWS 373",
+					"CBE 415",
+					"CBE 422",
+					"CBE 423",
+					"CBE 425",
+					"CBE 433",
+					"CBE 526",
+					"CEE 364",
+					"CHM 403",
+					"CHM 409",
+					"ELE 341",
+					"ELE 342",
+					"ELE 455",
+					"ELE 441",
+					"ELE 442",
+					"ELE 449",
+					"GEO 378",
+					"MAE 324",
+					"MAE 334",
+					"MSE 301",
+					"MSE 302",
+					"MSE 504",
+					"MSE 531",
+					"CBE 422",
+					"CBE 445",
+					"CBE 448",
+					"CBE 520",
+					"CBE 527",
+					"COS 217",
+					"COS 226",
+					"COS 323",
+					"COS 333",
+					"COS 402",
+					"COS 424",
+					"ECO 317",
+					"EEB 355",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"ORF 311",
+					"ORF 406",
+					"ORF 409",
+					"ORF 411",
+					"ORF 417",
+					"CBE 342",
+					"CBE 425",
+					"MAE 306",
+					"MAE 336",
+					"MAE 423",
+					"CBE 421",
+					"CHM 302",
+					"CHM 305",
+					"CHM 306",
+					"CHM 403",
+					"CHM 405",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"PHY 203",
+					"PHY 208",
+					"PHY 301",
+					"PHY 304",
+					"PHY 305",
+					"ELE 206",
+					"ELE 208",
+					"ELE 341",
+					"ELE 342",
+					"ELE 441",
+					"ELE 442"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Chemical and Biological Engineering",
+		"track": "Materials and Product Engineering",
+		"short_name": "CBE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 8,
+				"score": 2,
+				"notes": "must take 2 semesters of senior thesis in area of concentration, or take 1 semester independent work + approved technical elective",
+				"courses": [
+					"CBE 245",
+					"CBE 246",
+					"CBE 250",
+					"CBE 341",
+					"CBE 346",
+					"CBE 441",
+					"CBE 442",
+					"CBE 454"
+				]
+			},
+			{
+				"type": "advanced-stem-differential-equations",
+				"number": 1,
+				"score": 1,
+				"notes": "must be completed by end of fall term junior year",
+				"courses": [
+					"MAE 305",
+					"MAT 427",
+					"APC 350"
+				]
+			},
+			{
+				"type": "advanced-stem-chemistry",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CHM 304",
+					"CHM 305",
+					"CHM 306",
+					"CHM 333",
+					"CHM 345",
+					"CHM 371",
+					"CHM 403",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"CHM 440",
+					"CHM 470",
+					"CHM 502",
+					"CHM 504",
+					"CHM 516",
+					"CHM 521",
+					"CHM 524",
+					"CHM 525",
+					"CHM 529",
+					"CHM 532",
+					"CHM 534",
+					"CHM 541",
+					"CHM 544",
+					"CBE 415",
+					"CBE 421",
+					"GEO 363",
+					"GEO 418"
+				]
+			},
+			{
+				"type": "advanced-chemical-engineering",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CBE >= 300"
+				]
+			},
+			{
+				"type": "advanced-stem-organic-chemistry",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CHM 303",
+					"CHM 304",
+					"CHM 304B"
+				]
+			},
+			{
+				"type": "advanced-stem-molecular-biology",
+				"score": 1,
+				"number": 1,
+				"courses": [
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 3,
+				"score": 2,
+				"courses": [
+					"CBE 415",
+					"CBE 422",
+					"CBE 423",
+					"CBE 425",
+					"CBE 433",
+					"CBE 526",
+					"CEE 364",
+					"CHM 403",
+					"CHM 409",
+					"ELE 341",
+					"ELE 342",
+					"ELE 455",
+					"ELE 441",
+					"ELE 442",
+					"ELE 449",
+					"GEO 378",
+					"MAE 324",
+					"MAE 334",
+					"MSE 301",
+					"MSE 302",
+					"MSE 504",
+					"MSE 531"
+				]
+			},
+			{
+				"type": "breadth",
+				"number": 2,
+				"score": 0,
+				"notes": "please double check that these two courses are from different tracks outside your concentration",
+				"courses": [
+					"CBE 419",
+					"CBE 423",
+					"CBE 432",
+					"CBE 433",
+					"CBE 438",
+					"MOL 438",
+					"CBE 439",
+					"CBE 440",
+					"CBE 443",
+					"CBE 447",
+					"CBE 573",
+					"CHM 412",
+					"CHM 440",
+					"CHM 515",
+					"CHM 538",
+					"CHM 542",
+					"CHM 543",
+					"CHM 544",
+					"EEB 320",
+					"EEB 325",
+					"EEB 327",
+					"ENV 418",
+					"GEO 428",
+					"ISC 326",
+					"MAE 344",
+					"MOL 340",
+					"MOL 342",
+					"MOL 345",
+					"MOL 348",
+					"MOL 408",
+					"MOL 410",
+					"MOL 433",
+					"MOL 434",
+					"MOL 435",
+					"MOL 437",
+					"MOL 448",
+					"CHM 448",
+					"MOL 455",
+					"MOL 457",
+					"MOL 459",
+					"MOL 523",
+					"NEU 258",
+					"NEU 259B",
+					"NEU 408",
+					"NEU 437",
+					"PSY 406",
+					"PSY 407",
+					"QCB 511",
+					"CBE 260",
+					"CEE 334",
+					"CEE 460",
+					"CHV 331",
+					"COS 432",
+					"ECO 310",
+					"ECO 311",
+					"EGR 437",
+					"MAE 437",
+					"ELE 437",
+					"EGR 492",
+					"EGR 494",
+					"EGR 495",
+					"EGR 497",
+					"ELE 491",
+					"ENV 324",
+					"EGR 324",
+					"GEO 366",
+					"ORF 245",
+					"ORF 335",
+					"ORF 435",
+					"WWS 373",
+					"AST 309",
+					"CBE 335",
+					"CEE 207",
+					"CEE 304",
+					"CEE 306",
+					"CEE 308",
+					"CEE 311",
+					"CEE 334",
+					"CEE 471",
+					"CEE 474",
+					"CEE 477",
+					"ENE 477",
+					"CHM 333",
+					"CHM 525",
+					"ECO 429",
+					"ELE 431",
+					"ENE 414",
+					"ENE 418",
+					"ENE 558",
+					"ENV 201A",
+					"ENV 202A",
+					"ENV 204",
+					"ENV 324",
+					"EGR 324",
+					"ENV 531",
+					"GEO 220A",
+					"GEO 322",
+					"GEO 361",
+					"GEO 363",
+					"GEO 364",
+					"GEO 366",
+					"GEO 418",
+					"GEO 423",
+					"GEO 424",
+					"GEO 470",
+					"MAE 328",
+					"MAE 424",
+					"MAE 427",
+					"WWS 306",
+					"CBE 422",
+					"CBE 445",
+					"CBE 448",
+					"CBE 520",
+					"CBE 527",
+					"COS 217",
+					"COS 226",
+					"COS 323",
+					"COS 333",
+					"COS 402",
+					"COS 424",
+					"ECO 317",
+					"EEB 355",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"ORF 311",
+					"ORF 406",
+					"ORF 409",
+					"ORF 411",
+					"ORF 417",
+					"CBE 342",
+					"CBE 425",
+					"MAE 306",
+					"MAE 336",
+					"MAE 423",
+					"CBE 421",
+					"CHM 302",
+					"CHM 305",
+					"CHM 306",
+					"CHM 403",
+					"CHM 405",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"PHY 203",
+					"PHY 208",
+					"PHY 301",
+					"PHY 304",
+					"PHY 305",
+					"ELE 206",
+					"ELE 208",
+					"ELE 341",
+					"ELE 342",
+					"ELE 441",
+					"ELE 442"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Chemical and Biological Engineering",
+		"track": "Optimization, Dynamics, and Information Technology",
+		"short_name": "CBE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 8,
+				"score": 2,
+				"notes": "must take 2 semesters of senior thesis in area of concentration, or take 1 semester independent work + approved technical elective",
+				"courses": [
+					"CBE 245",
+					"CBE 246",
+					"CBE 250",
+					"CBE 341",
+					"CBE 346",
+					"CBE 441",
+					"CBE 442",
+					"CBE 454"
+				]
+			},
+			{
+				"type": "advanced-stem-differential-equations",
+				"number": 1,
+				"score": 1,
+				"notes": "must be completed by end of fall term junior year",
+				"courses": [
+					"MAE 305",
+					"MAT 427",
+					"APC 350"
+				]
+			},
+			{
+				"type": "advanced-stem-chemistry",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CHM 304",
+					"CHM 305",
+					"CHM 306",
+					"CHM 333",
+					"CHM 345",
+					"CHM 371",
+					"CHM 403",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"CHM 440",
+					"CHM 470",
+					"CHM 502",
+					"CHM 504",
+					"CHM 516",
+					"CHM 521",
+					"CHM 524",
+					"CHM 525",
+					"CHM 529",
+					"CHM 532",
+					"CHM 534",
+					"CHM 541",
+					"CHM 544",
+					"CBE 415",
+					"CBE 421",
+					"GEO 363",
+					"GEO 418"
+				]
+			},
+			{
+				"type": "advanced-chemical-engineering",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CBE >= 300"
+				]
+			},
+			{
+				"type": "advanced-stem-organic-chemistry",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CHM 303",
+					"CHM 304",
+					"CHM 304B"
+				]
+			},
+			{
+				"type": "advanced-stem-molecular-biology",
+				"score": 1,
+				"number": 1,
+				"courses": [
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 3,
+				"score": 2,
+				"courses": [
+					"CBE 422",
+					"CBE 445",
+					"CBE 448",
+					"CBE 520",
+					"CBE 527",
+					"COS 217",
+					"COS 226",
+					"COS 323",
+					"COS 333",
+					"COS 402",
+					"COS 424",
+					"ECO 317",
+					"EEB 355",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"ORF 311",
+					"ORF 406",
+					"ORF 409",
+					"ORF 411",
+					"ORF 417"
+				]
+			},
+			{
+				"type": "breadth",
+				"number": 2,
+				"score": 0,
+				"notes": "please double check that these two courses are from different tracks outside your concentration",
+				"courses": [
+					"CBE 419",
+					"CBE 423",
+					"CBE 432",
+					"CBE 433",
+					"CBE 438",
+					"MOL 438",
+					"CBE 439",
+					"CBE 440",
+					"CBE 443",
+					"CBE 447",
+					"CBE 573",
+					"CHM 412",
+					"CHM 440",
+					"CHM 515",
+					"CHM 538",
+					"CHM 542",
+					"CHM 543",
+					"CHM 544",
+					"EEB 320",
+					"EEB 325",
+					"EEB 327",
+					"ENV 418",
+					"GEO 428",
+					"ISC 326",
+					"MAE 344",
+					"MOL 340",
+					"MOL 342",
+					"MOL 345",
+					"MOL 348",
+					"MOL 408",
+					"MOL 410",
+					"MOL 433",
+					"MOL 434",
+					"MOL 435",
+					"MOL 437",
+					"MOL 448",
+					"CHM 448",
+					"MOL 455",
+					"MOL 457",
+					"MOL 459",
+					"MOL 523",
+					"NEU 258",
+					"NEU 259B",
+					"NEU 408",
+					"NEU 437",
+					"PSY 406",
+					"PSY 407",
+					"QCB 511",
+					"CBE 260",
+					"CEE 334",
+					"CEE 460",
+					"CHV 331",
+					"COS 432",
+					"ECO 310",
+					"ECO 311",
+					"EGR 437",
+					"MAE 437",
+					"ELE 437",
+					"EGR 492",
+					"EGR 494",
+					"EGR 495",
+					"EGR 497",
+					"ELE 491",
+					"ENV 324",
+					"EGR 324",
+					"GEO 366",
+					"ORF 245",
+					"ORF 335",
+					"ORF 435",
+					"WWS 373",
+					"AST 309",
+					"CBE 335",
+					"CEE 207",
+					"CEE 304",
+					"CEE 306",
+					"CEE 308",
+					"CEE 311",
+					"CEE 334",
+					"CEE 471",
+					"CEE 474",
+					"CEE 477",
+					"ENE 477",
+					"CHM 333",
+					"CHM 525",
+					"ECO 429",
+					"ELE 431",
+					"ENE 414",
+					"ENE 418",
+					"ENE 558",
+					"ENV 201A",
+					"ENV 202A",
+					"ENV 204",
+					"ENV 324",
+					"EGR 324",
+					"ENV 531",
+					"GEO 220A",
+					"GEO 322",
+					"GEO 361",
+					"GEO 363",
+					"GEO 364",
+					"GEO 366",
+					"GEO 418",
+					"GEO 423",
+					"GEO 424",
+					"GEO 470",
+					"MAE 328",
+					"MAE 424",
+					"MAE 427",
+					"WWS 306",
+					"CBE 415",
+					"CBE 422",
+					"CBE 423",
+					"CBE 425",
+					"CBE 433",
+					"CBE 526",
+					"CEE 364",
+					"CHM 403",
+					"CHM 409",
+					"ELE 341",
+					"ELE 342",
+					"ELE 455",
+					"ELE 441",
+					"ELE 442",
+					"ELE 449",
+					"GEO 378",
+					"MAE 324",
+					"MAE 334",
+					"MSE 301",
+					"MSE 302",
+					"MSE 504",
+					"MSE 531",
+					"CBE 342",
+					"CBE 425",
+					"MAE 306",
+					"MAE 336",
+					"MAE 423",
+					"CBE 421",
+					"CHM 302",
+					"CHM 305",
+					"CHM 306",
+					"CHM 403",
+					"CHM 405",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"PHY 203",
+					"PHY 208",
+					"PHY 301",
+					"PHY 304",
+					"PHY 305",
+					"ELE 206",
+					"ELE 208",
+					"ELE 341",
+					"ELE 342",
+					"ELE 441",
+					"ELE 442"
+				]
+			}
+		]
+	},
+
+	{
+		"name": "Chemical and Biological Engineering",
+		"track": "Science and Engineering for New Technologies",
+		"short_name": "CBE",
+		"degree": "B.S.E.",
+		"requirements": [{
+				"type": "core",
+				"number": 8,
+				"score": 2,
+				"notes": "must take 2 semesters of senior thesis in area of concentration, or take 1 semester independent work + approved technical elective",
+				"courses": [
+					"CBE 245",
+					"CBE 246",
+					"CBE 250",
+					"CBE 341",
+					"CBE 346",
+					"CBE 441",
+					"CBE 442",
+					"CBE 454"
+				]
+			},
+			{
+				"type": "advanced-stem-differential-equations",
+				"number": 1,
+				"score": 1,
+				"notes": "must be completed by end of fall term junior year",
+				"courses": [
+					"MAE 305",
+					"MAT 427",
+					"APC 350"
+				]
+			},
+			{
+				"type": "advanced-stem-chemistry",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CHM 304",
+					"CHM 305",
+					"CHM 306",
+					"CHM 333",
+					"CHM 345",
+					"CHM 371",
+					"CHM 403",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"CHM 440",
+					"CHM 470",
+					"CHM 502",
+					"CHM 504",
+					"CHM 516",
+					"CHM 521",
+					"CHM 524",
+					"CHM 525",
+					"CHM 529",
+					"CHM 532",
+					"CHM 534",
+					"CHM 541",
+					"CHM 544",
+					"CBE 415",
+					"CBE 421",
+					"GEO 363",
+					"GEO 418"
+				]
+			},
+			{
+				"type": "advanced-chemical-engineering",
+				"number": 1,
+				"score": 1,
+				"notes": "cannot be independent work or PDF'ed course",
+				"courses": [
+					"CBE >= 300"
+				]
+			},
+			{
+				"type": "advanced-stem-organic-chemistry",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"CHM 303",
+					"CHM 304",
+					"CHM 304B"
+				]
+			},
+			{
+				"type": "advanced-stem-molecular-biology",
+				"score": 1,
+				"number": 1,
+				"courses": [
+					"MOL 214",
+					"MOL 215"
+				]
+			},
+			{
+				"type": "concentration",
+				"number": 3,
+				"score": 2,
+				"courses": [
+					"CBE 342",
+					"CBE 425",
+					"MAE 306",
+					"MAE 336",
+					"MAE 423",
+					"CBE 421",
+					"CHM 302",
+					"CHM 305",
+					"CHM 306",
+					"CHM 403",
+					"CHM 405",
+					"CHM 406",
+					"CHM 407",
+					"CHM 408",
+					"PHY 203",
+					"PHY 208",
+					"PHY 301",
+					"PHY 304",
+					"PHY 305",
+					"ELE 206",
+					"ELE 208",
+					"ELE 341",
+					"ELE 342",
+					"ELE 441",
+					"ELE 442"
+				]
+			},
+			{
+				"type": "breadth",
+				"number": 2,
+				"score": 0,
+				"notes": "please double check that these two courses are from different tracks outside your concentration",
+				"courses": [
+					"CBE 419",
+					"CBE 423",
+					"CBE 432",
+					"CBE 433",
+					"CBE 438",
+					"MOL 438",
+					"CBE 439",
+					"CBE 440",
+					"CBE 443",
+					"CBE 447",
+					"CBE 573",
+					"CHM 412",
+					"CHM 440",
+					"CHM 515",
+					"CHM 538",
+					"CHM 542",
+					"CHM 543",
+					"CHM 544",
+					"EEB 320",
+					"EEB 325",
+					"EEB 327",
+					"ENV 418",
+					"GEO 428",
+					"ISC 326",
+					"MAE 344",
+					"MOL 340",
+					"MOL 342",
+					"MOL 345",
+					"MOL 348",
+					"MOL 408",
+					"MOL 410",
+					"MOL 433",
+					"MOL 434",
+					"MOL 435",
+					"MOL 437",
+					"MOL 448",
+					"CHM 448",
+					"MOL 455",
+					"MOL 457",
+					"MOL 459",
+					"MOL 523",
+					"NEU 258",
+					"NEU 259B",
+					"NEU 408",
+					"NEU 437",
+					"PSY 406",
+					"PSY 407",
+					"QCB 511",
+					"CBE 260",
+					"CEE 334",
+					"CEE 460",
+					"CHV 331",
+					"COS 432",
+					"ECO 310",
+					"ECO 311",
+					"EGR 437",
+					"MAE 437",
+					"ELE 437",
+					"EGR 492",
+					"EGR 494",
+					"EGR 495",
+					"EGR 497",
+					"ELE 491",
+					"ENV 324",
+					"EGR 324",
+					"GEO 366",
+					"ORF 245",
+					"ORF 335",
+					"ORF 435",
+					"WWS 373",
+					"AST 309",
+					"CBE 335",
+					"CEE 207",
+					"CEE 304",
+					"CEE 306",
+					"CEE 308",
+					"CEE 311",
+					"CEE 334",
+					"CEE 471",
+					"CEE 474",
+					"CEE 477",
+					"ENE 477",
+					"CHM 333",
+					"CHM 525",
+					"ECO 429",
+					"ELE 431",
+					"ENE 414",
+					"ENE 418",
+					"ENE 558",
+					"ENV 201A",
+					"ENV 202A",
+					"ENV 204",
+					"ENV 324",
+					"EGR 324",
+					"ENV 531",
+					"GEO 220A",
+					"GEO 322",
+					"GEO 361",
+					"GEO 363",
+					"GEO 364",
+					"GEO 366",
+					"GEO 418",
+					"GEO 423",
+					"GEO 424",
+					"GEO 470",
+					"MAE 328",
+					"MAE 424",
+					"MAE 427",
+					"WWS 306",
+					"CBE 415",
+					"CBE 422",
+					"CBE 423",
+					"CBE 425",
+					"CBE 433",
+					"CBE 526",
+					"CEE 364",
+					"CHM 403",
+					"CHM 409",
+					"ELE 341",
+					"ELE 342",
+					"ELE 455",
+					"ELE 441",
+					"ELE 442",
+					"ELE 449",
+					"GEO 378",
+					"MAE 324",
+					"MAE 334",
+					"MSE 301",
+					"MSE 302",
+					"MSE 504",
+					"MSE 531",
+					"CBE 422",
+					"CBE 445",
+					"CBE 448",
+					"CBE 520",
+					"CBE 527",
+					"COS 217",
+					"COS 226",
+					"COS 323",
+					"COS 333",
+					"COS 402",
+					"COS 424",
+					"ECO 317",
+					"EEB 355",
+					"ORF 245",
+					"ORF 307",
+					"ORF 309",
+					"ORF 311",
+					"ORF 406",
+					"ORF 409",
+					"ORF 411",
+					"ORF 417"
+				]
+			}
+		]
+	}
+]
