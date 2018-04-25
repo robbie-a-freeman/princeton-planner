@@ -8,6 +8,8 @@ function plan_init() {
 
 }
 
+// ============================== EVENT HANDLERS =========================
+// Handles keyup events for search boxes.
 function keyEventHandler(event) {
   var key = event.key;
 
@@ -18,8 +20,23 @@ function keyEventHandler(event) {
   else if (this.id == "programSearch" && isConsiderableKey(key)) {
     programSearchSubmit();
   }
-
 }
+
+// Called when program search results are clicked.
+function programResultHandler(event) {
+  console.log('program clicked');
+}
+
+// Called when course search results are clicked.
+function courseResultHandler(event) {
+  console.log('course clicked');
+
+  // Make a post request for the given table and fetch via python OR
+  // cache results of search locally and do it in JS.
+  // I like the JS idea because JSON support will be better,
+  // along with native DOM integration.
+}
+
 
 // Return true if we'd like to respond to this key being pressed; else false.
 // TODO make space a considerable key!!
@@ -31,6 +48,7 @@ function isConsiderableKey(key) {
             (key == "Backspace"));
 }
 
+// ============================= POST SUBMITTERS =======================
 /* Function called on keystroke to send an XHR request to the server
  * and await a reply.
  * Note that currently manual form submission is not bound to this
@@ -76,11 +94,17 @@ function updateResults(jsonResponse, type) {
   // Create the results header
   var resultHeading = document.createElement("h3");
   var numResults = results.length;
-  resultHeading.appendChild(text(numResults + " Search Results"));
+
+  var label = null;
+  if (numResults == 1) label = text(numResults + " Search Result");
+  else                 label = text(numResults + " Search Results");
+
+  resultHeading.appendChild(label);
 
   resultTableDiv = createResultsTable(results, type);
 
   // Clear old results, and insert new ones.
+  // NOTE dangerous--accidentaly variable overload!
   results = $(resultsTableID);
   results.empty();
   results[0].appendChild(resultTableDiv);
@@ -108,22 +132,35 @@ function createResultsTable(resultsObj, resultsType) {
   // Generate a table row + entry for each search result.
   for (var i = 0; i < resultsObj.length; i++) {
     // Create elements for each row
-    var tr = document.createElement("tr");
-    var td = document.createElement("td");
-
-    var label = null;
-    if (resultsType == "course")
-      label = text(createCourseTag(results[i]));
-    else if (resultsType = "program")
-      label = text(createProgramTag(results[i]));
-
-    // Add elements to each other
-    td.appendChild(label);
-    tr.appendChild(td);
+    var tr = createTableRow(results[i], resultsType);
     resultTableBody.appendChild(tr);
   }
 
   return resultTableDiv;
+}
+
+function createTableRow(result, resultsType) {
+  var tr = document.createElement("tr");
+  var td = document.createElement("td");
+
+  // Assign type-specific elements and attributes.
+  var label = null;
+  // Create course-type labels.
+  if (resultsType == "course") {
+    label = text(createCourseTag(result));
+    tr.addEventListener("click", courseResultHandler);
+  }
+  // Create program-type labels.
+  else if (resultsType = "program") {
+    label = text(createProgramTag(result));
+    tr.addEventListener("click", programResultHandler);
+
+  }
+
+  // Add elements to each other
+  td.appendChild(label);
+  tr.appendChild(td);
+  return tr;
 }
 
 
@@ -145,7 +182,7 @@ function parseJSON(jsonResponse) {
  * Return a string of the form COS333 for the given json entry
  */
 function createCourseTag(courseJSON) {
-    var listings = courseJSON['listings']
+    var listings = courseJSON['listings'];
     var listingArr = [];
     for (var i = 0; i < listings.length; i++) {
       var listing = listings[i];
@@ -167,4 +204,100 @@ function createProgramTag(programJSON) {
  */
 function text(str) {
   return document.createTextNode(str);
+}
+
+/* 
+ * Creates an accordion based on a JSON for each major 
+ */
+function createAccordion(resultsObj) {
+    
+    // Create the results elements
+    var resultDiv = document.createElement("div");
+    resultDiv.classList.add("col-sm-2 text-left");
+
+    // Creates header
+    var majorHeader = document.createElement("h3");
+    var majorName = document.createTextNode(resultsObj["name"]);
+    majorHeader.appendChild(majorName);
+    // Appends
+    resultDiv.appendChild(majorHeader);
+
+    // Creates accordion div
+    var accordionDiv = document.createElement("div");
+    accordionDiv.style.float = "left";
+    accordionDiv.classList.add("panel-group");
+    accordionDiv.id = "accordion";
+    // Appends
+    resultDiv.appendChild(accordionDiv);
+
+    // Creates panel div
+    var panelDiv = document.createElement("div");
+    panelDiv.classList.add("panel panel-default");
+    // Appends
+    accordionDiv.appendChild(panelDiv);
+
+    // Generate a row for each requirements
+    for (var i = 0; i < resultsObj["requirements"].length; i++) {
+        // Create panel heading
+        var panelHeading = document.createElement("div");
+        panelHeading.classList.add("panel-heading");
+        // append
+        panelDiv.appendChild(panelHeading);
+
+        // Create panel tile
+        var panelTitle = document.createElement("h4");
+        panelTitle.classList.add("panel-title");
+        // append
+        panelHeading.appendChild(panelTitle);
+
+        // Create accordion toggle
+        var collapseToggle = document.createElement("a");
+        collapseToggle.classList.add("accordion-toggle collapsed");
+        collapseToggle.setAttribute("data-toggle", "collapse");
+        collapseToggle.setAttribute("href", "#collapse" + i);
+        // append
+        panelTitle.appendChild(collapseToggle);
+
+        /* ------------------------------------------------------ */
+
+        // Create panel collapse
+        var panelCollapse = document.createElement("div");
+        panelCollapse.id = "#collapse" + i;
+        panelCollapse.classList = "panel-collapse collapse";
+        // Append
+        panelDiv.appendChild(panelCollapse);
+
+        // Create dropdown body
+        for (var j = 0; j < resultsObj["requirements"][i]["number"]; j++) {
+            // Create panel body
+            var panelBody = document.createElement("div");
+            panelBody.classList = "panel-body";
+            // Append
+            panelCollapse.appendChild(panelBody);
+
+            // Create icon
+            var icon = document.createElement("span");
+            icon.classList = "glyphicon glyphicon-search icon-bad pull-right";
+            // Append
+            panelBody.appendChild(icon);
+
+            // Create popover
+            var popover = document.createElement("a");
+            popover.style.cursor = "pointer";
+            popover.setAttribute("data-toggle", "popover");
+            popover.setAttribute("title", "Potential courses");
+            popover.setAttribute("data-html", "true");
+            var dataContent = resultsObj["requirements"][i]["courses"][0];
+            for (var k = 1; k < resultsObj["requirements"][i]["courses"].length; k++) {
+                dataContent += "<br />";
+                dataContent = resultsObj["requirements"][i]["courses"][k];
+            }
+            popover.setAttribute("data-content", dataContent);
+            // Append
+            panelBody.appendChild(popover);
+
+        }
+    }
+
+    return resultTableDiv;
 }
