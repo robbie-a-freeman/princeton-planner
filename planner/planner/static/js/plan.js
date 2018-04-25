@@ -206,11 +206,11 @@ function text(str) {
   return document.createTextNode(str);
 }
 
-/* 
- * Creates an accordion based on a JSON for each major 
+/*
+ * Creates an accordion based on a JSON for each major
  */
 function createAccordion(resultsObj) {
-    
+
     // Create the results elements
     var resultDiv = document.createElement("div");
     resultDiv.classList.add("col-sm-2");
@@ -257,7 +257,7 @@ function createAccordion(resultsObj) {
         collapseToggle.classList.add("accordion-toggle");
         collapseToggle.classList.add("collapsed");
         collapseToggle.setAttribute("data-toggle", "collapse");
-        collapseToggle.setAttribute("href", "#collapse" + i);
+        collapseToggle.setAttribute("href", "#collapse00000" + i);
         collapseToggle.appendChild(text(resultsObj["requirements"][i]["type"]));
         // append
         panelTitle.appendChild(collapseToggle);
@@ -266,7 +266,7 @@ function createAccordion(resultsObj) {
 
         // Create panel collapse
         var panelCollapse = document.createElement("div");
-        panelCollapse.id = "#collapse" + i;
+        panelCollapse.id = "#collapse00000" + i;
         panelCollapse.classList.add("panel-collapse");
         panelCollapse.classList.add("collapse");
         // Append
