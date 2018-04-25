@@ -290,7 +290,7 @@ function createAccordion(resultsObj) {
             var dataContent = resultsObj["requirements"][i]["courses"][0];
             for (var k = 1; k < resultsObj["requirements"][i]["courses"].length; k++) {
                 dataContent += "<br />";
-                dataContent = resultsObj["requirements"][i]["courses"][k];
+                dataContent += resultsObj["requirements"][i]["courses"][k];
             }
             popover.setAttribute("data-content", dataContent);
             // Append
