@@ -213,7 +213,8 @@ function createAccordion(resultsObj) {
     
     // Create the results elements
     var resultDiv = document.createElement("div");
-    resultDiv.classList.add("col-sm-2 text-left");
+    resultDiv.classList.add("col-sm-2");
+    resultDiv.classList.add("text-left");
 
     // Creates header
     var majorHeader = document.createElement("h3");
@@ -232,7 +233,8 @@ function createAccordion(resultsObj) {
 
     // Creates panel div
     var panelDiv = document.createElement("div");
-    panelDiv.classList.add("panel panel-default");
+    panelDiv.classList.add("panel");
+    panelDiv.classList.add("panel-default");
     // Appends
     accordionDiv.appendChild(panelDiv);
 
@@ -252,7 +254,8 @@ function createAccordion(resultsObj) {
 
         // Create accordion toggle
         var collapseToggle = document.createElement("a");
-        collapseToggle.classList.add("accordion-toggle collapsed");
+        collapseToggle.classList.add("accordion-toggle");
+        collapseToggle.classList.add("collapsed");
         collapseToggle.setAttribute("data-toggle", "collapse");
         collapseToggle.setAttribute("href", "#collapse" + i);
         // append
@@ -263,7 +266,8 @@ function createAccordion(resultsObj) {
         // Create panel collapse
         var panelCollapse = document.createElement("div");
         panelCollapse.id = "#collapse" + i;
-        panelCollapse.classList = "panel-collapse collapse";
+        panelCollapse.classList.add("panel-collapse");
+        panelCollapse.classList.add("collapse");
         // Append
         panelDiv.appendChild(panelCollapse);
 
@@ -277,7 +281,10 @@ function createAccordion(resultsObj) {
 
             // Create icon
             var icon = document.createElement("span");
-            icon.classList = "glyphicon glyphicon-search icon-bad pull-right";
+            icon.classList.add("glyphicon");
+            icon.classList.add("glyphicon-search");
+            icon.classList.add("icon-bad");
+            icon.classList.add("pull-right");
             // Append
             panelBody.appendChild(icon);
 
@@ -299,5 +306,5 @@ function createAccordion(resultsObj) {
         }
     }
 
-    return resultTableDiv;
+    return resultAccordionDiv;
 }
