@@ -23,7 +23,7 @@
     width: 100%;
     background-color: #f3f3f3;
 }
-#courseSearchResults {
+#courseSearchResults, #programSearchResults {
     position:relative;
     background:white;
 }
@@ -32,19 +32,19 @@
     overflow:auto;
     margin-top:20px;
 }
-#courseSearchResults table {
+#courseSearchResults, #programSearchResults table {
     width:100%;
     background:white;
     border-collapse: collapse;
 }
-#courseSearchResults table * {
+#courseSearchResults, #programSearchResults table * {
     background:white;
     color:black;
     text-align: left;
     padding: 5px 10px 5px 10px;
     font-size: 12px;
 }
-#courseSearchResults table thead th .text {
+#courseSearchResults, #programSearchResults table thead th .text {
     position:absolute;
     top:-20px;
     z-index:2;
@@ -52,7 +52,7 @@
     width:35%;
     border:1px solid red;
 }
-#courseSearchResults table, th, td {
+#courseSearchResults, #programSearchResults table, th, td {
     border: 1px solid rgb(196, 193, 193);
 }
 
