@@ -1,3 +1,6 @@
+// Counter for distributing unique element IDs (UIDs)
+var UID_count = 0;
+
 // Initial function called to setup HTML elements, listeners, etc.
 function plan_init() {
   var courseSearchBox = $("#courseSearch")[0];
@@ -24,17 +27,52 @@ function keyEventHandler(event) {
 
 // Called when program search results are clicked.
 function programResultHandler(event) {
-  var target = $("#programInfoDiv3")[0];
+  // Add clicked major to selected majors list.
+  var tr = this.cloneNode(true);
+  var table = $("#currentProgramsTable")[0];
+  var tableBody = table.children[0]; // make sure [0] correct
+  var allRows = tableBody.children;
+
+  // Disallow duplicate listings.
+  for (var i = 0; i < allRows.length; i++) {
+    if (allRows[i].innerHTML == tr.innerHTML) {
+      return;
+    }
+  }
+
+  // Add the course to the list of enrolled courses
+  tableBody.appendChild(tr);
+
+
+  // BUG: Should not append to this div (it's nested too deeply)
+  // Create and add an accordion for this class.
+  var target = $("#programInfoDiv")[0];
   var accordion = createAccordion(JSON5.parse(this.obj_data));
   target.appendChild(accordion);
-  // init popovers
+
+  // Reinitialize all popovers.
   $("[data-toggle=popover]").popover();
-  console.log('program clicked');
 }
 
 // Called when course search results are clicked.
 function courseResultHandler(event) {
-  console.log('course clicked');
+
+  // Add the clicked course to the enrolled courses list
+  var tr = this.cloneNode(true);
+  var table = $("#currentCoursesTable")[0];
+  var tableBody = table.children[0]; // make sure [0] correct
+  var allRows = tableBody.children;
+
+  // Disallow duplicate listings.
+  for (var i = 0; i < allRows.length; i++) {
+    if (allRows[i].innerHTML == tr.innerHTML) {
+      return;
+    }
+  }
+
+  // Add the course to the list of enrolled courses
+  tableBody.appendChild(tr);
+
 
   // Make a post request for the given table and fetch via python OR
   // cache results of search locally and do it in JS.
@@ -119,6 +157,9 @@ function updateResults(jsonResponse, type) {
   resultsHeaderDiv[0].appendChild(resultHeading);
 }
 
+
+
+// ======================== CREATOR FUNCTIONS ==============================
 // GIven a parsed JSON object, return a table to
 // display the results.
 function createResultsTable(resultsObj, resultsType) {
@@ -169,53 +210,6 @@ function createTableRow(result, resultsType) {
   return tr;
 }
 
-
-// =========================== HELPER FUNCTIONS =========================
-
-function parseJSON(jsonResponse) {
-  // Preprocess the JSON response so it is suitable for parsing
-  jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
-
-  //  these few should be unnecessary as it's technically a bug in the data.
-  jsonResponse = jsonResponse.replace(/False/g, "false");
-  jsonResponse = jsonResponse.replace(/None/g, "null");
-
-  results = JSON5.parse(jsonResponse);
-  return results;
-}
-
-/*
- * Return a string of the form COS333 for the given json entry
- */
-function createCourseTag(courseJSON) {
-    var listings = courseJSON['listings'];
-    var listingArr = [];
-    for (var i = 0; i < listings.length; i++) {
-      var listing = listings[i];
-      listingArr.push(listing['dept'] + listing['number']);
-    }
-    // return listingArr[0];
-    return listingArr.join(" / ");
-}
-
-/* Create a string containing name of major for given json entry
- */
-function createProgramTag(programJSON) {
-  var tag = programJSON['name'];
-  if (programJSON.track) {
-    tag += " - " + programJSON['track'];
-  }
-  return tag;
-}
-
-
-/*
- * Creates a DOM child text node containing the given str
- */
-function text(str) {
-  return document.createTextNode(str);
-}
-
 /*
  * Creates an accordion based on a JSON for each major
  */
@@ -262,12 +256,15 @@ function createAccordion(resultsObj) {
         // append
         panelHeading.appendChild(panelTitle);
 
+        // Assign a UID
+        var uid = UID();
+
         // Create accordion toggle
         var collapseToggle = document.createElement("a");
         collapseToggle.classList.add("accordion-toggle");
         collapseToggle.classList.add("collapsed");
         collapseToggle.setAttribute("data-toggle", "collapse");
-        collapseToggle.setAttribute("href", "#collapse00000" + i);
+        collapseToggle.setAttribute("href", "#collapse" + uid);
         collapseToggle.appendChild(text(resultsObj["requirements"][i]["type"]));
         // append
         panelTitle.appendChild(collapseToggle);
@@ -276,7 +273,7 @@ function createAccordion(resultsObj) {
 
         // Create panel collapse
         var panelCollapse = document.createElement("div");
-        panelCollapse.id = "collapse00000" + i;
+        panelCollapse.id = "collapse" + uid;
         panelCollapse.classList.add("panel-collapse");
         panelCollapse.classList.add("collapse");
         // Append
@@ -320,4 +317,67 @@ function createAccordion(resultsObj) {
     }
 
     return resultDiv;
+}
+
+
+// =========================== HELPER FUNCTIONS =========================
+
+function parseJSON(jsonResponse) {
+  // Preprocess the JSON response so it is suitable for parsing
+  jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
+
+  //  these few should be unnecessary as it's technically a bug in the data.
+  jsonResponse = jsonResponse.replace(/False/g, "false");
+  jsonResponse = jsonResponse.replace(/None/g, "null");
+
+  results = JSON5.parse(jsonResponse);
+  return results;
+}
+
+/*
+ * Return a string of the form COS333 for the given json entry
+ */
+function createCourseTag(courseJSON) {
+    var listings = courseJSON['listings'];
+    var listingArr = [];
+    for (var i = 0; i < listings.length; i++) {
+      var listing = listings[i];
+      listingArr.push(listing['dept'] + listing['number']);
+    }
+    // return listingArr[0];
+    return listingArr.join(" / ");
+}
+
+/* Create a string containing name of major for given json entry
+ */
+function createProgramTag(programJSON) {
+  var tag = programJSON['name'];
+  if (programJSON.track) {
+    tag += " - " + programJSON['track'];
+  }
+  return tag;
+}
+
+/*
+ * Creates a DOM child text node containing the given str
+ */
+function text(str) {
+  return document.createTextNode(str);
+}
+
+// Convert num to base 36
+function numToUID(num) {
+  var b36str = num.toString(36);
+  // Pad with 0 on left until 6 chars long.
+  while (b36str.length < 6) {
+    b36str = "0" + b36str;
+  }
+  return b36str;
+}
+
+// Generate a new UID and increment the counter.
+function UID() {
+  var uid = numToUID(UID_count);
+  UID_count++;
+  return uid;
 }
