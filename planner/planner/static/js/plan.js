@@ -58,18 +58,21 @@ function programResultHandler(event) {
 function courseResultHandler(event) {
 
   // Add the clicked course to the enrolled courses list
-  var tr = this.cloneNode(true);
+  var tr = document.createElement("tr");
+  var td = this.cloneNode(true);
   var table = $("#currentCoursesTable")[0];
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
 
   // Disallow duplicate listings.
+  // TODO make more rigorous; this is buggy
   for (var i = 0; i < allRows.length; i++) {
-    if (allRows[i].innerHTML == tr.innerHTML) {
+    if (allRows[i].children[0].innerHTML == td.innerHTML) {
       return;
     }
   }
 
+  tr.appendChild(td);
   // Add the course to the list of enrolled courses
   tableBody.appendChild(tr);
 
@@ -201,26 +204,34 @@ function createTableRow(result, resultsType) {
   var label = null;
   // Create course-type labels.
   if (resultsType == "course") {
-    var span = document.createElement("span");
-    span.classList.add("glyphicon");
-    span.classList.add("glyphicon-question-sign");
+    // Create info button.
+    var infoBut = document.createElement("span");
+    infoBut.classList.add("glyphicon");
+    infoBut.classList.add("glyphicon-question-sign");
+    infoBut.addEventListener("click", courseInfoHandler);
 
+    // Create infobutton td
+    var infoTD = document.createElement("td");
+    infoTD.appendChild(infoBut);
+
+    // Create label and onclick listener
     label = text(createCourseTag(result));
-    tr.addEventListener("click", courseResultHandler);
-    span.addEventListener("click", courseInfoHandler);
-    tr.appendChild(span);
+    td.addEventListener("click", courseResultHandler);
   }
   // Create program-type labels.
   else if (resultsType = "program") {
     label = text(createProgramTag(result));
     tr.addEventListener("click", programResultHandler);
     tr.obj_data = JSON5.stringify(result);
-
   }
 
   // Add elements to each other
   td.appendChild(label);
   tr.appendChild(td);
+  if (resultsType == "course") {
+    tr.appendChild(infoTD);
+  }
+
   return tr;
 }
 
