@@ -205,7 +205,7 @@ function createTableRow(result, resultsType) {
     span.classList.add("glyphicon");
     span.classList.add("glyphicon-question-sign");
 
-    label = text(createCourseTag(result)) + ;
+    label = text(createCourseTag(result));
     tr.addEventListener("click", courseResultHandler);
     span.addEventListener("click", courseInfoHandler);
     tr.appendChild(span);
