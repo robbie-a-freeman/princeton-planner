@@ -8,7 +8,7 @@ from . import course_search, program_search, user_info
 def main():
     return render_template('index.html')
 
-@app.route('/plan.html', methods = ["GET", "POST"])
+@app.route('/plan', methods = ["GET", "POST"])
 @login_required
 def plan():
     user = {'netid': cas.username}
@@ -34,11 +34,23 @@ def plan():
         # Handle adding courses for specific user
         elif form_name == 'COURSE_ADD':
             query = request.form['course_add']
-            user_info.add_course(query)
+            user_info.add_course(user, "program", query)
 
         elif form_name == 'PROGRAM_ADD':
             query = request.form['program_add']
-            user_info.add_program(query)
+            user_info.add_program(user, query)
+
+        elif form_name == 'COURSE_REMOVE':
+            query = request.form['course_remove']
+            user_info.remove_course(user, "program", query)
+        
+        elif form_name == 'PROGRAM_REMOVE':
+            query = request.form['program_remove']
+            user_info.remove_program(user, query)
+
+        elif form_name == 'ENROLLED_COURSE_REMOVE':
+            query = request.form['enrolled_course_remove']
+            user_info.remove_enrolled_course(user, query)
 
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
@@ -55,4 +67,4 @@ def index():
 @app.route('/login')
 @login_required
 def login():
-    return render_template('plan.html')
+    return redirect('/plan')

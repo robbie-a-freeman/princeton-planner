@@ -15,10 +15,16 @@
 #
 # USER:
 #     COURSE:
+#         PROGRAMS:
 #
 #
 # Note: We assume that the "accordions" for each track/program only have at
 #       most one level.
+#
+# Note1: If we map courses to programs, then removing programs can be hard.
+#        Do we have to linear scan essentially???
+#
+# Note2: If we map programs to courses, there are more values to store for sure.
 
 import re, os
 from pymongo import MongoClient
@@ -44,9 +50,9 @@ def sanitize(unsafe):
 
 # Given a user, add user if new and return information if existing user
 def user_query(user):
-    return 5
+    pass
     exists = users.find()
-    if users:
+    if exists:
         return 5
     else:
         return 5
@@ -57,6 +63,19 @@ def add_course(user, program, course):
 
 # Given a user and a program, add the program to existing programs
 def add_program(user, program):
+    pass
+
+# Given a user and a course, remove the course from the program
+def remove_course(user, program, course):
+    pass
+
+# Given a user and a program, remove the program
+def remove_program(user, program):
+    pass
+
+# Given a user and an enrolled course, remove the enrolled course
+# Must remove from all programs
+def remove_enrolled_course(user, course):
     pass
 
 # Given a single sub-part of the query string, generate the
