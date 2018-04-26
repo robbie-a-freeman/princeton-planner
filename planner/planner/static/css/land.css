@@ -45,7 +45,7 @@
     font-size: 12px;
 }
 #courseSearchResults tbody tr:hover td, .table tbody tr:hover th {
-    background-color: rgb(230, 230, 230);
+    background-color:rgb(230, 230, 230);
 }
 #courseSearchResults table thead th .text {
     position:absolute;
@@ -76,6 +76,9 @@
     text-align: left;
     padding: 5px 10px 5px 10px;
     font-size: 12px;
+}
+#programSearchResults tbody tr:hover td, .table tbody tr:hover th {
+    background-color:rgb(230, 230, 230);
 }
 #programSearchResults table thead th .text {
     position:absolute;
