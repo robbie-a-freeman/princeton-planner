@@ -195,7 +195,11 @@ function createCourseTag(courseJSON) {
 /* Create a string containing name of major for given json entry
  */
 function createProgramTag(programJSON) {
-  return programJSON['name'];
+  var tag = programJSON['name'];
+  if (programJSON.track) {
+    tag += " - " + programJSON['track'];
+  }
+  return tag;
 }
 
 

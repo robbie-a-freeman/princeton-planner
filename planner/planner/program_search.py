@@ -11,7 +11,9 @@ from pymongo import MongoClient
 mongoURI = os.environ.get('MONGOLAB_URI')
 client = MongoClient(mongoURI)
 db = client.plannerdb
-programs = db.programs
+majors = db.majors
+certificates = db.certificates
+#programs = db.programs
 
 # Sanitize the input string.
 # MUST IMPLEMENT THIS!!!
@@ -36,9 +38,14 @@ def queryOneWord(word):
     # Combine code & fullname searches
     else:
     # TODO fix bug where courses satisfying mutliple conditions are duplicated (use sets)
-        results  = [prog for prog in programs.find( {"name":re_obj} ) ]
-        results += [prog for prog in programs.find( {"code":re_obj} ) ]
+        results  = [maj for maj in majors.find( {"name":       re_obj} ) ]
+        results += [maj for maj in majors.find( {"track":      re_obj} ) ]
+        results += [maj for maj in majors.find( {"short_name": re_obj} ) ]
+        results += [cert for cert in certificates.find( {"name":       re_obj} ) ]
+        results += [cert for cert in certificates.find( {"short_name": re_obj} ) ]
 
+        # Remove duplicates.
+        results = [i for n, i in enumerate(results) if i not in results[n + 1:]]
     return results
 
 # Split the sanitized query string into sub-parts and
