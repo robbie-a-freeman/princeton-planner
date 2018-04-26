@@ -80,6 +80,14 @@ function courseResultHandler(event) {
   // along with native DOM integration.
 }
 
+// Called when info button next to search results is clicked.
+function courseInfoHandler(event) {
+
+  // Pop up with the extra info
+  console.log("HEELO");
+
+}
+
 
 // Return true if we'd like to respond to this key being pressed; else false.
 // TODO make space a considerable key!!
@@ -193,8 +201,14 @@ function createTableRow(result, resultsType) {
   var label = null;
   // Create course-type labels.
   if (resultsType == "course") {
-    label = text(createCourseTag(result));
+    var span = document.createElement("span");
+    span.classList.add("glyphicon");
+    span.classList.add("glyphicon-question-sign");
+
+    label = text(createCourseTag(result)) + ;
     tr.addEventListener("click", courseResultHandler);
+    span.addEventListener("click", courseInfoHandler);
+    tr.appendChild(span);
   }
   // Create program-type labels.
   else if (resultsType = "program") {
