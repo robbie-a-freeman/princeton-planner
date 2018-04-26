@@ -24,6 +24,9 @@ function keyEventHandler(event) {
 
 // Called when program search results are clicked.
 function programResultHandler(event) {
+  var target = $("#programInfoDiv3")[0];
+  var accordion = createAccordion(JSON5.parse(this.obj_data));
+  target.appendChild(accordion);
   console.log('program clicked');
 }
 
@@ -154,6 +157,7 @@ function createTableRow(result, resultsType) {
   else if (resultsType = "program") {
     label = text(createProgramTag(result));
     tr.addEventListener("click", programResultHandler);
+    tr.obj_data = JSON5.stringify(result);
 
   }
 
