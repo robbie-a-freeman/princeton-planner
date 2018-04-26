@@ -56,6 +56,39 @@
     border: 1px solid rgb(196, 193, 193);
 }
 
+/* ------------------------ */
+
+#programSearchResults {
+    position:relative;
+    background:white;
+}
+#programSearchResults table {
+    width:100%;
+    background:white;
+    border-collapse: collapse;
+}
+#programSearchResults table * {
+    background:white;
+    color:black;
+    text-align: left;
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+}
+#programSearchResults table thead th .text {
+    position:absolute;
+    top:-20px;
+    z-index:2;
+    height:20px;
+    width:35%;
+    border:1px solid red;
+}
+#programSearchResults table, th, td {
+    border: 1px solid rgb(196, 193, 193);
+}
+
+
+
+
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {height: auto}
 
