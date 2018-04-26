@@ -1,7 +1,7 @@
 from . import app, cas
 from flask import render_template, redirect, request
 from flask_cas import login_required
-from . import course_search, program_search
+from . import course_search, program_search, user_info
 
 
 @app.route("/")
@@ -12,6 +12,8 @@ def main():
 @login_required
 def plan():
     user = {'netid': cas.username}
+
+    info = user_info.user_query(user['netid'])
 
     ## Handle POST forms (ie from search boxes)
     if request.method == 'POST':
@@ -28,6 +30,16 @@ def plan():
         elif form_name == 'PROGRAM_QUERY':
             query = request.form['program_query']
             return str(program_search.program_db_query(query))
+
+        # Handle adding courses for specific user
+        elif form_name == 'COURSE_ADD':
+            query = request.form['course_add']
+            user_info.add_course(query)
+
+        elif form_name == 'PROGRAM_ADD':
+            query = request.form['program_add']
+            user_info.add_program(query)
+
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
         # are arbitrary and we can't depend on the fact that they are upper/lowercase
