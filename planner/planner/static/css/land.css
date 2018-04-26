@@ -1,0 +1,193 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+
+.table-fixed {
+    width: 100%;
+    background-color: #f3f3f3;
+}
+#courseSearchResults {
+    position:relative;
+    background:white;
+}
+#course-table-scroll {
+    height:150px;
+    overflow:auto;
+    margin-top:20px;
+}
+#courseSearchResults table {
+    width:100%;
+    background:white;
+    border-collapse: collapse;
+}
+#courseSearchResults table * {
+    background:white;
+    color:black;
+    text-align: left;
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+}
+#courseSearchResults tbody tr:hover td, .table tbody tr:hover th {
+    background-color:rgb(230, 230, 230);
+}
+#courseSearchResults table thead th .text {
+    position:absolute;
+    top:-20px;
+    z-index:2;
+    height:20px;
+    width:35%;
+    border:1px solid red;
+}
+#courseSearchResults table, th, td {
+    border: 1px solid rgb(196, 193, 193);
+}
+
+/* ------------------------ */
+
+#programSearchResults {
+    position:relative;
+    background:white;
+}
+#programSearchResults table {
+    width:100%;
+    background:white;
+    border-collapse: collapse;
+}
+#programSearchResults table * {
+    background:white;
+    color:black;
+    text-align: left;
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+}
+#programSearchResults tbody tr:hover td, .table tbody tr:hover th {
+    background-color:rgb(230, 230, 230);
+}
+#programSearchResults table thead th .text {
+    position:absolute;
+    top:-20px;
+    z-index:2;
+    height:20px;
+    width:35%;
+    border:1px solid red;
+}
+#programSearchResults table, th, td {
+    border: 1px solid rgb(196, 193, 193);
+}
+
+
+
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: auto}
+
+/* Set gray background color and 100% height */
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {height:auto;}
+}
+
+h3 {
+    font-size: 18px;
+    text-align: center
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 12px;
+}
+
+.popover{
+    max-width: none; /* Max Width of the popover (depending on the container!) */
+    white-space: pre-wrap;
+    overflow-y:auto;
+
+}
+.popover-content {
+    font-size: 12px;
+    word-wrap: break-word;
+}
+.icon-bad {
+    color: rgb(65, 166, 224);
+}
+.icon-good {
+    color: #5CB85C;
+}
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;
+    position: static;
+    color: white;
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+.accordion-toggle:hover {
+    text-decoration: none;
+}
+.panel .panel-heading {
+    font-family: verdana;
+    border-radius:0;
+    padding: 0px;
+
+}
+.panel .panel-heading a{
+    display:block;
+    background: rgb(255, 193, 59);
+    color: white;
+    padding:5px 10px 5px 10px;
+    border-radius:0px;
+    text-decoration:none;
+    font-size: 12px;
+}
+.panel .panel-heading a:hover {
+    background: rgb(247, 169, 2);
+    color: white;
+    text-decoration:none;
+}
+#accordion .highlight a{
+    background:rgb(255, 193, 59);/* change colour of selected bar here if needed */
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+    color:white;
+    transition:background 2s ease;
+}
+.panel-body {
+    font-size: 12px;
+    padding:5px 10px;
+}
+.table td {
+text-align: left;
+font-size: 12px;
+background: white;
+}

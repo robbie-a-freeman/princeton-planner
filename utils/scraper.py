@@ -35,6 +35,9 @@ TERM_CODE = 1184  # spring 2018
 TERM_CODE = 1182  # fall 2017 ??
 TERM_CODE = 1192  # fall 2018
 
+if len(sys.argv) > 1:
+    TERM_CODE = int(sys.argv[1])
+
 URL_PREFIX = "http://registrar.princeton.edu/course-offerings/"
 LIST_URL = URL_PREFIX + "search_results.xml?term={term}"
 COURSE_URL = URL_PREFIX + "course_details.xml?courseid={courseid}&term={term}"

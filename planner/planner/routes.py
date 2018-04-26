@@ -1,0 +1,46 @@
+from . import app, cas
+from flask import render_template, redirect, request
+from flask_cas import login_required
+from . import course_search, program_search
+
+
+@app.route("/")
+def main():
+    return render_template('index.html')
+
+@app.route('/plan.html', methods = ["GET", "POST"])
+@login_required
+def plan():
+    user = {'netid': cas.username}
+
+    ## Handle POST forms (ie from search boxes)
+    if request.method == 'POST':
+        # Figure out which form submitted the request.
+        # TODO this is a potential security risk; user can spoof any form they want.
+        form_name = request.form['form_name']
+
+        # Handle searches for courses
+        if form_name == 'COURSE_QUERY':
+            query = request.form['course_query']
+            return str(course_search.course_db_query(query))
+
+        # Handle searches for majors/certificates
+        elif form_name == 'PROGRAM_QUERY':
+            query = request.form['program_query']
+            return str(program_search.program_db_query(query))
+
+        # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
+        # are arbitrary and we can't depend on the fact that they are upper/lowercase
+        # versions of one another.
+
+    # Normal GET: Return our beautiful planning page.
+    return render_template('plan.html', user=user)
+
+@app.route('/index.html')
+def index():
+    return redirect('/')
+
+@app.route('/login')
+@login_required
+def login():
+    return render_template('plan.html')

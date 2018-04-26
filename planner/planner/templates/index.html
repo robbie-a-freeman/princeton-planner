@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,15 +8,19 @@
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
+  <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">-->
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.bxslider.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/jquery.bxslider.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/font-awesome.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/animate.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
   <!-- =======================================================
     Theme Name: Baker
     Theme URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
@@ -50,7 +53,7 @@
                   <li class=""><a href="#feature">About</a></li>
                   <li class=""><a href="#service">Team</a></li>
                   <!-- Should be CAS authentication link-->
-                  <li class=""><a href="">Login</a></li>
+                  <li class=""><a href="plan.html">Login</a></li>
                   <li class=""><a href="#contact">Contact Us</a></li>
                   <li class=""><a href="plan.html" class="btn btn-plan">Plan</a></li>
                 </ul>
@@ -86,7 +89,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="{% static 'img/ser01.png' %}">
+                <img src="{{ url_for('static', filename = 'img/ser01.png') }}">
               </div>
               <h3 class="pad-bt15">Discover</h3>
               <p>Find classes that you haven't even heard of and fit them into your future.</p>
@@ -95,7 +98,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="{% static 'img/ser02.png' %}">
+                <img src="{{ url_for('static', filename = 'img/ser02.png') }}">
               </div>
               <h3 class="pad-bt15">Create</h3>
               <p>Make robust, flexible plans that fulfill your goals and organize your life.</p>
@@ -104,7 +107,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="{% static 'img/ser03.png' %}">
+                <img src="{{ url_for('static', filename = 'img/ser03.png') }}">
               </div>
               <h3 class="pad-bt15">Customize</h3>
               <p>Take ultimate control over your plans with our intuitive, easy-to-use interface.</p>
@@ -113,7 +116,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
-                <img src="{% static 'img/ser04.png' %}">
+                <img src="{{ url_for('static', filename = 'img/ser04.png') }}">
               </div>
               <h3 class="pad-bt15">Succeed</h3>
               <p>Reach the goals you set for yourself and watch your plan evolve over time.</p>
@@ -134,7 +137,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="item-img">
-              <img src="img/robbie.png">
+              <img src="{{ url_for('static', filename = 'img/robbie.png') }}">
             </div>
             <div class="service-item">
               <h3>Robert Freeman</h3>
@@ -143,7 +146,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="item-img">
-              <img src="img/phillip.png">
+              <img src="{{ url_for('static', filename = 'img/phillip.png') }}">
             </div>
             <div class="service-item">
               <h3>Phillip Yoon</h3>
@@ -152,7 +155,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="item-img">
-              <img src="img/henry.png">
+              <img src="{{ url_for('static', filename = 'img/henry.png') }}">
             </div>
             <div class="service-item">
               <h3>Henry Wang</h3>
@@ -161,7 +164,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="item-img">
-              <img src="img/will.png">
+              <img src="{{ url_for('static', filename = 'img/will.png') }}">
             </div>
             <div class="service-item">
               <h3>William Sweeny</h3>
@@ -171,6 +174,8 @@
         </div>
       </div>
     </section>
+<<<<<<< HEAD
+>>>>>>> website
     <!---->
     <section id="contact" class="section-padding wow fadeInUp delay-05s">
       <div class="container">
@@ -243,16 +248,18 @@
     </footer>
     <!---->
   </div>
-  <script src="{% static 'js/jquery.min.js' %}"></script>
-  <script src="{% static 'js/jquery.easing.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/wow.js' %}"></script>
-  <script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
-  <script src="{% static 'js/custom.js' %}"></script>
-  <script src="{% static 'contactform/contactform.js' %}"></script>
-  <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.easing.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/wow.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.bxslider.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/custom.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'contactform/contactform.js') }}"></script>
 
 </body>
 </html>

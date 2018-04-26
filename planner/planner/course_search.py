@@ -19,6 +19,22 @@
 #   Revise so that it is possible to return searches from multiple categories
 #       i.e. "COS" would match EITHER the dept id or the course name, returning both results lists
 #
+#   We consider a type of search which is a slightly more complex form of the intersection
+#   of queries that we implemented in reg.py. We will consider the query string types
+#   and take the intersection of the courses in each query string type.
+#   For example, if the query string is "COS 333 ENG", then we could have two types:
+#   DEPT: set(["COS", "ENG"])
+#   NUMBER: set([333])
+#   We take the intersection of the courses to obtain the final result list.
+#
+#   However, we need to consider names/titles of courses. If there is any query longer than 4 letters...
+#
+#
+#   For example, if "COS" is contained within the title of a course, then check department. IF "COS"
+#   is a department, then dont' check titles.
+#   However, if we have a query like "SYS", then we check if the "SYS" department exists. If it doesn't,
+#   then check the titles.
+#
 
 
 # ======================================================================
@@ -43,12 +59,21 @@
 #
 # =====================================================================
 
-import re
+import re, os
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
-db = client.test      # Remember to change in vagrant_up if this changes
+
+#client = MongoClient('localhost', 27017)
+#db = client.test      # Remember to change in vagrant_up if this changes
+#courses = db.courses
+
+
+# Fetch the URI from environment variable to avoid leaking credentials.
+mongoURI = os.environ.get('MONGOLAB_URI')
+client = MongoClient(mongoURI)
+db = client.plannerdb
 courses = db.courses
+
 
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ARC", "ART", "ASA", "AST", "ATL", "BCS", "CBE",
@@ -74,51 +99,69 @@ dist_ids = set(("EC", "EM", "HA", "LA", "QR", "SA", "STL", "STN"))
 def sanitize(unsafe):
 
     # This doesn't do much sanitizing right now!
-    # make uppercase to introduce case insensitivity
-    return unsafe.upper()
+    return unsafe
 
 # Given a single sub-part of the query string, generate the
 # corresponding Mongo query, and return the results of the
-# Mongo query, as a json-style object.
+# Mongo query, as an array of json objects (strings or objects?)
 def queryOneWord(word):
+    word = word.upper()
+    results = []
+
     re_obj = {"$regex":word, "$options":"i"}
 
+    if len(word) <= 1:
+        return results
+
     # Dept. ID:
-    if word in dept_ids:
-        return courses.find( {"listings.dept":word} )
+    elif word in dept_ids:
+        results = [course for course in courses.find( {"listings.dept":word} ) ]
 
     # Course number:
-    elif re.match("\d\d\d", word) is not None:
-        return courses.find( {"listings.number":word} )
+    elif re.match("\d\d\d", word):
+        results = [course for course in courses.find( {"listings.number":word} ) ]
 
     # Dist. ID:
     elif word in dist_ids:
-        return courses.find( {"area": word})
+        results = [course for course in courses.find( {"area": word}) ]
 
     # Len <= 2:
     elif len(word) <= 2:
-        return courses.find( {"listings.dept":   re_obj} ) +\
-               courses.find( {"listings.number": re_obj} ) +\
-               courses.find( {"title":           re_obj} )
+        # TODO fix bug where courses satisfying mutliple conditions are duplicated (use a set)
+        results  = [course for course in courses.find( {"listings.dept":   re_obj} )]
+        results += [course for course in courses.find( {"listings.number": re_obj} )]
+        results += [course for course in courses.find( {"title":           re_obj} )]
 
     # Len >= 3:
     else:
-        return courses.find( {"title": re_obj} )
+        results = [course for course in courses.find( {"title":           re_obj} )]
 
-    return []
+    return results
 
 # Split the sanitized query string into sub-parts and
 # generate a mongo query for eachself.
 def queryAllWords(safe):
-    words = safe.split(" ")
+    words = safe.split()
     results = []
     for word in words:
         results.append(queryOneWord(word))
     return results
 
-# public alias for queryAllWords
-def db_query(safe):
-    return queryAllWords(safe);
+
+# public variant of queryAllWords called by landing.py
+def course_db_query(safe):
+    print(safe)
+    return queryOneWord(safe)
+    ### Debug version
+    # return "query to query_parser was: " + safe
+    ### Old version
+    #results = queryOneWord(safe) # queryAllWords bugged for some reason. TODO
+    #out_results = [result for result in results]
+    #return out_results
+    ### Very old version (it's very old for a reason)
+    #output_strings = [getCourseTag(result) for result in results]
+    #return "Query: %s <br>\n" % safe + "<br>\n".join(output_strings)
+
 
 ### Helper functions
 
@@ -149,4 +192,4 @@ def main():
     queryOneTest("IMPLICATIONS")
 
 
-main()
+# main()

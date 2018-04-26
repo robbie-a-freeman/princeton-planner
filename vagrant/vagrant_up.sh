@@ -17,7 +17,11 @@ sudo aptitude -y install screen
 
 # Install easy_install and pip
 sudo aptitude -y install python-pip
-pip install -U pip
+sudo pip install -U pip
+sudo python -m pip install --upgrade pip setuptools wheel
+
+# curl
+sudo apt-get install -y curl
 
 # sudo aptitude -y install python-setuptools
 # sudo easy_install pip
