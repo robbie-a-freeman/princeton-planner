@@ -230,6 +230,7 @@ function createInfoButton() {
   return infoBut;
 }
 
+// ==================== ACCORDION CREATORS ==================================
 /* Creates an accordion based on a JSON object resultsObj  */
 function createAccordion(resultsObj) {
     var requirements = resultsObj["requirements"];
