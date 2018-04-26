@@ -43,7 +43,7 @@
     padding: 5px 10px 5px 10px;
     font-size: 12px;
 }
-#courseSearchResults tbody tr:hover td, .table tbody tr:hover th {
+#courseSearchResults tbody tr:hover td, #courseSearchResults tbody tr:hover th {
     background-color:rgb(230, 230, 230);
 }
 #courseSearchResults table thead th .text {
