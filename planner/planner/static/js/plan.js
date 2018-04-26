@@ -210,10 +210,6 @@ function createTableRow(result, resultsType) {
     infoBut.classList.add("glyphicon-question-sign");
     infoBut.addEventListener("click", courseInfoHandler);
 
-    // Create infobutton td
-    var infoTD = document.createElement("td");
-    infoTD.appendChild(infoBut);
-
     // Create label and onclick listener
     label = text(createCourseTag(result));
     td.addEventListener("click", courseResultHandler);
@@ -229,7 +225,7 @@ function createTableRow(result, resultsType) {
   td.appendChild(label);
   tr.appendChild(td);
   if (resultsType == "course") {
-    tr.appendChild(infoTD);
+    tr.appendChild(infoBut);
   }
 
   return tr;
