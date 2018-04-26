@@ -27,6 +27,8 @@ function programResultHandler(event) {
   var target = $("#programInfoDiv3")[0];
   var accordion = createAccordion(JSON5.parse(this.obj_data));
   target.appendChild(accordion);
+  // init popovers
+  $("[data-toggle=popover]").popover();
   console.log('program clicked');
 }
 
@@ -274,7 +276,7 @@ function createAccordion(resultsObj) {
 
         // Create panel collapse
         var panelCollapse = document.createElement("div");
-        panelCollapse.id = "#collapse00000" + i;
+        panelCollapse.id = "collapse00000" + i;
         panelCollapse.classList.add("panel-collapse");
         panelCollapse.classList.add("collapse");
         // Append
