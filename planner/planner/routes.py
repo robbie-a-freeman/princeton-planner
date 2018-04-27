@@ -13,8 +13,6 @@ def main():
 def plan():
     user = {'netid': cas.username}
 
-    info = user_info.user_query(user['netid'])
-
     ## Handle POST forms (ie from search boxes)
     if request.method == 'POST':
         # Figure out which form submitted the request.
@@ -58,8 +56,8 @@ def userdata():
     user = {'netid': cas.username}
 
     # Get current user's data.
-    #if request.method = "GET":
-    user_info.user_query(user)
+    if request.method == "GET":
+        return str(user_info.user_query(user))
     else:
 
         if form_name == 'COURSE_ADD':

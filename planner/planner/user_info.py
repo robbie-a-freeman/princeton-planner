@@ -28,6 +28,7 @@
 
 import re, os
 from pymongo import MongoClient
+from pymongo import collection
 
 
 #client = MongoClient('localhost', 27017)
@@ -40,6 +41,7 @@ mongoURI = os.environ.get('MONGOLAB_URI')
 client = MongoClient(mongoURI)
 db = client.plannerdb
 users = db.users
+AFTER = collection.ReturnDocument.AFTER
 
 # Sanitize the input string.
 # MUST IMPLEMENT THIS!!!
@@ -50,7 +52,12 @@ def sanitize(unsafe):
 
 # Given a user, add user if new and return information if existing user
 def user_query(user):
-    users.findAndModify({query: {"user": user }, new: true, upsert: true})
+    #users.findAndModify({"query": {"user": user }, "new": True, "upsert": True})
+    results = users.find_one_and_update({'user': user}, {"$set": {"exists":True}}, \
+                                     upsert=True, return_document=AFTER)
+    #results = [result for result in results]
+    return results
+
 
 # Given a user and a course, add the course to existing user's program
 def add_course(user, program, course):
