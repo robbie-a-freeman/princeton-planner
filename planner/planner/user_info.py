@@ -53,18 +53,20 @@ def sanitize(unsafe):
 # Given a user, add user if new and return information if existing user
 def user_query(user):
     #users.findAndModify({"query": {"user": user }, "new": True, "upsert": True})
-    results = users.find_one_and_update({'user': user}, {"$set": {"exists":True}}, \
+    results = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":True}}, \
                                      upsert=True, return_document=AFTER)
-    #results = [result for result in results]
     return results
 
-
-# Given a user and a course, add the course to existing user's program
+# Given a user, the current program, and a course, add the course to existing user's program
 def add_course(user, program, course):
-    pass
+    users.find_one_and_update({'netid': user}, {})
 
 # Given a user and a program, add the program to existing programs
 def add_program(user, program):
+    pass
+
+# Given a user and an enrolled course, add enrolled course to existing user
+def add_enrolled_course(user, course):
     pass
 
 # Given a user and a course, remove the course from the program
