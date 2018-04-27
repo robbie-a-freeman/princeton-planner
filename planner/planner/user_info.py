@@ -94,38 +94,44 @@ def user_query(user):
 
 # Given a user, the current program, a given category, and a course, add the course to existing user's program
 def add_course(user, program, category, course):
-    users.find_one_and_update({"$and": [{"netid": "test"}, {"programs.$.program": "Mechanical and Aerospace Engineering - Aerospace Engineering"}, {"programs.$.categories.$.category": "Prerequisites"}]},
-        {"$addToSet": {"programs.categories.courses": "MUS 213"}},
+    users.find_one_and_update({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"program": "Mechanical and Aerospace Engineering - Aerospace Engineering", "categories": {"$elemMatch": {"category": "Prerequisites"}}}}}]},
+    #users.find_one_and_update({"$and": [{"netid": "test"}, {"programs.$.program": "Mechanical and Aerospace Engineering - Aerospace Engineering"}, {"programs.$.categories.$.category": "Prerequisites"}]},
+        {"$addToSet": {"programs.$.categories.$.courses": "MUS 213"}},
         upsert=False,
         return_document=AFTER
     )
     #users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"true"}}, upsert=True, return_document=AFTER)
 
-# Given a user and a program, add the program to existing programs
-def add_program(user, program):
-    users.find_one_and_update({"netid": "test"},
-        {"$addToSet": {"programs" : {"program": "MUS", "categories": []}}},
-        upsert=False,
-        return_document=AFTER
-    )
-    #users.find_one_and_update("netid": 'test', {"programs": {"$elemMatch": {"program":program, "courses":[]}}}, {"$set": {"exists":"true"}}, upsert=True, return_document=AFTER)
+# Given a user and a program and the associated categories, add the program and list of categories to existing programs
+def add_program(user, program, categories):
+    if not users.find_one({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"program": "MUS"}}}]}):
+        # categories is a list. We need to feed in a list to find_one_and_update()
+        listCat = []
+        for cat in categories:
+            listCat.append({"category": cat, "courses": []})
+        users.find_one_and_update({"netid": "test"},
+            {"$addToSet": {"programs" : {"program": "MUS", "categories": []}}},
+            upsert=False,
+            return_document=AFTER
+        )
 
 # Given a user and an enrolled course in a given semester, add enrolled course to existing user
 def add_enrolled_course(user, semester, course):
-    users.find_one_and_update({"$and": [{"netid": "test"}, {"semesters.$.semester": "fall18"}]},
+    users.find_one_and_update({"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": "fall18"}}}]},
         {"$addToSet": {"semesters.$.semester" : {"program": "MUS", "categories": []}}},
         upsert=False,
         return_document=AFTER
     )
-    #users.find_one_and_update()
+    # Should the front-end handle if a user wants to put the same course down twice for a semester???
 
 # Given a user and a semester, add semester to existing user
 def add_semester(user, semester):
-    users.find_one_and_update({"netid": "test"},
-        {"$addToSet": {"semesters": {"semester": "fall17", "courses": []}}},
-        upsert=False,
-        return_document=AFTER
-    )
+    if not users.find_one({"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": "fall18"}}}]}):
+        users.find_one_and_update({"netid": "test"},
+            {"$addToSet": {"semesters": {"semester": "fall18", "courses": []}}},
+            upsert=False,
+            return_document=AFTER
+        )
 
 # Given a user and a course, remove the course from the program (and possibly the category) ??? should we remove the category?
 def remove_course(user, program, category, course):
