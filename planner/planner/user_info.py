@@ -50,12 +50,7 @@ def sanitize(unsafe):
 
 # Given a user, add user if new and return information if existing user
 def user_query(user):
-    pass
-    exists = users.find()
-    if exists:
-        return 5
-    else:
-        return 5
+    users.findAndModify({query: {"user": user }, new: true, upsert: true})
 
 # Given a user and a course, add the course to existing user's program
 def add_course(user, program, course):
