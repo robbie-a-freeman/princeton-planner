@@ -64,6 +64,10 @@ function courseResultHandler(event) {
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
 
+  // Get the name of the course that was added.
+  var addedCourseName = td.innerText;
+  console.log(addedCourseName);
+
   // Disallow duplicate listings.
   // TODO make more rigorous; this is buggy
   for (var i = 0; i < allRows.length; i++) {
@@ -72,6 +76,52 @@ function courseResultHandler(event) {
     }
   }
 
+  // Add selected courses to each major accordion.
+  var accordions = $(".accordion");
+  for (var i = 0; i < accordions.length; i++) {
+
+    // Get the collection of header/content pairs.
+    var accordion = accordions[i].children[0];
+    // Pray the DOM never changes.
+    var progName = accordion.parentElement.parentElement.children[0].innerText;
+    console.log(progName);
+    console.log(accordion);
+
+    // For each subheading in this accordion
+
+    // A list of the DOM children of the accordion.
+    var kids = accordion.children;
+    var numReqs = kids.length / 2; // children.length always even.
+
+    // For each "requirement":
+    req_loop:
+    for (var j = 0; j < numReqs; j++) {
+      var reqName = kids[2 * j].children[0].children[0].innerText;
+      console.log(reqName);
+
+      // A list of each "slot" into which courses can be added
+      var subreqList = kids[2 * j + 1].children;
+
+      // Iterate over all slots.
+      // If the added course is in a subreq's popover,
+      // Replace that subreq with the course name + checkmark + semester.
+      for (var k = 0; k < subreqList.length; k++) {
+
+        // If addedCourse in subreqlist's popover:
+          // If unambiguous:
+            // Replace subreq with addedCourse.
+          // If ambigous:
+            // Ask user for help.
+        /*
+        if (replaceSubreqIfMatches(subreqList[k], addedCourseName)) {
+          break req_loop;
+        } */
+      }
+    }
+  }
+
+
+  // Add the course to enrolled courses.
   tr.appendChild(td);
   // Add the course to the list of enrolled courses
   tableBody.appendChild(tr);
@@ -258,8 +308,8 @@ function createAccordion(resultsObj) {
     // Creates + appends accordion div
     var accordionDiv = document.createElement("div");
     accordionDiv.style.float = "left";
-    accordionDiv.classList.add("panel-group");
-    accordionDiv.id = "accordion";
+    accordionDiv.classList.add("panel-group", "accordion");
+    accordionDiv.id = "accordion"; // BUG ids should be unique in document.
     resultDiv.appendChild(accordionDiv);
 
     // Creates + appends panel div
