@@ -98,7 +98,7 @@ function courseInfoHandler(event) {
  */
 function courseSearchSubmit() {
   var courseSearchForm = $("#courseSearchForm");
-  $.post('/plan.html',
+  $.post('/plan',
          courseSearchForm.serialize(),
          updateCourseResults
        );
@@ -115,7 +115,7 @@ function updateCourseResults(jsonResponse) {
 // XHR POST handling function for program searches.
 function programSearchSubmit() {
   var programSearchForm = $("#programSearchForm");
-  $.post('/plan.html',
+  $.post('/plan',
          programSearchForm.serialize(),
          updateProgramResults
        );

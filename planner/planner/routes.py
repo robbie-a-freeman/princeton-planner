@@ -64,6 +64,10 @@ def plan():
 def index():
     return redirect('/')
 
+@app.route('/index')
+def index1():
+    return redirect('/')
+
 @app.route('/login')
 @login_required
 def login():
