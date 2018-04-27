@@ -57,6 +57,9 @@ def userdata():
 
     # Get current user's data.
     if request.method == "GET":
+        #user_info.add_program(user['netid'], 'COS BSE')
+        #user_info.add_course(user['netid'], 'COS BSE', 'Prerequisites', 'MUS 213')
+        user_info.add_semester(user['netid'], 'fall17')
         return str(user_info.user_query(user['netid']))
         #return str(user_info.user_query('test'))
     else:

@@ -25,6 +25,11 @@
 #        Do we have to linear scan essentially???
 #
 # Note2: If we map programs to courses, there are more values to store for sure.
+#
+# THE ABOVE IS DEPRECATED.
+# THE ABOVE IS WRONG.
+#
+# We define a user in a different potentially more natural way.
 
 import re, os
 from pymongo import MongoClient
@@ -87,20 +92,43 @@ def user_query(user):
     results = {"programsInfo": programsInfo, "userInfo": userInfo}
     return results
 
-# Given a user, the current program, and a course, add the course to existing user's program
-def add_course(user, program, course):
-    users.find_one_and_update({'netid': user}, {})
+# Given a user, the current program, a given category, and a course, add the course to existing user's program
+def add_course(user, program, category, course):
+    users.find_one_and_update({"$and": [{"netid": "test"}, {"programs.$.program": "Mechanical and Aerospace Engineering - Aerospace Engineering"}, {"programs.$.categories.$.category": "Prerequisites"}]},
+        {"$addToSet": {"programs.categories.courses": "MUS 213"}},
+        upsert=False,
+        return_document=AFTER
+    )
+    #users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"true"}}, upsert=True, return_document=AFTER)
 
 # Given a user and a program, add the program to existing programs
 def add_program(user, program):
-    pass
+    users.find_one_and_update({"netid": "test"},
+        {"$addToSet": {"programs" : {"program": "MUS", "categories": []}}},
+        upsert=False,
+        return_document=AFTER
+    )
+    #users.find_one_and_update("netid": 'test', {"programs": {"$elemMatch": {"program":program, "courses":[]}}}, {"$set": {"exists":"true"}}, upsert=True, return_document=AFTER)
 
-# Given a user and an enrolled course, add enrolled course to existing user
-def add_enrolled_course(user, course):
-    pass
+# Given a user and an enrolled course in a given semester, add enrolled course to existing user
+def add_enrolled_course(user, semester, course):
+    users.find_one_and_update({"$and": [{"netid": "test"}, {"semesters.$.semester": "fall18"}]},
+        {"$addToSet": {"semesters.$.semester" : {"program": "MUS", "categories": []}}},
+        upsert=False,
+        return_document=AFTER
+    )
+    #users.find_one_and_update()
 
-# Given a user and a course, remove the course from the program
-def remove_course(user, program, course):
+# Given a user and a semester, add semester to existing user
+def add_semester(user, semester):
+    users.find_one_and_update({"netid": "test"},
+        {"$addToSet": {"semesters": {"semester": "fall17", "courses": []}}},
+        upsert=False,
+        return_document=AFTER
+    )
+
+# Given a user and a course, remove the course from the program (and possibly the category) ??? should we remove the category?
+def remove_course(user, program, category, course):
     pass
 
 # Given a user and a program, remove the program
