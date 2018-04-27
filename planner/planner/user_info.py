@@ -41,6 +41,8 @@ mongoURI = os.environ.get('MONGOLAB_URI')
 client = MongoClient(mongoURI)
 db = client.plannerdb
 users = db.users
+majors = db.majors
+certificates = db.certificates
 AFTER = collection.ReturnDocument.AFTER
 
 # Sanitize the input string.
@@ -53,8 +55,36 @@ def sanitize(unsafe):
 # Given a user, add user if new and return information if existing user
 def user_query(user):
     #users.findAndModify({"query": {"user": user }, "new": True, "upsert": True})
-    results = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":True}}, \
+    userInfo = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"True"}}, \
                                      upsert=True, return_document=AFTER)
+
+    programsInfo = []
+    for program in userInfo['programs']:
+        fullName = program["program"]
+        nameParts = fullName.split(" - ")
+
+        # extract major + track from combined string.
+        major = nameParts[0]
+        majorRE = {"$regex":major, "$options":"i"}
+        if len(nameParts) == 1: # no track
+            programInfo =  [maj for maj in majors.find({"name": majorRE})]
+            programInfo += [cert for cert in certificates.find({"name": majorRE})]
+            print(fullName)
+            programsInfo.append(programInfo[0])
+            continue
+
+        elif len(nameParts) == 2: # simple track
+            track = nameParts[1]
+        elif len(nameParts) == 3: # two-part track
+            track = nameParts[1] + " - " + nameParts[2]
+
+        trackRE = {"$regex":track, "$options":"i"}
+
+        programInfo = [maj for maj in majors.find( {"$and": [ {"name": majorRE}, {"track": trackRE} ]} ) ]
+        programInfo += [cert for cert in certificates.find( {"$and": [ {"name": majorRE}, {"track": trackRE} ]} ) ]
+        programsInfo.append(programInfo[0])
+
+    results = {"programsInfo": programsInfo, "userInfo": userInfo}
     return results
 
 # Given a user, the current program, and a course, add the course to existing user's program

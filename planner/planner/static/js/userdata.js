@@ -1,4 +1,4 @@
-
+var USER_DATA;
 
 // ======================== SAVE LOAD FUNCTIONS ==============================
 
@@ -9,7 +9,14 @@ function loadUserData() {
 
 // Receives the user data for the current CAS user.
 function updatePageData(jsonResponse) {
-  userdata = JSON5.parse(jsonResponse);
+  userdata = parseJSON(jsonResponse);
+  USER_DATA = userdata;
+
+  programs = userdata["programsInfo"];
+  for (var i = 0; i < programs.length; i++) {
+    tr_obj = createTableRow(programs[i], "program");
+    tr_obj.click();
+  }
 }
 
 // Saves the user data for the current CAS user.

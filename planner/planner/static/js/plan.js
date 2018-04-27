@@ -10,6 +10,8 @@ function plan_init() {
 
   var programSearchBox = $("#programSearch")[0];
   programSearchBox.addEventListener("keyup", keyEventHandler);
+
+  loadUserData();
 }
 
 // ============================== EVENT HANDLERS =========================
@@ -154,6 +156,13 @@ function updateResults(jsonResponse, type) {
   resultsHeaderDiv = $(resultsHeaderID);
   resultsHeaderDiv.empty();
   resultsHeaderDiv[0].appendChild(resultHeading);
+}
+
+
+// Set the current semester, and change current courses/database.
+function updateSemester(semester) {
+
+
 }
 
 
@@ -372,6 +381,7 @@ function createProgramTag(programJSON) {
 function parseJSON(jsonResponse) {
   // Preprocess the JSON response so it is suitable for parsing
   jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
+  // jsonResponse = jsonResponse.replace(/True/g)
   results = JSON5.parse(jsonResponse);
   return results;
 }
