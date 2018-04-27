@@ -57,9 +57,9 @@ def userdata():
 
     # Get current user's data.
     if request.method == "GET":
-        return str(user_info.user_query(user))
+        return str(user_info.user_query(user['netid']))
+        #return str(user_info.user_query('test'))
     else:
-
         if form_name == 'COURSE_ADD':
             query = request.form['course_add']
             user_info.add_course(user, "program", query)
