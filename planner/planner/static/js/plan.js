@@ -65,8 +65,8 @@ function courseResultHandler(event) {
   var allRows = tableBody.children;
 
   // Get the name of the course that was added.
-  var addedCourseName = td.innerText;
-  console.log(addedCourseName);
+  var addedCourse = td.innerText;
+  // console.log(addedCourse);
 
   // Disallow duplicate listings.
   // TODO make more rigorous; this is buggy
@@ -76,61 +76,13 @@ function courseResultHandler(event) {
     }
   }
 
-  // Add selected courses to each major accordion.
-  var accordions = $(".accordion");
-  for (var i = 0; i < accordions.length; i++) {
-
-    // Get the collection of header/content pairs.
-    var accordion = accordions[i].children[0];
-    // Pray the DOM never changes.
-    var progName = accordion.parentElement.parentElement.children[0].innerText;
-    console.log(progName);
-    console.log(accordion);
-
-    // For each subheading in this accordion
-
-    // A list of the DOM children of the accordion.
-    var kids = accordion.children;
-    var numReqs = kids.length / 2; // children.length always even.
-
-    // For each "requirement":
-    req_loop:
-    for (var j = 0; j < numReqs; j++) {
-      var reqName = kids[2 * j].children[0].children[0].innerText;
-      console.log(reqName);
-
-      // A list of each "slot" into which courses can be added
-      var subreqList = kids[2 * j + 1].children;
-
-      // Iterate over all slots.
-      // If the added course is in a subreq's popover,
-      // Replace that subreq with the course name + checkmark + semester.
-      for (var k = 0; k < subreqList.length; k++) {
-
-        // If addedCourse in subreqlist's popover:
-          // If unambiguous:
-            // Replace subreq with addedCourse.
-          // If ambigous:
-            // Ask user for help.
-        /*
-        if (replaceSubreqIfMatches(subreqList[k], addedCourseName)) {
-          break req_loop;
-        } */
-      }
-    }
-  }
-
-
   // Add the course to enrolled courses.
   tr.appendChild(td);
   // Add the course to the list of enrolled courses
   tableBody.appendChild(tr);
 
+  addCourseToAccordions(addedCourse);
 
-  // Make a post request for the given table and fetch via python OR
-  // cache results of search locally and do it in JS.
-  // I like the JS idea because JSON support will be better,
-  // along with native DOM integration.
 }
 
 // Called when info button next to search results is clicked.
@@ -141,6 +93,142 @@ function courseInfoHandler(event) {
 
 }
 
+// ======================== COURSE ENROLLING HELPERS ===================
+// Used to update the accordions when needed.
+// =====================================================================
+
+// Update the accordions by adding the given course to all relevant accordions.
+function addCourseToAccordions(addedCourse) {
+  // Add selected courses to each major accordion.
+  var accordions = $(".accordion");
+  for (var i = 0; i < accordions.length; i++) {
+
+    // Get the collection of header/content pairs.
+    var accordion = accordions[i].children[0];
+    // Pray the DOM never changes.
+    var progName = accordion.parentElement.parentElement.children[0].innerText;
+    //console.log(progName);
+    //console.log(accordion);
+
+    // A list of the DOM children of the accordion.
+    var kids = accordion.children;
+    var numReqs = kids.length / 2; // children.length always even.
+
+    // Create a list of all requirements that addedCourse satisfies.
+    var satisfiedReqs = [];
+
+    // For each "requirement" category in this accordion:
+    req_loop:
+    for (var j = 0; j < numReqs; j++) {
+      var reqName = kids[2 * j].children[0].children[0].innerText;
+      //console.log(reqName);
+
+      // A list of each "slot" into which courses can be added
+      var subreqList = kids[2 * j + 1].children;
+
+      // Iterate over all slots.
+      // If the added course is in a subreq's popover,
+      // Replace that subreq with the course name + checkmark + semester.
+      for (var k = 0; k < subreqList.length; k++) {
+
+        // If addedCourse in subreqlist's popover:
+        // Store this subreq as a match, and check next req.
+        var satisfiedCourse = satisfiesSubreq(addedCourse, subreqList[k]);
+        if (satisfiedCourse != null) {
+          // Gather relevant information about course.
+          var satisfiedDict = {};
+          satisfiedDict["subreqList"] = subreqList;
+          satisfiedDict["firstSatisfied"] = k;
+          satisfiedDict["satisfiedCourse"] = satisfiedCourse;
+          satisfiedReqs.push(satisfiedDict);
+          break req_loop;
+        }
+      }
+    }
+
+    // We now have a list of all satisfied reqs for this program.
+    // If there is only one satisfied req, add it.
+    if (satisfiedReqs.length == 1) {
+      addCourseToRequirement(addedCourse, satisfiedReqs[0]);
+    }
+    // More than one satisfied req! Ask user to disambiguate.
+    else if (satisfiedReqs.length > 1){
+      promptDisambiguation(addedCourse, satisfiedReqs);
+    }
+  }
+}
+
+// TODO combine this with matchCoursePopover.
+// Is addedCourse present in the popover of subreq?
+// Return the matching course if so, or null if not.
+// If subreq has no popover, return null.
+function satisfiesSubreq(addedCourse, subreq) {
+  // No popover exists.
+  if (subreq.children.length < 1) {
+    return null;
+  }
+  var popover = subreq.children[1];
+  var content = popover.getAttribute("data-content");
+  var popoverCourses = content.split(/<br.?\/?>/g);
+  var addedCourses = addedCourse.split(/ \/ /g);
+  return (matchCoursePopover(addedCourses, popoverCourses));
+}
+
+// Given two lists of courses (courses + popover), does any course
+// exist in both lists? Return the matching string if so,
+// or return null if false.
+// TODO COrner cases: "COS 397 | COS 398", or
+//                    "COS >= 300", or
+//                    "project required."
+function matchCoursePopover(addedCourses, popoverCourses) {
+  // if performance is an issue (it won't be), revise brute force algorithm
+  for (var i = 0; i < addedCourses.length; i++) {
+    for (var j = 0; j < popoverCourses.length; j++) {
+      if (popoverCourses.includes(">")) {
+        // TODO CORNER CASE HANDLING!!!
+      }
+
+      // Check for courses in popover that are "OR"d together
+      // using .includes()
+      if (popoverCourses[j].includes(addedCourses[i])) {
+        return addedCourses[i];
+      }
+    }
+  }
+  // No match found, return null.
+  return null;
+}
+
+// Given a string addedCourse and satisfiedReq dict containing
+// info about the satisfied requirement, update the satisfiedReq's
+// DOM elements to reflect the course being added.
+function addCourseToRequirement(addedCourse, satisfiedReq) {
+  var subreqList      = satisfiedReq["subreqList"];
+  var firstSatisfied  = satisfiedReq["firstSatisfied"];
+  var satisfiedCourse = satisfiedReq["satisfiedCourse"];
+
+  // Remove the popover link from the satisfied subreq list.
+  // Replace it with the name of the satisfied course, plus (TODO) semester and checkmark.
+  subreqList[firstSatisfied].innerHTML = satisfiedCourse;
+
+
+  // For all non-satisfied reqs in subreqList, remove satisfiedCourse from the popover.
+  // TODO
+  for (var i = 0; i < subreqList.length; i++) {
+    if (i == firstSatisfied) {
+      continue;
+    }
+    // If subreqList[i] has an <a> child, modify its "data-content" attribute
+
+  }
+
+}
+
+// Ask user for clarification when a course has multiple reqs
+// it could satisfy, and add course to the desired areas.
+function promptDisambiguation(addedCourse, satisfiedReqs) {
+  console.log("promptDisambiguation called but not implemented!");
+}
 
 // ============================= POST SUBMITTERS =======================
 /* Function called on keystroke to send an XHR request to the server
