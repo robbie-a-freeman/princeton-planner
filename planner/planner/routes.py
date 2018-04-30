@@ -59,7 +59,10 @@ def userdata():
     if request.method == "GET":
         #user_info.add_program(user['netid'], 'COS BSE', [1, 2, 3])
         #user_info.add_course(user['netid'], 'COS BSE', 'Prerequisites', 'MUS 213')
+        user_info.add_enrolled_course(user['netid'], 'fall18', 'COS 333')
+        user_info.remove_enrolled_course(user['netid'], 'fall18', 'COS 340')
         #user_info.add_semester(user['netid'], 'fall17')
+        #user_info.remove_program(user['netid'], 'COS')
         return str(user_info.user_query(user['netid']))
         #return str(user_info.user_query('test'))
     else:
