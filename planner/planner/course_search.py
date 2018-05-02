@@ -85,7 +85,8 @@
 import re, os
 from pymongo import MongoClient
 
-import json
+#import json
+from bson.json_util import dumps, loads # to handl BSON types
 
 
 #client = MongoClient('localhost', 27017)
@@ -99,6 +100,13 @@ client = MongoClient(mongoURI)
 db = client.plannerdb
 courses = db.courses
 
+# TYPES OF QUERIES
+ZERO = 0
+DEPT = 1
+NUM = 2
+DIST = 3
+TIT1 = 4
+TIT2 = 5
 
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ARC", "ART", "ASA", "AST", "ATL", "BCS", "CBE",
@@ -131,35 +139,37 @@ def sanitize(unsafe):
 # Mongo query, as an array of json objects (strings or objects?)
 def queryOneWord(word):
     uWord = word.upper() # This is not actually entirely accurate for all regular expressions.
-    results = []
+    results = set()
 
     re_obj = {"$regex":word, "$options":"i"}
 
     if len(word) <= 1:
-        return results
+        return (results, ZERO)
 
     # Dept. ID:
-    elif word in dept_ids:
-        results = [json.dumps(course) for course in courses.find( {"listings.dept":word} ) ]
+    elif uWord in dept_ids:
+        results = (set([dumps(course) for course in courses.find( {"listings.dept":uWord} ) ]), DEPT)
 
     # Course number:
     elif re.match("\d\d\d", word):
-        results = [json.dumps(course) for course in courses.find( {"listings.number":word} ) ]
+        results = (set([dumps(course) for course in courses.find( {"listings.number":uWord} ) ]), NUM)
 
     # Dist. ID:
-    elif word in dist_ids:
-        results = [json.dumps(course) for course in courses.find( {"area": word}) ]
+    elif uWord in dist_ids:
+        results = (set([dumps(course) for course in courses.find( {"area": uWord}) ]), DIST)
 
     # Len <= 2:
     elif len(word) <= 2:
         # TODO fix bug where courses satisfying mutliple conditions are duplicated (use a set)
-        results  = [json.dumps(course) for course in courses.find( {"listings.dept":   re_obj} )]
-        results += [json.dumps(course) for course in courses.find( {"listings.number": re_obj} )]
-        results += [json.dumps(course) for course in courses.find( {"title":           re_obj} )]
+        results = set([dumps(course) for course in courses.find( {"listings.dept":   re_obj} )])
+        results = results.union([dumps(course) for course in courses.find( {"listings.number": re_obj} )])
+        results = (results.union([dumps(course) for course in courses.find( {"title":           re_obj} )]), TIT1)
+        #results += [json.dumps(course) for course in courses.find( {"listings.number": re_obj} )]
+        #results += [json.dumps(course) for course in courses.find( {"title":           re_obj} )]
 
     # Len >= 3:
     else:
-        results = [json.dumps(course) for course in courses.find( {"title":           re_obj} )]
+        results = (set([dumps(course) for course in courses.find( {"title":           re_obj} )]), TIT2)
 
     return results
 
@@ -167,22 +177,38 @@ def queryOneWord(word):
 # generate a mongo query for eachself.
 def queryAllWords(safe):
     # 5 types of queries
-    types = {0: [], 1: [], 2: [], 3: [], 4: []} # if list is empty, then don't consider it in union (to prevent empty results)
+    #types = {ZERO: [], DEPT: [], NUM: [], DIST: [], TIT1: [], TIT2: []} # if list is empty, then don't consider it in union (to prevent empty results)
+    types = {}
     words = safe.split()
-    results = []
+    #results = []
     for word in words:
-        results.append(queryOneWord(word))
-    return results
-
-# intersection of union of sets
-def interunion(wow):
-    pass
+        #results.append(queryOneWord(word))
+        current, queryType = queryOneWord(word)
+        if queryType not in types.keys():
+            types[queryType] = current
+        else:
+            types[queryType] = types[queryType].union(current)
+    # take intersection of types of queries now
+    results = set()
+    alreadyTraversed = False
+    for lists in types.values():
+        if alreadyTraversed:
+            results = results.intersection(lists)
+        else:
+            results = lists
+            alreadyTraversed = True
+    finalResults = []
+    for course in results:
+        finalResults.append(loads(course))
+    return finalResults
 
 
 # public variant of queryAllWords called by landing.py
 def course_db_query(safe):
-    print(safe)
-    return queryOneWord(safe)
+    return queryAllWords(safe)
+    # version with just one word
+    #print(safe)
+    #return queryOneWord(safe)
     ### Debug version
     # return "query to query_parser was: " + safe
     ### Old version
