@@ -43,17 +43,26 @@ function programResultHandler(event) {
 
   // Disallow duplicate listings.
   for (var i = 0; i < allRows.length; i++) {
-    if (allRows[i].innerHTML == tr.innerHTML) {
+    if (allRows[i].innerText == tr.innerText) {
       return;
     }
   }
 
-  // Add the course to the list of enrolled courses
+  // Add the program to the list of enrolled programs, and give it a remove button
+  tr.children[0].appendChild(createRemoveButton("program")); //td.appendChild...
   tableBody.appendChild(tr);
 
   var target = $("#programInfoDiv")[0];
-  var accordion = createAccordion(JSON5.parse(this.obj_data));
-  target.appendChild(accordion);
+  var accordionDiv = createAccordion(JSON5.parse(this.obj_data));
+  target.appendChild(accordionDiv);
+
+  // Update the accordion with all of the currently enrolled majors.
+  var accordion = accordionDiv.children[1];
+  var enrolledCourses = $(".enrolled-course-td");
+  for (var i = 0; i < enrolledCourses.length; i++) {
+    var courseToAdd = enrolledCourses[i].innerText;
+    addCourseToAccordion(courseToAdd, accordion);
+  }
 
   // Reinitialize all popovers.
   refreshPopovers();
@@ -68,6 +77,8 @@ function courseResultHandler(event) {
   var table = $("#currentCoursesTable")[0];
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
+  // Add the enrolled course class to this td so it can be easily found later.
+  td.classList.add("enrolled-course-td");
 
   // Add a remove button
   td.appendChild(createRemoveButton("course"));
@@ -103,6 +114,10 @@ function courseInfoHandler(event) {
 
 // Called when the remove course button is pressed.
 function removeCourseHandler(event) {
+  // Hide all popovers to avoid visual glitches.
+  $("[data-toggle='popover']").popover('hide');
+
+  // Prevent weird spurious click events from being generated in parents.
   event.stopPropagation();
   var tr = this.parentElement.parentElement; // span --> td --> tr
   removeEnrolledCourse(tr);
@@ -110,8 +125,27 @@ function removeCourseHandler(event) {
 
 // Called when the remove program button is pressed.
 function removeProgramHandler(event) {
+  // Hide all popovers to avoid visual glitches.
+  $("[data-toggle='popover']").popover('hide');
 
-  console.log("remove program called but not implemented")
+  // Prevent weird spurious click events from being generated in parents.
+  event.stopPropagation();
+  var tr = this.parentElement.parentElement; // span --> td --> tr
+
+  // Remove course from enrolled list.
+  tr.parentElement.removeChild(tr);
+
+  // Remove associated accordion.
+  var removedCourse = this.parentElement.innerText; // span--> td--> innerText
+  var programInfoDiv = $("#programInfoDiv")[0];
+  var accordionDivs = programInfoDiv.children;
+  for (var i = 0; i < accordionDivs.length; i++) {
+    var accordionDiv = accordionDivs[i];
+    // if div --> h3 --> innerText is the course we're removing, remove the whole div
+    if (accordionDiv.children[0].innerText == removedCourse) {
+      programInfoDiv.removeChild(accordionDiv);
+    }
+  }
 }
 
 // ======================== COURSE ENROLLING HELPERS ===================
@@ -123,64 +157,70 @@ function addCourseToAccordions(addedCourse) {
   // Add selected courses to each major accordion.
   var accordions = $(".accordion");
   for (var i = 0; i < accordions.length; i++) {
+    addCourseToAccordion(addedCourse, accordions[i]);
+  }
+}
 
-    // Get the collection of header/content pairs.
-    var accordion = accordions[i].children[0];
-    // Pray the DOM never changes.
-    var progName = accordion.parentElement.parentElement.children[0].innerText;
-    //console.log(progName);
-    //console.log(accordion);
+// Add the given course to the given accordion, where accordion is an element
+// with the class .accordion
+function addCourseToAccordion(addedCourse, accordion) {
 
-    // A list of the DOM children of the accordion.
-    var kids = accordion.children;
-    var numReqs = kids.length / 2; // children.length always even.
+      // Get the collection of header/content pairs.
+      var accordion = accordion.children[0];
+      // Pray the DOM never changes.
+      var progName = accordion.parentElement.parentElement.children[0].innerText;
+      //console.log(progName);
+      //console.log(accordion);
 
-    // Create a list of all requirements that addedCourse satisfies.
-    var satisfiedReqs = [];
+      // A list of the DOM children of the accordion.
+      var kids = accordion.children;
+      var numReqs = kids.length / 2; // children.length always even.
 
-    // For each "requirement" category in this accordion:
-    req_loop:
-    for (var j = 0; j < numReqs; j++) {
-      var reqName = kids[2 * j].children[0].children[0].innerText;
-      //console.log(reqName);
+      // Create a list of all requirements that addedCourse satisfies.
+      var satisfiedReqs = [];
 
-      // A list of each "slot" into which courses can be added
-      var subreqList = kids[2 * j + 1].children;
+      // For each "requirement" category in this accordion:
+      req_loop:
+      for (var j = 0; j < numReqs; j++) {
+        var reqName = kids[2 * j].children[0].children[0].innerText;
+        //console.log(reqName);
 
-      // Iterate over all slots.
-      // If the added course is in a subreq's popover,
-      // Replace that subreq with the course name + checkmark + semester.
-      for (var k = 0; k < subreqList.length; k++) {
+        // A list of each "slot" into which courses can be added
+        var subreqList = kids[2 * j + 1].children;
 
-        // If addedCourse in subreqlist's popover:
-        // Store this subreq as a match, and check next req.
-        var satisfiedCourse = satisfiesSubreq(addedCourse, subreqList[k]);
+        // Iterate over all slots.
+        // If the added course is in a subreq's popover,
+        // Replace that subreq with the course name + checkmark + semester.
+        for (var k = 0; k < subreqList.length; k++) {
 
-        // If this subreq is satisfied by added course AND
-        // this slot is not already filled with another course:
-        if (satisfiedCourse != null && !("hiddenHTML" in subreqList[k])) {
-          // Gather relevant information about course.
-          var satisfiedDict = {};
-          satisfiedDict["subreqList"] = subreqList;
-          satisfiedDict["firstSatisfied"] = k;
-          satisfiedDict["satisfiedCourse"] = satisfiedCourse[0];
-          satisfiedDict["popoverString"] = satisfiedCourse[1];
-          satisfiedReqs.push(satisfiedDict);
-          break req_loop;
+          // If addedCourse in subreqlist's popover:
+          // Store this subreq as a match, and check next req.
+          var satisfiedCourse = satisfiesSubreq(addedCourse, subreqList[k]);
+
+          // If this subreq is satisfied by added course AND
+          // this slot is not already filled with another course:
+          if (satisfiedCourse != null && !("hiddenHTML" in subreqList[k])) {
+            // Gather relevant information about course.
+            var satisfiedDict = {};
+            satisfiedDict["subreqList"] = subreqList;
+            satisfiedDict["firstSatisfied"] = k;
+            satisfiedDict["satisfiedCourse"] = satisfiedCourse[0];
+            satisfiedDict["popoverString"] = satisfiedCourse[1];
+            satisfiedReqs.push(satisfiedDict);
+            break req_loop;
+          }
         }
       }
-    }
 
-    // We now have a list of all satisfied reqs for this program.
-    // If there is only one satisfied req, add it.
-    if (satisfiedReqs.length == 1) {
-      addCourseToRequirement(addedCourse, satisfiedReqs[0]);
-    }
-    // More than one satisfied req! Ask user to disambiguate.
-    else if (satisfiedReqs.length > 1){
-      promptDisambiguation(addedCourse, satisfiedReqs);
-    }
-  }
+      // We now have a list of all satisfied reqs for this program.
+      // If there is only one satisfied req, add it.
+      if (satisfiedReqs.length == 1) {
+        addCourseToRequirement(addedCourse, satisfiedReqs[0]);
+      }
+      // More than one satisfied req! Ask user to disambiguate.
+      else if (satisfiedReqs.length > 1){
+        promptDisambiguation(addedCourse, satisfiedReqs);
+      }
 }
 
 // TODO combine this with matchCoursePopover.
@@ -308,6 +348,9 @@ function removeEnrolledCourse(tr) {
 
 // Update the accordions by removing the given course from all relevant accordions.
 // NOTE Shares a lot of code with addCourseToAccordions; consider refactoring
+// documentation: the .hiddenHTML attribute oof a subreq element
+// exists ONLY if that subreq is currently filled by an assigned course.
+// It is removed as soon as the course filling this requirement is removed.
 function removeCourseFromAccordions(removedCourse) {
 
   // Remove selected courses from each major accordion.
