@@ -208,8 +208,8 @@ def queryAllWords(safe):
     finalResults = []
     for course in results:
         finalResults.append(loads(course))
-    # should we sort our final list?
-    finalResults = sorted(finalResults, key=lambda dept: dept["listings"][0]["dept"])
+    # sorts by department and then course number
+    finalResults = sorted(finalResults, key=lambda dept: (dept["listings"][0]["dept"], dept["listings"][0]["number"]))
     return finalResults
 
 
