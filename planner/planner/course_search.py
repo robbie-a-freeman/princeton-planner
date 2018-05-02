@@ -74,7 +74,7 @@ client = MongoClient(mongoURI)
 db = client.plannerdb
 courses = db.courses
 
-
+# Three letter course codes for Princeton University departments
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ARC", "ART", "ASA", "AST", "ATL", "BCS", "CBE",
                 "CEE", "CGS", "CHI", "CHM", "CHV", "CLA", "CLG",
@@ -92,6 +92,7 @@ dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "TPP", "TRA", "TUR", "TWI", "URB", "URD", "VIS",
                 "WRI", "WWS"))
 
+# Two letter course codes for Princeton University course distribution areas
 dist_ids = set(("EC", "EM", "HA", "LA", "QR", "SA", "STL", "STN"))
 
 # Sanitize the input string.
