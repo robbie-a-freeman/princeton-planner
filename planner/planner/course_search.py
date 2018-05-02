@@ -25,7 +25,7 @@
 #   For example, if the query string is "COS 333 ENG", then we could have two types:
 #   DEPT: set(["COS", "ENG"])
 #   NUMBER: set([333])
-#   We take the intersection of the courses to obtain the final result list.
+#   We take the intersection of the types of courses to obtain the final result list.
 #
 #   However, we need to consider names/titles of courses. If there is any query longer than 4 letters...
 #
@@ -34,6 +34,29 @@
 #   is a department, then dont' check titles.
 #   However, if we have a query like "SYS", then we check if the "SYS" department exists. If it doesn't,
 #   then check the titles.
+#   The same will happen for distribution requirements like "EC".
+#   The same will also happen for course numbers like "333".
+#   
+#   Here are a few examples:
+#                       Query - "COS 333"
+#                       Dept - [COS]
+#                       Number - [333]
+#                       Union(Dept) intersects Union(Number)
+#
+#                       Query - "COS 126 226 217"
+#                       Dept - [COS]
+#                       Number - [126, 226, 217]
+#                       Union(Dept) intersects Union(Number)
+#
+#                       Query - "COS ENG economics EC eC Ec micro 333"
+#                       Dept - [COS, ENG]
+#                       Number - [333]
+#                       Distribution Requirements - [EC, eC, Ec]
+#                       Title - [economics, micro]
+#                       Union(Dept) intersects
+#                       Union(Number) intersects
+#                       Union(Distribution Requirements) intersects
+#                       Union(Title)
 #
 
 
@@ -61,6 +84,8 @@
 
 import re, os
 from pymongo import MongoClient
+
+import json
 
 
 #client = MongoClient('localhost', 27017)
@@ -105,7 +130,7 @@ def sanitize(unsafe):
 # corresponding Mongo query, and return the results of the
 # Mongo query, as an array of json objects (strings or objects?)
 def queryOneWord(word):
-    word = word.upper()
+    uWord = word.upper() # This is not actually entirely accurate for all regular expressions.
     results = []
 
     re_obj = {"$regex":word, "$options":"i"}
@@ -115,37 +140,43 @@ def queryOneWord(word):
 
     # Dept. ID:
     elif word in dept_ids:
-        results = [course for course in courses.find( {"listings.dept":word} ) ]
+        results = [json.dumps(course) for course in courses.find( {"listings.dept":word} ) ]
 
     # Course number:
     elif re.match("\d\d\d", word):
-        results = [course for course in courses.find( {"listings.number":word} ) ]
+        results = [json.dumps(course) for course in courses.find( {"listings.number":word} ) ]
 
     # Dist. ID:
     elif word in dist_ids:
-        results = [course for course in courses.find( {"area": word}) ]
+        results = [json.dumps(course) for course in courses.find( {"area": word}) ]
 
     # Len <= 2:
     elif len(word) <= 2:
         # TODO fix bug where courses satisfying mutliple conditions are duplicated (use a set)
-        results  = [course for course in courses.find( {"listings.dept":   re_obj} )]
-        results += [course for course in courses.find( {"listings.number": re_obj} )]
-        results += [course for course in courses.find( {"title":           re_obj} )]
+        results  = [json.dumps(course) for course in courses.find( {"listings.dept":   re_obj} )]
+        results += [json.dumps(course) for course in courses.find( {"listings.number": re_obj} )]
+        results += [json.dumps(course) for course in courses.find( {"title":           re_obj} )]
 
     # Len >= 3:
     else:
-        results = [course for course in courses.find( {"title":           re_obj} )]
+        results = [json.dumps(course) for course in courses.find( {"title":           re_obj} )]
 
     return results
 
 # Split the sanitized query string into sub-parts and
 # generate a mongo query for eachself.
 def queryAllWords(safe):
+    # 5 types of queries
+    types = {0: [], 1: [], 2: [], 3: [], 4: []} # if list is empty, then don't consider it in union (to prevent empty results)
     words = safe.split()
     results = []
     for word in words:
         results.append(queryOneWord(word))
     return results
+
+# intersection of union of sets
+def interunion(wow):
+    pass
 
 
 # public variant of queryAllWords called by landing.py
