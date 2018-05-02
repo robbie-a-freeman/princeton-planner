@@ -86,7 +86,9 @@ import re, os
 from pymongo import MongoClient
 
 #import json
-from bson.json_util import dumps, loads # to handl BSON types
+from bson.json_util import dumps, loads # to handle BSON types
+
+#from operator import itemgetter, attrgetter
 
 
 #client = MongoClient('localhost', 27017)
@@ -107,6 +109,7 @@ NUM = 2
 DIST = 3
 TIT1 = 4
 TIT2 = 5
+DENUM = 6
 
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
                 "ARC", "ART", "ASA", "AST", "ATL", "BCS", "CBE",
@@ -154,6 +157,11 @@ def queryOneWord(word):
     elif re.match("\d\d\d", word):
         results = (set([dumps(course) for course in courses.find( {"listings.number":uWord} ) ]), NUM)
 
+    # Dept. ID no spaces followed by course number:
+    elif re.match("[A-Z][A-Z][A-Z]\d\d\d", uWord):
+        results = set([dumps(course) for course in courses.find( {"listings.dept":uWord[0:3]} ) ])
+        results = (results.intersection([dumps(course) for course in courses.find( {"listings.number":uWord[3:]} ) ]), DENUM)
+
     # Dist. ID:
     elif uWord in dist_ids:
         results = (set([dumps(course) for course in courses.find( {"area": uWord}) ]), DIST)
@@ -200,6 +208,8 @@ def queryAllWords(safe):
     finalResults = []
     for course in results:
         finalResults.append(loads(course))
+    # should we sort our final list?
+    finalResults = sorted(finalResults, key=lambda dept: dept["listings"][0]["dept"])
     return finalResults
 
 
