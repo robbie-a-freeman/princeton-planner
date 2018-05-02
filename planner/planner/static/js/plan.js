@@ -100,13 +100,13 @@ function courseResultHandler(event) {
   // Add the course to the list of enrolled courses
   tableBody.appendChild(tr);
 
-  addCourseToAccordions(addedCourse);
+  addCourseToAccordions(addedCourse, getShortSemester());
 
 }
 
 // Called when info button next to search results is clicked.
 function courseInfoHandler(event) {
-
+  event.stopPropagation();
   // Pop up with the extra info
   console.log("HEELO");
 
@@ -153,24 +153,22 @@ function removeProgramHandler(event) {
 // =====================================================================
 
 // Update the accordions by adding the given course to all relevant accordions.
-function addCourseToAccordions(addedCourse) {
+function addCourseToAccordions(addedCourse, shortSemester) {
   // Add selected courses to each major accordion.
   var accordions = $(".accordion");
   for (var i = 0; i < accordions.length; i++) {
-    addCourseToAccordion(addedCourse, accordions[i]);
+    ion(addedCourse, accordions[i], shortSemester);
   }
 }
 
 // Add the given course to the given accordion, where accordion is an element
 // with the class .accordion
-function addCourseToAccordion(addedCourse, accordion) {
+function addCourseToAccordion(addedCourse, accordion, shortSemester) {
 
       // Get the collection of header/content pairs.
       var accordion = accordion.children[0];
       // Pray the DOM never changes.
       var progName = accordion.parentElement.parentElement.children[0].innerText;
-      //console.log(progName);
-      //console.log(accordion);
 
       // A list of the DOM children of the accordion.
       var kids = accordion.children;
@@ -183,7 +181,6 @@ function addCourseToAccordion(addedCourse, accordion) {
       req_loop:
       for (var j = 0; j < numReqs; j++) {
         var reqName = kids[2 * j].children[0].children[0].innerText;
-        //console.log(reqName);
 
         // A list of each "slot" into which courses can be added
         var subreqList = kids[2 * j + 1].children;
@@ -215,7 +212,7 @@ function addCourseToAccordion(addedCourse, accordion) {
       // We now have a list of all satisfied reqs for this program.
       // If there is only one satisfied req, add it.
       if (satisfiedReqs.length == 1) {
-        addCourseToRequirement(addedCourse, satisfiedReqs[0]);
+        addCourseToRequirement(addedCourse, satisfiedReqs[0], shortSemester);
       }
       // More than one satisfied req! Ask user to disambiguate.
       else if (satisfiedReqs.length > 1){
@@ -277,7 +274,8 @@ function matchCoursePopover(addedCourses, popoverCourses) {
 // Given a string addedCourse and satisfiedReq dict containing
 // info about the satisfied requirement, update the satisfiedReq's
 // DOM elements to reflect the course being added.
-function addCourseToRequirement(addedCourse, satisfiedReq) {
+// Use the string shortSemester to create a semester tag for the course.
+function addCourseToRequirement(addedCourse, satisfiedReq, shortSemester) {
   var subreqList      = satisfiedReq["subreqList"];
   var firstSatisfied  = satisfiedReq["firstSatisfied"];
   var satisfiedCourse = satisfiedReq["satisfiedCourse"];
@@ -286,7 +284,18 @@ function addCourseToRequirement(addedCourse, satisfiedReq) {
   // Remove the popover link from the satisfied subreq list.
   // Replace it with the name of the satisfied course, plus (TODO) semester and checkmark.
   subreqList[firstSatisfied].hiddenHTML = subreqList[firstSatisfied].innerHTML;
-  subreqList[firstSatisfied].innerHTML = satisfiedCourse;
+  subreqList[firstSatisfied].innerHTML = '';
+  subreqList[firstSatisfied].appendChild(text(satisfiedCourse));
+  // Create and add a checkmark to the subreq.
+  subreqList[firstSatisfied].appendChild(createCheckmark());
+
+  // Get the current semester, and add a semester tag to the subreq.
+  // TODO BUG make sure getShortSemester() will always be accurate --
+  // it returns the CURRENT semester, not necessarily the one associated with
+  // the satisfied course.
+  subreqList[firstSatisfied].appendChild(createSemesterTag(shortSemester));
+
+
 
 
   // For all reqs in subreqList, strikethrough satisfiedCourse from the popover.
@@ -386,7 +395,7 @@ function removeCourseFromAccordions(removedCourse) {
         // if this slot's innerText is contained within the removedCourse string,
         // Replace the innerHTML with a fresh findacourse popover (from hiddenHTML);
         // Then delete hiddenHTML.
-        if (removedCourse.includes(subreqList[k].innerText)) {
+        if (removedCourse.includes(getText(subreqList[k]))) {
           subreqList[k].innerHTML = subreqList[k].hiddenHTML;
           delete subreqList[k].hiddenHTML;
         }
@@ -400,8 +409,6 @@ function removeCourseFromAccordions(removedCourse) {
 // Given a course name and a subreq from an accordion, which contains popover data,
 // modify the popover data to ensure that that courses matching courseName are not struck out.
 function unstrikethrough(courseName, subreq) {
-  console.log(subreq);
-  console.log(courseName);
   var matchInfo = satisfiesSubreq(courseName, subreq);
 
   // This course isn't present in subreq; nothing left to do!
@@ -609,6 +616,21 @@ function createRemoveButton(type) {
   return remBut;
 }
 
+// Create and return a checkmark glyph.
+function createCheckmark() {
+  var check = document.createElement("span");
+  check.classList.add("glyphicon", "glyphicon-ok", "icon-good", "pull-right");
+  return check;
+}
+
+// Create a stylized element containing the given semester id
+function createSemesterTag(shortSemester) {
+  var span = document.createElement("span");
+  span.appendChild(text(shortSemester));
+  span.classList.add("semester-tag", "pull-right");
+  return span;
+}
+
 // ==================== ACCORDION CREATORS ==================================
 /* Creates an accordion based on a JSON object resultsObj  */
 function createAccordion(resultsObj) {
@@ -745,6 +767,27 @@ function createProgramTag(programJSON) {
 
 
 // =========================== HELPER FUNCTIONS =========================
+// Get the innerText of an HTML element, without any of the text of its nested children.
+function getText(element) {
+  return element.childNodes[0].nodeValue;
+}
+
+// Gets the currently active semester, as a full string
+function getSemester() {
+  return $("#semester")[0].value;
+}
+
+// Gets the currently active semester, in abbreviated form.
+// The first letter will be F for Fall or S for Spring, and
+// the last two letters will be the final digits of the year (e.g. 18 for 2018)
+function getShortSemester() {
+  var semester = getSemester();
+  var n = semester.length;
+  var tag = semester.substring(0, 1) + semester.substring(n-2, n);
+  return tag.toUpperCase();
+}
+
+
 // Preprocess the given jsonResponse JSON string and parse it into a JSON object,
 // which gets returned.
 function parseJSON(jsonResponse) {
