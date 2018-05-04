@@ -243,7 +243,7 @@ function addCourseToAccordion(addedCourseObj, accordion) {
         addCourseToRequirement(addedCourseObj, satisfiedReqs[0]);
 
         // Insert this course into the user database.
-        addCourseToUser(addedCourseObj["course"], addedCourseObj["semester"]);
+        addCourseToUser(addedCourseObj["name"], addedCourseObj["semester"]);
       }
       // More than one satisfied req! Ask user to disambiguate.
       else if (satisfiedReqs.length > 1){
