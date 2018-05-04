@@ -25,7 +25,7 @@ function renderUserData(jsonResponse) {
 function addCourseToUser(course, semester) {
   var dict = {
     "form_name": "COURSE_ADD",
-    "course": course,
+    "course_add": course,
     "semester": semester
   }
   $.post('/plan',
@@ -39,7 +39,7 @@ function addCourseToUser(course, semester) {
 function removeCourseFromUser(course, semester) {
   var dict = {
     "form_name": "COURSE_REMOVE",
-    "course": course,
+    "course_add": course,
     "semester": semester
   }
   $.post('/plan',
@@ -54,7 +54,7 @@ function removeCourseFromUser(course, semester) {
 function addOverrideToUser(course, semester, program, requirement) {
   var dict = {
     "form_name": "OVERRIDE_ADD",
-    "course": course,
+    "override_add": course,
     "semester": semester,
     "program": program,
     "category": requirement // in the backend, "requirement" is referred to as "category".
@@ -71,7 +71,7 @@ function addOverrideToUser(course, semester, program, requirement) {
 function removeOverrideFromUser(course, semester, program, requirement) {
   var dict = {
     "form_name": "OVERRIDE_REMOVE",
-    "course": course,
+    "override_remove": course,
     "semester": semester,
     "program": program,
     "category": requirement // in the backend, "requirement" is referred to as "category".
@@ -87,7 +87,7 @@ function removeOverrideFromUser(course, semester, program, requirement) {
 function addProgramToUser(program) {
   var dict = {
     "form_name": "PROGRAM_ADD",
-    "program": program
+    "program_add": program
   }
   $.post('/plan',
          serialize(dict),
@@ -100,7 +100,7 @@ function addProgramToUser(program) {
 function removeProgramFromUser(program) {
   var dict = {
     "form_name": "PROGRAM_REMOVE",
-    "program": program
+    "program_remove": program
   }
   $.post('/plan',
          serialize(dict),
