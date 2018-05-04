@@ -330,7 +330,7 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
 
 
 
-  // For all reqs in subreqList, strikethrough satisfiedCourse from the popover.
+  // For all subreqs in subreqList, strikethrough satisfiedCourse from the popover.
   // (Check .popoverHTML if it exists. )
   // TODO
   for (var i = 0; i < subreqList.length; i++) {
@@ -676,10 +676,10 @@ function createInfoButton(courseJSON) {
     }
     else if (getSemester().includes("Fall")) {
         address += "1192";
-    } 
+    }
     else if (getSemester().includes("Spring")) {
         address += "1184";
-    } 
+    }
     address += courseJSON["courseid"];
     infoBut.setAttribute("href", address);
     infoBut.setAttribute("target", "_blank");
