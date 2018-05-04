@@ -13,444 +13,444 @@
 <script src="{{ url_for('static', filename = 'js/plan.js') }}"></script>
 <script src="{{ url_for('static', filename = 'js/fruits.js') }}"></script>
 <script src="{{ url_for('static', filename = 'js/userdata.js') }}"></script>
+
+
 </head>
 <body onload = plan_init()>
 
 <nav class="navbar navbar-inverse">
-<div class="container-fluid">
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/">Princeton Planner</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav">
-
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal"><span class="glyphicon glyphicon-bell"></span>   About</a></li>
-        <li class="active"><a href="#" data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign"></span>   Help</a></li>
-        <li class="active"><a href="/"><span class="glyphicon glyphicon-th-large"></span>   Index</a></li>
-        <li class="active"><a href="#" data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span>   {{ user.netid }}</a></li>
-        <li class="active"><a href="logout"><span class="glyphicon glyphicon-log-out"></span>   Logout</a></li>
-
-        <!-- Help Pop up! -->
-        <div class="modal fade" id="helpModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Princeton Planner</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+    
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal"><span class="glyphicon glyphicon-bell"></span>   About</a></li>
+            <li class="active"><a href="#" data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign"></span>   Help</a></li>
+            <li class="active"><a href="/"><span class="glyphicon glyphicon-th-large"></span>   Index</a></li>
+            <li class="active"><a href="#" data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span>   {{ user.netid }}</a></li>
+            <li class="active"><a href="logout"><span class="glyphicon glyphicon-log-out"></span>   Logout</a></li>
+    
+            <!-- Help Pop up! -->
+            <div class="modal fade" id="helpModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">It appears you need help...</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Better ask WSWEENY!!!!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- About Pop up! -->
+            <div class="modal fade" id="aboutModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">It appears you need help...</h4>
+                        <h4 class="modal-title">About Princeton Planner</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Better ask WSWEENY!!!!</p>
+                        <p>R : Responsible</p>
+                        <p>O : Oriental</p>
+                        <p>B : Beautiful</p>
+                        <p>B : Bossy</p>
+                        <p>I : Ingenious</p>
+                        <p>E : Edible</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
+                    </div>
+    
                 </div>
             </div>
-        </div>
-
-        <!-- About Pop up! -->
-        <div class="modal fade" id="aboutModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">About Princeton Planner</h4>
+    
+            <!-- Class info Pop up! -->
+            <div class="modal fade" id="classInfoModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Class name</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Stuff about the class</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+    
                 </div>
-                <div class="modal-body">
-                    <p>R : Responsible</p>
-                    <p>O : Oriental</p>
-                    <p>B : Beautiful</p>
-                    <p>B : Bossy</p>
-                    <p>I : Ingenious</p>
-                    <p>E : Edible</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-
             </div>
-        </div>
-
-        <!-- Class info Pop up! -->
-        <div class="modal fade" id="classInfoModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Class name</h4>
+    
+            <!-- User pop up! -->
+            <div class="modal fade" id="userModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit user profile</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Idk, should we have this? LOL</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+    
                 </div>
-                <div class="modal-body">
-                    <p>Stuff about the class</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-
             </div>
+        </ul>
         </div>
-
-        <!-- User pop up! -->
-        <div class="modal fade" id="userModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Edit user profile</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Idk, should we have this? LOL</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-
-            </div>
-        </div>
-    </ul>
     </div>
-</div>
 </nav>
 
-<div class="container-fluid text-center">
-<div class="row content">
-    <div class="col-sm-2 sidenav">
+<div class="container-fluid">
+    <div class="row content">
 
-        <h3>Select semester!</h3>
-        <div class="form-group">
-        <select class="form-control" id="semester" form="courseSearchForm" onchange="myFunction()" name="semester">
-            <optgroup label="Current and Previous Semesters">
-                <option>Fall 2018</option>
-                <option>Spring 2018</option>
-                <option>Fall 2017</option>
-                <option>Spring 2017</option>
-                <option>Fall 2016</option>
-                <option>Spring 2016</option>
-                <option>Fall 2015</option>
-                <option>Spring 2015</option>
-                <option>Fall 2014</option>
-            </optgroup>
-            <optgroup label="Future semesters (WARNING: May not be accurate)">
-                <option>Spring 2019</option>
-                <option>Fall 2019</option>
-                <option>Spring 2020</option>
-                <option>Fall 2020</option>
-                <option>Spring 2021</option>
-            </optgroup>
-        </select>
-        </div>
+            <div class="col-sm-2 sidenav">
 
-        <!-- Searching for courses -->
-        <h3>Search for courses!</h3>
-        <form onsubmit=courseSearchSubmit id="courseSearchForm">
-            <div class="input-group pull-left" id="sea1">
-                <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
-                <input type="hidden" name="form_name" value="COURSE_QUERY"/>
-                <div class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                    </button>
+                    <h3>Select semester!</h3>
+                    <div class="form-group">
+                    <select class="form-control" id="semester" form="abcdefg" onchange="myFunction()">
+                        <optgroup label="Current and Previous Semesters">
+                            <option>Fall 2018</option>
+                            <option>Spring 2018</option>
+                            <option>Fall 2017</option>
+                            <option>Spring 2017</option>
+                            <option>Fall 2016</option>
+                            <option>Spring 2016</option>
+                            <option>Fall 2015</option>
+                            <option>Spring 2015</option>
+                            <option>Fall 2014</option>
+                        </optgroup>
+                        <optgroup label="Future semesters (WARNING: May not be accurate)">
+                            <option>Spring 2019</option>
+                            <option>Fall 2019</option>
+                            <option>Spring 2020</option>
+                            <option>Fall 2020</option>
+                            <option>Spring 2021</option>
+                        </optgroup>
+                    </select>
+                    </div>
+            
+                    <!-- Searching for courses -->
+                    <h3>Search for courses!</h3>
+                    <form onsubmit=courseSearchSubmit id="courseSearchForm">
+                        <div class="input-group pull-left" id="sea1">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
+                            <input type="hidden" name="form_name" value="COURSE_QUERY"/>
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+            
+                    <div id="courseSearchHeader">
+                    </div>
+                    <div id="courseSearchResults">
+                    </div>
+                    <br>
+                    <h3>Enrolled courses</h3>
+                    <div id="currentCoursesDiv">
+                    </div>
+            
+                    <table class="table table-bordered" id="currentCoursesTable">
+                        <tbody>
+                        </tbody>
+                    </table>
+            
+                </div>
+
+
+        <div id="programInfoDiv">
+            <div class="apple">
+                <div class="mango">School of Engineering and Applied Science</div>
+                <div style="float:left" class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse1">
+                                    Calculus (2)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                MAT 103
+                            </div>
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                MAT 104
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse2">
+                                    Multivariable Calculus (1)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                MAT 201
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse3">
+                                    Linear Algebra (1)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                MAT 204
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse4">
+                                    Physics 1 (1)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                EGR 191
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse5">
+                                    Physics 2 (1)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse5" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
+                                <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="PHY 104<br />PHY 106">Find a course!</a>
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse6">
+                                    Computer Proficiency (1)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse6" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                COS 126
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse7">
+                                    Chemistry (1)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse7" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
+                                <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="CHM 201<br />CHM 208">Find a course!</a>
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse8">
+                                    Distribution Areas (4)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse8" class="panel-collapse collapse">
+                            <div class="panel-body">aEC</div>
+                            <div class="panel-body">aEM</div>
+                            <div class="panel-body">aHA</div>
+                            <div class="panel-body">aLA</div>
+                            <div class="panel-body">aSA</div>
+                            <div class="panel-body">aFL</div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse9">
+                                    Additional Distribution Areas (3)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse9" class="panel-collapse collapse">
+                            <div class="panel-body">aEC</div>
+                            <div class="panel-body">aEM</div>
+                            <div class="panel-body">aHA</div>
+                            <div class="panel-body">aLA</div>
+                            <div class="panel-body">aSA</div>
+                            <div class="panel-body">aFL</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
-        <br>
-
-        <div id="courseSearchHeader">
-        </div>
-        <div id="courseSearchResults">
-        </div>
-        <br>
-        <h3>Enrolled courses</h3>
-        <div id="currentCoursesDiv">
-        </div>
-
-        <table class="table table-bordered" id="currentCoursesTable">
-            <tbody>
-            </tbody>
-        </table>
-
-    </div>
-    <div id="programInfoDiv">
-      <div class="program-col col-sm-2 text-left">
-          <h3>School of Engineering and Applied Science</h3>
-          <div style="float:left" class="panel-group" id="accordion">
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse1">
-                              Calculus (2)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse1" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          MAT 103
-                      </div>
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          MAT 104
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse2">
-                              Multivariable Calculus (1)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse2" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          MAT 201
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse3">
-                              Linear Algebra (1)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse3" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          MAT 204
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse4">
-                              Physics 1 (1)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse4" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          EGR 191
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse5">
-                              Physics 2 (1)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse5" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
-                          <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="PHY 104<br />PHY 106">Find a course!</a>
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse6">
-                              Computer Proficiency (1)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse6" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          COS 126
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse7">
-                              Chemistry (1)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse7" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
-                          <a href="#" data-toggle="popover" title="Potential courses" data-html="true" data-content="CHM 201<br />CHM 208">Find a course!</a>
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse8">
-                              Distribution Areas (4)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse8" class="panel-collapse collapse">
-                      <div class="panel-body">aEC</div>
-                      <div class="panel-body">aEM</div>
-                      <div class="panel-body">aHA</div>
-                      <div class="panel-body">aLA</div>
-                      <div class="panel-body">aSA</div>
-                      <div class="panel-body">aFL</div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse9">
-                              Additional Distribution Areas (3)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse9" class="panel-collapse collapse">
-                      <div class="panel-body">aEC</div>
-                      <div class="panel-body">aEM</div>
-                      <div class="panel-body">aHA</div>
-                      <div class="panel-body">aLA</div>
-                      <div class="panel-body">aSA</div>
-                      <div class="panel-body">aFL</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="program-col col-sm-2 text-left">
-          <h3>Computer Science (COS BSE)</h3>
-          <div style="float:left" class="panel-group" id="accordion">
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse10">
-                              Prerequisites (3)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse10" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          COS 126
-                      </div>
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          COS 226
-                      </div>
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          COS 217
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse11">
-                              Theory (2)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse11" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          COS 340
-                      </div>
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
-                          <a style="cursor: pointer;" data-toggle="popover" title="Potential courses" data-html="true" data-content="COS 423<br />COS 433<br />COS 445<br />COS 451<br />COS 487<br />COS 488<br />COS 510 | COS 441 | COS 516<br />COS 511">Find a course!</a>
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse12">
-                              Systems (2)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse12" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          ELE 206 | COS 306
-                      </div>
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          COS 333
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse13">
-                              Applications (2)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse13" class="panel-collapse collapse">
-                      <div class="panel-body">lots of stuff</div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse14">
-                              Departmentals (2)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse14" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          ORF 309
-                      </div>
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
-                          COS 461
-                      </div>
-                  </div>
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse15">
-                              Independent Work (1)
-                          </a>
-                      </h4>
-                  </div>
-                  <div id="collapse15" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
-                          <a data-toggle="popover" title="Potential courses" data-html="true" data-content="COS 397<br />COS 398<br />COS 497<br />COS 498">Find a course!</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!--
-      <div class="col-sm-2 text-left" id="programInfoDiv3">
-      </div>
-      <div class="col-sm-2 text-left">
-      </div>
-      -->
-    </div>
-    <div id="programSearchDiv" class="col-sm-2 sidenav">
-        <h3>Search for majors/certificates!</h3>
-        <form action="programSearchSubmit" id="programSearchForm">
-            <div class="input-group pull-left" id="sea1">
-                <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="programSearch" name="program_query"/>
-                <input type="hidden" name="form_name" value="PROGRAM_QUERY"/>
-                <div class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                    </button>
+            
+            <div class="apple">
+                <div class="mango">Computer Science (COS BSE)</div>
+                <div style="float:left" class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse10">
+                                    Prerequisites (3)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse10" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                COS 126
+                            </div>
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                COS 226
+                            </div>
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                COS 217
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse11">
+                                    Theory (2)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse11" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                COS 340
+                            </div>
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
+                                <a style="cursor: pointer;" data-toggle="popover" title="Potential courses" data-html="true" data-content="COS 423<br />COS 433<br />COS 445<br />COS 451<br />COS 487<br />COS 488<br />COS 510 | COS 441 | COS 516<br />COS 511">Find a course!</a>
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse12">
+                                    Systems (2)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse12" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                ELE 206 | COS 306
+                            </div>
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                COS 333
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse13">
+                                    Applications (2)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse13" class="panel-collapse collapse">
+                            <div class="panel-body">lots of stuff</div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse14">
+                                    Departmentals (2)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse14" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                ORF 309
+                            </div>
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-ok icon-good pull-right"></span>
+                                COS 461
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse15">
+                                    Independent Work (1)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse15" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="glyphicon glyphicon-search icon-bad pull-right"></span>
+                                <a data-toggle="popover" title="Potential courses" data-html="true" data-content="COS 397<br />COS 398<br />COS 497<br />COS 498">Find a course!</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
-        <br>
-
-        <div id = "programSearchHeader">
         </div>
-        <div id = "programSearchResults">
-        </div>
-
-        <br>
-        <h3>Current majors/certificates</h3>
-        <table id="currentProgramsTable" class="table table-bordered">
-            <tbody>
-                <tr><td>School of Engineering and Applied Science</td></tr>
-                <tr><td>Computer Science (COS BSE)</td></tr>
-            </tbody>
-        </table>
+        <div class="col-sm-2 sidenav">
+                <h3>Search for majors/certificates!</h3>
+                <form action="programSearchSubmit" id="programSearchForm">
+                    <div class="input-group pull-left" id="sea1">
+                        <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="programSearch" name="program_query"/>
+                        <input type="hidden" name="form_name" value="PROGRAM_QUERY"/>
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+        
+                <div id = "programSearchHeader">
+                </div>
+                <div id = "programSearchResults">
+                </div>
+        
+                <br>
+                <h3>Current majors/certificates</h3>
+                <table id="currentProgramsTable" class="table table-bordered">
+                    <tbody>
+                        <tr><td>School of Engineering and Applied Science</td></tr>
+                        <tr><td>Computer Science (COS BSE)</td></tr>
+                    </tbody>
+                </table>
+            </div>
     </div>
-</div>
 </div>
 
 </body>
