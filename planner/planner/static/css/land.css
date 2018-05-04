@@ -1,7 +1,23 @@
+body {
+    font-family:'Roboto';
+}
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-weight: 700;
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-top: 12px;
+    padding: 10px 15px;
+    font-family:'Biryani';
+}
+.navbar-brand .logo-dec {
+    color: #ff8f00;
 }
 
 ::-webkit-scrollbar {
@@ -56,6 +72,10 @@
 }
 #courseSearchResults table, th, td {
     border: 1px solid rgb(196, 193, 193);
+}
+
+#currentCoursesDiv p {
+    font-style: italic;
 }
 
 /* ------------------------ */
@@ -114,6 +134,7 @@
 
 #programSearchDiv {
     float: right;
+    padding: 10px;
 }
 
 .semester-tag {
@@ -159,7 +180,8 @@
 }
 
 h3 {
-    font-size: 18px;
+    font-family: 'Amiko';
+    font-size: 24px;
     text-align: center
 }
 h4 {
@@ -185,6 +207,10 @@ h5 {
 .icon-good {
     color: #5CB85C;
 }
+.accordion-toggle {
+    font-family: 'Arial';
+    text-transform: capitalize;
+}
 .panel-heading .accordion-toggle:after {
     /* symbol for "opening" panels */
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
@@ -204,7 +230,6 @@ h5 {
     font-family: verdana;
     border-radius:0;
     padding: 0px;
-
 }
 .panel .panel-heading a{
     display:block;
@@ -213,7 +238,7 @@ h5 {
     padding:5px 10px 5px 10px;
     border-radius:0px;
     text-decoration:none;
-    font-size: 12px;
+    font-size: 16px;
 }
 .panel .panel-heading a:hover {
     background: rgb(247, 169, 2);
@@ -227,7 +252,7 @@ h5 {
     transition:background 2s ease;
 }
 .panel-body {
-    font-size: 12px;
+    font-size: 14px;
     padding:5px 10px;
 }
 .table td {

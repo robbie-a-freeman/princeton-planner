@@ -13,8 +13,12 @@
 <script src="{{ url_for('static', filename = 'js/plan.js') }}"></script>
 <script src="{{ url_for('static', filename = 'js/fruits.js') }}"></script>
 <script src="{{ url_for('static', filename = 'js/userdata.js') }}"></script>
+<!-- Font import -->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Biryani:800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Amiko" rel="stylesheet">
 </head>
-<body onload = plan_init()>
+<body font-family='Biryani' onload = plan_init()>
 
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
@@ -24,17 +28,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/">Princeton Planner</a>
+    <a font-family='Biryani' class="navbar-brand" href="#">P<span class="logo-dec">P</span></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
 
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal"><span class="glyphicon glyphicon-bell"></span>   About</a></li>
+        <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal"><span  class="glyphicon glyphicon-bell"></span>   About</a></li>
         <li class="active"><a href="#" data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign"></span>   Help</a></li>
-        <li class="active"><a href="/"><span class="glyphicon glyphicon-th-large"></span>   Index</a></li>
-        <li class="active"><a href="#" data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span>   {{ user.netid }}</a></li>
+        <!-- At some point the link should be removed, but it removes the icon atm -->
+        <li class="active"><a href=""><span class="glyphicon glyphicon-user"></span>   {{ user.netid }}</a></li>
         <li class="active"><a href="logout"><span class="glyphicon glyphicon-log-out"></span>   Logout</a></li>
 
         <!-- Help Pop up! -->
@@ -43,7 +47,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">It appears you need help...</h4>
+                        <h4 class="modal-title">Help</h4>
                     </div>
                     <div class="modal-body">
                         <p>Better ask WSWEENY!!!!</p>
@@ -98,7 +102,7 @@
             </div>
         </div>
 
-        <!-- User pop up! -->
+        <!-- User pop up! Not in use currently -->
         <div class="modal fade" id="userModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -125,7 +129,28 @@
 <div class="row content">
     <div class="col-sm-2 sidenav">
 
-        <h3>Select semester!</h3>
+      <!-- Searching for courses -->
+      <h3>Find courses</h3>
+      <form onsubmit=courseSearchSubmit id="courseSearchForm">
+          <div class="input-group pull-left" id="sea1">
+              <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
+              <input type="hidden" name="form_name" value="COURSE_QUERY"/>
+              <div class="input-group-btn">
+                  <button class="btn btn-primary" type="submit">
+                  <span class="glyphicon glyphicon-search"></span>
+                  </button>
+              </div>
+          </div>
+      </form>
+      <br>
+
+      <div id="courseSearchHeader">
+      </div>
+      <div id="courseSearchResults">
+      </div>
+      <br>
+
+        <h3>Select semester</h3>
         <div class="form-group">
         <select class="form-control" id="semester" form="courseSearchForm" onchange="semesterChangeHandler()" name="semester">
             <optgroup label="Current and Previous Semesters">
@@ -150,7 +175,7 @@
         </div>
 
         <!-- Searching for courses -->
-        <h3>Search for courses!</h3>
+        <h3>Find courses</h3>
         <form onsubmit=courseSearchSubmit id="courseSearchForm" onkeypress="return event.keyCode != 13;">
             <div class="input-group pull-left" id="sea1">
                 <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
@@ -233,6 +258,8 @@
                 </tbody>
             </table>
           </div>
+        <div id="currentCoursesDiv">
+          <!--<p id="initial">Choose some courses to put here!</p>-->
         </div>
     </div>
 
@@ -240,10 +267,10 @@
     </div>
 
     <div id="programSearchDiv" class="col-sm-2 sidenav">
-        <h3>Search for majors/certificates!</h3>
+        <h3>Find programs</h3>
         <form action="programSearchSubmit" id="programSearchForm" onkeypress="return event.keyCode != 13;">
             <div class="input-group pull-left" id="sea1">
-                <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="programSearch" name="program_query"/>
+                <input type="text" autocomplete="off" class="form-control" placeholder="Find majors/certificates" id="programSearch" name="program_query"/>
                 <input type="hidden" name="form_name" value="PROGRAM_QUERY"/>
                 <input id="programTime" class="timestamp" type="hidden" name="timestamp"/>
                 <div class="input-group-btn">
@@ -261,7 +288,7 @@
         </div>
 
         <br>
-        <h3>Current majors/certificates</h3>
+        <h3>Selected programs</h3>
         <table id="currentProgramsTable" class="table table-bordered">
             <tbody>
             </tbody>
