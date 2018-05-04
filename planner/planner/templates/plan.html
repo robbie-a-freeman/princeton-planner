@@ -131,12 +131,12 @@
 
       <!-- Searching for courses -->
       <h3>Find courses</h3>
-      <form onsubmit=courseSearchSubmit id="courseSearchForm">
+      <form onsubmit=courseSearchSubmit id="courseSearchForm" onkeypress="return event.keyCode != 13;">
           <div class="input-group pull-left" id="sea1">
               <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
               <input type="hidden" name="form_name" value="COURSE_QUERY"/>
               <div class="input-group-btn">
-                  <button class="btn btn-primary" type="submit">
+                  <button class="btn btn-primary" type="button">
                   <span class="glyphicon glyphicon-search"></span>
                   </button>
               </div>
@@ -173,27 +173,6 @@
             </optgroup>
         </select>
         </div>
-
-        <!-- Searching for courses -->
-        <h3>Find courses</h3>
-        <form onsubmit=courseSearchSubmit id="courseSearchForm" onkeypress="return event.keyCode != 13;">
-            <div class="input-group pull-left" id="sea1">
-                <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
-                <input type="hidden" name="form_name" value="COURSE_QUERY"/>
-                <div class="input-group-btn">
-                    <button class="btn btn-primary" type="button">
-                    <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </div>
-            </div>
-        </form>
-        <br>
-
-        <div id="courseSearchHeader">
-        </div>
-        <div id="courseSearchResults">
-        </div>
-        <br>
 
         <h3>Enrolled courses</h3>
         <div id = "enrolledCourses">
@@ -260,6 +239,7 @@
         <div id="currentCoursesDiv">
           <!--<p id="initial">Choose some courses to put here!</p>-->
         </div>
+    </div>
     </div>
 
     <div id="programInfoDiv">
