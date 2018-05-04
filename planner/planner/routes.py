@@ -23,14 +23,20 @@ def plan():
 
         # Handle searches for courses
         if form_name == 'COURSE_QUERY':
+            time = request.form['timestamp']
             query = request.form['course_query']
             semester = request.form['semester']
-            return str(course_search.course_db_query(query, semester))
+            results = course_search.course_db_query(query, semester)
+            returnObj = {"results": results, "time":time}
+            return str(returnObj)
 
         # Handle searches for majors/certificates
         elif form_name == 'PROGRAM_QUERY':
+            time = request.form['timestamp']
             query = request.form['program_query']
-            return str(program_search.program_db_query(query))
+            results = program_search.program_db_query(query)
+            returnObj = {"results": results, "time":time}
+            return str(returnObj)
 
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
