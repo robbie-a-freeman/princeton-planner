@@ -117,11 +117,11 @@ def add_program(user, program):
 
 # Given a user and an enrolled course in a given semester, add enrolled course to existing user
 def add_course(user, semester, course):
-    if not users.find_one({"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": "fall18"}}}, {"semesters.courses": "COS 461"}]}):
+    if not users.find_one({"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": semester}}}, {"semesters.courses": course}]}):
         users.find_one_and_update(
-            {"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": "fall18"}}}]},
+            {"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": semester}}}]},
             #{"$addToSet": {"semesters.$.semester" : {"program": "MUS", "categories": []}}},
-            {"$addToSet": {"semesters.$.courses": "COS 461"}},
+            {"$addToSet": {"semesters.$.courses": course}},
             upsert=False,
             return_document=AFTER
         )
@@ -159,8 +159,8 @@ def remove_program(user, program):
 # Must remove from all programs
 def remove_course(user, semester, course):
     users.find_one_and_update(
-        {"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": "fall18"}}}]},
-        {"$pull": {"semesters.$.courses": "COS 340"}}
+        {"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": semester}}}]},
+        {"$pull": {"semesters.$.courses": semester}}
     )
 
 # Given a user, a program, a category, course, and semester, remove the override

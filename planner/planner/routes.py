@@ -55,7 +55,7 @@ def plan():
         elif form_name == 'COURSE_REMOVE':
             course = request.form['course_remove']
             semester = request.form['semester']
-            user_info.remove_course(user, semester, query)
+            user_info.remove_course(user, semester, course)
 
         elif form_name == 'OVERRIDE_ADD':
             course = request.form['override_add']
