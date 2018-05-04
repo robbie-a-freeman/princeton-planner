@@ -40,6 +40,7 @@ function keyEventHandler(event) {
 function programResultHandler(event) {
   // Add clicked major to selected majors list.
   var tr = this.cloneNode(true);
+  var td = tr.children[0];
   var table = $("#currentProgramsTable")[0];
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
@@ -73,7 +74,7 @@ function programResultHandler(event) {
   refreshPopovers();
 
   // Add the program to the database.
-  addProgramToUser(getText(tr));
+  addProgramToUser(getText(td));
 }
 
 // Called when course search results are clicked.
