@@ -13,8 +13,6 @@ def main():
 def plan():
     user = {'netid': cas.username}
 
-    info = user_info.user_query(user['netid'])
-
     ## Handle POST forms (ie from search boxes)
     if request.method == 'POST':
         # Figure out which form submitted the request.
@@ -30,27 +28,6 @@ def plan():
         elif form_name == 'PROGRAM_QUERY':
             query = request.form['program_query']
             return str(program_search.program_db_query(query))
-
-        # Handle adding courses for specific user
-        elif form_name == 'COURSE_ADD':
-            query = request.form['course_add']
-            user_info.add_course(user, "program", query)
-
-        elif form_name == 'PROGRAM_ADD':
-            query = request.form['program_add']
-            user_info.add_program(user, query)
-
-        elif form_name == 'COURSE_REMOVE':
-            query = request.form['course_remove']
-            user_info.remove_course(user, "program", query)
-        
-        elif form_name == 'PROGRAM_REMOVE':
-            query = request.form['program_remove']
-            user_info.remove_program(user, query)
-
-        elif form_name == 'ENROLLED_COURSE_REMOVE':
-            query = request.form['enrolled_course_remove']
-            user_info.remove_enrolled_course(user, query)
 
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
@@ -72,3 +49,39 @@ def index1():
 @login_required
 def login():
     return redirect('/plan')
+
+@app.route('/userdata', methods=["GET", "POST"])
+@login_required
+def userdata():
+    user = {'netid': cas.username}
+
+    # Get current user's data.
+    if request.method == "GET":
+        #user_info.add_program(user['netid'], 'COS BSE', [1, 2, 3])
+        #user_info.remove_program(user['netid'], 'COS')
+        #user_info.add_course(user['netid'], 'COS BSE', 'Prerequisites', 'MUS 213')
+        #user_info.add_enrolled_course(user['netid'], 'fall18', 'COS 333')
+        #user_info.remove_enrolled_course(user['netid'], 'fall18', 'COS 340')
+        #user_info.add_semester(user['netid'], 'fall17')
+        return str(user_info.user_query(user['netid']))
+        #return str(user_info.user_query('test'))
+    else:
+        if form_name == 'COURSE_ADD':
+            query = request.form['course_add']
+            user_info.add_course(user, "program", query)
+
+        elif form_name == 'PROGRAM_ADD':
+            query = request.form['program_add']
+            user_info.add_program(user, query)
+
+        elif form_name == 'COURSE_REMOVE':
+            query = request.form['course_remove']
+            user_info.remove_course(user, "program", query)
+
+        elif form_name == 'PROGRAM_REMOVE':
+            query = request.form['program_remove']
+            user_info.remove_program(user, query)
+
+        elif form_name == 'ENROLLED_COURSE_REMOVE':
+            query = request.form['enrolled_course_remove']
+            user_info.remove_enrolled_course(user, query)
