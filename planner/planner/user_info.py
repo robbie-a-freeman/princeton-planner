@@ -117,7 +117,7 @@ def add_program(user, program):
 
 # Given a user and an enrolled course in a given semester, add enrolled course to existing user
 def add_course(user, semester, course):
-    if not users.find_one({"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": semester}}}, {"semesters.courses": course}]}):
+    if users.find_one({"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": semester, "courses": course}}}]}) is None:
         users.find_one_and_update(
             {"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": semester}}}]},
             #{"$addToSet": {"semesters.$.semester" : {"program": "MUS", "categories": []}}},
