@@ -1,7 +1,11 @@
+.body {
+  font-family: 'Titan One', sans-serif;
+}
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
+    font-family: 'Titan One', sans-serif;
 }
 
 ::-webkit-scrollbar {
