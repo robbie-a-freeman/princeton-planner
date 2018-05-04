@@ -9,6 +9,14 @@ Recommendations
 - Use same data source, but write your own parser!
 - Have a pretty-fire function, which knows the exact format/interface of front-end and packages it all up in one function.
 - Maybe show semesters with courses in the main interface. Maybe have a checkbox which toggles semesters.
+- LAST DAY OF CLASSES MEETING:
+- Upper bound on the requests for course searching - say a billion, make api calls in terms of 100
+- When selecting enrolled course, have a visual cue, say accordion automatically unrolls or a flash
+- Is selecting semesters a UI issue? - maybe have tabs...?
+- Two clicks...maybe have links all at the top so just one click? - One tab for F, one tab for S - Crossing out/filling in current one
+- Maybe have a separate field for user override?
+- Import transcript API
+- Make course info box actually just a link to princetoncourses.com
 
 Current Priorities
 ===================
