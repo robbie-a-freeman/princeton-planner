@@ -24,7 +24,7 @@ function renderUserData(jsonResponse) {
 // Requires the course name (COS 333), and semester in which it was taken.  (F18)
 function addCourseToUser(course, semester) {
   var dict = {
-    "form_name": "COURSE_ADD"
+    "form_name": "COURSE_ADD",
     "course": course,
     "semester": semester
   }
@@ -38,7 +38,7 @@ function addCourseToUser(course, semester) {
 // Requires the course name (COS 333), and semester in which it was taken.  (F18)
 function removeCourseFromUser(course, semester) {
   var dict = {
-    "form_name": "COURSE_REMOVE"
+    "form_name": "COURSE_REMOVE",
     "course": course,
     "semester": semester
   }
@@ -53,7 +53,7 @@ function removeCourseFromUser(course, semester) {
 // program satisfied, and which requirement of that program was satisfied.
 function addOverrideToUser(course, semester, program, requirement) {
   var dict = {
-    "form_name": "OVERRIDE_ADD"
+    "form_name": "OVERRIDE_ADD",
     "course": course,
     "semester": semester,
     "program": program,
@@ -70,7 +70,7 @@ function addOverrideToUser(course, semester, program, requirement) {
 // program satisfied, and which requirement of that program was satisfied.
 function removeOverrideFromUser(course, semester, program, requirement) {
   var dict = {
-    "form_name": "OVERRIDE_REMOVE"
+    "form_name": "OVERRIDE_REMOVE",
     "course": course,
     "semester": semester,
     "program": program,
@@ -86,7 +86,7 @@ function removeOverrideFromUser(course, semester, program, requirement) {
 // Requires the name of the program to add.
 function addProgramToUser(program) {
   var dict = {
-    "form_name": "PROGRAM_ADD"
+    "form_name": "PROGRAM_ADD",
     "program": program
   }
   $.post('/plan',
@@ -99,7 +99,7 @@ function addProgramToUser(program) {
 // Requires the name of the program to remove.
 function removeProgramFromUser(program) {
   var dict = {
-    "form_name": "PROGRAM_REMOVE"
+    "form_name": "PROGRAM_REMOVE",
     "program": program
   }
   $.post('/plan',
