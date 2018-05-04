@@ -11,6 +11,9 @@ function plan_init() {
   var programSearchBox = $("#programSearch")[0];
   programSearchBox.addEventListener("keyup", keyEventHandler);
 
+  // Unhide active semester
+  updateCurrentSemester();
+
   loadUserData();
 }
 
@@ -74,9 +77,10 @@ function courseResultHandler(event) {
   // Add the clicked course to the enrolled courses list
   var tr = document.createElement("tr");
   var td = this.cloneNode(true);
-  var table = $("#currentCoursesTable")[0];
+  var table = getSemesterEnrolledTable();
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
+
   // Add the enrolled course class to this td so it can be easily found later.
   td.classList.add("enrolled-course-td");
 
@@ -146,6 +150,15 @@ function removeProgramHandler(event) {
       programInfoDiv.removeChild(accordionDiv);
     }
   }
+}
+
+// Called when the semester dropdown changes value.
+function semesterChangeHandler(event) {
+  // Update the currently visible courses.
+  updateCurrentSemester();
+
+  // Refresh the search results. 
+  courseSearchSubmit();
 }
 
 // ======================== COURSE ENROLLING HELPERS ===================
@@ -631,6 +644,15 @@ function createSemesterTag(shortSemester) {
   return span;
 }
 
+// ==================== SEMESTER FUNCTIONS ==================================
+function updateCurrentSemester() {
+  // Hide all semesters.
+  $(".coursesDiv").addClass("hidden");
+
+  // Unhide current semester.
+  getSemesterEnrolledCourses().classList.remove('hidden');
+}
+
 // ==================== ACCORDION CREATORS ==================================
 /* Creates an accordion based on a JSON object resultsObj  */
 function createAccordion(resultsObj) {
@@ -785,6 +807,20 @@ function getShortSemester() {
   var n = semester.length;
   var tag = semester.substring(0, 1) + semester.substring(n-2, n);
   return tag.toUpperCase();
+}
+
+// Get the currently active semester's enrolled courses div
+function getSemesterEnrolledCourses() {
+  var shortSemester = getShortSemester();
+  var divID = "#coursesDiv" + shortSemester;
+  return $(divID)[0];
+}
+
+// Get the currently active semester's enrolled courses table
+function getSemesterEnrolledTable() {
+  var shortSemester = getShortSemester();
+  var tableID = "#coursesTable" + shortSemester;
+  return $(tableID)[0];
 }
 
 
