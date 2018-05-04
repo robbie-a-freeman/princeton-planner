@@ -670,10 +670,11 @@ function createAccordion(resultsObj) {
 
     // Create the results elements
     var resultDiv = document.createElement("div");
-    resultDiv.classList.add("program-col", "col-sm-2", "text-left");
+    resultDiv.classList.add("apple");
 
     // Creates + appends header
-    var majorHeader = document.createElement("h3");
+    var majorHeader = document.createElement("div");
+    majorHeader.classList.add("mango");
     var majorName = text(createProgramTag(resultsObj));
     majorHeader.appendChild(majorName);
     resultDiv.appendChild(majorHeader);
