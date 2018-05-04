@@ -152,7 +152,7 @@ def remove_program(user, program):
     #if users.find_one({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"program": "Electrical Engineering"}}}]}):
     users.find_one_and_update(
         {"netid": "test"},
-        {"$pull": {"programs": "Electrical Engineering"}}
+        {"$pull": {"programs": program}}
     )
 
 # Given a user, the current semester, and an enrolled course, remove the enrolled course
@@ -160,7 +160,7 @@ def remove_program(user, program):
 def remove_course(user, semester, course):
     users.find_one_and_update(
         {"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": semester}}}]},
-        {"$pull": {"semesters.$.courses": semester}}
+        {"$pull": {"semesters.$.courses": course}}
     )
 
 # Given a user, a program, a category, course, and semester, remove the override
