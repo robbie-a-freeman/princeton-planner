@@ -7,6 +7,8 @@ Recommendations
 - Hence, have majors first, and then have searching courses on the right side.
 - From Jeremie:
 - Use same data source, but write your own parser!
+- Have a pretty-fire function, which knows the exact format/interface of front-end and packages it all up in one function.
+- Maybe show semesters with courses in the main interface. Maybe have a checkbox which toggles semesters.
 
 Current Priorities
 ===================
