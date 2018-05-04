@@ -1,6 +1,13 @@
 body {
     font-family:'Roboto';
 }
+
+.apple {
+    display:inline-block;
+    width: 250px;
+    margin: 25px;
+}
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
     margin-bottom: 0;
@@ -21,7 +28,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -53,14 +60,14 @@ body {
     border-collapse: collapse;
 }
 #courseSearchResults table * {
-    background:white;
-    color:black;
+    /*color:black; */
     text-align: left;
     padding: 5px 10px 5px 10px;
     font-size: 12px;
 }
 #courseSearchResults tbody tr:hover td, #courseSearchResults tbody tr:hover th {
     background-color:rgb(230, 230, 230);
+    cursor: pointer;
 }
 #courseSearchResults table thead th .text {
     position:absolute;
@@ -98,6 +105,7 @@ body {
 }
 #programSearchResults tbody tr:hover td, .table tbody tr:hover th {
     background-color:rgb(230, 230, 230);
+    cursor: pointer;
 }
 #programSearchResults table thead th .text {
     position:absolute;
@@ -120,21 +128,23 @@ body {
 
 /* will's bugfix changes: */
 /* Make sure to add program-col to each */
-.program-col.col-sm-2.text-left {
-    display: inline-grid;
-    width: 25%;
-}
 
 #programInfoDiv {
-    max-width: 66%;
+    width: 66.6%;
+    height: 100%;
+    border: 10px solid white;
     overflow-x: scroll;
-    display: inline-block;
-    width: 66%;
+    white-space: nowrap;
+    display:inline-block;
+    float: left;
+}
+
+#programInfoDiv div {
+    vertical-align: top;
 }
 
 #programSearchDiv {
     float: right;
-    padding: 10px;
 }
 
 .semester-tag {
@@ -190,6 +200,17 @@ h4 {
 h5 {
     font-size: 12px;
 }
+.mango {
+    font-family: 'Amiko';
+    font-size: 24px;
+    overflow: hidden;
+    height: auto;
+    width: 250px;
+    display: inline-block;
+    word-wrap: normal;
+    white-space: normal;
+    text-align: center;
+}
 
 .popover{
     max-width: none; /* Max Width of the popover (depending on the container!) */
@@ -218,6 +239,7 @@ h5 {
     float: right;
     position: static;
     color: white;
+    
 }
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
@@ -239,6 +261,8 @@ h5 {
     border-radius:0px;
     text-decoration:none;
     font-size: 16px;
+    width: 250px;
+    text-align: left;    
 }
 .panel .panel-heading a:hover {
     background: rgb(247, 169, 2);
@@ -254,6 +278,7 @@ h5 {
 .panel-body {
     font-size: 14px;
     padding:5px 10px;
+    text-align: left; 
 }
 .table td {
 text-align: left;

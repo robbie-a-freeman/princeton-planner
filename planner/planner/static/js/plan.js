@@ -116,6 +116,15 @@ function courseInfoHandler(event) {
   event.stopPropagation();
   // Pop up with the extra info
   console.log("HEELO");
+  window.alert( event.target.myParam );
+
+  /* var listings = courseJSON['listings'];
+    var listingArr = [];
+    for (var i = 0; i < listings.length; i++) {
+      var listing = listings[i];
+      listingArr.push(listing['dept'] + " " + listing['number']);
+    }
+    return listingArr.join(" / "); */
 
 }
 
@@ -607,7 +616,7 @@ function createTableRow(result, resultsType) {
   // Create course-type labels.
   if (resultsType == "course") {
     // Create info button.
-    var infoBut = createInfoButton();
+    var infoBut = createInfoButton(result);
 
     // Create label and onclick listener
     label = text(createCourseTag(result));
@@ -635,13 +644,56 @@ function createTableRow(result, resultsType) {
 }
 
 // Creates a "more info" button for a single course search result
-function createInfoButton() {
-  var infoBut = document.createElement("span");
-  infoBut.classList.add("glyphicon");
-  infoBut.classList.add("glyphicon-question-sign");
-  infoBut.addEventListener("click", courseInfoHandler);
-  infoBut.style.float="right";
-  return infoBut;
+function createInfoButton(courseJSON) {
+    var infoBut = document.createElement("a");
+    var address = "https://www.princetoncourses.com/course/";
+    if (getSemester() == "Fall 2018") {
+        address += "1192";
+    }
+    else if (getSemester() == "Spring 2018") {
+        address += "1184";
+    }
+    else if (getSemester() == "Fall 2017") {
+        address += "1182";
+    }
+    else if (getSemester() == "Spring 2017") {
+        address += "1174";
+    }
+    else if (getSemester() == "Fall 2016") {
+        address += "1172";
+    }
+    else if (getSemester() == "Spring 2016") {
+        address += "1164";
+    }
+    else if (getSemester() == "Fall 2015") {
+        address += "1162";
+    }
+    else if (getSemester() == "Spring 2015") {
+        address += "1154";
+    }
+    else if (getSemester() == "Fall 2014") {
+        address += "1152";
+    }
+    else if (getSemester().includes("Fall")) {
+        address += "1192";
+    } 
+    else if (getSemester().includes("Spring")) {
+        address += "1184";
+    } 
+    address += courseJSON["courseid"];
+    infoBut.setAttribute("href", address);
+    infoBut.setAttribute("target", "_blank");
+    infoBut.style.cssFloat = "right";
+    infoBut.style.padding = "0px";
+
+    icon = document.createElement("span");
+    icon.classList.add("glyphicon");
+    icon.classList.add("glyphicon-share");
+    icon.style.padding = "0px";
+    infoBut.appendChild(icon);
+
+    return infoBut;
+
 }
 
 // Creates a "remove" button for a single course search result
@@ -692,10 +744,11 @@ function createAccordion(resultsObj) {
 
     // Create the results elements
     var resultDiv = document.createElement("div");
-    resultDiv.classList.add("program-col", "col-sm-2", "text-left");
+    resultDiv.classList.add("apple");
 
     // Creates + appends header
-    var majorHeader = document.createElement("h3");
+    var majorHeader = document.createElement("div");
+    majorHeader.classList.add("mango");
     var majorName = text(createProgramTag(resultsObj));
     majorHeader.appendChild(majorName);
     resultDiv.appendChild(majorHeader);
