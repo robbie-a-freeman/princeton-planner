@@ -63,7 +63,7 @@ def user_query(user):
     userInfo = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"True"}}, \
                                      upsert=True, return_document=AFTER)
 
-    programsInfo = []
+    """programsInfo = []
     for program in userInfo['programs']:
         fullName = program["program"]
         nameParts = fullName.split(" - ")
@@ -90,35 +90,34 @@ def user_query(user):
         programsInfo.append(programInfo[0])
 
     results = {"programsInfo": programsInfo, "userInfo": userInfo}
-    return results
+    return results"""
+    return userInfo
 
-# Given a user, the current program, a given category, and a course, add the course to existing user's program
-def add_course(user, program, category, course):
-    if not users.find_one({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"program": "Mechanical and Aerospace Engineering - Aerospace Engineering"}}}, {"programs.categories.category": "Prerequisites"}, {"programs.categories.courses": "MUS 213"}]}):
-        users.find_one_and_update(
-            {"$and": [{"netid": "test"}, {"programs.program": "Mechanical and Aerospace Engineering - Aerospace Engineering"}, {"programs.categories.category": "Prerequisites"}]},
-            {"$addToSet": {"programs.categories.courses": "MUS 213"}},
-            upsert=False,
-            return_document=AFTER
-        )
-    #users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"true"}}, upsert=True, return_document=AFTER)
 
 # Given a user and a program and the associated categories, add the program and list of categories to existing programs
-def add_program(user, program, categories):
-    if not users.find_one({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"program": "MUS"}}}]}):
-        # categories is a list. We need to feed in a list to find_one_and_update()
-        listCat = []
-        for cat in categories:
-            listCat.append({"category": cat, "courses": []})
+#def add_program(user, program, categories):
+    #if not users.find_one({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"MUS"}}}]}):
+    #    # categories is a list. We need to feed in a list to find_one_and_update()
+    #    listCat = []
+    #    for cat in categories:
+    #        listCat.append({"category": cat, "courses": []})
+    #    users.find_one_and_update(
+    #        {"netid": "test"},
+    #        {"$addToSet": {"programs" : {"program": "MUS", "categories": listCat}}},
+    #        upsert=False,
+    #        return_document=AFTER
+    #    )
+def add_program(user, program):
+    if not users.find_one({"$and": [{"netid": "test"}, {"programs": "MUS"}]}):
         users.find_one_and_update(
             {"netid": "test"},
-            {"$addToSet": {"programs" : {"program": "MUS", "categories": listCat}}},
+            {"$addToSet": {"programs": "MUS"}},
             upsert=False,
             return_document=AFTER
         )
 
 # Given a user and an enrolled course in a given semester, add enrolled course to existing user
-def add_enrolled_course(user, semester, course):
+def add_course(user, semester, course):
     if not users.find_one({"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": "fall18"}}}, {"semesters.courses": "COS 461"}]}):
         users.find_one_and_update(
             {"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": "fall18"}}}]},
@@ -139,24 +138,37 @@ def add_semester(user, semester):
             return_document=AFTER
         )
 
-# Given a user and a course, remove the course from the program (and possibly the category) ??? should we remove the category?
-def remove_course(user, program, category, course):
-    pass
+# Given a user, a program, a category, course, and semester, add the course to the override
+def add_override(user, program, category, course, semester):
+    if not users.find_one({"$and": [{"netid": "test"}, {"program": "Computer Science"}, {"category": "Departmentals"}, {"course": "COS 445"}, {"semester": "S18"}]}):
+        users.find_one_and_update(
+            {"netid": "test"},
+            {"$addToSet": {"overrides": {"program": "Computer Science", "category": "Departmentals", "course": "COS 445", "semester": "S18"}}},
+            upsert=False,
+            return_document=AFTER
+        )
 
 # Given a user and a program, remove the program
 def remove_program(user, program):
     #if users.find_one({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"program": "Electrical Engineering"}}}]}):
     users.find_one_and_update(
         {"netid": "test"},
-        {"$pull": {"programs": {"program": "Electrical Engineering"}}}
+        {"$pull": {"programs": "Electrical Engineering"}}
     )
 
 # Given a user, the current semester, and an enrolled course, remove the enrolled course
 # Must remove from all programs
-def remove_enrolled_course(user, semester, course):
+def remove_course(user, semester, course):
     users.find_one_and_update(
         {"$and": [{"netid": "test"}, {"semesters": {"$elemMatch": {"semester": "fall18"}}}]},
         {"$pull": {"semesters.$.courses": "COS 340"}}
+    )
+
+# Given a user, a program, a category, course, and semester, remove the override
+def remove_override(user, program, category, course, semester):
+    users.find_one_and_update(
+        {"netid": "test"},
+        {"$pull": {"overrides": {"program": "Computer Science", "category": "Departmentals", "course": "COS 445", "semester": "S18"}}}
     )
 
 # main()
