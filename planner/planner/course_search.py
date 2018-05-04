@@ -102,7 +102,7 @@ from bson.json_util import dumps, loads
 mongoURI = os.environ.get('MONGOLAB_URI')
 client = MongoClient(mongoURI)
 db = client.plannerdb
-courses = db.courses
+#courses = db['coursesS18']
 
 # TYPES OF QUERIES
 ZERO = 0
@@ -145,7 +145,18 @@ def sanitize(unsafe):
 # corresponding Mongo query, and return the results of the
 # Mongo query, as an array of stringified json objects 
 # along with the query type
-def queryOneWord(word):
+def queryOneWord(word, semester):
+    # current semester
+    sem = parse_semester(semester)
+    lol = ""
+    if sem[0] == "S":
+        lol = "S18"
+    elif sem[0] == "F":
+        lol = "F18"
+    courses = db['courses' + lol]
+    #courses = db['courses' + parse_semester(semester)]
+    #courses = db['courses' + 'S17']
+
     uWord = word.upper()
     results = set()
     queryType = ZERO
@@ -197,11 +208,11 @@ def queryOneWord(word):
 
 # Split the sanitized query string into sub-parts and
 # generate a mongo query for eachself.
-def queryAllWords(safe):
+def queryAllWords(safe, semester):
     types = {}
     words = safe.split()
     for word in words:
-        currentResult, queryType = queryOneWord(word)
+        currentResult, queryType = queryOneWord(word, semester)
         if queryType not in types.keys():
             types[queryType] = currentResult
         else:
@@ -222,13 +233,18 @@ def queryAllWords(safe):
     list.sort(finalResults, key=lambda dept: (dept["listings"][0]["dept"], dept["listings"][0]["number"]))
     return finalResults
 
+# parses semester input - takes first character and last two characters
+def parse_semester(semester):
+    final_form = semester[0] + semester[len(semester) - 2:]
+    return final_form
 
 # public variant of queryAllWords called by landing.py
-def course_db_query(query):
+def course_db_query(query, semester):
     # TODO
     # NEED TO SANITIZE
     safe = sanitize(query)
-    return queryAllWords(safe)
+    #courses = db['courses' + parse_semester(semester)]
+    return queryAllWords(safe, parse_semester(semester))
     # version with just one word
     #print(safe)
     #return queryOneWord(safe)

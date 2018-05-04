@@ -11,6 +11,9 @@ function plan_init() {
   var programSearchBox = $("#programSearch")[0];
   programSearchBox.addEventListener("keyup", keyEventHandler);
 
+  // Unhide active semester
+  updateCurrentSemester();
+
   loadUserData();
 }
 
@@ -60,8 +63,10 @@ function programResultHandler(event) {
   var accordion = accordionDiv.children[1];
   var enrolledCourses = $(".enrolled-course-td");
   for (var i = 0; i < enrolledCourses.length; i++) {
-    var courseToAdd = enrolledCourses[i].innerText;
-    addCourseToAccordion(courseToAdd, accordion);
+    var courseToAddName = enrolledCourses[i].innerText;
+    var courseToAddSem  = enrolledCourses[i].semester;
+    var courseToAddObj  = createCourseObj(courseToAddName, courseToAddSem);
+    addCourseToAccordion(courseToAddObj, accordion);
   }
 
   // Reinitialize all popovers.
@@ -74,18 +79,20 @@ function courseResultHandler(event) {
   // Add the clicked course to the enrolled courses list
   var tr = document.createElement("tr");
   var td = this.cloneNode(true);
-  var table = $("#currentCoursesTable")[0];
+  var table = getSemesterEnrolledTable();
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
-  // Add the enrolled course class to this td so it can be easily found later.
+
+  // Add the enrolled course class and semester to this td so it can be easily found later.
   td.classList.add("enrolled-course-td");
+  td.semester = getShortSemester();
 
   // Add a remove button
   td.appendChild(createRemoveButton("course"));
 
-  // Get the name of the course that was added.
-  var addedCourse = td.innerText;
-  // console.log(addedCourse);
+  // Get the name of the course that was added and create an Obj wrapper.
+  var addedCourseName = td.innerText;
+  var addedCourseObj = createCourseObj(addedCourseName, td.semester);
 
   // Disallow duplicate listings.
   // TODO make more rigorous; this is buggy
@@ -100,7 +107,7 @@ function courseResultHandler(event) {
   // Add the course to the list of enrolled courses
   tableBody.appendChild(tr);
 
-  addCourseToAccordions(addedCourse, getShortSemester());
+  addCourseToAccordions(addedCourseObj, getShortSemester());
 
 }
 
@@ -148,22 +155,33 @@ function removeProgramHandler(event) {
   }
 }
 
+// Called when the semester dropdown changes value.
+function semesterChangeHandler(event) {
+  // Update the currently visible courses.
+  updateCurrentSemester();
+
+  // Refresh the search results.
+  courseSearchSubmit();
+}
+
 // ======================== COURSE ENROLLING HELPERS ===================
 // Used to update the accordions when needed.
 // =====================================================================
 
+// Given an obj addedCourse (containing name: and semester: )
 // Update the accordions by adding the given course to all relevant accordions.
-function addCourseToAccordions(addedCourse, shortSemester) {
+function addCourseToAccordions(addedCourse) {
   // Add selected courses to each major accordion.
   var accordions = $(".accordion");
   for (var i = 0; i < accordions.length; i++) {
-    addCourseToAccordion(addedCourse, accordions[i], shortSemester);
+    addCourseToAccordion(addedCourse, accordions[i]);
   }
 }
 
+// Given an obj addedCourse (containing name: and semester: )
 // Add the given course to the given accordion, where accordion is an element
 // with the class .accordion
-function addCourseToAccordion(addedCourse, accordion, shortSemester) {
+function addCourseToAccordion(addedCourseObj, accordion) {
 
       // Get the collection of header/content pairs.
       var accordion = accordion.children[0];
@@ -192,7 +210,7 @@ function addCourseToAccordion(addedCourse, accordion, shortSemester) {
 
           // If addedCourse in subreqlist's popover:
           // Store this subreq as a match, and check next req.
-          var satisfiedCourse = satisfiesSubreq(addedCourse, subreqList[k]);
+          var satisfiedCourse = satisfiesSubreq(addedCourseObj["name"], subreqList[k]);
 
           // If this subreq is satisfied by added course AND
           // this slot is not already filled with another course:
@@ -212,11 +230,11 @@ function addCourseToAccordion(addedCourse, accordion, shortSemester) {
       // We now have a list of all satisfied reqs for this program.
       // If there is only one satisfied req, add it.
       if (satisfiedReqs.length == 1) {
-        addCourseToRequirement(addedCourse, satisfiedReqs[0], shortSemester);
+        addCourseToRequirement(addedCourseObj, satisfiedReqs[0]);
       }
       // More than one satisfied req! Ask user to disambiguate.
       else if (satisfiedReqs.length > 1){
-        promptDisambiguation(addedCourse, satisfiedReqs);
+        promptDisambiguation(addedCourseObj, satisfiedReqs);
       }
 }
 
@@ -224,7 +242,7 @@ function addCourseToAccordion(addedCourse, accordion, shortSemester) {
 // Is addedCourse present in the popover of subreq? (even if the popover is hidden)
 // Return the matching course if so, or null if not.
 // If subreq has no popover, return null. (unless the popover is hidden, see above)
-function satisfiesSubreq(addedCourse, subreq) {
+function satisfiesSubreq(addedCourseStr, subreq) {
   // No popover exists.
 
   // If subreq has a lone (text) element and has no hidden popover, no match
@@ -240,7 +258,7 @@ function satisfiesSubreq(addedCourse, subreq) {
     content = subreq.children[1].getAttribute("data-content");
   }
   var popoverCourses = content.split(/<br.?\/?>/g);
-  var addedCourses = addedCourse.split(/ \/ /g);
+  var addedCourses = addedCourseStr.split(/ \/ /g);
   return (matchCoursePopover(addedCourses, popoverCourses));
 }
 
@@ -271,15 +289,20 @@ function matchCoursePopover(addedCourses, popoverCourses) {
   return null;
 }
 
-// Given a string addedCourse and satisfiedReq dict containing
+// Given an obj addedCourseObj (containing name: and semester: )
+// and satisfiedReq dict containing
 // info about the satisfied requirement, update the satisfiedReq's
 // DOM elements to reflect the course being added.
 // Use the string shortSemester to create a semester tag for the course.
-function addCourseToRequirement(addedCourse, satisfiedReq, shortSemester) {
+function addCourseToRequirement(addedCourseObj, satisfiedReq) {
   var subreqList      = satisfiedReq["subreqList"];
   var firstSatisfied  = satisfiedReq["firstSatisfied"];
   var satisfiedCourse = satisfiedReq["satisfiedCourse"];
   var popoverString   = satisfiedReq["popoverString"];
+
+  // Extract info from addedCourseObj
+  var addedCourse = addedCourseObj["name"];
+  var shortSemester = addedCourseObj["semester"];
 
   // Remove the popover link from the satisfied subreq list.
   // Replace it with the name of the satisfied course, plus (TODO) semester and checkmark.
@@ -631,6 +654,15 @@ function createSemesterTag(shortSemester) {
   return span;
 }
 
+// ==================== SEMESTER FUNCTIONS ==================================
+function updateCurrentSemester() {
+  // Hide all semesters.
+  $(".coursesDiv").addClass("hidden");
+
+  // Unhide current semester.
+  getSemesterEnrolledCourses().classList.remove('hidden');
+}
+
 // ==================== ACCORDION CREATORS ==================================
 /* Creates an accordion based on a JSON object resultsObj  */
 function createAccordion(resultsObj) {
@@ -642,7 +674,7 @@ function createAccordion(resultsObj) {
 
     // Creates + appends header
     var majorHeader = document.createElement("h3");
-    var majorName = document.createTextNode(resultsObj["name"]);
+    var majorName = text(createProgramTag(resultsObj));
     majorHeader.appendChild(majorName);
     resultDiv.appendChild(majorHeader);
 
@@ -785,6 +817,25 @@ function getShortSemester() {
   var n = semester.length;
   var tag = semester.substring(0, 1) + semester.substring(n-2, n);
   return tag.toUpperCase();
+}
+
+// Get the currently active semester's enrolled courses div
+function getSemesterEnrolledCourses() {
+  var shortSemester = getShortSemester();
+  var divID = "#coursesDiv" + shortSemester;
+  return $(divID)[0];
+}
+
+// Get the currently active semester's enrolled courses table
+function getSemesterEnrolledTable() {
+  var shortSemester = getShortSemester();
+  var tableID = "#coursesTable" + shortSemester;
+  return $(tableID)[0];
+}
+
+// Create a courseObj containing the given name and semester.
+function createCourseObj(name, semester) {
+  return {"name": name, "semester":semester};
 }
 
 

@@ -146,7 +146,19 @@ body {
     font-weight: bold;
 }
 
-/*     */
+/*************************/
+
+/* Will's semester changes */
+
+.hidden {
+  display: none;
+}
+
+.coursesDiv {
+
+}
+
+/***************************/
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {height: auto}
