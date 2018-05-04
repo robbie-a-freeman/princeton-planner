@@ -24,7 +24,8 @@ def plan():
         # Handle searches for courses
         if form_name == 'COURSE_QUERY':
             query = request.form['course_query']
-            return str(course_search.course_db_query(query))
+            semester = request.form['semester']
+            return str(course_search.course_db_query(query, semester))
 
         # Handle searches for majors/certificates
         elif form_name == 'PROGRAM_QUERY':
@@ -68,17 +69,20 @@ def userdata():
         return str(user_info.user_query(user['netid']))
         #return str(user_info.user_query('test'))
     else:
-        if form_name == 'COURSE_ADD':
-            query = request.form['course_add']
-            user_info.add_course(user, "program", query)
+        #if form_name == 'COURSE_ADD':
+        #    query = request.form['course_add']
+        #    user_info.add_course(user, 'semester', 'category', query)
+        if form_name == 'ENROLLED_COURSE_ADD':
+            query = request.form['enrolled_course_add']
+            user_info.add_enrolled_course(user, 'semester', query)
 
         elif form_name == 'PROGRAM_ADD':
             query = request.form['program_add']
-            user_info.add_program(user, query)
+            user_info.add_program(user, query, categories)
 
-        elif form_name == 'COURSE_REMOVE':
-            query = request.form['course_remove']
-            user_info.remove_course(user, "program", query)
+        #elif form_name == 'COURSE_REMOVE':
+        #    query = request.form['course_remove']
+        #    user_info.remove_course(user, "program", query)
 
         elif form_name == 'PROGRAM_REMOVE':
             query = request.form['program_remove']
@@ -86,4 +90,4 @@ def userdata():
 
         elif form_name == 'ENROLLED_COURSE_REMOVE':
             query = request.form['enrolled_course_remove']
-            user_info.remove_enrolled_course(user, query)
+            user_info.remove_enrolled_course(user, 'semester', query)

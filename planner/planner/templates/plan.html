@@ -151,12 +151,12 @@
 
         <!-- Searching for courses -->
         <h3>Search for courses!</h3>
-        <form onsubmit=courseSearchSubmit id="courseSearchForm">
+        <form onsubmit=courseSearchSubmit id="courseSearchForm" onkeypress="return event.keyCode != 13;">
             <div class="input-group pull-left" id="sea1">
                 <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="courseSearch" name="course_query"/>
                 <input type="hidden" name="form_name" value="COURSE_QUERY"/>
                 <div class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-primary" type="button">
                     <span class="glyphicon glyphicon-search"></span>
                     </button>
                 </div>
@@ -240,12 +240,12 @@
 
     <div id="programSearchDiv" class="col-sm-2 sidenav">
         <h3>Search for majors/certificates!</h3>
-        <form action="programSearchSubmit" id="programSearchForm">
+        <form action="programSearchSubmit" id="programSearchForm" onkeypress="return event.keyCode != 13;">
             <div class="input-group pull-left" id="sea1">
                 <input type="text" autocomplete="off" class="form-control" placeholder="Search" id="programSearch" name="program_query"/>
                 <input type="hidden" name="form_name" value="PROGRAM_QUERY"/>
                 <div class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-primary" type="button">
                     <span class="glyphicon glyphicon-search"></span>
                     </button>
                 </div>

@@ -41,7 +41,6 @@ def queryOneWord(word):
 
     # Combine code & fullname searches
     else:
-    # TODO fix bug where courses satisfying mutliple conditions are duplicated (use sets)
         results  = [maj for maj in majors.find( {"name":       re_obj} ) ]
         results += [maj for maj in majors.find( {"track":      re_obj} ) ]
         results += [maj for maj in majors.find( {"short_name": re_obj} ) ]
