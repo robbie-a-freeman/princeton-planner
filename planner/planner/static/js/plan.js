@@ -109,6 +109,9 @@ function courseResultHandler(event) {
   tr.appendChild(td);
   tableBody.appendChild(tr);
 
+  // Insert this course into the user database.
+  addCourseToUser(addedCourseObj["name"], addedCourseObj["semester"]);
+
   addCourseToAccordions(addedCourseObj, getShortSemester());
 }
 
@@ -241,9 +244,6 @@ function addCourseToAccordion(addedCourseObj, accordion) {
       // If there is only one satisfied req, add it.
       if (satisfiedReqs.length == 1) {
         addCourseToRequirement(addedCourseObj, satisfiedReqs[0]);
-
-        // Insert this course into the user database.
-        addCourseToUser(addedCourseObj["name"], addedCourseObj["semester"]);
       }
       // More than one satisfied req! Ask user to disambiguate.
       else if (satisfiedReqs.length > 1){
@@ -252,6 +252,7 @@ function addCourseToAccordion(addedCourseObj, accordion) {
         // Let resolutionObj contain course, semester, program, requirement.
         var res = promptDisambiguation(addedCourseObj, satisfiedReqs);
 
+        // this is likely totally borked even if it did work
         // Insert override into db
         addOverrideToUser(res["course"], res["semester"], res["program"], res["requirement"]);
 
