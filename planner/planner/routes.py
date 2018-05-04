@@ -43,9 +43,6 @@ def plan():
         elif form_name == 'COURSE_ADD':
             course = request.form['course_add']
             semester = request.form['semester']
-            print("Adding course %s..." % course)
-            print("%s" % course)
-            print("%s" % semester)
             user_info.add_course(user, semester, course)
 
         elif form_name == 'PROGRAM_ADD':

@@ -107,10 +107,10 @@ def user_query(user):
     #        return_document=AFTER
     #    )
 def add_program(user, program):
-    if not users.find_one({"$and": [{"netid": "test"}, {"programs": "MUS"}]}):
+    if not users.find_one({"$and": [{"netid": "test"}, {"programs": program}]}):
         users.find_one_and_update(
             {"netid": "test"},
-            {"$addToSet": {"programs": "MUS"}},
+            {"$addToSet": {"programs": program}},
             upsert=False,
             return_document=AFTER
         )
@@ -139,7 +139,7 @@ def add_semester(user, semester):
 
 # Given a user, a program, a category, course, and semester, add the course to the override
 def add_override(user, program, category, course, semester):
-    if not users.find_one({"$and": [{"netid": "test"}, {"program": "Computer Science"}, {"category": "Departmentals"}, {"course": "COS 445"}, {"semester": "S18"}]}):
+    if not users.find_one({"$and": [{"netid": "test"}, {"overrides": {"$elemMatch": {"program": program, "category": category, "course": course, "semester": semester}}}]}):
         users.find_one_and_update(
             {"netid": "test"},
             {"$addToSet": {"overrides": {"program": "Computer Science", "category": "Departmentals", "course": "COS 445", "semester": "S18"}}},
