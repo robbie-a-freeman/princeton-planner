@@ -20,6 +20,7 @@ def plan():
         # Figure out which form submitted the request.
         # TODO this is a potential security risk; user can spoof any form they want.
         form_name = request.form['form_name']
+        print("request received for ", form_name)
 
         # Handle searches for courses
         if form_name == 'COURSE_QUERY':
@@ -42,6 +43,7 @@ def plan():
         elif form_name == 'COURSE_ADD':
             course = request.form['course_add']
             semester = request.form['semester']
+            print("Adding course %s..." % course)
             user_info.add_course(user, semester, course)
 
         elif form_name == 'PROGRAM_ADD':
