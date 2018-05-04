@@ -141,7 +141,12 @@ function removeCourseHandler(event) {
   // Prevent weird spurious click events from being generated in parents.
   event.stopPropagation();
   var tr = this.parentElement.parentElement; // span --> td --> tr
+
+  // Update the GUI.
   removeEnrolledCourse(tr);
+
+  // Update mongodb
+  removeCourseFromUser(getText(tr.children[0]) , getShortSemester());
 }
 
 // Called when the remove program button is pressed.
