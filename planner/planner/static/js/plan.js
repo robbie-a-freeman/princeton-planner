@@ -489,6 +489,7 @@ function unstrikethrough(courseName, subreq) {
  * TODO bind manual submission here instead
  */
 function courseSearchSubmit() {
+  updateTimestamps();
   var courseSearchForm = $("#courseSearchForm");
   $.post('/plan',
          courseSearchForm.serialize(),
@@ -506,11 +507,17 @@ function updateCourseResults(jsonResponse) {
 
 // XHR POST handling function for program searches.
 function programSearchSubmit() {
+  updateTimestamps();
   var programSearchForm = $("#programSearchForm");
   $.post('/plan',
          programSearchForm.serialize(),
          updateProgramResults
        );
+}
+
+// Set the timestamps of the searches.
+function updateTimestamps() {
+  $(".timestamp").val(new Date().getTime());
 }
 
 
@@ -522,10 +529,26 @@ function updateProgramResults(jsonResponse) {
 
 function updateResults(jsonResponse, type) {
   // Preprocess the JSON response so it is suitable for parsing
-  results = parseJSON(jsonResponse);
+  var rawResults = parseJSON(jsonResponse);
+  var results = rawResults["results"];
+  var newTime = rawResults["time"];
+  var oldTime = null;
 
   var resultsTableID = "#" + type + "SearchResults";
   var resultsHeaderID = "#" + type + "SearchHeader";
+  var resultsTable = $(resultsTableID)[0];
+
+  if ("timestamp" in resultsTable) {
+    oldTime = resultsTable.timestamp;
+  }
+  // If this new timestamp is newer than the current one (prevent race condition)
+  if (oldTime == null || newTime > oldTime) {
+    resultsTable.timestamp = newTime;
+  }
+  else {
+    // This server response is outdated. don't use it.
+    return;
+  }
 
   // Create the results header
   var resultHeading = document.createElement("h3");
@@ -540,10 +563,9 @@ function updateResults(jsonResponse, type) {
   resultTableDiv = createResultsTable(results, type);
 
   // Clear old results, and insert new ones.
-  // NOTE dangerous--accidentaly variable overload!
-  results = $(resultsTableID);
-  results.empty();
-  results[0].appendChild(resultTableDiv);
+  var resultsTable = $(resultsTableID);
+  resultsTable.empty();
+  resultsTable[0].appendChild(resultTableDiv);
 
   resultsHeaderDiv = $(resultsHeaderID);
   resultsHeaderDiv.empty();
@@ -578,7 +600,7 @@ function createResultsTable(resultsObj, resultsType) {
   // Generate a table row + entry for each search result.
   for (var i = 0; i < resultsObj.length; i++) {
     // Create elements for each row
-    var tr = createTableRow(results[i], resultsType);
+    var tr = createTableRow(resultsObj[i], resultsType);
     resultTableBody.appendChild(tr);
   }
 
