@@ -63,9 +63,9 @@ def user_query(user):
     userInfo = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"True"}}, \
                                      upsert=True, return_document=AFTER)
 
-    """programsInfo = []
+    programsInfo = []
     for program in userInfo['programs']:
-        fullName = program["program"]
+        fullName = program
         nameParts = fullName.split(" - ")
 
         # extract major + track from combined string.
@@ -90,8 +90,7 @@ def user_query(user):
         programsInfo.append(programInfo[0])
 
     results = {"programsInfo": programsInfo, "userInfo": userInfo}
-    return results"""
-    return userInfo
+    return results
 
 
 # Given a user and a program and the associated categories, add the program and list of categories to existing programs
