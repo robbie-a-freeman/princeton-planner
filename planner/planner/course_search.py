@@ -147,8 +147,15 @@ def sanitize(unsafe):
 # along with the query type
 def queryOneWord(word, semester):
     # current semester
+    sem = parse_semester(semester)
+    lol = ""
+    if sem[0] == "S":
+        lol = "S18"
+    elif sem[0] == "F":
+        lol = "F18"
+    courses = db['courses' + lol]
     #courses = db['courses' + parse_semester(semester)]
-    courses = db['courses' + 'S17']
+    #courses = db['courses' + 'S17']
 
     uWord = word.upper()
     results = set()
