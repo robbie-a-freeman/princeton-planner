@@ -1,4 +1,8 @@
-import re, os
+# ----------------------------------------------------------------------------
+# program_search.py
+# ----------------------------------------------------------------------------
+
+import os, re
 from pymongo import MongoClient
 
 
@@ -60,7 +64,9 @@ def queryAllWords(safe):
 
 
 # public variant of queryAllWords called by landing.py
-def program_db_query(safe):
+def program_db_query(query):
+    # NEED TO IMPLEMENT SANITIZE!
+    safe = sanitize(query)
     return queryOneWord(safe)
 
 

@@ -1,3 +1,7 @@
+# ----------------------------------------------------------------------------
+# course_search.py
+# ----------------------------------------------------------------------------
+
 # This program takes in an *unsanitized* query string from the user,
 # sanitizes it to reduce the risk of injection-style attacks, and
 # then generates a MongoDB query that will search the database to satisfy
@@ -82,13 +86,11 @@
 #
 # =====================================================================
 
-import re, os
+import os, re
 from pymongo import MongoClient
 
-#import json
-from bson.json_util import dumps, loads # to handle BSON types
-
-#from operator import itemgetter, attrgetter
+# to handle BSON types
+from bson.json_util import dumps, loads
 
 
 #client = MongoClient('localhost', 27017)
@@ -139,82 +141,91 @@ def sanitize(unsafe):
 
 # Given a single sub-part of the query string, generate the
 # corresponding Mongo query, and return the results of the
-# Mongo query, as an array of json objects (strings or objects?)
+# Mongo query, as an array of stringified json objects 
+# along with the query type
 def queryOneWord(word):
-    uWord = word.upper() # This is not actually entirely accurate for all regular expressions.
+    uWord = word.upper()
     results = set()
+    queryType = ZERO
 
     re_obj = {"$regex":word, "$options":"i"}
 
     if len(word) <= 1:
-        return (results, ZERO)
+        queryType = ZERO
+        return (results, queryType)
 
     # Dept. ID:
     elif uWord in dept_ids:
-        results = (set([dumps(course) for course in courses.find( {"listings.dept":uWord} ) ]), DEPT)
+        results = set([dumps(course) for course in courses.find( {"listings.dept":uWord} ) ])
+        queryType = DEPT
 
     # Course number:
     elif re.match("\d\d\d", word):
-        results = (set([dumps(course) for course in courses.find( {"listings.number":uWord} ) ]), NUM)
+        results = set([dumps(course) for course in courses.find( {"listings.number":uWord} ) ])
+        queryType = NUM
 
     # Dept. ID no spaces followed by course number:
     elif re.match("[A-Z][A-Z][A-Z]\d\d\d", uWord):
         results = set([dumps(course) for course in courses.find( {"listings.dept":uWord[0:3]} ) ])
-        results = (results.intersection([dumps(course) for course in courses.find( {"listings.number":uWord[3:]} ) ]), DENUM)
+        results = results.intersection([dumps(course) for course in courses.find( {"listings.number":uWord[3:]} ) ])
+        queryType = DENUM
 
     # Dist. ID:
     elif uWord in dist_ids:
-        results = (set([dumps(course) for course in courses.find( {"area": uWord}) ]), DIST)
+        results = set([dumps(course) for course in courses.find( {"area": uWord}) ])
+        queryType = DIST
 
     # Len <= 2:
     elif len(word) <= 2:
-        # TODO fix bug where courses satisfying mutliple conditions are duplicated (use a set)
         results = set([dumps(course) for course in courses.find( {"listings.dept":   re_obj} )])
         results = results.union([dumps(course) for course in courses.find( {"listings.number": re_obj} )])
-        results = (results.union([dumps(course) for course in courses.find( {"title":           re_obj} )]), TIT1)
+        results = results.union([dumps(course) for course in courses.find( {"title":           re_obj} )])
+        queryType = TIT1
+        # FIXED! :) - see above :)
+        # TODO fix bug where courses satisfying mutliple conditions are duplicated (use a set)
         #results += [json.dumps(course) for course in courses.find( {"listings.number": re_obj} )]
         #results += [json.dumps(course) for course in courses.find( {"title":           re_obj} )]
 
     # Len >= 3:
     else:
-        results = (set([dumps(course) for course in courses.find( {"title":           re_obj} )]), TIT2)
+        results = set([dumps(course) for course in courses.find( {"title":           re_obj} )])
+        queryType = TIT2
 
-    return results
+    return (results, queryType)
 
 # Split the sanitized query string into sub-parts and
 # generate a mongo query for eachself.
 def queryAllWords(safe):
-    # 5 types of queries
-    #types = {ZERO: [], DEPT: [], NUM: [], DIST: [], TIT1: [], TIT2: []} # if list is empty, then don't consider it in union (to prevent empty results)
     types = {}
     words = safe.split()
-    #results = []
     for word in words:
-        #results.append(queryOneWord(word))
-        current, queryType = queryOneWord(word)
+        currentResult, queryType = queryOneWord(word)
         if queryType not in types.keys():
-            types[queryType] = current
+            types[queryType] = currentResult
         else:
-            types[queryType] = types[queryType].union(current)
-    # take intersection of types of queries now
+            types[queryType] = types[queryType].union(currentResult)
+    # take intersection of types of queries
     results = set()
     alreadyTraversed = False
-    for lists in types.values():
+    for courseList in types.values():
         if alreadyTraversed:
-            results = results.intersection(lists)
+            results = results.intersection(courseList)
         else:
-            results = lists
+            results = courseList
             alreadyTraversed = True
     finalResults = []
     for course in results:
         finalResults.append(loads(course))
     # sorts by department and then course number
-    finalResults = sorted(finalResults, key=lambda dept: (dept["listings"][0]["dept"], dept["listings"][0]["number"]))
+    list.sort(finalResults, key=lambda dept: (dept["listings"][0]["dept"], dept["listings"][0]["number"]))
     return finalResults
 
 
 # public variant of queryAllWords called by landing.py
-def course_db_query(safe):
+def course_db_query(query):
+    # TODO
+    # NEED TO SANITIZE
+    safe = sanitize(query)
     return queryAllWords(safe)
     # version with just one word
     #print(safe)
@@ -243,9 +254,9 @@ def getCourseTag(result):
 # Run a single query for the given testWord and print result tags
 def queryOneTest(testWord):
     print("Querying MongoDB for \"%s\"..." % testWord)
-    results = queryOneWord(testWord)
-    for result in results:
-        print(getCourseTag(result))
+    results, queryType = queryOneWord(testWord)
+    for result in list(results):
+        print(getCourseTag(loads(result)))
     print("\n")
 
 # Run several queries and print results.
