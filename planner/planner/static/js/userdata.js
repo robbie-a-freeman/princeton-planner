@@ -39,7 +39,7 @@ function addCourseToUser(course, semester) {
 function removeCourseFromUser(course, semester) {
   var dict = {
     "form_name": "COURSE_REMOVE",
-    "course_add": course,
+    "course_remove": course,
     "semester": semester
   }
   $.post('/plan',
