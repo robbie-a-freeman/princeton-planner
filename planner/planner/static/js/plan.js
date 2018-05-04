@@ -157,7 +157,7 @@ function addCourseToAccordions(addedCourse, shortSemester) {
   // Add selected courses to each major accordion.
   var accordions = $(".accordion");
   for (var i = 0; i < accordions.length; i++) {
-    ion(addedCourse, accordions[i], shortSemester);
+    addCourseToAccordion(addedCourse, accordions[i], shortSemester);
   }
 }
 
