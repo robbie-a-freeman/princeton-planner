@@ -4,11 +4,11 @@ var USER_DATA;
 
 // Loads the user data for the current CAS user.
 function loadUserData() {
-  $.get("/userdata", updatePageData)
+  $.get("/userdata", renderUserData)
 }
 
 // Receives the user data for the current CAS user.
-function updatePageData(jsonResponse) {
+function renderUserData(jsonResponse) {
   userdata = parseJSON(jsonResponse);
   USER_DATA = userdata;
 
@@ -19,85 +19,130 @@ function updatePageData(jsonResponse) {
   }
 }
 
-// Saves the user data for the current CAS user.
-
-// HENRY'S SHIT
+// ========================= DB ADD/REMOVE FUNCTIONS ==================================
 // XHR POST handling function for adding courses
-function courseAddSubmit() {
-  var courseAddForm = $("#courseAddForm");
+// Requires the course name (COS 333), and semester in which it was taken.  (F18)
+function addCourseToUser(course, semester) {
+  var dict = {
+    "form_name": "COURSE_ADD"
+    "course": course,
+    "semester": semester
+  }
   $.post('/plan',
-         courseAddForm.serialize(),
-         updateCourseAdd
+         serialize(dict),
+         callbackAddCourseToUser
        );
-}
-
-// Dummy function for courseAddSubmit (does nothing because callback is useless)
-function updateCourseAdd() {
-}
-
-// XHR POST handling function for adding enrolled courses
-function enrolledCourseAddSubmit() {
-  var enrolledCourseAddForm = $("#enrolledCourseAddForm");
-  $.post('/plan',
-         enrolledCourseAddForm.serialize(),
-         updateEnrolledCourseAdd
-       );
-}
-
-// Dummy function for enrolledCourseAddSubmit (does nothing because callback is useless)
-function updateEnrolledCourseAdd() {
-}
-
-// XHR POST handling function for adding programs
-function programAddSubmit() {
-  var programAddForm = $("#programAddForm");
-  $.post('/plan',
-         programAddForm.serialize(),
-         updateProgramAdd
-       );
-}
-
-// Dummy function for programAddSubmit (does nothing because callback is useless)
-function updateProgramAdd() {
 }
 
 // XHR POST handling function for removing courses
-function courseRemoveSubmit() {
-  var courseRemoveForm = $("#courseRemoveForm");
+// Requires the course name (COS 333), and semester in which it was taken.  (F18)
+function removeCourseFromUser(course, semester) {
+  var dict = {
+    "form_name": "COURSE_REMOVE"
+    "course": course,
+    "semester": semester
+  }
   $.post('/plan',
-         courseRemoveForm.serialize(),
-         updateCourseRemove
+         serialize(dict),
+         callbackRemoveCourseFromUser
        );
 }
 
-// Dummy function for courseRemoveSubmit (does nothing because callback is useless)
-function updateCourseRemove() {
+// XHR POST handling function for adding override courses.
+// Requires the course name, semester in which it was taken,
+// program satisfied, and which requirement of that program was satisfied.
+function addOverrideToUser(course, semester, program, requirement) {
+  var dict = {
+    "form_name": "OVERRIDE_ADD"
+    "course": course,
+    "semester": semester,
+    "program": program,
+    "category": requirement // in the backend, "requirement" is referred to as "category".
+  }
+  $.post('/plan',
+         serialize(dict),
+         callbackAddOverrideToUser
+       );
+}
+
+// XHR POST handling function for removing override courses.
+// Requires the course name, semester in which it was taken,
+// program satisfied, and which requirement of that program was satisfied.
+function removeOverrideFromUser(course, semester, program, requirement) {
+  var dict = {
+    "form_name": "OVERRIDE_REMOVE"
+    "course": course,
+    "semester": semester,
+    "program": program,
+    "category": requirement // in the backend, "requirement" is referred to as "category".
+  }
+  $.post('/plan',
+         serialize(dict),
+         callbackRemoveOverrideFromUser
+       );
+}
+
+// XHR POST handling function for adding programs
+// Requires the name of the program to add.
+function addProgramToUser(program) {
+  var dict = {
+    "form_name": "PROGRAM_ADD"
+    "program": program
+  }
+  $.post('/plan',
+         serialize(dict),
+         callbackAddProgramToUser
+       );
 }
 
 // XHR POST handling function for removing programs
-function programRemoveSubmit() {
-  var programRemoveForm = $("#programRemoveForm");
+// Requires the name of the program to remove.
+function removeProgramFromUser(program) {
+  var dict = {
+    "form_name": "PROGRAM_REMOVE"
+    "program": program
+  }
   $.post('/plan',
-         programRemoveForm.serialize(),
-         updateProgramRemove
+         serialize(dict),
+         callbackRemoveProgramFromUser
        );
 }
 
-// Dummy function for programRemoveSubmit (does nothing because callback is useless)
-function updateProgramRemove() {
+// ================================ CALLBACK FUNCTIONS ==================================
+// All callback functions are currently dummy functions to be defined if/when convenient
+// in the future.
+
+function callbackAddCourseToUser() {
 }
 
-// XHR POST handling function for removing enrolled courses
-function enrolledCourseRemoveSubmit() {
-  var enrolledCourseRemoveForm = $("#enrolledCourseRemoveForm");
-  $.post('/plan',
-         enrolledCourseRemoveForm.serialize(),
-         updateEnrolledCourseRemove
-       );
+function callbackRemoveCourseFromUser() {
 }
 
-// Dummy function for enrolledCourseRemoveSubmit (does nothing because callback is useless)
-function updateEnrolledCourseRemove() {
+function callbackAddProgramToUser() {
 }
 
-// ========================= UPDATE FUNCTIONS ================================
+function callbackRemoveProgramFromUser() {
+}
+
+function callbackAddOverrideToUser() {
+}
+
+function callbackRemoveOverrideFromUser() {
+}
+
+
+
+// ========================= HELPER FUNCTIONS ================================
+// Given a dictionary, return the string representing the serialized version of a form
+// sharing the same structure as the dictionary.
+function serialize(dict) {
+  var keys = Object.keys(dict);
+  var form = document.createElement("form");
+  for (var i = 0; i < keys.length; i++) {
+    var input = document.createElement("input");
+    input.name = keys[i];
+    input.value = dict[keys[i]];
+    form.appendChild(input);
+  }
+  return $(form).serialize();
+}
