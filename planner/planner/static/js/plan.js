@@ -59,7 +59,7 @@ function programResultHandler(event) {
   var accordionDiv = createAccordion(JSON5.parse(this.obj_data));
   target.appendChild(accordionDiv);
 
-  // Update the accordion with all of the currently enrolled majors.
+  // Update the accordion with all of the currently enrolled courses.
   var accordion = accordionDiv.children[1];
   var enrolledCourses = $(".enrolled-course-td");
   for (var i = 0; i < enrolledCourses.length; i++) {
@@ -71,6 +71,9 @@ function programResultHandler(event) {
 
   // Reinitialize all popovers.
   refreshPopovers();
+
+  // Add the program to the database.
+  addProgramToUser(getText(tr));
 }
 
 // Called when course search results are clicked.
@@ -102,13 +105,11 @@ function courseResultHandler(event) {
     }
   }
 
-  // Add the course to enrolled courses.
+  // Add the course to enrolled courses list
   tr.appendChild(td);
-  // Add the course to the list of enrolled courses
   tableBody.appendChild(tr);
 
   addCourseToAccordions(addedCourseObj, getShortSemester());
-
 }
 
 // Called when info button next to search results is clicked.
@@ -240,10 +241,22 @@ function addCourseToAccordion(addedCourseObj, accordion) {
       // If there is only one satisfied req, add it.
       if (satisfiedReqs.length == 1) {
         addCourseToRequirement(addedCourseObj, satisfiedReqs[0]);
+
+        // Insert this course into the user database.
+        addCourseToUser(addedCourseObj["course"], addedCourseObj["semester"]);
       }
       // More than one satisfied req! Ask user to disambiguate.
       else if (satisfiedReqs.length > 1){
-        promptDisambiguation(addedCourseObj, satisfiedReqs);
+        return; // TODO IMPLEMENT promptDisambiguation and remove this.
+        // resolution object storing user choices
+        // Let resolutionObj contain course, semester, program, requirement.
+        var res = promptDisambiguation(addedCourseObj, satisfiedReqs);
+
+        // Insert override into db
+        addOverrideToUser(res["course"], res["semester"], res["program"], res["requirement"]);
+
+        // Display the override locally. (add to enrolled courses list, update accordions
+        // TODO
       }
 }
 
