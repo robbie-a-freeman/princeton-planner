@@ -12,6 +12,7 @@
 <script src="https://unpkg.com/json5@^1.0.0"></script>
 <script src="{{ url_for('static', filename = 'js/plan.js') }}"></script>
 <script src="{{ url_for('static', filename = 'js/fruits.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/userdata.js') }}"></script>
 </head>
 <body onload = plan_init()>
 
@@ -126,7 +127,7 @@
 
         <h3>Select semester!</h3>
         <div class="form-group">
-        <select class="form-control" id="semester" form="abcdefg" onchange="myFunction()">
+        <select class="form-control" id="semester" form="courseSearchForm" onchange="myFunction()" name="semester">
             <optgroup label="Current and Previous Semesters">
                 <option>Fall 2018</option>
                 <option>Spring 2018</option>
@@ -179,7 +180,7 @@
 
     </div>
     <div id="programInfoDiv">
-      <div class="col-sm-2 text-left">
+      <div class="program-col col-sm-2 text-left">
           <h3>School of Engineering and Applied Science</h3>
           <div style="float:left" class="panel-group" id="accordion">
               <div class="panel panel-default">
@@ -311,7 +312,7 @@
               </div>
           </div>
       </div>
-      <div class="col-sm-2 text-left">
+      <div class="program-col col-sm-2 text-left">
           <h3>Computer Science (COS BSE)</h3>
           <div style="float:left" class="panel-group" id="accordion">
               <div class="panel panel-default">
@@ -420,7 +421,7 @@
       </div>
       -->
     </div>
-    <div class="col-sm-2 sidenav">
+    <div id="programSearchDiv" class="col-sm-2 sidenav">
         <h3>Search for majors/certificates!</h3>
         <form action="programSearchSubmit" id="programSearchForm">
             <div class="input-group pull-left" id="sea1">

@@ -91,8 +91,41 @@
     border: 1px solid rgb(196, 193, 193);
 }
 
+/* New CSS to fix all the weird graphical glitches */
+ /*
+#programSearchDiv {
+    float: right;
 
+}
 
+/* will's bugfix changes: */
+/* Make sure to add program-col to each */
+.program-col.col-sm-2.text-left {
+    display: inline-grid;
+    width: 25%;
+}
+
+#programInfoDiv {
+    max-width: 66%;
+    overflow-x: scroll;
+    display: inline-block;
+    width: 66%;
+}
+
+#programSearchDiv {
+    float: right;
+}
+
+.semester-tag {
+    background: greenyellow;
+    margin-right: 5px;
+    padding: 2px;
+    border-radius: 3px;
+    font-size: xx-small;
+    font-weight: bold;
+}
+
+/*     */
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {height: auto}

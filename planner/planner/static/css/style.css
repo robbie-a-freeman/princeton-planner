@@ -130,7 +130,8 @@ HEADER
 #main-header {}
 
 .navbar-default {
-  background-color: transparent;
+  background-color: #ff8f0080;
+  background-image: none;
   border: 0px;
   padding: 20px 0;
   transition: all 0.3s;
@@ -139,6 +140,7 @@ HEADER
 @media (max-width: 768px) {
 	.navbar-default {
 		background: rgba(64, 75, 97, 0.9);
+    background-image: none;
 	}
 }
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {

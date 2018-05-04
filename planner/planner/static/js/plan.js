@@ -10,6 +10,13 @@ function plan_init() {
 
   var programSearchBox = $("#programSearch")[0];
   programSearchBox.addEventListener("keyup", keyEventHandler);
+
+  loadUserData();
+}
+
+// Reinitialize all popovers.
+function refreshPopovers() {
+  $("[data-toggle=popover]").popover();
 }
 
 // ============================== EVENT HANDLERS =========================
@@ -36,20 +43,29 @@ function programResultHandler(event) {
 
   // Disallow duplicate listings.
   for (var i = 0; i < allRows.length; i++) {
-    if (allRows[i].innerHTML == tr.innerHTML) {
+    if (allRows[i].innerText == tr.innerText) {
       return;
     }
   }
 
-  // Add the course to the list of enrolled courses
+  // Add the program to the list of enrolled programs, and give it a remove button
+  tr.children[0].appendChild(createRemoveButton("program")); //td.appendChild...
   tableBody.appendChild(tr);
 
   var target = $("#programInfoDiv")[0];
-  var accordion = createAccordion(JSON5.parse(this.obj_data));
-  target.appendChild(accordion);
+  var accordionDiv = createAccordion(JSON5.parse(this.obj_data));
+  target.appendChild(accordionDiv);
+
+  // Update the accordion with all of the currently enrolled majors.
+  var accordion = accordionDiv.children[1];
+  var enrolledCourses = $(".enrolled-course-td");
+  for (var i = 0; i < enrolledCourses.length; i++) {
+    var courseToAdd = enrolledCourses[i].innerText;
+    addCourseToAccordion(courseToAdd, accordion);
+  }
 
   // Reinitialize all popovers.
-  $("[data-toggle=popover]").popover();
+  refreshPopovers();
 }
 
 // Called when course search results are clicked.
@@ -61,6 +77,15 @@ function courseResultHandler(event) {
   var table = $("#currentCoursesTable")[0];
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
+  // Add the enrolled course class to this td so it can be easily found later.
+  td.classList.add("enrolled-course-td");
+
+  // Add a remove button
+  td.appendChild(createRemoveButton("course"));
+
+  // Get the name of the course that was added.
+  var addedCourse = td.innerText;
+  // console.log(addedCourse);
 
   // Disallow duplicate listings.
   // TODO make more rigorous; this is buggy
@@ -70,23 +95,358 @@ function courseResultHandler(event) {
     }
   }
 
+  // Add the course to enrolled courses.
   tr.appendChild(td);
   // Add the course to the list of enrolled courses
   tableBody.appendChild(tr);
 
+  addCourseToAccordions(addedCourse, getShortSemester());
 
-  // Make a post request for the given table and fetch via python OR
-  // cache results of search locally and do it in JS.
-  // I like the JS idea because JSON support will be better,
-  // along with native DOM integration.
 }
 
 // Called when info button next to search results is clicked.
 function courseInfoHandler(event) {
-
+  event.stopPropagation();
   // Pop up with the extra info
   console.log("HEELO");
 
+}
+
+// Called when the remove course button is pressed.
+function removeCourseHandler(event) {
+  // Hide all popovers to avoid visual glitches.
+  $("[data-toggle='popover']").popover('hide');
+
+  // Prevent weird spurious click events from being generated in parents.
+  event.stopPropagation();
+  var tr = this.parentElement.parentElement; // span --> td --> tr
+  removeEnrolledCourse(tr);
+}
+
+// Called when the remove program button is pressed.
+function removeProgramHandler(event) {
+  // Hide all popovers to avoid visual glitches.
+  $("[data-toggle='popover']").popover('hide');
+
+  // Prevent weird spurious click events from being generated in parents.
+  event.stopPropagation();
+  var tr = this.parentElement.parentElement; // span --> td --> tr
+
+  // Remove course from enrolled list.
+  tr.parentElement.removeChild(tr);
+
+  // Remove associated accordion.
+  var removedCourse = this.parentElement.innerText; // span--> td--> innerText
+  var programInfoDiv = $("#programInfoDiv")[0];
+  var accordionDivs = programInfoDiv.children;
+  for (var i = 0; i < accordionDivs.length; i++) {
+    var accordionDiv = accordionDivs[i];
+    // if div --> h3 --> innerText is the course we're removing, remove the whole div
+    if (accordionDiv.children[0].innerText == removedCourse) {
+      programInfoDiv.removeChild(accordionDiv);
+    }
+  }
+}
+
+// ======================== COURSE ENROLLING HELPERS ===================
+// Used to update the accordions when needed.
+// =====================================================================
+
+// Update the accordions by adding the given course to all relevant accordions.
+function addCourseToAccordions(addedCourse, shortSemester) {
+  // Add selected courses to each major accordion.
+  var accordions = $(".accordion");
+  for (var i = 0; i < accordions.length; i++) {
+    addCourseToAccordion(addedCourse, accordions[i], shortSemester);
+  }
+}
+
+// Add the given course to the given accordion, where accordion is an element
+// with the class .accordion
+function addCourseToAccordion(addedCourse, accordion, shortSemester) {
+
+      // Get the collection of header/content pairs.
+      var accordion = accordion.children[0];
+      // Pray the DOM never changes.
+      var progName = accordion.parentElement.parentElement.children[0].innerText;
+
+      // A list of the DOM children of the accordion.
+      var kids = accordion.children;
+      var numReqs = kids.length / 2; // children.length always even.
+
+      // Create a list of all requirements that addedCourse satisfies.
+      var satisfiedReqs = [];
+
+      // For each "requirement" category in this accordion:
+      req_loop:
+      for (var j = 0; j < numReqs; j++) {
+        var reqName = kids[2 * j].children[0].children[0].innerText;
+
+        // A list of each "slot" into which courses can be added
+        var subreqList = kids[2 * j + 1].children;
+
+        // Iterate over all slots.
+        // If the added course is in a subreq's popover,
+        // Replace that subreq with the course name + checkmark + semester.
+        for (var k = 0; k < subreqList.length; k++) {
+
+          // If addedCourse in subreqlist's popover:
+          // Store this subreq as a match, and check next req.
+          var satisfiedCourse = satisfiesSubreq(addedCourse, subreqList[k]);
+
+          // If this subreq is satisfied by added course AND
+          // this slot is not already filled with another course:
+          if (satisfiedCourse != null && !("hiddenHTML" in subreqList[k])) {
+            // Gather relevant information about course.
+            var satisfiedDict = {};
+            satisfiedDict["subreqList"] = subreqList;
+            satisfiedDict["firstSatisfied"] = k;
+            satisfiedDict["satisfiedCourse"] = satisfiedCourse[0];
+            satisfiedDict["popoverString"] = satisfiedCourse[1];
+            satisfiedReqs.push(satisfiedDict);
+            break req_loop;
+          }
+        }
+      }
+
+      // We now have a list of all satisfied reqs for this program.
+      // If there is only one satisfied req, add it.
+      if (satisfiedReqs.length == 1) {
+        addCourseToRequirement(addedCourse, satisfiedReqs[0], shortSemester);
+      }
+      // More than one satisfied req! Ask user to disambiguate.
+      else if (satisfiedReqs.length > 1){
+        promptDisambiguation(addedCourse, satisfiedReqs);
+      }
+}
+
+// TODO combine this with matchCoursePopover.
+// Is addedCourse present in the popover of subreq? (even if the popover is hidden)
+// Return the matching course if so, or null if not.
+// If subreq has no popover, return null. (unless the popover is hidden, see above)
+function satisfiesSubreq(addedCourse, subreq) {
+  // No popover exists.
+
+  // If subreq has a lone (text) element and has no hidden popover, no match
+  if (subreq.children.length < 1 && !("hiddenHTML" in subreq)) {
+    return null;
+  }
+
+  var content;
+  if ("hiddenHTML" in subreq) {
+    content = subreq.hiddenHTML.match(/data-content="(.*?)"/)[1];
+  }
+  else {
+    content = subreq.children[1].getAttribute("data-content");
+  }
+  var popoverCourses = content.split(/<br.?\/?>/g);
+  var addedCourses = addedCourse.split(/ \/ /g);
+  return (matchCoursePopover(addedCourses, popoverCourses));
+}
+
+// Given two lists of courses (courses + popover), does any course
+// exist in both lists?
+// If yes, Return a tuple s.t. [0] = matching course in course cross-listing,
+//                             [1] = full matching string in popover
+// or return null if does not exist in both.
+// TODO COrner cases: "COS 397 | COS 398", or
+//                    "COS >= 300", or
+//                    "project required."
+function matchCoursePopover(addedCourses, popoverCourses) {
+  // if performance is an issue (it won't be), revise brute force algorithm
+  for (var i = 0; i < addedCourses.length; i++) {
+    for (var j = 0; j < popoverCourses.length; j++) {
+      if (popoverCourses.includes(">")) {
+        // TODO CORNER CASE HANDLING!!!
+      }
+
+      // Check for courses in popover that are "OR"d together
+      // using .includes()
+      if (popoverCourses[j].includes(addedCourses[i])) {
+        return [addedCourses[i], popoverCourses[j]];
+      }
+    }
+  }
+  // No match found, return null.
+  return null;
+}
+
+// Given a string addedCourse and satisfiedReq dict containing
+// info about the satisfied requirement, update the satisfiedReq's
+// DOM elements to reflect the course being added.
+// Use the string shortSemester to create a semester tag for the course.
+function addCourseToRequirement(addedCourse, satisfiedReq, shortSemester) {
+  var subreqList      = satisfiedReq["subreqList"];
+  var firstSatisfied  = satisfiedReq["firstSatisfied"];
+  var satisfiedCourse = satisfiedReq["satisfiedCourse"];
+  var popoverString   = satisfiedReq["popoverString"];
+
+  // Remove the popover link from the satisfied subreq list.
+  // Replace it with the name of the satisfied course, plus (TODO) semester and checkmark.
+  subreqList[firstSatisfied].hiddenHTML = subreqList[firstSatisfied].innerHTML;
+  subreqList[firstSatisfied].innerHTML = '';
+  subreqList[firstSatisfied].appendChild(text(satisfiedCourse));
+  // Create and add a checkmark to the subreq.
+  subreqList[firstSatisfied].appendChild(createCheckmark());
+
+  // Get the current semester, and add a semester tag to the subreq.
+  // TODO BUG make sure getShortSemester() will always be accurate --
+  // it returns the CURRENT semester, not necessarily the one associated with
+  // the satisfied course.
+  subreqList[firstSatisfied].appendChild(createSemesterTag(shortSemester));
+
+
+
+
+  // For all reqs in subreqList, strikethrough satisfiedCourse from the popover.
+  // (Check .popoverHTML if it exists. )
+  // TODO
+  for (var i = 0; i < subreqList.length; i++) {
+    var children = subreqList[i].children;
+
+    // Use the hidden popover data by default (if popover is hidden)
+    var popover = subreqList[i].hiddenHTML;
+    var hidden = true;
+
+    // If the popover is still active, use the active popover data instead.
+    // If subreqList[i] has an <a> child, we know it's still active.
+    for (var j = 0; j < children.length; j++) {
+      if (children[j].tagName.toLowerCase() == "a") {
+        hidden = false;
+        popover = subreqList[i].innerHTML;
+        break; // no need to keep looking.
+      }
+    }
+
+    // Strikethrough the satisfiedCourse in popoverHTML, then put it back.
+    var re = new RegExp("(" + popoverString+ ")", "g");
+    popover = popover.replace(re, "<s>$1</s>" );
+
+    // If hidden, put back into hiddenHTML.
+    if (hidden) {
+      subreqList[i].hiddenHTML = popover;
+    }
+    else {
+      subreqList[i].innerHTML = popover;
+    }
+
+  }
+  refreshPopovers();
+
+}
+
+// Ask user for clarification when a course has multiple reqs
+// it could satisfy, and add course to the desired areas.
+function promptDisambiguation(addedCourse, satisfiedReqs) {
+  console.log("promptDisambiguation called but not implemented!");
+}
+
+// ========================= COURSE REMOVING HELPERS ======================
+
+// Remove the course from the enrolled courses pane, and from any
+// accordions in which it is present.
+// TODO database integration.
+function removeEnrolledCourse(tr) {
+
+  // Remove from enrolled courses pane.
+  tr.parentElement.removeChild(tr);
+
+  // TODO Remove from every accordion.
+  removeCourseFromAccordions(tr.children[0].innerText);
+}
+
+// Update the accordions by removing the given course from all relevant accordions.
+// NOTE Shares a lot of code with addCourseToAccordions; consider refactoring
+// documentation: the .hiddenHTML attribute oof a subreq element
+// exists ONLY if that subreq is currently filled by an assigned course.
+// It is removed as soon as the course filling this requirement is removed.
+function removeCourseFromAccordions(removedCourse) {
+
+  // Remove selected courses from each major accordion.
+  var accordions = $(".accordion");
+  for (var i = 0; i < accordions.length; i++) {
+
+    // Get the collection of header/content pairs.
+    var accordion = accordions[i].children[0];
+    // Pray the DOM never changes.
+    var progName = accordion.parentElement.parentElement.children[0].innerText;
+
+    // A list of the DOM children of the accordion.
+    var kids = accordion.children;
+    var numReqs = kids.length / 2; // children.length always even.
+
+    // For each "requirement" category in this accordion:
+    req_loop:
+    for (var j = 0; j < numReqs; j++) {
+      var reqName = kids[2 * j].children[0].children[0].innerText;
+
+      // A list of each "slot" into which courses can be added
+      var subreqList = kids[2 * j + 1].children;
+
+      // Iterate over all slots.
+      // In each slot's popover info, un-strikethrough the removed course.
+      // If removed course is in subreq's innerText, replace it with a new
+      // "Find a Course!" popover element.
+      for (var k = 0; k < subreqList.length; k++) {
+
+        // unstrikethrough the removed course in this slot's popover.
+        unstrikethrough(removedCourse, subreqList[k]);
+
+        // if this slot's innerText is contained within the removedCourse string,
+        // Replace the innerHTML with a fresh findacourse popover (from hiddenHTML);
+        // Then delete hiddenHTML.
+        if (removedCourse.includes(getText(subreqList[k]))) {
+          subreqList[k].innerHTML = subreqList[k].hiddenHTML;
+          delete subreqList[k].hiddenHTML;
+        }
+      }
+    }
+  }
+  // Reinitialize the popovers.
+  refreshPopovers();
+}
+
+// Given a course name and a subreq from an accordion, which contains popover data,
+// modify the popover data to ensure that that courses matching courseName are not struck out.
+function unstrikethrough(courseName, subreq) {
+  var matchInfo = satisfiesSubreq(courseName, subreq);
+
+  // This course isn't present in subreq; nothing left to do!
+  if (matchInfo == null) return;
+
+  var satisfiedCourse = matchInfo[0]; // Which cross listing matched?
+  var popoverString = matchInfo[1];   // Full string in the popover. (including html tags)
+
+  // An ugly way of removing the <s> </s> tags from the name string. (redo if time)
+  popoverString = popoverString.replace(/<.*?>/g, "");
+
+  var children = subreq.children;
+
+  // Use the hidden popover data by default (if popover is hidden)
+  var popover = subreq.hiddenHTML;
+  var hidden = true;
+
+  // If the popover is still active, use the active popover data instead.
+  // If subreqList[i] has an <a> child, we know it's still active.
+  for (var j = 0; j < children.length; j++) {
+    if (children[j].tagName.toLowerCase() == "a") {
+      hidden = false;
+      popover = subreq.innerHTML;
+      break; // no need to keep looking.
+    }
+  }
+
+  // Strikethrough the satisfiedCourse in popoverHTML, then put it back.
+  var re = new RegExp("<s>(" + popoverString+ ")</s>", "g");
+  popover = popover.replace(re, "$1" );
+
+  // If hidden, put back into hiddenHTML.
+  if (hidden) {
+    subreq.hiddenHTML = popover;
+  }
+  else {
+    subreq.innerHTML = popover;
+  }
 }
 
 
@@ -121,6 +481,8 @@ function programSearchSubmit() {
        );
 }
 
+
+// ========================= SEARCH FUNCTIONS ==================================
 // Function for displaying results.
 function updateProgramResults(jsonResponse) {
   updateResults(jsonResponse, "program");
@@ -154,6 +516,13 @@ function updateResults(jsonResponse, type) {
   resultsHeaderDiv = $(resultsHeaderID);
   resultsHeaderDiv.empty();
   resultsHeaderDiv[0].appendChild(resultHeading);
+}
+
+
+// Set the current semester, and change current courses/database.
+function changeSemester(semester) {
+
+
 }
 
 
@@ -230,6 +599,38 @@ function createInfoButton() {
   return infoBut;
 }
 
+// Creates a "remove" button for a single course search result
+// If type is "course", add the remove course listener.
+// If type is "program" add the remove program listener.
+function createRemoveButton(type) {
+  var remBut = document.createElement("span");
+  remBut.classList.add("glyphicon");
+  remBut.classList.add("glyphicon-remove");
+  if (type == "course") {
+    remBut.addEventListener("click", removeCourseHandler);
+  }
+  else if (type == "program") {
+    remBut.addEventListener("click", removeProgramHandler);
+  }
+  remBut.style.float="right";
+  return remBut;
+}
+
+// Create and return a checkmark glyph.
+function createCheckmark() {
+  var check = document.createElement("span");
+  check.classList.add("glyphicon", "glyphicon-ok", "icon-good", "pull-right");
+  return check;
+}
+
+// Create a stylized element containing the given semester id
+function createSemesterTag(shortSemester) {
+  var span = document.createElement("span");
+  span.appendChild(text(shortSemester));
+  span.classList.add("semester-tag", "pull-right");
+  return span;
+}
+
 // ==================== ACCORDION CREATORS ==================================
 /* Creates an accordion based on a JSON object resultsObj  */
 function createAccordion(resultsObj) {
@@ -237,8 +638,7 @@ function createAccordion(resultsObj) {
 
     // Create the results elements
     var resultDiv = document.createElement("div");
-    resultDiv.classList.add("col-sm-2");
-    resultDiv.classList.add("text-left");
+    resultDiv.classList.add("program-col", "col-sm-2", "text-left");
 
     // Creates + appends header
     var majorHeader = document.createElement("h3");
@@ -249,8 +649,8 @@ function createAccordion(resultsObj) {
     // Creates + appends accordion div
     var accordionDiv = document.createElement("div");
     accordionDiv.style.float = "left";
-    accordionDiv.classList.add("panel-group");
-    accordionDiv.id = "accordion";
+    accordionDiv.classList.add("panel-group", "accordion");
+    accordionDiv.id = "accordion"; // BUG ids should be unique in document.
     resultDiv.appendChild(accordionDiv);
 
     // Creates + appends panel div
@@ -367,11 +767,33 @@ function createProgramTag(programJSON) {
 
 
 // =========================== HELPER FUNCTIONS =========================
+// Get the innerText of an HTML element, without any of the text of its nested children.
+function getText(element) {
+  return element.childNodes[0].nodeValue;
+}
+
+// Gets the currently active semester, as a full string
+function getSemester() {
+  return $("#semester")[0].value;
+}
+
+// Gets the currently active semester, in abbreviated form.
+// The first letter will be F for Fall or S for Spring, and
+// the last two letters will be the final digits of the year (e.g. 18 for 2018)
+function getShortSemester() {
+  var semester = getSemester();
+  var n = semester.length;
+  var tag = semester.substring(0, 1) + semester.substring(n-2, n);
+  return tag.toUpperCase();
+}
+
+
 // Preprocess the given jsonResponse JSON string and parse it into a JSON object,
 // which gets returned.
 function parseJSON(jsonResponse) {
   // Preprocess the JSON response so it is suitable for parsing
   jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
+  // jsonResponse = jsonResponse.replace(/True/g)
   results = JSON5.parse(jsonResponse);
   return results;
 }
@@ -381,7 +803,7 @@ function isConsiderableKey(key) {
     return ((key >= '0' && key <= '9') |
             (key >= 'a' && key <= 'z') |
             (key >= 'A' && key <= 'Z') |
-            (key == "Space") |
+            (key == " ") |
             (key == "Backspace"));
 }
 

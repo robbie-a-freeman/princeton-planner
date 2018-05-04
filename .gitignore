@@ -1,6 +1,7 @@
 venv
 venv/**
 *.pyc
+planner/planner/__pycache__/**
 planner/planner/__pycache__/__init__.cpython-36.pyc
 localserver.bat
 planner/mongolab_credentials.bat
