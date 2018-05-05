@@ -104,7 +104,10 @@ def user_query(user):
             firstNumber = listings[0].split(" ")[1]
             courseResults = [course for course in db["courses"+semID].find( {"listings": {"$elemMatch": {"dept": firstDept, "number": firstNumber} } } ) ]
             # print(courseResults[0])
-            semCourses.append(courseResults[0])
+            if (len(courseResults) > 0):
+                semCourses.append(courseResults[0])
+            else:
+                print("No courses found in DB %s for %s" % (semID, listings[0]))
         semesterInfo["courses"] = semCourses
         coursesInfo.append(semesterInfo)
 
