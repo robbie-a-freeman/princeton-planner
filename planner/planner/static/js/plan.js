@@ -301,6 +301,8 @@ function addCourseToAccordion(addedCourseObj, accordion) {
 // Is addedCourse present in the popover of subreq? (even if the popover is hidden)
 // Return the matching course if so, or null if not.
 // If subreq has no popover, return null. (unless the popover is hidden, see above)
+// This function splits up addedCourseStr and subreq into nice, pretty arrays
+// so that matchCoursePopover has an easier job.
 function satisfiesSubreq(addedCourseStr, subreq) {
   // No popover exists.
 
@@ -333,14 +335,22 @@ function matchCoursePopover(addedCourses, popoverCourses) {
   // if performance is an issue (it won't be), revise brute force algorithm
   for (var i = 0; i < addedCourses.length; i++) {
     for (var j = 0; j < popoverCourses.length; j++) {
-      if (popoverCourses.includes(">")) {
+      var popoverCourse = popoverCourses[j];
+      if (popoverCourse.includes(">")) {
         // TODO CORNER CASE HANDLING!!!
+      }
+
+      // Do not match against courses that have been struck through.
+      var re = new RegExp("<s>.*?</s>", "g");
+      popoverCourse = popoverCourse.replace(re,  "");
+      if (popoverCourse.trim() == "") {
+        continue;
       }
 
       // Check for courses in popover that are "OR"d together
       // using .includes()
-      if (popoverCourses[j].includes(addedCourses[i])) {
-        return [addedCourses[i], popoverCourses[j]];
+      if (popoverCourse.includes(addedCourses[i])) {
+        return [addedCourses[i], popoverCourse];
       }
     }
   }
@@ -436,16 +446,21 @@ function removeEnrolledCourse(tr) {
   // Remove from enrolled courses pane.
   tr.parentElement.removeChild(tr);
 
+  var semester = getShortSemester();
+
   // TODO Remove from every accordion.
-  removeCourseFromAccordions(tr.children[0].innerText);
+  removeCourseFromAccordions(tr.children[0].innerText, semester);
 }
 
 // Update the accordions by removing the given course from all relevant accordions.
+// Use the semester argument to be sure we removed only a copy of the course
+// that was taken in the given semester, and not from some other semester.
+// (to handle the event the same course is taken many times)
 // NOTE Shares a lot of code with addCourseToAccordions; consider refactoring
 // documentation: the .hiddenHTML attribute oof a subreq element
 // exists ONLY if that subreq is currently filled by an assigned course.
 // It is removed as soon as the course filling this requirement is removed.
-function removeCourseFromAccordions(removedCourse) {
+function removeCourseFromAccordions(removedCourse, semester) {
 
   // Remove selected courses from each major accordion.
   var accordions = $(".accordion");
@@ -479,9 +494,16 @@ function removeCourseFromAccordions(removedCourse) {
         unstrikethrough(removedCourse, subreqList[k]);
 
         // if this slot's innerText is contained within the removedCourse string,
+        // AND if this slot's semester A) exists and B) matches the semester parameter:
         // Replace the innerHTML with a fresh findacourse popover (from hiddenHTML);
         // Then delete hiddenHTML.
-        if (removedCourse.includes(getText(subreqList[k]))) {
+        var semesterMatches = false;
+        if (subreqList[k].children[1] != null &&
+            subreqList[k].children[1].classList.contains("semester-tag"))
+        {
+          semesterMatches = (subreqList[k].children[1].innerText == semester);
+        }
+        if (removedCourse.includes(getText(subreqList[k])) && semesterMatches) {
           subreqList[k].innerHTML = subreqList[k].hiddenHTML;
           delete subreqList[k].hiddenHTML;
           courseWasRemoved = true;
@@ -991,8 +1013,8 @@ function getSemesterEnrolledTable(semesterOverride) {
 // Flash the given element on and off for visual effects
 function flash(target) {
   if (LOADING_FROM_DB) return;
-  var ms = 250;
-  var num = 3;
+  var ms = 250; // How long should the fade in/out take?;
+  var num = 2; // How many times should the target flash?
   for (var i = 0; i < num; i++) {
     $(target).fadeIn(ms).fadeOut(ms);
   }
