@@ -172,6 +172,9 @@ function removeProgramHandler(event) {
       programInfoDiv.removeChild(accordionDiv);
     }
   }
+
+  // Update mongodb
+  removeProgramFromUser(getText(tr.children[0]));
 }
 
 // Called when the semester dropdown changes value.
