@@ -870,7 +870,8 @@ function createAccordionTitle(requirement, panelDiv) {
   collapseToggle.appendChild(text(requirement["type"]))
 
   var ratio = document.createElement("span");
-  ratio.appendChild(text(" (0 / " + requirement["number"] + ")"));
+  ratio.classList.add("completion-ratio");
+  ratio.appendChild(text("(0 / " + requirement["number"] + ")"));
   collapseToggle.appendChild(ratio);
   panelTitle.appendChild(collapseToggle);
 
@@ -1048,19 +1049,33 @@ function UID() {
 }
 
 function incrementHeading(panelObj) {
-    var string = panelObj.children[0].children[0].innerHTML;
-    var pieces = string.split("<span>");
-    var morepieces = pieces[1].substring(2).split(" ");
-    var newnumber = (parseInt(morepieces[0])+1).toString();
-    var newString = pieces[0] + "<span> (" + newnumber + " " + morepieces[1] + " " + morepieces[2];
-    panelObj.children[0].children[0].innerHTML = newString;
+    var span = panelObj.children[0].children[0].children[0];
+    var parts = span.innerText
+      .replace("(", "")
+      .replace(")", "")
+      .split("/");
+    var newNum = (parseInt(parts[0]) + 1).toString()
+    var newString = "(N / D)"
+      .replace("N", newNum)
+      .replace("D", parts[1]);
+    if (newNum.trim() == parts[1].trim()) {
+      span.classList.add("completed-ratio");
+    }
+    span.innerHTML = newString;
 }
 
 function decrementHeading(panelObj) {
-    var string = panelObj.children[0].children[0].innerHTML;
-    var pieces = string.split("<span>");
-    var morepieces = pieces[1].substring(2).split(" ");
-    var newnumber = (parseInt(morepieces[0])-1).toString();
-    var newString = pieces[0] + "<span> (" + newnumber + " " + morepieces[1] + " " + morepieces[2];
-    panelObj.children[0].children[0].innerHTML = newString;
+  var span = panelObj.children[0].children[0].children[0];
+  var parts = span.innerText
+    .replace("(", "")
+    .replace(")", "")
+    .split("/");
+  var newNum = (parseInt(parts[0]) - 1).toString()
+  var newString = "(N / D)"
+    .replace("N", newNum)
+    .replace("D", parts[1]);
+  if (newNum.trim() != parts[1].trim()) {
+    span.classList.remove("completed-ratio");
+  }
+  span.innerHTML = newString;
 }

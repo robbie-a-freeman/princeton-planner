@@ -1,5 +1,6 @@
 body {
     font-family:'Roboto';
+    overflow-y: hidden;
 }
 
 .apple {
@@ -153,6 +154,25 @@ body {
     font-weight: bold;
 }
 
+/* Will's ratio styling */
+.completion-ratio.completed-ratio{
+  background: limegreen;
+}
+
+.completion-ratio {
+    float: left;
+    margin-right: 10px;
+    font-size: x-small;
+    font-weight: 800;
+    background: chocolate;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+ratio.completed-ratio {
+    background: limegreen;
+}
+
 /*************************/
 
 /* Will's semester changes */
@@ -171,7 +191,8 @@ body {
 .sidenav {
     padding-top: 20px;
     background-color: #f1f1f1;
-    height: 100%;
+    height: calc(100vh - 62px);
+    overflow-y: auto;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -234,7 +255,7 @@ h5 {
     float: right;
     position: static;
     color: white;
-    
+
 }
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
@@ -257,7 +278,8 @@ h5 {
     text-decoration:none;
     font-size: 16px;
     width: 250px;
-    text-align: left;    
+    text-align: left;
+    overflow: hidden;
 }
 .panel .panel-heading a:hover {
     background: rgb(247, 169, 2);
@@ -273,7 +295,7 @@ h5 {
 .panel-body {
     font-size: 14px;
     padding:5px 10px;
-    text-align: left; 
+    text-align: left;
 }
 .table td {
 text-align: left;

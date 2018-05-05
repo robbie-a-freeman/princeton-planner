@@ -315,4 +315,26 @@ $('body').on('hidden.bs.popover', function (e) {
     $(e.target).data("bs.popover").inState = { click: false, hover: false, focus: false }
 });
 </script>
+
+<!-- Enable mouse wheel scrolling in the central div -->
+<script>
+(function() {
+    var programInfoDiv = $("#programInfoDiv")[0];
+    function scrollHorizontally(e) {
+        e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        programInfoDiv.scrollLeft -= (delta*40); // Multiplied by 40
+        e.preventDefault();
+    }
+    if (programInfoDiv.addEventListener) {
+        // IE9, Chrome, Safari, Opera
+        programInfoDiv.addEventListener("mousewheel", scrollHorizontally, false);
+        // Firefox
+        programInfoDiv.addEventListener("DOMMouseScroll", scrollHorizontally, false);
+    } else {
+        // IE 6/7/8
+        programInfoDiv.attachEvent("onmousewheel", scrollHorizontally);
+    }
+})();
+</script>
 </html>
