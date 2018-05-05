@@ -22,6 +22,14 @@ function refreshPopovers() {
   $("[data-toggle=popover]").popover();
 }
 
+function hidePopovers() {
+  $("[data-toggle='popover']").popover('hide');
+}
+
+function destroyPopovers() {
+  $("[data-toggle='popover']").popover('destroy');
+}
+
 // ============================== EVENT HANDLERS =========================
 // Handles keyup events for search boxes.
 function keyEventHandler(event) {
@@ -38,6 +46,10 @@ function keyEventHandler(event) {
 
 // Called when program search results are clicked.
 function programResultHandler(event) {
+
+  // Prevent visual glitches
+  hidePopovers();
+
   // Add clicked major to selected majors list.
   var tr = this.cloneNode(true);
   var td = tr.children[0];
@@ -79,6 +91,9 @@ function programResultHandler(event) {
 
 // Called when course search results are clicked.
 function courseResultHandler(event) {
+
+  // Prevent visual glitches
+  hidePopovers();
 
   // Add the clicked course to the enrolled courses list
   var tr = document.createElement("tr");
@@ -136,7 +151,7 @@ function courseInfoHandler(event) {
 // Called when the remove course button is pressed.
 function removeCourseHandler(event) {
   // Hide all popovers to avoid visual glitches.
-  $("[data-toggle='popover']").popover('hide');
+  hidePopovers();
 
   // Prevent weird spurious click events from being generated in parents.
   event.stopPropagation();
@@ -152,7 +167,7 @@ function removeCourseHandler(event) {
 // Called when the remove program button is pressed.
 function removeProgramHandler(event) {
   // Hide all popovers to avoid visual glitches.
-  $("[data-toggle='popover']").popover('hide');
+  hidePopovers();
 
   // Prevent weird spurious click events from being generated in parents.
   event.stopPropagation();
