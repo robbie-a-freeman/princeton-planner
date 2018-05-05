@@ -145,8 +145,8 @@ function courseResultHandler(event) {
 function courseInfoHandler(event) {
   event.stopPropagation();
   // Pop up with the extra info
-  console.log("HEELO");
-  window.alert( event.target.myParam );
+  //console.log("HEELO");
+  //window.alert( event.target.myParam );
 
   /* var listings = courseJSON['listings'];
     var listingArr = [];
@@ -757,6 +757,8 @@ function createInfoButton(courseJSON) {
     icon.style.padding = "0px";
     icon.style.margin = "0px 0px 0px 5px";
     infoBut.appendChild(icon);
+
+    infoBut.addEventListener("click", courseInfoHandler);
 
     return infoBut;
 
