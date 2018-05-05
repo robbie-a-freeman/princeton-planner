@@ -938,7 +938,11 @@ function getSemesterEnrolledTable() {
 // Flash the given element on and off for visual effects
 function flash(target) {
   var ms = 250;
-  $(target).fadeIn(ms).fadeOut(ms).fadeIn(ms).fadeOut(ms).fadeIn(ms);
+  var num = 5;
+  for (var i = 0; i < num; i++) {
+    $(target).fadeIn(ms).fadeOut(ms);
+  }
+  $(target).fadeIn(ms);
 }
 
 // Create a courseObj containing the given name and semester.
