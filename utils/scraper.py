@@ -25,18 +25,36 @@ from bs4 import BeautifulSoup
 
 TERM_CODE = 1122  # seems to be fall 11-12
 TERM_CODE = 1124  # so 1124 would be spring 11-12
-                  # 1134 is definitely spring 13 (course offerings link)`
-TERM_CODE = 1134
+TERM_CODE = 1134  # 1134 is definitely spring 13 (course offerings link)`
 TERM_CODE = 1142  # fall 2013; spring 2014 will be 1144
 TERM_CODE = 1144  # spring 2014
+TERM_CODE = 1152  # fall (2014?)
 TERM_CODE = 1154  # spring 2015
+TERM_CODE = 1162  # fall (2015?)
+TERM_CODE = 1164  # spring 2016 (?)
+TERM_CODE = 1172  # fall (2016?)
 TERM_CODE = 1174  # spring 2017
-TERM_CODE = 1184  # spring 2018
 TERM_CODE = 1182  # fall 2017 ??
+TERM_CODE = 1184  # spring 2018
 TERM_CODE = 1192  # fall 2018
 
+# ================= COMMAND LINE ARGUMENTS ===============
+# Support a TERM_CODE as the *first* command line arg to dump that semester
 if len(sys.argv) > 1:
     TERM_CODE = int(sys.argv[1])
+
+# Support -v as a command line arg to print detailed output.
+VERBOSE_MODE = False
+if "-v" in sys.argv:
+    VERBOSE_MODE = True
+
+# Support -u or -unique as a command line arg to attempt to avoid scraping
+# the same course twice.
+UNIQUE_MODE = False
+if "-u" in sys.argv or "-unique" in sys.argv:
+    UNIQUE_MODE = True
+
+# ========================================================
 
 URL_PREFIX = "http://registrar.princeton.edu/course-offerings/"
 LIST_URL = URL_PREFIX + "search_results.xml?term={term}"
@@ -48,7 +66,7 @@ LISTING_REGEX = re.compile(r'(?P<dept>[A-Z]{3})\s+(?P<num>\d{3})')
 
 def get_course_list(search_page):
   "Grep through the document for a list of course ids."
-  soup = BeautifulSoup(search_page)
+  soup = BeautifulSoup(search_page, "html5lib")
   links = soup('a', href=COURSE_URL_REGEX)
   courseids = [COURSE_URL_REGEX.search(a['href']).group('id') for a in links]
   return courseids
@@ -150,7 +168,7 @@ def get_course_classes(soup):
 
 def scrape_page(page):
   "Returns a dict containing as much course info as possible from the HTML contained in page."
-  soup = BeautifulSoup(page).find('div', id='timetable') # was contentcontainer
+  soup = BeautifulSoup(page, "html5lib").find('div', id='timetable') # was contentcontainer
   course = get_course_details(soup)
   course['listings'] = get_course_listings(soup)
   course['profs'] = get_course_profs(soup)
@@ -186,13 +204,37 @@ def scrape_all():
       traceback.print_exc(file=sys.stderr)
       sys.stderr.write('Error processing course id {0}\n'.format(id))
 
+def create_course_listing_str(course):
+    try:
+        listings = course.get("listings")
+        return " / ".join(["%s %s" % (listing.get("dept"), listing.get("number")) for listing in listings])
+    except Exception:
+        return "ERROR"
+
+# Verbose- log to std. err
+def vlog(msg):
+    if (VERBOSE_MODE):
+        sys.stderr.write(msg)
+
+def time_as_str():
+    return datetime.now().strftime('%Y-%m-%d %I:%M:%S %p %Z')
+
 if __name__ == "__main__":
+  vlog("Log: scraping begins: %s\n" % time_as_str())
   first = True
+  i = 0
+  prev_listing_str = None
   for course in scrape_all():
     if first:
       first = False
       print '['
     else:
       print ','
-    json.dump(course, sys.stdout)
+    course_listing_str = create_course_listing_str(course)
+    if (not UNIQUE_MODE) or (course_listing_str != prev_listing_str):
+        vlog("Log: wrote record %4d: %s\n" % ((i+1), create_course_listing_str(course)))
+        json.dump(course, sys.stdout)
+        i += 1
+    prev_listing_str = course_listing_str
   print ']'
+  vlog("Log: scraping ends: %s\n" % time_as_str())
