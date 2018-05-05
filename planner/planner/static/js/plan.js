@@ -40,6 +40,7 @@ function keyEventHandler(event) {
 function programResultHandler(event) {
   // Add clicked major to selected majors list.
   var tr = this.cloneNode(true);
+  var td = tr.children[0];
   var table = $("#currentProgramsTable")[0];
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
@@ -59,7 +60,7 @@ function programResultHandler(event) {
   var accordionDiv = createAccordion(JSON5.parse(this.obj_data));
   target.appendChild(accordionDiv);
 
-  // Update the accordion with all of the currently enrolled majors.
+  // Update the accordion with all of the currently enrolled courses.
   var accordion = accordionDiv.children[1];
   var enrolledCourses = $(".enrolled-course-td");
   for (var i = 0; i < enrolledCourses.length; i++) {
@@ -71,6 +72,9 @@ function programResultHandler(event) {
 
   // Reinitialize all popovers.
   refreshPopovers();
+
+  // Add the program to the database.
+  addProgramToUser(getText(td));
 }
 
 // Called when course search results are clicked.
@@ -102,13 +106,14 @@ function courseResultHandler(event) {
     }
   }
 
-  // Add the course to enrolled courses.
+  // Add the course to enrolled courses list
   tr.appendChild(td);
-  // Add the course to the list of enrolled courses
   tableBody.appendChild(tr);
 
-  addCourseToAccordions(addedCourseObj, getShortSemester());
+  // Insert this course into the user database.
+  addCourseToUser(addedCourseObj["name"], addedCourseObj["semester"]);
 
+  addCourseToAccordions(addedCourseObj, getShortSemester());
 }
 
 // Called when info button next to search results is clicked.
@@ -136,7 +141,12 @@ function removeCourseHandler(event) {
   // Prevent weird spurious click events from being generated in parents.
   event.stopPropagation();
   var tr = this.parentElement.parentElement; // span --> td --> tr
+
+  // Update the GUI.
   removeEnrolledCourse(tr);
+
+  // Update mongodb
+  removeCourseFromUser(getText(tr.children[0]) , getShortSemester());
 }
 
 // Called when the remove program button is pressed.
@@ -162,6 +172,9 @@ function removeProgramHandler(event) {
       programInfoDiv.removeChild(accordionDiv);
     }
   }
+
+  // Update mongodb
+  removeProgramFromUser(getText(tr.children[0]));
 }
 
 // Called when the semester dropdown changes value.
@@ -208,6 +221,7 @@ function addCourseToAccordion(addedCourseObj, accordion) {
       req_loop:
       for (var j = 0; j < numReqs; j++) {
         var reqName = kids[2 * j].children[0].children[0].innerText;
+        var reqPanelHeading  = kids[2 * j];
 
         // A list of each "slot" into which courses can be added
         var subreqList = kids[2 * j + 1].children;
@@ -226,6 +240,7 @@ function addCourseToAccordion(addedCourseObj, accordion) {
           if (satisfiedCourse != null && !("hiddenHTML" in subreqList[k])) {
             // Gather relevant information about course.
             var satisfiedDict = {};
+            satisfiedDict["reqPanelHeading"] = reqPanelHeading;
             satisfiedDict["subreqList"] = subreqList;
             satisfiedDict["firstSatisfied"] = k;
             satisfiedDict["satisfiedCourse"] = satisfiedCourse[0];
@@ -243,7 +258,17 @@ function addCourseToAccordion(addedCourseObj, accordion) {
       }
       // More than one satisfied req! Ask user to disambiguate.
       else if (satisfiedReqs.length > 1){
-        promptDisambiguation(addedCourseObj, satisfiedReqs);
+        return; // TODO IMPLEMENT promptDisambiguation and remove this.
+        // resolution object storing user choices
+        // Let resolutionObj contain course, semester, program, requirement.
+        var res = promptDisambiguation(addedCourseObj, satisfiedReqs);
+
+        // this is likely totally borked even if it did work
+        // Insert override into db
+        addOverrideToUser(res["course"], res["semester"], res["program"], res["requirement"]);
+
+        // Display the override locally. (add to enrolled courses list, update accordions
+        // TODO
       }
 }
 
@@ -308,6 +333,7 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
   var firstSatisfied  = satisfiedReq["firstSatisfied"];
   var satisfiedCourse = satisfiedReq["satisfiedCourse"];
   var popoverString   = satisfiedReq["popoverString"];
+  var reqPanelHeading = satisfiedReq["reqPanelHeading"];
 
   // Extract info from addedCourseObj
   var addedCourse = addedCourseObj["name"];
@@ -326,9 +352,6 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
   // it returns the CURRENT semester, not necessarily the one associated with
   // the satisfied course.
   subreqList[firstSatisfied].appendChild(createSemesterTag(shortSemester));
-
-
-
 
   // For all subreqs in subreqList, strikethrough satisfiedCourse from the popover.
   // (Check .popoverHTML if it exists. )
@@ -363,7 +386,11 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
     }
 
   }
+
   refreshPopovers();
+
+  // Bring attention to the updated requirement.
+  flash(reqPanelHeading);
 
 }
 
@@ -906,6 +933,16 @@ function getSemesterEnrolledTable() {
   var shortSemester = getShortSemester();
   var tableID = "#coursesTable" + shortSemester;
   return $(tableID)[0];
+}
+
+// Flash the given element on and off for visual effects
+function flash(target) {
+  var ms = 250;
+  var num = 5;
+  for (var i = 0; i < num; i++) {
+    $(target).fadeIn(ms).fadeOut(ms);
+  }
+  $(target).fadeIn(ms);
 }
 
 // Create a courseObj containing the given name and semester.
