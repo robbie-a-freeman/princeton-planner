@@ -218,6 +218,7 @@ function addCourseToAccordion(addedCourseObj, accordion) {
       req_loop:
       for (var j = 0; j < numReqs; j++) {
         var reqName = kids[2 * j].children[0].children[0].innerText;
+        var reqPanelHeading  = kids[2 * j];
 
         // A list of each "slot" into which courses can be added
         var subreqList = kids[2 * j + 1].children;
@@ -236,6 +237,7 @@ function addCourseToAccordion(addedCourseObj, accordion) {
           if (satisfiedCourse != null && !("hiddenHTML" in subreqList[k])) {
             // Gather relevant information about course.
             var satisfiedDict = {};
+            satisfiedDict["reqPanelHeading"] = reqPanelHeading;
             satisfiedDict["subreqList"] = subreqList;
             satisfiedDict["firstSatisfied"] = k;
             satisfiedDict["satisfiedCourse"] = satisfiedCourse[0];
@@ -328,6 +330,7 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
   var firstSatisfied  = satisfiedReq["firstSatisfied"];
   var satisfiedCourse = satisfiedReq["satisfiedCourse"];
   var popoverString   = satisfiedReq["popoverString"];
+  var reqPanelHeading = satisfiedReq["reqPanelHeading"];
 
   // Extract info from addedCourseObj
   var addedCourse = addedCourseObj["name"];
@@ -346,9 +349,6 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
   // it returns the CURRENT semester, not necessarily the one associated with
   // the satisfied course.
   subreqList[firstSatisfied].appendChild(createSemesterTag(shortSemester));
-
-
-
 
   // For all subreqs in subreqList, strikethrough satisfiedCourse from the popover.
   // (Check .popoverHTML if it exists. )
@@ -383,7 +383,11 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
     }
 
   }
+
   refreshPopovers();
+
+  // Bring attention to the updated requirement.
+  flash(reqPanelHeading);
 
 }
 
@@ -926,6 +930,12 @@ function getSemesterEnrolledTable() {
   var shortSemester = getShortSemester();
   var tableID = "#coursesTable" + shortSemester;
   return $(tableID)[0];
+}
+
+// Flash the given element on and off for visual effects
+function flash(target) {
+  var ms = 250;
+  $(target).fadeIn(ms).fadeOut(ms).fadeIn(ms).fadeOut(ms).fadeIn(ms);
 }
 
 // Create a courseObj containing the given name and semester.
