@@ -103,7 +103,7 @@ def user_query(user):
             firstDept = listings[0].split(" ")[0]
             firstNumber = listings[0].split(" ")[1]
             courseResults = [course for course in db["courses"+semID].find( {"listings": {"$elemMatch": {"dept": firstDept, "number": firstNumber} } } ) ]
-            print(courseResults[0])
+            # print(courseResults[0])
             semCourses.append(courseResults[0])
         semesterInfo["courses"] = semCourses
         coursesInfo.append(semesterInfo)
