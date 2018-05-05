@@ -402,6 +402,7 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
 
   }
 
+  incrementHeading(reqPanelHeading);
   refreshPopovers();
 
   // Bring attention to the updated requirement.
@@ -456,6 +457,7 @@ function removeCourseFromAccordions(removedCourse) {
 
       // A list of each "slot" into which courses can be added
       var subreqList = kids[2 * j + 1].children;
+      var courseWasRemoved = false;
 
       // Iterate over all slots.
       // In each slot's popover info, un-strikethrough the removed course.
@@ -472,7 +474,12 @@ function removeCourseFromAccordions(removedCourse) {
         if (removedCourse.includes(getText(subreqList[k]))) {
           subreqList[k].innerHTML = subreqList[k].hiddenHTML;
           delete subreqList[k].hiddenHTML;
+          courseWasRemoved = true;
         }
+      }
+      if (courseWasRemoved) {
+        decrementHeading(kids[2 * j]);
+        flash(kids[2 * j]);
       }
     }
   }
@@ -842,7 +849,11 @@ function createAccordionTitle(requirement, panelDiv) {
   collapseToggle.classList.add("collapsed");
   collapseToggle.setAttribute("data-toggle", "collapse");
   collapseToggle.setAttribute("href", "#collapse" + uid);
-  collapseToggle.appendChild(text(requirement["type"]));
+  collapseToggle.appendChild(text(requirement["type"]))
+  
+  var ratio = document.createElement("span");
+  ratio.appendChild(text(" (0 / " + requirement["number"] + ")"));
+  collapseToggle.appendChild(ratio);
   panelTitle.appendChild(collapseToggle);
 
   // Create an accordion body for this requirement.
@@ -1010,4 +1021,22 @@ function UID() {
   var uid = numToUID(UID_count);
   UID_count++;
   return uid;
+}
+
+function incrementHeading(panelObj) {
+    var string = panelObj.children[0].children[0].innerHTML;
+    var pieces = string.split("<span>");
+    var morepieces = pieces[1].substring(2).split(" ");
+    var newnumber = (parseInt(morepieces[0])+1).toString();
+    var newString = pieces[0] + "<span> (" + newnumber + " " + morepieces[1] + " " + morepieces[2];
+    panelObj.children[0].children[0].innerHTML = newString;
+}
+
+function decrementHeading(panelObj) {
+    var string = panelObj.children[0].children[0].innerHTML;
+    var pieces = string.split("<span>");
+    var morepieces = pieces[1].substring(2).split(" ");
+    var newnumber = (parseInt(morepieces[0])-1).toString();
+    var newString = pieces[0] + "<span> (" + newnumber + " " + morepieces[1] + " " + morepieces[2];
+    panelObj.children[0].children[0].innerHTML = newString;
 }
