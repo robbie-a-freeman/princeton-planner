@@ -126,16 +126,6 @@ body {
     border: 1px solid rgb(196, 193, 193);
 }
 
-/* New CSS to fix all the weird graphical glitches */
- /*
-#programSearchDiv {
-    float: right;
-
-}
-
-/* will's bugfix changes: */
-/* Make sure to add program-col to each */
-
 #programInfoDiv {
     width: 66.6%;
     height: calc(100vh - 62px);
@@ -171,9 +161,6 @@ body {
   display: none;
 }
 
-.coursesDiv {
-
-}
 
 /***************************/
 
@@ -223,7 +210,6 @@ h5 {
     max-width: none; /* Max Width of the popover (depending on the container!) */
     white-space: pre-wrap;
     overflow-y:auto;
-    max-
 }
 .popover-content {
     font-size: 12px;
