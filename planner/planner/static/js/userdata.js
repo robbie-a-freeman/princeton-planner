@@ -1,4 +1,5 @@
 var USER_DATA;
+var LOADING_FROM_DB = true;
 
 // ======================== SAVE LOAD FUNCTIONS ==============================
 
@@ -29,6 +30,9 @@ function renderUserData(jsonResponse) {
       tr_obj.children[0].click();
     }
   }
+
+  // Done loading data; set LOADING_FROM_DB back to false to enable flashing
+  LOADING_FROM_DB = false;
 }
 
 // ========================= DB ADD/REMOVE FUNCTIONS ==================================
