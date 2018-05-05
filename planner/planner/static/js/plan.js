@@ -989,7 +989,7 @@ function getSemesterEnrolledTable(semesterOverride) {
 function flash(target) {
   if (LOADING_FROM_DB) return;
   var ms = 250;
-  var num = 5;
+  var num = 3;
   for (var i = 0; i < num; i++) {
     $(target).fadeIn(ms).fadeOut(ms);
   }
