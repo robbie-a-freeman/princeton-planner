@@ -717,6 +717,7 @@ function createInfoButton(courseJSON) {
     icon.classList.add("glyphicon");
     icon.classList.add("glyphicon-share");
     icon.style.padding = "0px";
+    icon.style.margin = "0px 0px 0px 5px";
     infoBut.appendChild(icon);
 
     return infoBut;
@@ -737,6 +738,8 @@ function createRemoveButton(type) {
     remBut.addEventListener("click", removeProgramHandler);
   }
   remBut.style.float="right";
+  /*remBut.style.color="#ff7373";*/
+  remBut.style.cursor="pointer";
   return remBut;
 }
 

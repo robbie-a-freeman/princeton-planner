@@ -8,6 +8,13 @@ body {
     margin: 25px;
 }
 
+.glyphicon-remove:hover {
+    color: rgb(255, 79, 79);
+}
+.glyphicon-remove {
+    color: #ff7373;
+}
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
     margin-bottom: 0;
@@ -202,7 +209,7 @@ h5 {
 }
 .mango {
     font-family: 'Amiko';
-    font-size: 24px;
+    font-size: 19px;
     overflow: hidden;
     height: auto;
     width: 250px;
