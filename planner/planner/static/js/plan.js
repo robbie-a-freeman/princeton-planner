@@ -1,6 +1,8 @@
 // ================== GLOBAL VARIABLES =================================
 // Counter for distributing unique element IDs (UIDs)
 var UID_count = 0;
+var GEQ = "\u2265";
+var LEQ = "\u2264";
 
 // ====================== INITIALIZERS =================================
 // Initial function called onload to setup HTML elements, listeners, etc.
@@ -336,7 +338,7 @@ function matchCoursePopover(addedCourses, popoverCourses) {
   for (var i = 0; i < addedCourses.length; i++) {
     for (var j = 0; j < popoverCourses.length; j++) {
       var popoverCourse = popoverCourses[j];
-      if (popoverCourse.includes(">")) {
+      if (popoverCourse.includes(GEQ)) {
         // TODO CORNER CASE HANDLING!!!
       }
 
@@ -943,6 +945,12 @@ function createAccordionPopover(courseList) {
       dataContent += "<br />";
       dataContent += courseList[k];
   }
+
+  // replace >= <= with the actual unicode symbol.
+  dataContent = dataContent
+    .replace(">=", GEQ)
+    .replace("<=", LEQ);
+
   popover.setAttribute("data-content", dataContent);
   popover.appendChild(text("Find a course!"));
   return popover;
