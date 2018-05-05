@@ -54,11 +54,11 @@
 
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal"><span  class="glyphicon glyphicon-bell"></span>   About</a></li>
-        <li class="active"><a href="#" data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign"></span>   Help</a></li>
+        <li class="active"><a class="pp-navbar-element" href="#" data-toggle="modal" data-target="#aboutModal"><span  class="glyphicon glyphicon-bell"></span>   About</a></li>
+        <li class="active"><a class="pp-navbar-element" href="#" data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign"></span>   Help</a></li>
         <!-- At some point the link should be removed, but it removes the icon atm -->
-        <li class="active"><a href=""><span class="glyphicon glyphicon-user"></span>   {{ user.netid }}</a></li>
-        <li class="active"><a href="logout"><span class="glyphicon glyphicon-log-out"></span>   Logout</a></li>
+        <li class="active"><a class="pp-navbar-element" href=""><span class="glyphicon glyphicon-user"></span>   {{ user.netid }}</a></li>
+        <li class="active"><a class="pp-navbar-element" href="logout"><span class="glyphicon glyphicon-log-out"></span>   Logout</a></li>
 
         <!-- Help Pop up! -->
         <div class="modal fade" id="helpModal" role="dialog">

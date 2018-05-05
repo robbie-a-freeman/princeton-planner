@@ -22,6 +22,11 @@ body {
     border-radius: 0;
 }
 
+/* Fix the navbar coloring */
+.navbar-inverse .navbar-nav>.active>a.pp-navbar-element {
+    background-color: #222222;
+}
+
 .navbar-brand {
     color: #fff;
     font-weight: 700;
