@@ -90,21 +90,31 @@ function programResultHandler(event) {
 }
 
 // Called when course search results are clicked.
+// semesterOverride is an optional argument to createTableRow (who assigns this handler)
+// almost exclusively used to load the user's data from the DB into an arbitrary semester.
+// Aside from this use case it should be avoided if possible.
 function courseResultHandler(event) {
 
   // Prevent visual glitches
   hidePopovers();
 
+  // Handle a manual override of semester (if the semesterOverride is provided by this td)
+  semesterOverride = this.semesterOverride;
+  var shortSemester = getShortSemester();
+  if (semesterOverride != null) {
+    shortSemester = semesterOverride;
+  }
+
   // Add the clicked course to the enrolled courses list
   var tr = document.createElement("tr");
   var td = this.cloneNode(true);
-  var table = getSemesterEnrolledTable();
+  var table = getSemesterEnrolledTable(shortSemester);
   var tableBody = table.children[0]; // make sure [0] correct
   var allRows = tableBody.children;
 
   // Add the enrolled course class and semester to this td so it can be easily found later.
   td.classList.add("enrolled-course-td");
-  td.semester = getShortSemester();
+  td.semester = shortSemester;
 
   // Add a remove button
   td.appendChild(createRemoveButton("course"));
@@ -656,7 +666,12 @@ function createResultsTable(resultsObj, resultsType) {
   return resultTableDiv;
 }
 
-function createTableRow(result, resultsType) {
+// Create a table row representing the given result, and give it the attributes
+// and event handler associated with the given resultsType ("course" or "program").
+// semesterOverride should not be provided except in rare situations, such as
+// reloading courses from the database.
+// semesterOverride has no effect unless type is "courses"
+function createTableRow(result, resultsType, semesterOverride) {
   var tr = document.createElement("tr");
   var td = document.createElement("td");
 
@@ -670,6 +685,7 @@ function createTableRow(result, resultsType) {
     // Create label and onclick listener
     label = text(createCourseTag(result));
     td.addEventListener("click", courseResultHandler); // note td
+    td.semesterOverride = semesterOverride; // if not provided, will be undefined
   }
   // Create program-type labels.
   else if (resultsType = "program") {
@@ -850,7 +866,7 @@ function createAccordionTitle(requirement, panelDiv) {
   collapseToggle.setAttribute("data-toggle", "collapse");
   collapseToggle.setAttribute("href", "#collapse" + uid);
   collapseToggle.appendChild(text(requirement["type"]))
-  
+
   var ratio = document.createElement("span");
   ratio.appendChild(text(" (0 / " + requirement["number"] + ")"));
   collapseToggle.appendChild(ratio);
@@ -958,8 +974,13 @@ function getSemesterEnrolledCourses() {
 }
 
 // Get the currently active semester's enrolled courses table
-function getSemesterEnrolledTable() {
+// If a semesterOverride is provided, get that semester's courses table instead
+// of the currently selected one.
+function getSemesterEnrolledTable(semesterOverride) {
   var shortSemester = getShortSemester();
+  if (semesterOverride != null) {
+    shortSemester = semesterOverride;
+  }
   var tableID = "#coursesTable" + shortSemester;
   return $(tableID)[0];
 }

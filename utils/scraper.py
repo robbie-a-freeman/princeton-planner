@@ -225,12 +225,13 @@ if __name__ == "__main__":
   i = 0
   prev_listing_str = None
   for course in scrape_all():
+    course_listing_str = create_course_listing_str(course)
     if first:
       first = False
       print '['
-    else:
+    elif (not UNIQUE_MODE) or (course_listing_str != prev_listing_str):
       print ','
-    course_listing_str = create_course_listing_str(course)
+
     if (not UNIQUE_MODE) or (course_listing_str != prev_listing_str):
         vlog("Log: wrote record %4d: %s\n" % ((i+1), create_course_listing_str(course)))
         json.dump(course, sys.stdout)

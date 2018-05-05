@@ -40,7 +40,7 @@
 #   then check the titles.
 #   The same will happen for distribution requirements like "EC".
 #   The same will also happen for course numbers like "333".
-#   
+#
 #   Here are a few examples:
 #                       Query - "COS 333"
 #                       Dept - [COS]
@@ -143,7 +143,7 @@ def sanitize(unsafe):
 
 # Given a single sub-part of the query string, generate the
 # corresponding Mongo query, and return the results of the
-# Mongo query, as an array of stringified json objects 
+# Mongo query, as an array of stringified json objects
 # along with the query type
 def queryOneWord(word, semester):
     # current semester

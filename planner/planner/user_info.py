@@ -63,6 +63,7 @@ def user_query(user):
     userInfo = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"True"}}, \
                                      upsert=True, return_document=AFTER)
 
+    # Gather information about the user's enrolled programs from the database.
     programsInfo = []
     for program in userInfo['programs']:
         fullName = program
@@ -89,7 +90,27 @@ def user_query(user):
         programInfo += [cert for cert in certificates.find( {"$and": [ {"name": majorRE}, {"track": trackRE} ]} ) ]
         programsInfo.append(programInfo[0])
 
-    results = {"programsInfo": programsInfo, "userInfo": userInfo}
+    # Gather information about the user's enrolled courses from the database.
+    coursesInfo = []
+    for semester in userInfo["semesters"]:
+        semesterInfo = {}
+        semID = semester["semester"]
+        semesterInfo["semester"] = semID
+        semCourses = []
+        for course in semester["courses"]:
+            listings = course.split(" / ")
+            # Might be risky, but we will just compare a single dept/number combo instead of all cross listings
+            firstDept = listings[0].split(" ")[0]
+            firstNumber = listings[0].split(" ")[1]
+            courseResults = [course for course in db["courses"+semID].find( {"listings": {"$elemMatch": {"dept": firstDept, "number": firstNumber} } } ) ]
+            print(courseResults[0])
+            semCourses.append(courseResults[0])
+        semesterInfo["courses"] = semCourses
+        coursesInfo.append(semesterInfo)
+
+    results = {"programsInfo": programsInfo,    \
+               "userInfo":     userInfo,        \
+               "coursesInfo":  coursesInfo}
     return results
 
 

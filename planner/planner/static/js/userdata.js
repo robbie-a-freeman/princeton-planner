@@ -9,13 +9,25 @@ function loadUserData() {
 
 // Receives the user data for the current CAS user.
 function renderUserData(jsonResponse) {
-  userdata = parseJSON(jsonResponse);
+  var userdata = parseJSON(jsonResponse);
   USER_DATA = userdata;
 
-  programs = userdata["programsInfo"];
+  var programs = userdata["programsInfo"];
   for (var i = 0; i < programs.length; i++) {
-    tr_obj = createTableRow(programs[i], "program");
+    var tr_obj = createTableRow(programs[i], "program");
     tr_obj.click();
+  }
+
+  // Naive; incorrect! Need to consider the semester to which this course belongs.
+  var semesters = userdata["coursesInfo"];
+  for (var i = 0; i < semesters.length; i++) {
+    var semester = semesters[i]["semester"];
+    var courses = semesters[i]["courses"];
+    for (var j = 0; j < courses.length; j++) {
+      var tr_obj = createTableRow(courses[j], "course", semester);
+      // The td has the onclick handler, not the tr.
+      tr_obj.children[0].click();
+    }
   }
 }
 
