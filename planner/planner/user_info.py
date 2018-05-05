@@ -50,6 +50,8 @@ majors = db.majors
 certificates = db.certificates
 AFTER = collection.ReturnDocument.AFTER
 
+semesterCodes = ["F14", "S15", "F15", "S16", "F16", "S17", "F17", "S18", "F18", "S19" , "F19", "S20", "F20", "S21"]
+
 # Sanitize the input string.
 # MUST IMPLEMENT THIS!!!
 # Actually, I don't think we need to sanitize this...
@@ -60,8 +62,19 @@ def sanitize(unsafe):
 # Given a user, add user if new and return information if existing user
 def user_query(user):
     #users.findAndModify({"query": {"user": user }, "new": True, "upsert": True})
-    userInfo = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"True"}}, \
-                                     upsert=True, return_document=AFTER)
+    userInfo = users.find_one({'netid': 'test'})
+    # if the user doesn't exist in the database yet
+    if userInfo is None:
+        semesters = []
+        for semester in semesterCodes:
+            semesters.append({"semester": semester, "courses": []})
+        userInfo = users.find_one_and_update(
+            {'netid': 'test'},
+            {'$set': {"programs": [], "semesters": semesters, "overrides": []}},
+            upsert=True,
+            return_document=AFTER
+        )
+    #userInfo = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"True"}}, upsert=True, return_document=AFTER)
 
     programsInfo = []
     for program in userInfo['programs']:
@@ -142,7 +155,7 @@ def add_override(user, program, category, course, semester):
     if not users.find_one({"$and": [{"netid": "test"}, {"overrides": {"$elemMatch": {"program": program, "category": category, "course": course, "semester": semester}}}]}):
         users.find_one_and_update(
             {"netid": "test"},
-            {"$addToSet": {"overrides": {"program": "Computer Science", "category": "Departmentals", "course": "COS 445", "semester": "S18"}}},
+            {"$addToSet": {"overrides": {"program": program, "category": category, "course": course, "semester": semester}}},
             upsert=False,
             return_document=AFTER
         )

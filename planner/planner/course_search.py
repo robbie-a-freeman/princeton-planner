@@ -111,7 +111,9 @@ NUM = 2
 DIST = 3
 TIT1 = 4
 TIT2 = 5
-DENUM = 6
+DENUM1 = 6
+DENUM2 = 7
+DENUM3 = 8
 
 # Three letter course codes for Princeton University departments
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
@@ -181,7 +183,19 @@ def queryOneWord(word, semester):
     elif re.match("[A-Z][A-Z][A-Z]\d\d\d", uWord):
         results = set([dumps(course) for course in courses.find( {"listings.dept":uWord[0:3]} ) ])
         results = results.intersection([dumps(course) for course in courses.find( {"listings.number":uWord[3:]} ) ])
-        queryType = DENUM
+        queryType = DENUM3
+
+    # Dept. ID no spaces followed by course number:
+    elif re.match("[A-Z][A-Z][A-Z]\d\d", uWord):
+        results = set([dumps(course) for course in courses.find( {"listings.dept":uWord[0:3]} ) ])
+        results = results.intersection([dumps(course) for course in courses.find( {"listings.number": {"$regex": uWord[3:] + "\d", "$options": "i"}} ) ])
+        queryType = DENUM2
+
+    # Dept. ID no spaces followed by course number:
+    elif re.match("[A-Z][A-Z][A-Z]\d", uWord):
+        results = set([dumps(course) for course in courses.find( {"listings.dept":uWord[0:3]} ) ])
+        results = results.intersection([dumps(course) for course in courses.find( {"listings.number": {"$regex": uWord[3:] + "\d\d", "$options": "i"}} ) ])
+        queryType = DENUM1
 
     # Dist. ID:
     elif uWord in dist_ids:
