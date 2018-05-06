@@ -106,8 +106,8 @@ def userdata():
         #user_info.add_enrolled_course(user['netid'], 'fall18', 'COS 333')
         #user_info.remove_enrolled_course(user['netid'], 'fall18', 'COS 340')
         #user_info.add_semester(user['netid'], 'fall17')
-        #user_info.add_override(user['netid'], 'Computer Science', 'Departmentals', 'COS 445', 'S18')
-        user_info.remove_override(user['netid'], 'Computer Science', 'Departmentals', 'COS445', 'S18')
+        #user_info.add_override(user['netid'], 'Mathematics', 'Applications', 'COS 429', 'F18')
+        #user_info.remove_override(user['netid'], 'Computer Science', 'Departmentals', 'COS445', 'S18')
         return str(user_info.user_query(user['netid']))
         #return str(user_info.user_query('test'))
     else:

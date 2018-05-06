@@ -1,3 +1,4 @@
+BeautifulSoup==3.2.1
 beautifulsoup4==4.5.3
 certifi==2018.1.18
 click==6.7

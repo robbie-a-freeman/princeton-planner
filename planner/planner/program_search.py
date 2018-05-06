@@ -70,13 +70,6 @@ def program_db_query(query):
 
 
 ### Helper functions
-### NOTE NOT IMPLEMENTED FOR PROGRAM_SEARCH
-# Return the 6-digit course tag (COS333) for a json result
-# If a course is cross listed, return all applicable course tags, separated by '/'
-def getCourseTag(result):
-    listings = result['listings']
-    listingTags = [listing['dept'] + listing['number'] for listing in listings]
-    return '/'.join(listingTags)
 
 ### Unit Testing
 # Run a single query for the given testWord and print result tags
