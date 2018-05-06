@@ -974,7 +974,7 @@ function createAccordionTitle(requirement, panelDiv) {
   panelTitle.appendChild(collapseToggle);
 
   // Create an accordion body for this requirement.
-  panelDiv.append(createAccordionBody(requirement, uid));
+  panelDiv.appendChild(createAccordionBody(requirement, uid));
 }
 
 // Create a single row of the expandable dropdown content for an accordion
