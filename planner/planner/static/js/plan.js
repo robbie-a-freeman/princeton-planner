@@ -331,6 +331,7 @@ function satisfiesSubreq(addedCourseStr, subreq, ignoreStrikethrough) {
 // exist in both lists?
 // If yes, Return a tuple s.t. [0] = matching course in course cross-listing,
 //                             [1] = full matching string in popover
+//                             [2] = true if the match was meta-match, false if literal-match
 // or return null if does not exist in both.
 // TODO COrner cases: "COS 397 | COS 398", or
 //                    "COS >= 300", or
@@ -341,6 +342,9 @@ function matchCoursePopover(addedCourses, popoverCourses, ignoreStrikethrough) {
   for (var i = 0; i < addedCourses.length; i++) {
     for (var j = 0; j < popoverCourses.length; j++) {
       var popoverCourse = popoverCourses[j];
+
+      // Does the returned match involve a metacharacter (*, GEQ, LEQ)
+      var meta = false;
 
       // Handle >= 300 or COS >= 300
       if (popoverCourse.includes(GEQ)) {
@@ -364,7 +368,7 @@ function matchCoursePopover(addedCourses, popoverCourses, ignoreStrikethrough) {
       // Check for courses in popover that are "OR"d together
       // using .includes()
       if (popoverCourse.includes(addedCourses[i])) {
-        return [addedCourses[i], popoverCourse];
+        return [addedCourses[i], popoverCourse, false];
       }
     }
   }
