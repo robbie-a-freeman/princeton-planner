@@ -341,8 +341,15 @@ function matchCoursePopover(addedCourses, popoverCourses, ignoreStrikethrough) {
   for (var i = 0; i < addedCourses.length; i++) {
     for (var j = 0; j < popoverCourses.length; j++) {
       var popoverCourse = popoverCourses[j];
+
+      // Handle >= 300 or COS >= 300
       if (popoverCourse.includes(GEQ)) {
         // TODO CORNER CASE HANDLING!!!
+      }
+
+      // Handle * or COS*
+      if (popoverCourse.includes("*")) {
+
       }
 
       // Do not match against courses that have been struck through.
@@ -953,8 +960,8 @@ function createAccordionPopover(courseList) {
 
   // replace >= <= with the actual unicode symbol.
   dataContent = dataContent
-    .replace(">=", GEQ)
-    .replace("<=", LEQ);
+    .replace(/>=/g, GEQ)
+    .replace(/<=/, LEQ);
 
   popover.setAttribute("data-content", dataContent);
   popover.appendChild(text("Find a course!"));
@@ -1047,7 +1054,7 @@ function parseJSON(jsonResponse) {
   // Preprocess the JSON response so it is suitable for parsing
   jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
   jsonResponse = jsonResponse.replace(/True/g, "true");
-  jsonResponse = jsonResponse.replace(/False/g, "false"); 
+  jsonResponse = jsonResponse.replace(/False/g, "false");
   try {
     results = JSON5.parse(jsonResponse);
   }
