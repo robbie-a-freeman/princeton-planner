@@ -3,6 +3,12 @@ body {
     overflow-y: hidden;
 }
 
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+  }
+}
+
 .apple {
     display:inline-block;
     width: 250px;
@@ -158,6 +164,58 @@ body {
     font-size: xx-small;
     font-weight: bold;
 }
+
+/* Semester radio button styling */
+/*
+$bg: #332f35;
+$fg: lighten($bg,20%);
+$borderWidth: 3px;
+*/
+input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+label.radio-label {
+  color: #867c8b;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: unset;
+  padding: 2px;
+  /* make unselectable */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+input[type=radio]:checked + label{
+  color: #aea8b1;
+  background:  #5c5560;
+}
+
+label + input[type=radio] + label {
+  border-left: solid 3px #5c5560;
+}
+.radio-group {
+  border: solid 3px #5c5560;
+  display: inline-block;
+  border-radius: 4px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+.radio-row {
+  display: inline-block;
+}
+
+.radio-row-label {
+
+}
+/****************************/
 
 /* Will's ratio styling */
 .completion-ratio.completed-ratio{

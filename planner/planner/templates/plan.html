@@ -149,8 +149,9 @@
     <div class="col-sm-2 sidenav">
 
         <h3>Select semester</h3>
-        <div class="form-group">
-        <select class="form-control" id="semester" form="courseSearchForm" onchange="semesterChangeHandler()" name="semester">
+        <!-- Remove this dropdown code!! -->
+        <div style="display: none;" class="form-group">
+        <select class="form-control" id="semester" form="courseSearchForm_disable" onchange="semesterChangeHandler()" name="semester">
             <optgroup label="Current and Previous Semesters">
                 <option>Fall 2018</option>
                 <option>Spring 2018</option>
@@ -166,6 +167,43 @@
                 <option>Fall 2020</option>
             </optgroup>
         </select>
+        </div>
+        <!-- -->
+
+        <!-- Selecting a semester -->
+        <div id="semesterRadioDiv" onclick="semesterChangeHandler()">
+          <!-- Fall -->
+          <span class="radio-row">
+            <span class="radio-row-label">F</span>
+            <div class="radio-group">
+              <input type="radio" form="courseSearchForm" id="radioF16" value="F16" name="semester"
+              ><label class="radio-label" for="radioF16">16</label
+              ><input type="radio" form="courseSearchForm" id="radioF17" value="F17" name="semester"
+              ><label class="radio-label" for="radioF17">17</label
+              ><input type="radio" form="courseSearchForm" id="radioF18" value="F18" name="semester" checked="checked"
+              ><label class="radio-label" for="radioF18">18</label
+              ><input type="radio" form="courseSearchForm" id="radioF19" value="F19" name="semester"
+              ><label class="radio-label" for="radioF19">19</label
+              ><input type="radio" form="courseSearchForm" id="radioF20" value="F20" name="semester"
+              ><label class="radio-label" for="radioF20">20</label>
+            </div>
+          </span>
+          <!-- Spring -->
+          <span class="radio-row">
+            <span class="radio-row-label">S</span>
+            <div class="radio-group">
+              <input type="radio" form="courseSearchForm" id="radioS16"  value="S16" name="semester"
+              ><label class="radio-label" for="radioS16">16</label
+              ><input type="radio" form="courseSearchForm" id="radioS17" value="S17" name="semester"
+              ><label class="radio-label" for="radioS17">17</label
+              ><input type="radio" form="courseSearchForm" id="radioS18" value="S18" name="semester"
+              ><label class="radio-label" for="radioS18">18</label
+              ><input type="radio" form="courseSearchForm" id="radioS19" value="S19" name="semester"
+              ><label class="radio-label" for="radioS19">19</label
+              ><input type="radio" form="courseSearchForm" id="radioS20" value="S20" name="semester"
+              ><label class="radio-label" for="radioS20">20</label>
+            </div>
+          </span>
         </div>
 
         <!-- Searching for courses -->
@@ -313,6 +351,7 @@ $('body').on('hidden.bs.popover', function (e) {
 </script>
 
 <!-- Enable mouse wheel scrolling in the central div -->
+<!-- Disable it again because we need vertical scrolling!
 <script>
 (function() {
     var programInfoDiv = $("#programInfoDiv")[0];
@@ -333,4 +372,5 @@ $('body').on('hidden.bs.popover', function (e) {
     }
 })();
 </script>
+-->
 </html>
