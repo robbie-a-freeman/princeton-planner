@@ -20,7 +20,7 @@ def plan():
         # Figure out which form submitted the request.
         # TODO this is a potential security risk; user can spoof any form they want.
         form_name = request.form['form_name']
-        print("request received for ", form_name)
+        #print("request received for ", form_name)
 
         # Handle searches for courses
         if form_name == 'COURSE_QUERY':
@@ -43,34 +43,34 @@ def plan():
         elif form_name == 'COURSE_ADD':
             course = request.form['course_add']
             semester = request.form['semester']
-            user_info.add_course(user, semester, course)
+            user_info.add_course(user['netid'], semester, course)
 
         elif form_name == 'PROGRAM_ADD':
             query = request.form['program_add']
-            user_info.add_program(user, query)
+            user_info.add_program(user['netid'], query)
 
         elif form_name == 'PROGRAM_REMOVE':
             query = request.form['program_remove']
-            user_info.remove_program(user, query)
+            user_info.remove_program(user['netid'], query)
 
         elif form_name == 'COURSE_REMOVE':
             course = request.form['course_remove']
             semester = request.form['semester']
-            user_info.remove_course(user, semester, course)
+            user_info.remove_course(user['netid'], semester, course)
 
         elif form_name == 'OVERRIDE_ADD':
             course = request.form['override_add']
             program = request.form['program']
             category = request.form['category']
             semester = request.form['semester']
-            user_info.add_override(user, program, category, course, semester)
+            user_info.add_override(user['netid'], program, category, course, semester)
 
         elif form_name == 'OVERRIDE_REMOVE':
             course = request.form['override_remove']
             program = request.form['program']
             category = request.form['category']
             semester = request.form['semester']
-            user_info.remove_override(user, program, category, course, semester)
+            user_info.remove_override(user['netid'], program, category, course, semester)
 
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
