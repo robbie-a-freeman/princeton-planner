@@ -44,7 +44,7 @@ function addCourseToUser(course, semester) {
     "course_add": course,
     "semester": semester
   }
-  $.post('/plan',
+  $.post(PLAN_PATH,
          serialize(dict),
          callbackAddCourseToUser
        );
@@ -58,7 +58,7 @@ function removeCourseFromUser(course, semester) {
     "course_remove": course,
     "semester": semester
   }
-  $.post('/plan',
+  $.post(PLAN_PATH,
          serialize(dict),
          callbackRemoveCourseFromUser
        );
@@ -75,7 +75,7 @@ function addOverrideToUser(course, semester, program, requirement) {
     "program": program,
     "category": requirement // in the backend, "requirement" is referred to as "category".
   }
-  $.post('/plan',
+  $.post(PLAN_PATH,
          serialize(dict),
          callbackAddOverrideToUser
        );
@@ -92,7 +92,7 @@ function removeOverrideFromUser(course, semester, program, requirement) {
     "program": program,
     "category": requirement // in the backend, "requirement" is referred to as "category".
   }
-  $.post('/plan',
+  $.post(PLAN_PATH,
          serialize(dict),
          callbackRemoveOverrideFromUser
        );
@@ -105,7 +105,7 @@ function addProgramToUser(program) {
     "form_name": "PROGRAM_ADD",
     "program_add": program
   }
-  $.post('/plan',
+  $.post(PLAN_PATH,
          serialize(dict),
          callbackAddProgramToUser
        );
@@ -118,7 +118,7 @@ function removeProgramFromUser(program) {
     "form_name": "PROGRAM_REMOVE",
     "program_remove": program
   }
-  $.post('/plan',
+  $.post(PLAN_PATH,
          serialize(dict),
          callbackRemoveProgramFromUser
        );
