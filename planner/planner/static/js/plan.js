@@ -625,6 +625,7 @@ function unstrikethrough(courseName, subreq) {
   }
 
   // Strikethrough the satisfiedCourse in popoverHTML, then put it back.
+  popoverString = popoverString.replace("*", "\\*"); // literal *s not closures
   var re = new RegExp("<s>(" + popoverString+ ")</s>", "g");
   popover = popover.replace(re, "$1" );
 
