@@ -986,7 +986,8 @@ function getText(element) {
 
 // Gets the currently active semester, as a full string
 function getSemester() {
-  return $("#semester")[0].value;
+  return $("input[name=semester]:checked").val();
+  // return $("#semester")[0].value;
 }
 
 // Gets the currently active semester, in abbreviated form.
