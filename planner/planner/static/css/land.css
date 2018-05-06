@@ -159,6 +159,50 @@ body {
     font-weight: bold;
 }
 
+/* Semester radio button styling */
+/*
+$bg: #332f35;
+$fg: lighten($bg,20%);
+$borderWidth: 3px;
+*/
+input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+label.radio-label {
+  color: #867c8b;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: unset;
+}
+
+input[type=radio]:checked + label{
+  color: #aea8b1;
+  background:  #5c5560;
+}
+
+label + input[type=radio] + label {
+  border-left: solid 3px #5c5560;
+}
+.radio-group {
+  border: solid 3px #5c5560;
+  display: inline-block;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.radio-row {
+  display: inline-block;
+}
+
+.radio-row-label {
+
+}
+/****************************/
+
 /* Will's ratio styling */
 .completion-ratio.completed-ratio{
   background: limegreen;
