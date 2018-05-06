@@ -3,6 +3,12 @@ body {
     overflow-y: hidden;
 }
 
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+  }
+}
+
 .apple {
     display:inline-block;
     width: 250px;

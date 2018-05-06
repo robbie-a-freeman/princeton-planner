@@ -260,7 +260,8 @@ function addCourseToAccordion(addedCourseObj, accordion) {
 
           // If addedCourse in subreqlist's popover:
           // Store this subreq as a match, and check next req.
-          var satisfiedCourse = satisfiesSubreq(addedCourseObj["name"], subreqList[k]);
+          // ignore struck out courses
+          var satisfiedCourse = satisfiesSubreq(addedCourseObj["name"], subreqList[k], true);
 
           // If this subreq is satisfied by added course AND
           // this slot is not already filled with another course:
@@ -305,7 +306,8 @@ function addCourseToAccordion(addedCourseObj, accordion) {
 // If subreq has no popover, return null. (unless the popover is hidden, see above)
 // This function splits up addedCourseStr and subreq into nice, pretty arrays
 // so that matchCoursePopover has an easier job.
-function satisfiesSubreq(addedCourseStr, subreq) {
+// if ignoreStrikethrough = true, don't match against struck out courses
+function satisfiesSubreq(addedCourseStr, subreq, ignoreStrikethrough) {
   // No popover exists.
 
   // If subreq has a lone (text) element and has no hidden popover, no match
@@ -322,7 +324,7 @@ function satisfiesSubreq(addedCourseStr, subreq) {
   }
   var popoverCourses = content.split(/<br.?\/?>/g);
   var addedCourses = addedCourseStr.split(/ \/ /g);
-  return (matchCoursePopover(addedCourses, popoverCourses));
+  return (matchCoursePopover(addedCourses, popoverCourses, ignoreStrikethrough));
 }
 
 // Given two lists of courses (courses + popover), does any course
@@ -333,7 +335,8 @@ function satisfiesSubreq(addedCourseStr, subreq) {
 // TODO COrner cases: "COS 397 | COS 398", or
 //                    "COS >= 300", or
 //                    "project required."
-function matchCoursePopover(addedCourses, popoverCourses) {
+// If ignore strikethrough = true, don't match against struck out courses
+function matchCoursePopover(addedCourses, popoverCourses, ignoreStrikethrough) {
   // if performance is an issue (it won't be), revise brute force algorithm
   for (var i = 0; i < addedCourses.length; i++) {
     for (var j = 0; j < popoverCourses.length; j++) {
@@ -343,10 +346,12 @@ function matchCoursePopover(addedCourses, popoverCourses) {
       }
 
       // Do not match against courses that have been struck through.
-      var re = new RegExp("<s>.*?</s>", "g");
-      popoverCourse = popoverCourse.replace(re,  "");
-      if (popoverCourse.trim() == "") {
-        continue;
+      if (ignoreStrikethrough) {
+        var re = new RegExp("<s>.*?</s>", "g");
+        popoverCourse = popoverCourse.replace(re,  "");
+        if (popoverCourse.trim() == "") {
+          continue;
+        }
       }
 
       // Check for courses in popover that are "OR"d together
@@ -524,7 +529,7 @@ function removeCourseFromAccordions(removedCourse, semester) {
 // Given a course name and a subreq from an accordion, which contains popover data,
 // modify the popover data to ensure that that courses matching courseName are not struck out.
 function unstrikethrough(courseName, subreq) {
-  var matchInfo = satisfiesSubreq(courseName, subreq);
+  var matchInfo = satisfiesSubreq(courseName, subreq, false); // don't ignore strikethrough!!
 
   // This course isn't present in subreq; nothing left to do!
   if (matchInfo == null) return;
