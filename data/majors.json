@@ -2770,7 +2770,7 @@
 				"number": 3,
 				"score": 2,
 				"courses": [
-					"CEE*"
+					"CEE *"
 				]
 			},
 			{
@@ -2779,7 +2779,7 @@
 				"number": 2,
 				"score": 1,
 				"courses": [
-					"CEE>=300"
+					"CEE >= 300"
 				]
 			},
 			{
@@ -2788,7 +2788,7 @@
 				"number": 1,
 				"score": 1,
 				"courses": [
-					"CEE[STL]>=300"
+					"CEE[STL] >= 300"
 				]
 			},
 			{
@@ -2806,7 +2806,7 @@
 				"number": 3,
 				"score": 0,
 				"courses": [
-					"*>=300"
+					"* >= 300"
 				]
 			},
 			{
@@ -2815,7 +2815,7 @@
 				"number": 8,
 				"score": 1,
 				"courses": [
-					"*>=300"
+					"* >= 300"
 				],
 				"unique": false
 			}

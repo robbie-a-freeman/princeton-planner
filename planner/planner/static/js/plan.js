@@ -273,6 +273,7 @@ function addCourseToAccordion(addedCourseObj, accordion) {
             satisfiedDict["firstSatisfied"] = k;
             satisfiedDict["satisfiedCourse"] = satisfiedCourse[0];
             satisfiedDict["popoverString"] = satisfiedCourse[1];
+            satisfiedDict["meta"] = satisfiedCourse[2];
             satisfiedReqs.push(satisfiedDict);
             break req_loop;
           }
@@ -346,16 +347,6 @@ function matchCoursePopover(addedCourses, popoverCourses, ignoreStrikethrough) {
       // Does the returned match involve a metacharacter (*, GEQ, LEQ)
       var meta = false;
 
-      // Handle >= 300 or COS >= 300
-      if (popoverCourse.includes(GEQ)) {
-        // TODO CORNER CASE HANDLING!!!
-      }
-
-      // Handle * or COS*
-      if (popoverCourse.includes("*")) {
-
-      }
-
       // Do not match against courses that have been struck through.
       if (ignoreStrikethrough) {
         var re = new RegExp("<s>.*?</s>", "g");
@@ -365,10 +356,65 @@ function matchCoursePopover(addedCourses, popoverCourses, ignoreStrikethrough) {
         }
       }
 
-      // Check for courses in popover that are "OR"d together
-      // using .includes()
-      if (popoverCourse.includes(addedCourses[i])) {
-        return [addedCourses[i], popoverCourse, false];
+      // If this is a literal popover row (i.e. no metacharacters)
+      if (!popoverCourse.includes(GEQ) &&
+          !popoverCourse.includes(LEQ) &&
+          !popoverCourse.includes("*"))
+      {
+          // Check for courses in popover that are "OR"d together
+          // using .includes()
+          if (popoverCourse.includes(addedCourses[i])) {
+            return [addedCourses[i], popoverCourse, meta];
+          }
+      }
+
+      meta = true;
+
+      // Split the popover string into dept / number
+      var popoverParts = popoverCourse.trim().split(/\s+/g); // e.g. "  "
+
+      var regexDept = popoverParts[0];  // e.g. "COS" or "*"
+      var regexNum  = popoverParts[popoverParts.length-1];  // e.g. "333"
+
+      var ANY_THREE_CHARS  = "[a-zA-Z][a-zA-Z][a-zA-Z]";
+      var ANY_THREE_DIGITS = "\\d\\d\\d";
+
+
+      // Handle "*" wildcard
+      if (popoverCourse.trim() == "*") {
+        regexDept = ANY_THREE_CHARS;
+        regexNum  = ANY_THREE_DIGITS;
+      }
+
+      // Handle COS >= 300  (or just ">= 300")
+      if (popoverCourse.includes(GEQ)) {
+        var popoverNum = parseInt(regexNum.trim());
+
+        // Ensure the number in the popover is a reasonable couse number
+        if (popoverNum >= 100 && popoverNum <= 600) {
+          var acceptableNumList = []
+          for (var k = Math.round(popoverNum / 100); k <= 5; k++) {
+            acceptableNumList.push(k);
+          }
+          // E.g. ""[345]\d\d"
+          regexNum = "[" + acceptableNumList.join("") + "]" + "\\d\\d";
+        }
+        else {
+          console.log("Unexpected popover number: " + popoverNum + " in " + popoverCourse);
+        }
+      }
+
+      // Handle "* 333" or ">= 300"
+      if (regexDept.includes("*") || regexDept.trim() == "") {
+        regexDept = ANY_THREE_CHARS;
+      }
+
+      var regexCombined = regexDept + "\\s" + regexNum;
+      var re = new RegExp(regexCombined, "g");
+
+      // If the meta-RE matches the current course, return success!
+      if (re.test(addedCourses[i])) {
+        return [addedCourses[i], popoverCourse, meta];
       }
     }
   }
@@ -387,6 +433,7 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
   var satisfiedCourse = satisfiedReq["satisfiedCourse"];
   var popoverString   = satisfiedReq["popoverString"];
   var reqPanelHeading = satisfiedReq["reqPanelHeading"];
+  var meta            = satisfiedReq["meta"];
 
   // Extract info from addedCourseObj
   var addedCourse = addedCourseObj["name"];
@@ -406,38 +453,41 @@ function addCourseToRequirement(addedCourseObj, satisfiedReq) {
   // the satisfied course.
   subreqList[firstSatisfied].appendChild(createSemesterTag(shortSemester));
 
+  // If the match was a literal match and not a meta-match:
   // For all subreqs in subreqList, strikethrough satisfiedCourse from the popover.
-  // (Check .popoverHTML if it exists. )
-  // TODO
-  for (var i = 0; i < subreqList.length; i++) {
-    var children = subreqList[i].children;
+  // (Check .hiddenHTML if it exists
+  if (!meta) {
+    for (var i = 0; i < subreqList.length; i++) {
+      var children = subreqList[i].children;
 
-    // Use the hidden popover data by default (if popover is hidden)
-    var popover = subreqList[i].hiddenHTML;
-    var hidden = true;
+      // Use the hidden popover data by default (if popover is hidden)
+      var popover = subreqList[i].hiddenHTML;
+      var hidden = true;
 
-    // If the popover is still active, use the active popover data instead.
-    // If subreqList[i] has an <a> child, we know it's still active.
-    for (var j = 0; j < children.length; j++) {
-      if (children[j].tagName.toLowerCase() == "a") {
-        hidden = false;
-        popover = subreqList[i].innerHTML;
-        break; // no need to keep looking.
+      // If the popover is still active, use the active popover data instead.
+      // If subreqList[i] has an <a> child, we know it's still active.
+      for (var j = 0; j < children.length; j++) {
+        if (children[j].tagName.toLowerCase() == "a") {
+          hidden = false;
+          popover = subreqList[i].innerHTML;
+          break; // no need to keep looking.
+        }
       }
-    }
 
-    // Strikethrough the satisfiedCourse in popoverHTML, then put it back.
-    var re = new RegExp("(" + popoverString+ ")", "g");
-    popover = popover.replace(re, "<s>$1</s>" );
 
-    // If hidden, put back into hiddenHTML.
-    if (hidden) {
-      subreqList[i].hiddenHTML = popover;
-    }
-    else {
-      subreqList[i].innerHTML = popover;
-    }
+      // Strikethrough the satisfiedCourse in popoverHTML, then put it back.
+      var re = new RegExp("(" + popoverString+ ")", "g");
+      popover = popover.replace(re, "<s>$1</s>" );
 
+      // If hidden, put back into hiddenHTML.
+      if (hidden) {
+        subreqList[i].hiddenHTML = popover;
+      }
+      else {
+        subreqList[i].innerHTML = popover;
+      }
+
+    }
   }
 
   incrementHeading(reqPanelHeading);
