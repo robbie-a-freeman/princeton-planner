@@ -13,4 +13,4 @@ cas = CAS(app)
 
 #app.secret_key = '\xe6\xde\xa5\xccUb\xc3\nv\xf7\x89\xc4\xec\x98\xe1\x14\xf1\x06\xcam\xa27t\x9b'
 
-from . import routes, models
+from . import routes, models, errors
