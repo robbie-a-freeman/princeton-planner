@@ -1046,8 +1046,15 @@ function createCourseObj(name, semester) {
 function parseJSON(jsonResponse) {
   // Preprocess the JSON response so it is suitable for parsing
   jsonResponse = jsonResponse.replace(/ObjectId\((['"].*?['"])\)/g, "$1");
-  // jsonResponse = jsonResponse.replace(/True/g)
-  results = JSON5.parse(jsonResponse);
+  jsonResponse = jsonResponse.replace(/True/g, "true");
+  jsonResponse = jsonResponse.replace(/False/g, "false"); 
+  try {
+    results = JSON5.parse(jsonResponse);
+  }
+  catch (error) {
+    console.log("Bad json response!\n" + jsonResponse);
+    console.error(error);
+  }
   return results;
 }
 
