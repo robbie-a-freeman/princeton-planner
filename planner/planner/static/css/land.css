@@ -177,6 +177,12 @@ label.radio-label {
   cursor: pointer;
   font-weight: bold;
   margin-bottom: unset;
+  padding: 2px;
+  /* make unselectable */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 input[type=radio]:checked + label{
@@ -192,6 +198,8 @@ label + input[type=radio] + label {
   display: inline-block;
   border-radius: 4px;
   overflow: hidden;
+  vertical-align: middle;
+  margin-bottom: 4px;
 }
 
 .radio-row {
