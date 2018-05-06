@@ -1,3 +1,7 @@
+# ----------------------------------------------------------------------------
+# user_info.py
+# ----------------------------------------------------------------------------
+
 # This program takes in an *unsanitized* query string from the user,
 # sanitizes it to reduce the risk of injection-style attacks, and
 # then generates a MongoDB query that will search the database to satisfy

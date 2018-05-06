@@ -150,14 +150,7 @@ def sanitize(unsafe):
 def queryOneWord(word, semester):
     # current semester
     sem = parse_semester(semester)
-    lol = ""
-    if sem[0] == "S":
-        lol = "S18"
-    elif sem[0] == "F":
-        lol = "F18"
-    courses = db['courses' + lol]
-    #courses = db['courses' + parse_semester(semester)]
-    #courses = db['courses' + 'S17']
+    courses = db['courses' + parse_semester(semester)]
 
     uWord = word.upper()
     results = set()
@@ -186,13 +179,13 @@ def queryOneWord(word, semester):
         queryType = DENUM3
 
     # Dept. ID no spaces followed by course number:
-    elif re.match("[A-Z][A-Z][A-Z]\d\d", uWord):
+    elif re.match("[A-Z][A-Z][A-Z]\d\d", uWord) or re.match("[A-Z][A-Z][A-Z] \d\d", uWord):
         results = set([dumps(course) for course in courses.find( {"listings.dept":uWord[0:3]} ) ])
         results = results.intersection([dumps(course) for course in courses.find( {"listings.number": {"$regex": uWord[3:] + "\d", "$options": "i"}} ) ])
         queryType = DENUM2
 
     # Dept. ID no spaces followed by course number:
-    elif re.match("[A-Z][A-Z][A-Z]\d", uWord):
+    elif re.match("[A-Z][A-Z][A-Z]\d", uWord) or re.match("[A-Z][A-Z][A-Z] \d", uWord):
         results = set([dumps(course) for course in courses.find( {"listings.dept":uWord[0:3]} ) ])
         results = results.intersection([dumps(course) for course in courses.find( {"listings.number": {"$regex": uWord[3:] + "\d\d", "$options": "i"}} ) ])
         queryType = DENUM1
