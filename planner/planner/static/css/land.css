@@ -148,6 +148,12 @@ body {
     float: left;
 }
 
+@media (max-width: 768px) {
+  #programInfoDiv {
+    width: 100%;
+  }
+}
+
 #programInfoDiv div {
     vertical-align: top;
 }

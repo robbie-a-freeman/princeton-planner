@@ -128,7 +128,7 @@ function courseResultHandler(event) {
   // Disallow duplicate listings.
   // TODO make more rigorous; this is buggy
   for (var i = 0; i < allRows.length; i++) {
-    if (allRows[i].children[0].innerHTML == td.innerHTML) {
+    if (allRows[i].children[0].innerText == td.innerText) {
       return;
     }
   }
@@ -752,37 +752,37 @@ function createTableRow(result, resultsType, semesterOverride) {
 function createInfoButton(courseJSON) {
     var infoBut = document.createElement("a");
     var address = "https://www.princetoncourses.com/course/";
-    if (getSemester() == "Fall 2018") {
+    if (getSemester() == "F18" || getSemester() == "F20") {
         address += "1192";
     }
-    else if (getSemester() == "Spring 2018") {
+    else if (getSemester() == "S18" || getSemester() == "S20") {
         address += "1184";
     }
-    else if (getSemester() == "Fall 2017") {
+    else if (getSemester() == "F17" || getSemester() == "F19") {
         address += "1182";
     }
-    else if (getSemester() == "Spring 2017") {
+    else if (getSemester() == "S17" || getSemester() == "S19") {
         address += "1174";
     }
-    else if (getSemester() == "Fall 2016") {
+    else if (getSemester() == "F16") {
         address += "1172";
     }
-    else if (getSemester() == "Spring 2016") {
+    else if (getSemester() == "S16") {
         address += "1164";
     }
-    else if (getSemester() == "Fall 2015") {
+    else if (getSemester() == "F15") {
         address += "1162";
     }
-    else if (getSemester() == "Spring 2015") {
+    else if (getSemester() == "S15") {
         address += "1154";
     }
-    else if (getSemester() == "Fall 2014") {
+    else if (getSemester() == "F14") {
         address += "1152";
     }
-    else if (getSemester().includes("Fall")) {
+    else if (getSemester().includes("F")) {
         address += "1192";
     }
-    else if (getSemester().includes("Spring")) {
+    else if (getSemester().includes("S")) {
         address += "1184";
     }
     address += courseJSON["courseid"];
