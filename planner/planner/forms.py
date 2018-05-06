@@ -1,6 +1,15 @@
 from flask_wtf import FlaskForm
-from wtforms import TextField, DateField, SelectField
+from wtforms import StringField, TextField, SelectField, SubmitField
 from wtforms.validators import DataRequired
+
+class ContactForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired()])
+    subject = TextField('Subject', validators=[DataRequired()])
+    message = TextField('Message', validators=[DataRequired()])
+
+class Feedback(FlaskForm):
+    feedback = TextField('Name', validators=[DataRequired()])
 
 
 class StartMealExchangeForm(FlaskForm):

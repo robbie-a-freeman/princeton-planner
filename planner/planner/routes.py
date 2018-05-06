@@ -3,9 +3,6 @@ from flask import render_template, redirect, request
 from flask_cas import login_required
 from . import course_search, program_search, user_info
 
-import json
-
-
 @app.route("/")
 def main():
     return render_template('index.html')
