@@ -41,6 +41,7 @@ body {
     margin-top: 12px;
     padding: 10px 15px;
     font-family:'Biryani';
+    height: 0px;
 }
 .navbar-brand .logo-dec {
     color: #ff8f00;
