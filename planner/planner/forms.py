@@ -1,16 +1,16 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextField, SelectField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, TextField, TextAreaField, SelectField, SubmitField, DateField
+from wtforms.validators import DataRequired, Length
 
 class ContactForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired()])
-    subject = TextField('Subject', validators=[DataRequired()])
-    message = TextField('Message', validators=[DataRequired()])
+    name = StringField('Name', validators=[Length(min=4, max=100)])
+    email = StringField('Email', validators=[Length(min=4, max=100)])
+    subject = TextField('Subject', validators=[Length(min=8, max=100)])
+    message = TextAreaField('Message', validators=[Length(min=1, max=1000)])
     submit = SubmitField('SEND NOW')
 
-class Feedback(FlaskForm):
-    feedback = TextField('Name', validators=[DataRequired()])
+class FeedbackForm(FlaskForm):
+    feedback = TextAreaField('Feedback', validators=[Length(min=1, max=1000)])
     submit = SubmitField('Submit')
 
 

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="banner-info text-center wow fadeIn delay-05s">
+    <h1 class="bnr-title">Princeton <span class="logo-dec">Planner</span></h1>
+    <h2 class="bnr-sub-title">Planning Pure Success</h2>
+    <p class="bnr-para">Thank you for the feedback!<br></p>
+    <p class="bnr-para">You will be redirected to the home page after 5 seconds. If nothing happens, click below to navigate back to the home page.<br></p>
+    <div class="brn-btn">
+        <a href="{{ url_for('main') }}" title="Back to Home Page" class="btn btn-download">Back to Home Page</a>
+    </div>
+    <script type="text/javascript">   
+        function Redirect() 
+        {  
+        window.location="{{ url_for('main') }}"; 
+        } 
+        setTimeout('Redirect()', 5000);   
+    </script>
+  </div>
+{% endblock %}

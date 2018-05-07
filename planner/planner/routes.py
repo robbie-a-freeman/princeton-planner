@@ -1,8 +1,8 @@
 from . import app, cas
-from flask import render_template, redirect, request
+from flask import render_template, redirect, request, url_for, flash
 from flask_cas import login_required
 from . import course_search, program_search, user_info
-from app.forms import ContactForm, FeedbackForm
+from planner.forms import ContactForm, FeedbackForm
 
 @app.route("/")
 def main():
@@ -87,9 +87,12 @@ def index():
 def index1():
     return redirect('/')
 
-@app.route('/feedback')
+@app.route('/feedback', methods=["GET", "POST"])
 def feedback():
     form = FeedbackForm()
+    if form.validate_on_submit():
+        #flash('Thank you for submitting feedback!')
+        return render_template('feedbackthankyou.html')
     return render_template('feedback.html', title='Feedback', form=form)
 
 #@app.route('/login')
