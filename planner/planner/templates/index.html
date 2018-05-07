@@ -76,7 +76,7 @@
                   <!-- Should be CAS authentication link-->
                   <li class=""><a href="login" title="Login">Login</a></li>
                   <li class=""><a href="#contact">Contact Us</a></li>
-                  <li class=""><a href="plan" title="Plan your path!" class="btn btn-plan">Plan</a></li>
+                  <li class=""><a href="{{ url_for('plan') }}" title="Plan your path!" class="btn btn-plan">Plan</a></li>
                 </ul>
               </div>
             </div>
@@ -90,7 +90,7 @@
                 <h2 class="bnr-sub-title">Planning Pure Success</h2>
                 <p class="bnr-para">Combining crowdsourced data and a carefully crafted interface to present your future on an orange platter.<br></p>
                 <div class="brn-btn">
-                  <a href="plan" title="Get started!" class="btn btn-download">Get Started</a>
+                  <a href="{{ url_for('plan') }}" title="Get started!" class="btn btn-download">Get Started</a>
                   <a href="#" class="btn btn-more">Learn More</a>
                 </div>
                 <div class="overlay-detail">
@@ -180,7 +180,7 @@
             </div>
             <div class="service-item">
               <h3>Henry Wang</h3>
-              <p>My name is Henry Wang and I’m a master of the bong.</p>
+              <p>My name is Henry Wang and I’m a master of differentiating between right and wrong.</p>
             </div>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">

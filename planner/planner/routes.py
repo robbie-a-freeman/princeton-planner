@@ -2,9 +2,11 @@ from . import app, cas
 from flask import render_template, redirect, request
 from flask_cas import login_required
 from . import course_search, program_search, user_info
+from app.forms import ContactForm, FeedbackForm
 
 @app.route("/")
 def main():
+    form = ContactForm()
     return render_template('index.html')
 
 @app.route('/plan', methods = ["GET", "POST"])
@@ -85,10 +87,15 @@ def index():
 def index1():
     return redirect('/')
 
-@app.route('/login')
-@login_required
-def login():
-    return redirect('/plan')
+@app.route('/feedback')
+def feedback():
+    form = FeedbackForm()
+    return render_template('feedback.html', title='Feedback', form=form)
+
+#@app.route('/login')
+#@login_required
+#def login():
+#    return redirect('/plan')
 
 @app.route('/userdata', methods=["GET", "POST"])
 @login_required

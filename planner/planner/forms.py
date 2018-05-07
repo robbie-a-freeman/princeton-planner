@@ -7,9 +7,11 @@ class ContactForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
     subject = TextField('Subject', validators=[DataRequired()])
     message = TextField('Message', validators=[DataRequired()])
+    submit = SubmitField('SEND NOW')
 
 class Feedback(FlaskForm):
     feedback = TextField('Name', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 
 class StartMealExchangeForm(FlaskForm):

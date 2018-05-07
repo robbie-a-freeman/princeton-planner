@@ -9,12 +9,5 @@
     <div class="brn-btn">
         <a href="{{ url_for('main') }}" title="Back to Home Page" class="btn btn-download">Back to Home Page</a>
     </div>
-    <script type="text/javascript">   
-        function Redirect() 
-        {  
-        window.location="{{ url_for('main') }}"; 
-        } 
-        setTimeout('Redirect()', 5000);   
-    </script>
   </div>
 {% endblock %}
