@@ -220,6 +220,33 @@ function semesterChangeHandler(event) {
   courseSearchSubmit();
 }
 
+// Delete all of a user's database info, and re-render the display
+// to give them a clean start.
+function deleteUserHandler() {
+  // Prompt confirmation, and return w/o deleting if not provided.
+  var c = window.confirm("Are you sure you want to delete all of your user data from our database? This action cannot be undone.");
+  console.log("Delete user called but not implemented!" + " " + c);
+  if (!c) return;
+
+  // Remove all courses from each semester box
+  var semesterDivs = $("#enrolledCourses")[0].children;
+  for (var i = 0; i < semesterDivs.length; i++) {
+    semesterDivs[i].children[0].children[0].innerHTML=""; // div --> table-->tablebody
+  }
+
+  // Remove all programs from program box
+  var programTable = $("#currentProgramsTable")[0];
+  programTable.children[0].innerHTML = ""; // table --> tablebody
+
+  // Remove all accordions
+  var programInfoDiv = $("#programInfoDiv")[0];
+  programInfoDiv.innerHTML = "";
+
+  // Send a DB request to drop the user's entry in DB.
+
+  // Reload user's data to create them a new (empty) DB.
+}
+
 // ======================== COURSE ENROLLING HELPERS ===================
 // Used to update the accordions when needed.
 // =====================================================================
