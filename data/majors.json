@@ -2820,33 +2820,13 @@
 		"degree": "B.S.E.",
 		"requirements": [{
 				"type": "core",
-				"number": 6,
+				"number": 4,
 				"score": 2,
 				"courses": [
 					"ORF 245",
 					"ORF 307",
 					"ORF 309",
-					"ORF 405",
-					"ORF 335",
-					"ORF 411"
-				]
-			},
-			{
-				"type": "math",
-				"number": 1,
-				"score": 1,
-				"courses": [
-					"MAT 320",
-					"MAT 322",
-					"MAT 375",
-					"MAT 377",
-					"MAT 378",
-					"MAT 385",
-					"MAT 391",
-					"MAT 392",
-					"MAT 427",
-					"MAT 486",
-					"MAT 522"
+					"ORF 335"
 				]
 			},
 			{
