@@ -167,6 +167,10 @@ body {
     float: right;
 }
 
+.input-group {
+  padding-bottom: 20px;
+}
+
 .semester-tag {
     background: greenyellow;
     margin-right: 5px;
