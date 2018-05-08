@@ -952,7 +952,7 @@ function createAccordion(resultsObj) {
     var accordionDiv = document.createElement("div");
     accordionDiv.style.float = "left";
     accordionDiv.classList.add("panel-group", "accordion");
-    accordionDiv.id = "accordion"; // BUG ids should be unique in document.
+    // accordionDiv.id = "accordion"; // BUG ids should be unique in document.
     resultDiv.appendChild(accordionDiv);
 
     // Creates + appends panel div
