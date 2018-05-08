@@ -189,6 +189,9 @@ input[type=radio] {
 
 label.radio-label {
   color: #867c8b;
+  color: gray;
+  color: #5c5560;
+  background-color: #f9f9f9;
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
@@ -202,15 +205,16 @@ label.radio-label {
 }
 
 input[type=radio]:checked + label{
-  color: #aea8b1;
-  background:  #5c5560;
+  color: #5c5560;
+  color: white;
+  background: rgb(247, 169, 2);
 }
 
 label + input[type=radio] + label {
-  border-left: solid 3px #5c5560;
+  border-left: solid 1px #5c5560;
 }
 .radio-group {
-  border: solid 3px #5c5560;
+  border: solid 2px #5c5560;
   display: inline-block;
   border-radius: 4px;
   overflow: hidden;
