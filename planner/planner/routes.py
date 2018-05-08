@@ -180,3 +180,233 @@ def guest_plan():
 
     # Normal GET: Return our beautiful planning page.
     return render_template('plan.html', user=user, guest="true")
+
+
+################### DEMO INFO ####################
+@app.route('/guest1', methods = ["GET", "POST"])
+def guest1():
+    user = {'netid': "guest1"}
+
+    ## Handle POST forms (ie from search boxes)
+    if request.method == 'POST':
+        # Figure out which form submitted the request.
+        # TODO this is a potential security risk; user can spoof any form they want.
+        form_name = request.form['form_name']
+        #print("request received for ", form_name)
+
+        # Handle searches for courses
+        if form_name == 'COURSE_QUERY':
+            time = request.form['timestamp']
+            query = request.form['course_query']
+            semester = request.form['semester']
+            results = course_search.course_db_query(query, semester)
+            returnObj = {"results": results, "time":time}
+            return str(returnObj)
+
+        # Handle searches for majors/certificates
+        elif form_name == 'PROGRAM_QUERY':
+            time = request.form['timestamp']
+            query = request.form['program_query']
+            results = program_search.program_db_query(query)
+            returnObj = {"results": results, "time":time}
+            return str(returnObj)
+
+
+        elif form_name == 'COURSE_ADD':
+            course = request.form['course_add']
+            semester = request.form['semester']
+            user_info.add_course(user['netid'], semester, course)
+
+        elif form_name == 'PROGRAM_ADD':
+            query = request.form['program_add']
+            user_info.add_program(user['netid'], query)
+
+        elif form_name == 'PROGRAM_REMOVE':
+            query = request.form['program_remove']
+            user_info.remove_program(user['netid'], query)
+
+        elif form_name == 'COURSE_REMOVE':
+            course = request.form['course_remove']
+            semester = request.form['semester']
+            user_info.remove_course(user['netid'], semester, course)
+
+        elif form_name == 'OVERRIDE_ADD':
+            course = request.form['override_add']
+            program = request.form['program']
+            category = request.form['category']
+            semester = request.form['semester']
+            user_info.add_override(user['netid'], program, category, course, semester)
+
+        elif form_name == 'OVERRIDE_REMOVE':
+            course = request.form['override_remove']
+            program = request.form['program']
+            category = request.form['category']
+            semester = request.form['semester']
+            user_info.remove_override(user['netid'], program, category, course, semester)
+
+
+        # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
+        # are arbitrary and we can't depend on the fact that they are upper/lowercase
+        # versions of one another.
+
+    # Normal GET: Return our beautiful planning page.
+    return render_template('plan.html', user=user, guest="guest1")
+
+
+@app.route('/guest2', methods = ["GET", "POST"])
+def guest2():
+    user = {'netid': "guest2"}
+
+    ## Handle POST forms (ie from search boxes)
+    if request.method == 'POST':
+        # Figure out which form submitted the request.
+        # TODO this is a potential security risk; user can spoof any form they want.
+        form_name = request.form['form_name']
+        #print("request received for ", form_name)
+
+        # Handle searches for courses
+        if form_name == 'COURSE_QUERY':
+            time = request.form['timestamp']
+            query = request.form['course_query']
+            semester = request.form['semester']
+            results = course_search.course_db_query(query, semester)
+            returnObj = {"results": results, "time":time}
+            return str(returnObj)
+
+        # Handle searches for majors/certificates
+        elif form_name == 'PROGRAM_QUERY':
+            time = request.form['timestamp']
+            query = request.form['program_query']
+            results = program_search.program_db_query(query)
+            returnObj = {"results": results, "time":time}
+            return str(returnObj)
+
+
+        elif form_name == 'COURSE_ADD':
+            course = request.form['course_add']
+            semester = request.form['semester']
+            user_info.add_course(user['netid'], semester, course)
+
+        elif form_name == 'PROGRAM_ADD':
+            query = request.form['program_add']
+            user_info.add_program(user['netid'], query)
+
+        elif form_name == 'PROGRAM_REMOVE':
+            query = request.form['program_remove']
+            user_info.remove_program(user['netid'], query)
+
+        elif form_name == 'COURSE_REMOVE':
+            course = request.form['course_remove']
+            semester = request.form['semester']
+            user_info.remove_course(user['netid'], semester, course)
+
+        elif form_name == 'OVERRIDE_ADD':
+            course = request.form['override_add']
+            program = request.form['program']
+            category = request.form['category']
+            semester = request.form['semester']
+            user_info.add_override(user['netid'], program, category, course, semester)
+
+        elif form_name == 'OVERRIDE_REMOVE':
+            course = request.form['override_remove']
+            program = request.form['program']
+            category = request.form['category']
+            semester = request.form['semester']
+            user_info.remove_override(user['netid'], program, category, course, semester)
+
+
+        # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
+        # are arbitrary and we can't depend on the fact that they are upper/lowercase
+        # versions of one another.
+
+    # Normal GET: Return our beautiful planning page.
+    return render_template('plan.html', user=user, guest="guest2")
+
+
+@app.route('/guest3', methods = ["GET", "POST"])
+def guest3():
+    user = {'netid': "guest3"}
+
+    ## Handle POST forms (ie from search boxes)
+    if request.method == 'POST':
+        # Figure out which form submitted the request.
+        # TODO this is a potential security risk; user can spoof any form they want.
+        form_name = request.form['form_name']
+        #print("request received for ", form_name)
+
+        # Handle searches for courses
+        if form_name == 'COURSE_QUERY':
+            time = request.form['timestamp']
+            query = request.form['course_query']
+            semester = request.form['semester']
+            results = course_search.course_db_query(query, semester)
+            returnObj = {"results": results, "time":time}
+            return str(returnObj)
+
+        # Handle searches for majors/certificates
+        elif form_name == 'PROGRAM_QUERY':
+            time = request.form['timestamp']
+            query = request.form['program_query']
+            results = program_search.program_db_query(query)
+            returnObj = {"results": results, "time":time}
+            return str(returnObj)
+
+
+        elif form_name == 'COURSE_ADD':
+            course = request.form['course_add']
+            semester = request.form['semester']
+            user_info.add_course(user['netid'], semester, course)
+
+        elif form_name == 'PROGRAM_ADD':
+            query = request.form['program_add']
+            user_info.add_program(user['netid'], query)
+
+        elif form_name == 'PROGRAM_REMOVE':
+            query = request.form['program_remove']
+            user_info.remove_program(user['netid'], query)
+
+        elif form_name == 'COURSE_REMOVE':
+            course = request.form['course_remove']
+            semester = request.form['semester']
+            user_info.remove_course(user['netid'], semester, course)
+
+        elif form_name == 'OVERRIDE_ADD':
+            course = request.form['override_add']
+            program = request.form['program']
+            category = request.form['category']
+            semester = request.form['semester']
+            user_info.add_override(user['netid'], program, category, course, semester)
+
+        elif form_name == 'OVERRIDE_REMOVE':
+            course = request.form['override_remove']
+            program = request.form['program']
+            category = request.form['category']
+            semester = request.form['semester']
+            user_info.remove_override(user['netid'], program, category, course, semester)
+
+
+        # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
+        # are arbitrary and we can't depend on the fact that they are upper/lowercase
+        # versions of one another.
+
+    # Normal GET: Return our beautiful planning page.
+    return render_template('plan.html', user=user, guest="guest3")
+
+
+@app.route('/data1', methods=["GET"])
+def userdata1():
+    user = {'netid': "guest1"}
+    if request.method == "GET":
+        return str(user_info.user_query(user['netid']))
+
+@app.route('/data2', methods=["GET"])
+def userdata2():
+    user = {'netid': "guest2"}
+    if request.method == "GET":
+        return str(user_info.user_query(user['netid']))
+
+@app.route('/data3', methods=["GET"])
+def userdata3():
+    user = {'netid': "guest2"}
+    if request.method == "GET":
+        return str(user_info.user_query(user['netid']))

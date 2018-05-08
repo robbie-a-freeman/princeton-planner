@@ -4,6 +4,7 @@ var UID_count = 0;
 var GEQ = "\u2265";
 var LEQ = "\u2264";
 var PLAN_PATH = "/plan"; // used to send POST requests (overridden for guests)
+var DATA_PATH = "/userdata";
 
 // ====================== INITIALIZERS =================================
 // Initial function called onload to setup HTML elements, listeners, etc.
@@ -18,6 +19,18 @@ function plan_init() {
   var guestModeBox = $("#guest_mode")[0];
   if ($("#guest_mode").text() == "true") {
     PLAN_PATH = "/guest_plan";
+  }
+  if ($("#guest_mode").text() == "guest1") {
+    PLAN_PATH = "/guest1";
+    DATA_PATH = "/data1";
+  }
+  if ($("#guest_mode").text() == "guest2") {
+    PLAN_PATH = "/guest2";
+    DATA_PATH = "/data2";
+  }
+  if ($("#guest_mode").text() == "guest3") {
+    PLAN_PATH = "/guest3";
+    DATA_PATH = "/data3";
   }
 
   // Unhide active semester
@@ -780,8 +793,8 @@ function createResultsTable(resultsObj, resultsType) {
   resultTableDiv.appendChild(resultTable);
   resultTable.appendChild(resultTableBody);
 
-  if (resultsObj.length == 0) {
-    resultTableDiv.style = "font-family: Amiko";
+  if (resultsObj.length == 0 && resultsType == "course") {
+    resultTableDiv.style = "padding: 6px; font-family: Amiko;";
     resultTableDiv.innerText = "No courses found! Maybe it's offered in a different semester?";
     return resultTableDiv;
   }

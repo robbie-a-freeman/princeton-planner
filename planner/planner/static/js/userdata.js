@@ -7,7 +7,7 @@ var LOADING_FROM_DB = true;
 function loadUserData() {
   // Ignore guests (don't add info to database)
   if (PLAN_PATH == "/guest_plan") return;
-  $.get("/userdata", renderUserData)
+  $.get(DATA_PATH, renderUserData)
 }
 
 // Receives the user data for the current CAS user.
