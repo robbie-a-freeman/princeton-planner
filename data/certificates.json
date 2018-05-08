@@ -2377,10 +2377,11 @@
             },
             {
                "type": "performance",
-               "number": 1,
+               "number": 2,
                "score": 2,
                "note": "must be taken for 2 semesters",
                "courses": [
+                  "MUS 213",
                   "MUS 213",
                   "MUS 214",
                   "MUS 215",
