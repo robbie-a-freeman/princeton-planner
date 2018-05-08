@@ -780,6 +780,11 @@ function createResultsTable(resultsObj, resultsType) {
   resultTableDiv.appendChild(resultTable);
   resultTable.appendChild(resultTableBody);
 
+  if (resultsObj.length == 0) {
+    resultTableDiv.style = "font-family: Amiko";
+    resultTableDiv.innerText = "No courses found! Maybe it's offered in a different semester?";
+    return resultTableDiv;
+  }
 
   // Generate a table row + entry for each search result.
   for (var i = 0; i < resultsObj.length; i++) {
@@ -930,7 +935,7 @@ function updateCurrentSemester() {
 
   // Unhide current semester.
   getSemesterEnrolledCourses().classList.remove('hidden');
-  
+
   document.getElementById("strawberry").innerHTML = "Your " + getSemester() + " Courses";
 }
 
@@ -1103,7 +1108,7 @@ function getSemester() {
 
 function getLongSemester() {
   var semester = getSemester();
-  
+
 }
 
 // Gets the currently active semester, in abbreviated form.
