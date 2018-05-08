@@ -30,7 +30,7 @@ def sanitize(unsafe):
 # corresponding Mongo query, and return the results of the
 # Mongo query, as an array of json objects (strings or objects?)
 def queryOneWord(word):
-    word = word.upper()
+    word = word.upper().strip()
     results = []
 
     re_obj = {"$regex":word, "$options":"i"}
