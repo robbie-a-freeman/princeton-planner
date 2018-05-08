@@ -600,7 +600,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -661,7 +661,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -669,7 +669,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -707,7 +707,7 @@
 				]
 			},
 			{
-				"type": "req-concentration",
+				"type": "req. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -762,7 +762,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -823,7 +823,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -831,7 +831,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -869,7 +869,7 @@
 				]
 			},
 			{
-				"type": "ele-concentration",
+				"type": "ELE concentration",
 				"number": 2,
 				"score": 1,
 				"courses": [
@@ -882,7 +882,7 @@
 				]
 			},
 			{
-				"type": "misc-concentration",
+				"type": "misc. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -933,7 +933,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -994,7 +994,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -1002,7 +1002,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -1040,7 +1040,7 @@
 				]
 			},
 			{
-				"type": "req-concentration",
+				"type": "req. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1048,7 +1048,7 @@
 				]
 			},
 			{
-				"type": "ele-concentration",
+				"type": "ELE concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1060,7 +1060,7 @@
 				]
 			},
 			{
-				"type": "misc-concentration",
+				"type": "misc. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1109,7 +1109,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -1170,7 +1170,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -1178,7 +1178,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -1216,7 +1216,7 @@
 				]
 			},
 			{
-				"type": "ele-concentration",
+				"type": "ELE concentration",
 				"number": 2,
 				"score": 1,
 				"courses": [
@@ -1227,7 +1227,7 @@
 				]
 			},
 			{
-				"type": "misc-concentration",
+				"type": "misc. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1276,7 +1276,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -1337,7 +1337,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -1345,7 +1345,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -1383,7 +1383,7 @@
 				]
 			},
 			{
-				"type": "req-concentration",
+				"type": "req. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1437,7 +1437,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -1498,7 +1498,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -1506,7 +1506,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -1544,7 +1544,7 @@
 				]
 			},
 			{
-				"type": "req-concentration",
+				"type": "req. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1552,7 +1552,7 @@
 				]
 			},
 			{
-				"type": "ele-concentration",
+				"type": "ELE concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1562,7 +1562,7 @@
 				]
 			},
 			{
-				"type": "misc-concentration",
+				"type": "misc. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1609,7 +1609,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -1670,7 +1670,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -1678,7 +1678,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -1716,7 +1716,7 @@
 				]
 			},
 			{
-				"type": "req-concentration",
+				"type": "req. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1724,7 +1724,7 @@
 				]
 			},
 			{
-				"type": "ele-concentration",
+				"type": "ELE concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1735,7 +1735,7 @@
 				]
 			},
 			{
-				"type": "misc-concentration",
+				"type": "misc. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1784,7 +1784,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -1845,7 +1845,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -1853,7 +1853,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -1891,7 +1891,7 @@
 				]
 			},
 			{
-				"type": "ele-concentration",
+				"type": "ELE concentration",
 				"number": 2,
 				"score": 1,
 				"courses": [
@@ -1903,7 +1903,7 @@
 				]
 			},
 			{
-				"type": "misc-concentration",
+				"type": "misc. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -1953,7 +1953,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -2014,7 +2014,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -2022,7 +2022,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -2060,7 +2060,7 @@
 				]
 			},
 			{
-				"type": "req-concentration",
+				"type": "req. concentration",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -2115,7 +2115,7 @@
 				]
 			},
 			{
-				"type": "dept-elective",
+				"type": "dept. elective",
 				"number": 1,
 				"score": 0,
 				"courses": [
@@ -2176,7 +2176,7 @@
 				]
 			},
 			{
-				"type": "ele-departmental",
+				"type": "ELE departmental",
 				"number": 5,
 				"score": 0,
 				"courses": [
@@ -2184,7 +2184,7 @@
 				]
 			},
 			{
-				"type": "misc-departmental",
+				"type": "misc. departmental",
 				"number": 3,
 				"score": 0,
 				"notes": "courses taken outside electrical engineering counted towards this requirement must be closely related to the student's academic program",
@@ -2257,7 +2257,7 @@
 				]
 			},
 			{
-				"type": "engineering-science",
+				"type": "engineering science",
 				"name": "Engineering Science",
 				"number": 8,
 				"score": 2,
@@ -2273,7 +2273,7 @@
 				]
 			},
 			{
-				"type": "engineering-design",
+				"type": "engineering design",
 				"name": "Engineering Design",
 				"number": 2,
 				"score": 1,
@@ -2283,7 +2283,7 @@
 				]
 			},
 			{
-				"type": "track-specific",
+				"type": "track specific",
 				"name": "Track Specific",
 				"number": 3,
 				"score": 2,
@@ -2305,7 +2305,7 @@
 				]
 			},
 			{
-				"type": "additional-math",
+				"type": "additional math",
 				"name": "Additional Math",
 				"number": 1,
 				"score": 1,
@@ -2314,7 +2314,7 @@
 				]
 			},
 			{
-				"type": "additional-science",
+				"type": "additional science",
 				"name": "Additional Science",
 				"number": 1,
 				"score": 1,
@@ -2362,7 +2362,7 @@
 				]
 			},
 			{
-				"type": "engineering-science",
+				"type": "engineering science",
 				"name": "Engineering Science",
 				"number": 6,
 				"score": 2,
@@ -2376,7 +2376,7 @@
 				]
 			},
 			{
-				"type": "engineering-design",
+				"type": "engineering design",
 				"name": "Engineering Design",
 				"number": 2,
 				"score": 1,
@@ -2386,7 +2386,7 @@
 				]
 			},
 			{
-				"type": "track-specific",
+				"type": "track specific",
 				"name": "Track Specific",
 				"number": 6,
 				"score": 2,
@@ -2461,7 +2461,7 @@
 				]
 			},
 			{
-				"type": "engineering-science",
+				"type": "engineering science",
 				"name": "Engineering Science",
 				"number": 8,
 				"score": 2,
@@ -2487,7 +2487,7 @@
 				]
 			},
 			{
-				"type": "additional-math",
+				"type": "additional math",
 				"name": "Additional Math",
 				"number": 1,
 				"score": 1,
@@ -2496,7 +2496,7 @@
 				]
 			},
 			{
-				"type": "additional-science",
+				"type": "additional science",
 				"name": "Additional Science",
 				"number": 1,
 				"score": 1,
@@ -2508,7 +2508,7 @@
 				]
 			},
 			{
-				"type": "engineering-design",
+				"type": "engineering design",
 				"name": "Engineering Design",
 				"number": 2,
 				"score": 1,
@@ -2534,12 +2534,12 @@
 					"ORF 309",
 					"ELE 455",
 					"ELE 428",
-					"MAE*",
-					"CBE*",
-					"ORF*",
-					"GEO*",
-					"BIO*",
-					"CHM*"
+					"MAE *",
+					"CBE *",
+					"ORF *",
+					"GEO *",
+					"BIO *",
+					"CHM *"
 				]
 			}
 		]
@@ -2561,7 +2561,7 @@
 				]
 			},
 			{
-				"type": "engineering-science",
+				"type": "engineering science",
 				"name": "Engineering Science",
 				"number": 8,
 				"score": 2,
@@ -2588,7 +2588,7 @@
 				]
 			},
 			{
-				"type": "additional-math",
+				"type": "additional math",
 				"name": "Additional Math",
 				"number": 1,
 				"score": 1,
@@ -2597,7 +2597,7 @@
 				]
 			},
 			{
-				"type": "additional-science",
+				"type": "additional science",
 				"name": "Additional Science",
 				"number": 1,
 				"score": 1,
@@ -2610,7 +2610,7 @@
 				]
 			},
 			{
-				"type": "engineering-design",
+				"type": "engineering design",
 				"name": "Engineering Design",
 				"number": 2,
 				"score": 1,
@@ -2629,13 +2629,13 @@
 					"CEE 460",
 					"CEE 566",
 					"CEE 423",
-					"MAE*",
-					"CBE*",
-					"APC*",
-					"ORF*",
-					"GEO*",
-					"EEB*",
-					"CHM*"
+					"MAE *",
+					"CBE *",
+					"APC *",
+					"ORF *",
+					"GEO *",
+					"EEB *",
+					"CHM *"
 				]
 			}
 		]
@@ -2657,7 +2657,7 @@
 				]
 			},
 			{
-				"type": "engineering-science",
+				"type": "engineering science",
 				"name": "Engineering Science",
 				"number": 6,
 				"score": 2,
@@ -2671,7 +2671,7 @@
 				]
 			},
 			{
-				"type": "engineering-science-additional",
+				"type": "additional engineering science",
 				"name": "Engineering Science",
 				"number": 2,
 				"score": 1,
@@ -2693,7 +2693,7 @@
 				]
 			},
 			{
-				"type": "additional-math",
+				"type": "additional math",
 				"name": "Additional Math",
 				"number": 1,
 				"score": 1,
@@ -2702,7 +2702,7 @@
 				]
 			},
 			{
-				"type": "additional-science",
+				"type": "additional science",
 				"name": "Additional Science",
 				"number": 1,
 				"score": 1,
@@ -2715,7 +2715,7 @@
 				]
 			},
 			{
-				"type": "engineering-design",
+				"type": "engineering design",
 				"name": "Engineering Desing",
 				"number": 2,
 				"score": 1,
@@ -2740,10 +2740,10 @@
 					"CEE 560",
 					"ORF 307",
 					"ORF 309",
-					"MAE*",
-					"APC*",
-					"ORF*",
-					"GEO*"
+					"MAE *",
+					"APC *",
+					"ORF *",
+					"GEO *"
 				]
 			}
 		]
@@ -2765,7 +2765,7 @@
 				]
 			},
 			{
-				"type": "engineering-science",
+				"type": "engineering science",
 				"name": "Engineering Science",
 				"number": 3,
 				"score": 2,
@@ -2774,21 +2774,13 @@
 				]
 			},
 			{
-				"type": "engineering-science-300",
+				"type": "engineering science 300",
 				"name": "Engineering Science",
-				"number": 2,
+				"number": 3,
 				"score": 1,
+				"note": "At least one of these must be STL",
 				"courses": [
 					"CEE >= 300"
-				]
-			},
-			{
-				"type": "engineering-science-300-stl",
-				"name": "Engineering Science",
-				"number": 1,
-				"score": 1,
-				"courses": [
-					"CEE[STL] >= 300"
 				]
 			},
 			{
@@ -2801,7 +2793,7 @@
 				]
 			},
 			{
-				"type": "elective-300",
+				"type": "Program Electives",
 				"name": "Program Electives",
 				"number": 3,
 				"score": 0,
@@ -2828,38 +2820,18 @@
 		"degree": "B.S.E.",
 		"requirements": [{
 				"type": "core",
-				"number": 6,
+				"number": 4,
 				"score": 2,
 				"courses": [
 					"ORF 245",
 					"ORF 307",
 					"ORF 309",
-					"ORF 405",
-					"ORF 335",
-					"ORF 411"
-				]
-			},
-			{
-				"type": "math",
-				"number": 1,
-				"score": 1,
-				"courses": [
-					"MAT 320",
-					"MAT 322",
-					"MAT 375",
-					"MAT 377",
-					"MAT 378",
-					"MAT 385",
-					"MAT 391",
-					"MAT 392",
-					"MAT 427",
-					"MAT 486",
-					"MAT 522"
+					"ORF 335"
 				]
 			},
 			{
 				"type": "departmental",
-				"number": 8,
+				"number": 10,
 				"score": 0,
 				"courses": [
 					"ORF 311",
@@ -2940,7 +2912,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-differential-equations",
+				"type": "advanced stem differential equations",
 				"number": 1,
 				"score": 1,
 				"notes": "must be completed by end of fall term junior year",
@@ -2951,7 +2923,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-chemistry",
+				"type": "advanced stem chemistry",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -2986,7 +2958,7 @@
 				]
 			},
 			{
-				"type": "advanced-chemical-engineering",
+				"type": "advanced chemical engineering",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -2995,7 +2967,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-organic-chemistry",
+				"type": "advanced stem organic chemistry",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -3005,7 +2977,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-molecular-biology",
+				"type": "advanced stem molecular biology",
 				"score": 1,
 				"number": 1,
 				"courses": [
@@ -3230,7 +3202,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-differential-equations",
+				"type": "advanced stem differential equations",
 				"number": 1,
 				"score": 1,
 				"notes": "must be completed by end of fall term junior year",
@@ -3241,7 +3213,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-chemistry",
+				"type": "advanced stem chemistry",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -3276,7 +3248,7 @@
 				]
 			},
 			{
-				"type": "advanced-chemical-engineering",
+				"type": "advanced chemical engineering",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -3285,7 +3257,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-organic-chemistry",
+				"type": "advanced stem organic chemistry",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -3295,7 +3267,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-molecular-biology",
+				"type": "advanced stem molecular biology",
 				"score": 1,
 				"number": 1,
 				"courses": [
@@ -3520,7 +3492,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-differential-equations",
+				"type": "advanced stem differential equations",
 				"number": 1,
 				"score": 1,
 				"notes": "must be completed by end of fall term junior year",
@@ -3531,7 +3503,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-chemistry",
+				"type": "advanced stem chemistry",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -3566,7 +3538,7 @@
 				]
 			},
 			{
-				"type": "advanced-chemical-engineering",
+				"type": "advanced chemical engineering",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -3575,7 +3547,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-organic-chemistry",
+				"type": "advanced stem organic chemistry",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -3585,7 +3557,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-molecular-biology",
+				"type": "advanced stem molecular biology",
 				"score": 1,
 				"number": 1,
 				"courses": [
@@ -3810,7 +3782,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-differential-equations",
+				"type": "advanced stem differential equations",
 				"number": 1,
 				"score": 1,
 				"notes": "must be completed by end of fall term junior year",
@@ -3821,7 +3793,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-chemistry",
+				"type": "advanced stem chemistry",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -3856,7 +3828,7 @@
 				]
 			},
 			{
-				"type": "advanced-chemical-engineering",
+				"type": "advanced chemical engineering",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -3865,7 +3837,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-organic-chemistry",
+				"type": "advanced stem organic chemistry",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -3875,7 +3847,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-molecular-biology",
+				"type": "advanced stem molecular biology",
 				"score": 1,
 				"number": 1,
 				"courses": [
@@ -4100,7 +4072,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-differential-equations",
+				"type": "advanced stem differential equations",
 				"number": 1,
 				"score": 1,
 				"notes": "must be completed by end of fall term junior year",
@@ -4111,7 +4083,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-chemistry",
+				"type": "advanced stem chemistry",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -4146,7 +4118,7 @@
 				]
 			},
 			{
-				"type": "advanced-chemical-engineering",
+				"type": "advanced chemical engineering",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -4155,7 +4127,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-organic-chemistry",
+				"type": "advanced stem organic chemistry",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -4165,7 +4137,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-molecular-biology",
+				"type": "advanced stem molecular biology",
 				"score": 1,
 				"number": 1,
 				"courses": [
@@ -4390,7 +4362,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-differential-equations",
+				"type": "advanced stem differential equations",
 				"number": 1,
 				"score": 1,
 				"notes": "must be completed by end of fall term junior year",
@@ -4401,7 +4373,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-chemistry",
+				"type": "advanced stem chemistry",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -4436,7 +4408,7 @@
 				]
 			},
 			{
-				"type": "advanced-chemical-engineering",
+				"type": "advanced chemical engineering",
 				"number": 1,
 				"score": 1,
 				"notes": "cannot be independent work or PDF'ed course",
@@ -4445,7 +4417,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-organic-chemistry",
+				"type": "advanced stem organic chemistry",
 				"number": 1,
 				"score": 1,
 				"courses": [
@@ -4455,7 +4427,7 @@
 				]
 			},
 			{
-				"type": "advanced-stem-molecular-biology",
+				"type": "advanced stem molecular biology",
 				"score": 1,
 				"number": 1,
 				"courses": [

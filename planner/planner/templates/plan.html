@@ -58,7 +58,7 @@
         <li class="active"><a class="pp-navbar-element" href="#" data-toggle="modal" data-target="#aboutModal"><span  class="glyphicon glyphicon-bell"></span>   About</a></li>
         <li class="active"><a class="pp-navbar-element" href="#" data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign"></span>   Help</a></li>
         <!-- At some point the link should be removed, but it removes the icon atm -->
-        <li class="active"><a class="pp-navbar-element" href=""><span class="glyphicon glyphicon-user"></span>   {{ user.netid }}</a></li>
+        <li class="active"><a class="pp-navbar-element" href="#" data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span>   {{ user.netid }}</a></li>
         <li class="active"><a class="pp-navbar-element" href="logout"><span class="glyphicon glyphicon-log-out"></span>   Logout</a></li>
 
         <!-- Help Pop up! -->
@@ -70,7 +70,11 @@
                         <h4 class="modal-title">Help</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Better ask WSWEENY!!!!</p>
+                        <p>Princeton Planner tracks the <em>courses</em> you've taken (or are considering taking), alongside any <em>programs</em> (Majors or Certificates) you would like to pursue.</p>
+                        <p>To get started, simply add a program (like your declared major!) by searching on the right-hand side and selecting a program.</p>
+                        <p>You can then select a semester using the buttons in the top left, and add courses for that semester by searching in the box on the left, and selecting some courses.</p>
+                        <p>If a course you're looking for isn't showing up, try searching in a different semester! Some courses are only offered in the fall/spring, or in alternate years.</p>
+                        <p>Happy planning!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -97,6 +101,24 @@
                 </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- User info Pop up! -->
+        <div class="modal fade" id="userModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">User Options</h4>
+                  </div>
+                  <div class="modal-body">
+                      <button type="button" onclick="deleteUserHandler()" class="btn btn-default" data-dismiss="modal">Delete User Profile</button>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
             </div>
         </div>
     </ul>
@@ -134,7 +156,7 @@
         <div id="semesterRadioDiv" onclick="semesterChangeHandler()">
           <!-- Fall -->
           <span class="radio-row">
-            <span class="radio-row-label">F</span>
+            <span class="radio-row-label">&nbsp;&nbsp;&nbsp;&nbsp; Fall</span>
             <div class="radio-group">
               <input type="radio" form="courseSearchForm" id="radioF16" value="F16" name="semester"
               ><label class="radio-label" for="radioF16">16</label
@@ -150,7 +172,7 @@
           </span>
           <!-- Spring -->
           <span class="radio-row">
-            <span class="radio-row-label">S</span>
+            <span class="radio-row-label">Spring</span>
             <div class="radio-group">
               <input type="radio" form="courseSearchForm" id="radioS16"  value="S16" name="semester"
               ><label class="radio-label" for="radioS16">16</label
@@ -188,7 +210,7 @@
         </div>
         <br>
 
-        <h3>Enrolled courses</h3>
+        <h3 id="strawberry">Enrolled courses</h3>
         <div id = "enrolledCourses">
           <div id="coursesDivF16" class="coursesDiv hidden">
             <table class="table table-bordered" id="coursesTableF16">
@@ -250,9 +272,11 @@
                 </tbody>
             </table>
           </div>
+          <!--
         <div id="currentCoursesDiv">
-          <!--<p id="initial">Choose some courses to put here!</p>-->
+          <p id="initial">Choose some courses to put here!</p>
         </div>
+      -->
     </div>
     </div>
 

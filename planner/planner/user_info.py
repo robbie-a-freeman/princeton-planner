@@ -89,10 +89,10 @@ def user_query(user):
 
         # extract major + track from combined string.
         major = nameParts[0]
-        majorRE = {"$regex":major, "$options":"i"}
+        # majorRE = {"$regex":major, "$options":"i"}
         if len(nameParts) == 1: # no track
-            programInfo =  [maj for maj in majors.find({"name": majorRE})]
-            programInfo += [cert for cert in certificates.find({"name": majorRE})]
+            programInfo =  [maj for maj in majors.find({"name": major})]
+            programInfo += [cert for cert in certificates.find({"name": major})]
             print(fullName)
             programsInfo.append(programInfo[0])
             continue
@@ -102,10 +102,10 @@ def user_query(user):
         elif len(nameParts) == 3: # two-part track
             track = nameParts[1] + " - " + nameParts[2]
 
-        trackRE = {"$regex":track, "$options":"i"}
+        # trackRE = {"$regex":track, "$options":"i"}
 
-        programInfo = [maj for maj in majors.find( {"$and": [ {"name": majorRE}, {"track": trackRE} ]} ) ]
-        programInfo += [cert for cert in certificates.find( {"$and": [ {"name": majorRE}, {"track": trackRE} ]} ) ]
+        programInfo = [maj for maj in majors.find( {"$and": [ {"name": major}, {"track": track} ]} ) ]
+        programInfo += [cert for cert in certificates.find( {"$and": [ {"name": major}, {"track": track} ]} ) ]
         programsInfo.append(programInfo[0])
 
     # Gather information about the user's enrolled courses from the database.

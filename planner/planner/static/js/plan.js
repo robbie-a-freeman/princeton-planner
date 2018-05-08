@@ -220,6 +220,33 @@ function semesterChangeHandler(event) {
   courseSearchSubmit();
 }
 
+// Delete all of a user's database info, and re-render the display
+// to give them a clean start.
+function deleteUserHandler() {
+  // Prompt confirmation, and return w/o deleting if not provided.
+  var c = window.confirm("Are you sure you want to delete all of your user data from our database? This action cannot be undone.");
+  console.log("Delete user called but not implemented!" + " " + c);
+  if (!c) return;
+
+  // Remove all courses from each semester box
+  var semesterDivs = $("#enrolledCourses")[0].children;
+  for (var i = 0; i < semesterDivs.length; i++) {
+    semesterDivs[i].children[0].children[0].innerHTML=""; // div --> table-->tablebody
+  }
+
+  // Remove all programs from program box
+  var programTable = $("#currentProgramsTable")[0];
+  programTable.children[0].innerHTML = ""; // table --> tablebody
+
+  // Remove all accordions
+  var programInfoDiv = $("#programInfoDiv")[0];
+  programInfoDiv.innerHTML = "";
+
+  // Send a DB request to drop the user's entry in DB.
+
+  // Reload user's data to create them a new (empty) DB.
+}
+
 // ======================== COURSE ENROLLING HELPERS ===================
 // Used to update the accordions when needed.
 // =====================================================================
@@ -903,6 +930,8 @@ function updateCurrentSemester() {
 
   // Unhide current semester.
   getSemesterEnrolledCourses().classList.remove('hidden');
+  
+  document.getElementById("strawberry").innerHTML = "Your " + getSemester() + " Courses";
 }
 
 // ==================== ACCORDION CREATORS ==================================
@@ -925,7 +954,7 @@ function createAccordion(resultsObj) {
     var accordionDiv = document.createElement("div");
     accordionDiv.style.float = "left";
     accordionDiv.classList.add("panel-group", "accordion");
-    accordionDiv.id = "accordion"; // BUG ids should be unique in document.
+    // accordionDiv.id = "accordion"; // BUG ids should be unique in document.
     resultDiv.appendChild(accordionDiv);
 
     // Creates + appends panel div
@@ -1060,8 +1089,21 @@ function getText(element) {
 
 // Gets the currently active semester, as a full string
 function getSemester() {
-  return $("input[name=semester]:checked").val();
-  // return $("#semester")[0].value;
+  semester = $("input[name=semester]:checked").val();
+  result = "";
+  if (semester.substring(0, 1) == "F") {
+    result += "Fall 20";
+  }
+  else {
+    result += "Spring 20";
+  }
+  result += semester.substring(1);
+  return result;
+}
+
+function getLongSemester() {
+  var semester = getSemester();
+  
 }
 
 // Gets the currently active semester, in abbreviated form.
