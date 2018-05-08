@@ -3,6 +3,10 @@
 Recommendations
 ====================
 - From Alvin:
+- Do this for major declarations instead of major completion. (Maybe for further exploration?)
+- (From Henry), so maybe like an algorithm that a user asks for that gives majors that could work given the courses currently taken?
+- (Also from Henry), so I was thinking that in the future (if anybody ever wants to work on this again), an algorithm to implement the best permutation of courses across requirements.
+- From Alvin:
 - Maybe have majors first, since that's what we're offering the most functionality for. (Henry - Should we implement this???)
 - Hence, have majors first, and then have searching courses on the right side.
 - From Jeremie:
