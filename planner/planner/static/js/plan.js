@@ -930,6 +930,8 @@ function updateCurrentSemester() {
 
   // Unhide current semester.
   getSemesterEnrolledCourses().classList.remove('hidden');
+  
+  document.getElementById("strawberry").innerHTML = "Your " + getSemester() + " Courses";
 }
 
 // ==================== ACCORDION CREATORS ==================================
@@ -1087,8 +1089,21 @@ function getText(element) {
 
 // Gets the currently active semester, as a full string
 function getSemester() {
-  return $("input[name=semester]:checked").val();
-  // return $("#semester")[0].value;
+  semester = $("input[name=semester]:checked").val();
+  result = "";
+  if (semester.substring(0, 1) == "F") {
+    result += "Fall 20";
+  }
+  else {
+    result += "Spring 20";
+  }
+  result += semester.substring(1);
+  return result;
+}
+
+function getLongSemester() {
+  var semester = getSemester();
+  
 }
 
 // Gets the currently active semester, in abbreviated form.
