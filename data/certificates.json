@@ -504,79 +504,71 @@
          "short_name": "EMS",
          "requirements": [
             {
-               "type": "core",
-               "number": 2,
-               "score": 2,
-               "courses": [
-                  "MAT 201",
-                  "MAT 202"
-               ]
+                "type": "statistics",
+                "number": 1,
+                "score": 1,
+                "courses": [
+                    "ORF 245",
+                    "ECO 202",
+                    "PSY 251",
+                    "PHY 301",
+                    "SOC 201",
+                    "WWS 200",
+                    "ORF 350",
+                    "ORF 405",
+                    "ECO 302",
+                    "ECO 312"
+                ]
             },
             {
-               "type": "statistics",
-               "number": 1,
-               "score": 1,
-               "courses": [
-                  "ORF 245",
-                  "ECO 202",
-                  "PSY 251",
-                  "PHY 301",
-                  "SOC 201",
-                  "WWS 200",
-                  "ORF 350",
-                  "ORF 405",
-                  "ECO 302",
-                  "ECO 312"
-               ]
+                "type": "optimization",
+                "number": 1,
+                "score": 1,
+                "courses": [
+                    "ORF 307",
+                    "ORF 363",
+                    "CBE 442",
+                    "MAE 433"
+                ]
             },
             {
-               "type": "optimization",
-               "number": 1,
-               "score": 1,
-               "courses": [
-                  "ORF 307",
-                  "ORF 363",
-                  "CBE 442",
-                  "ELE 382",
-                  "MAE 433"
-               ]
+                "type": "probability",
+                "number": 1,
+                "score": 1,
+                "courses": [
+                    "ORF 309"
+                ]
             },
             {
-               "type": "probability",
-               "number": 1,
-               "score": 1,
-               "courses": [
-                  "ORF 309"
-               ]
+                "type": "uncertainty",
+                "number": 1,
+                "score": 1,
+                "courses": [
+                    "ORF 311",
+                    "ORF 360",
+                    "ORF 418",
+                    "CEE 460",
+                    "COS 324",
+                    "MAE 345",
+                    "ECO 418",
+                    "ECO 462",
+                    "ECO 465",
+                    "WWS 340"
+                ]
             },
             {
-               "type": "uncertainty",
-               "number": 1,
-               "score": 1,
-               "courses": [
-                  "ORF 311",
-                  "ORF 360",
-                  "ORF 418",
-                  "COS 402",
-                  "MAE 345",
-                  "ECO 418",
-                  "ECO 462",
-                  "ECO 465",
-                  "WWS 340"
-               ]
-            },
-            {
-               "type": "entrepreneurship/management",
-               "number": 1,
-               "score": 1,
-               "courses": [
-                  "ORF 411",
-                  "CBE 442",
-                  "EGR 497",
-                  "ELE 491"
-               ]
+                "type": "entrepreneurship/management",
+                "number": 1,
+                "score": 1,
+                "courses": [
+                    "ORF 411",
+                    "ORF 360",
+                    "CBE 442",
+                    "EGR 497",
+                    "ELE 491"
+                ]
             }
-         ]
+        ]
       },
       {
          "name": "Engineering Biology",
