@@ -74,6 +74,7 @@ def plan():
         # delete user from database (and then promptly add back to database)
         elif form_name == 'DELETE_USER':
             user_info.delete_user(user['netid'])
+            user_info.user_query(user['netid'])
 
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'

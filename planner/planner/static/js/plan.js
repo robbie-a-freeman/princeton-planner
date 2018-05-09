@@ -855,37 +855,37 @@ function createTableRow(result, resultsType, semesterOverride) {
 function createInfoButton(courseJSON) {
     var infoBut = document.createElement("a");
     var address = "https://www.princetoncourses.com/course/";
-    if (getSemester() == "F18" || getSemester() == "F20") {
+    if (getShortSemester() == "F18" || getShortSemester() == "F20") {
         address += "1192";
     }
-    else if (getSemester() == "S18" || getSemester() == "S20") {
+    else if (getShortSemester() == "S18" || getShortSemester() == "S20") {
         address += "1184";
     }
-    else if (getSemester() == "F17" || getSemester() == "F19") {
+    else if (getShortSemester() == "F17" || getShortSemester() == "F19") {
         address += "1182";
     }
-    else if (getSemester() == "S17" || getSemester() == "S19") {
+    else if (getShortSemester() == "S17" || getShortSemester() == "S19") {
         address += "1174";
     }
-    else if (getSemester() == "F16") {
+    else if (getShortSemester() == "F16") {
         address += "1172";
     }
-    else if (getSemester() == "S16") {
+    else if (getShortSemester() == "S16") {
         address += "1164";
     }
-    else if (getSemester() == "F15") {
+    else if (getShortSemester() == "F15") {
         address += "1162";
     }
-    else if (getSemester() == "S15") {
+    else if (getShortSemester() == "S15") {
         address += "1154";
     }
-    else if (getSemester() == "F14") {
+    else if (getShortSemester() == "F14") {
         address += "1152";
     }
-    else if (getSemester().includes("F")) {
+    else if (getShortSemester().includes("F")) {
         address += "1192";
     }
-    else if (getSemester().includes("S")) {
+    else if (getShortSemester().includes("S")) {
         address += "1184";
     }
     address += courseJSON["courseid"];

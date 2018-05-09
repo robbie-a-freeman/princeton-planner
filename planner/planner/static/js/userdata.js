@@ -126,6 +126,18 @@ function removeProgramFromUser(program) {
        );
 }
 
+// XHR POST handling function for removing users
+// Doesn't actually require anything
+function deleteUser() {
+  var dict = {
+    "form_name": "DELETE_USER"
+  }
+  $.post(PLAN_PATH,
+         serialize(dict),
+         callbackDeleteUser
+       );
+}
+
 // ================================ CALLBACK FUNCTIONS ==================================
 // All callback functions are currently dummy functions to be defined if/when convenient
 // in the future.
@@ -146,6 +158,9 @@ function callbackAddOverrideToUser() {
 }
 
 function callbackRemoveOverrideFromUser() {
+}
+
+function callbackDeleteUser() {
 }
 
 
