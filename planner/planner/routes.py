@@ -71,6 +71,10 @@ def plan():
             semester = request.form['semester']
             user_info.remove_override(user['netid'], program, category, course, semester)
 
+        # delete user from database (and then promptly add back to database)
+        elif form_name == 'DELETE_USER':
+            user_info.delete_user(user['netid'])
+
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
         # are arbitrary and we can't depend on the fact that they are upper/lowercase
@@ -123,6 +127,7 @@ def userdata():
         #user_info.add_semester(user['netid'], 'fall17')
         #user_info.add_override(user['netid'], 'Mathematics', 'Applications', 'COS 429', 'F18')
         #user_info.remove_override(user['netid'], 'Computer Science', 'Departmentals', 'COS445', 'S18')
+        #user_info.delete_user(user['netid'])
         return str(user_info.user_query(user['netid']))
         #return str(user_info.user_query('test'))
 
@@ -215,7 +220,7 @@ def guest1():
             query = request.form['course_query']
             semester = request.form['semester']
             results = course_search.course_db_query(query, semester)
-            returnObj = {"results": results, "time":time}
+            returnObj = {"results": results, "time": time}
             return str(returnObj)
 
         # Handle searches for majors/certificates
@@ -223,7 +228,7 @@ def guest1():
             time = request.form['timestamp']
             query = request.form['program_query']
             results = program_search.program_db_query(query)
-            returnObj = {"results": results, "time":time}
+            returnObj = {"results": results, "time": time}
             return str(returnObj)
 
 

@@ -209,7 +209,11 @@ def remove_course(user, semester, course):
 def remove_override(user, program, category, course, semester):
     users.find_one_and_update(
         {"netid": user},
-        {"$pull": {"overrides": {"program": "Computer Science", "category": "Departmentals", "course": "COS 445", "semester": "S18"}}}
+        {"$pull": {"overrides": {"program": program, "category": category, "course": course, "semester": semester}}}
     )
+
+# Delete user
+def delete_user(user):
+    users.delete_one({"netid": user})
 
 # main()
