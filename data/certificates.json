@@ -3162,65 +3162,74 @@
          "short_name": "SML",
          "requirements": [
             {
-               "type": "statistics",
-               "number": 2,
-               "score": 1,
-               "courses": [
-                  "ECO 202",
-                  "EEB 355",
-                  "ORF 245",
-                  "POL 345",
-                  "PSY 251",
-                  "WWS 200"
-               ]
+                "type": "statistics",
+                "number": 1,
+                "score": 1,
+                "courses": [
+                    "ECO 202",
+                    "ORF 245",
+                    "POL 345",
+                    "PSY 251",
+                    "WWS 200"
+                ]
             },
             {
-               "type": "machine learning",
-               "number": 1,
-               "score": 2,
-               "courses": [
-                  "COS 424",
-                  "ELE 364",
-                  "ORF 350"
-               ]
+                "type": "machine learning",
+                "number": 1,
+                "score": 2,
+                "courses": [
+                    "COS 324",
+                    "COS 424",
+                    "ELE 364",
+                    "ELE 435",
+                    "MAT 390",
+                    "ORF 350"
+                ]
             },
             {
-               "type": "electives",
-               "number": 3,
-               "score": 0,
-               "courses": [
-                  "ECO 202",
-                  "EEB 355",
-                  "ORF 245",
-                  "POL 345",
-                  "PSY 251",
-                  "WWS 200",
-                  "COS 424",
-                  "ELE 364",
-                  "ORF 350",
-                  "POL 245",
-                  "SML 201",
-                  "COS 402",
-                  "COS 429",
-                  "COS 495",
-                  "ELE 477",
-                  "ORF 418",
-                  "MAT 385",
-                  "ORF 309",
-                  "ORF 363",
-                  "AST 303",
-                  "CEE 460",
-                  "ECO 302",
-                  "ECO 312",
-                  "ECO 313",
-                  "ELE 480",
-                  "GEO 422",
-                  "ORF 405",
-                  "POL 346",
-                  "QCB 408"
-               ]
+                "type": "electives",
+                "number": 3,
+                "score": 0,
+                "courses": [
+                    "ECO 202",
+                    "ORF 245",
+                    "POL 345",
+                    "PSY 251",
+                    "WWS 200",
+                    "COS 324",
+                    "COS 424",
+                    "ELE 364",
+                    "ELE 435",
+                    "MAT 390",
+                    "ORF 350",
+                    "POL 245",
+                    "SML 201",
+                    "SML 310",
+                    "COS 402",
+                    "COS 429",
+                    "COS 485",
+                    "ELE 477",
+                    "ELE 488",
+                    "ORF 418",
+                    "MAT 385",
+                    "ORF 309",
+                    "ORF 363",
+                    "AST 303",
+                    "CEE 460",
+                    "ECO 302",
+                    "ECO 312",
+                    "ECO 313",
+                    "ELE 382",
+                    "ELE 480",
+                    "GEO 422",
+                    "MAE 345",
+                    "ORF 405",
+                    "POL 346",
+                    "QCB 408",
+                    "SOC 400"
+                ]
             }
-         ]
+        ]
       },
       {
          "name": "Portuguese",
