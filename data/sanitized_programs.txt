@@ -1,0 +1,10 @@
+Majors:
+
+Certificates:
+Statistics ands Machine Learning (SML) - Phillip Yoon
+Engineering and Management Systems (EMS) - Phillip Yoon
+Robotics and Intelligent Systems - Phillip Yoon
+
+Programs:
+A.B. (not implemented)
+B.S.E. (not implemented)
