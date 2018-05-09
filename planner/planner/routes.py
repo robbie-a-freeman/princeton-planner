@@ -95,6 +95,14 @@ def feedback():
         return render_template('feedbackthankyou.html')
     return render_template('feedback.html', title='Feedback', form=form)
 
+@app.route('/indextest', methods=["GET", "POST"])
+def indextest():
+    form = ContactForm()
+    if form.validate_on_submit():
+        user = {'name': form.name.data}
+        return render_template('contactthankyou.html', user=user)
+    return render_template('indextest.html', form=form)
+
 #@app.route('/login')
 #@login_required
 #def login():

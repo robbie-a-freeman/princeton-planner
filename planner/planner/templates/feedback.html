@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 <!--{% with messages = get_flashed_messages() %}
 {% if messages %}
@@ -8,13 +9,14 @@
     {% endfor %}
 </ul>
 {% endif %}
-{% endwith %}
-{% block content %}-->
+{% endwith %}-->
+{% block content %}
   <div class="banner-info text-center wow fadeIn delay-05s">
     <h1 class="bnr-title">Princeton <span class="logo-dec">Planner</span></h1>
     <h2 class="bnr-sub-title">Give us some feedback!</h2>
     <p class="bnr-para"><br></p>
-    <form action="" method="post">
+    {{ wtf.quick_form(form) }}
+    <!--<form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
             {{ form.feedback.label }}<br>
@@ -24,7 +26,7 @@
             {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>
-    </form>
+    </form>-->
     <div class="brn-btn">
         <a href="{{ url_for('main') }}" title="Back to Home Page" class="btn btn-download">Back to Home Page</a>
     </div>
