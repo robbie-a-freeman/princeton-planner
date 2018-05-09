@@ -130,7 +130,7 @@ HEADER
 #main-header {}
 
 .navbar-default {
-  background-color: #ff8f0080;
+  background: rgba(64, 75, 97, 0.9);
   background-image: none;
   border: 0px;
   padding: 20px 0;
