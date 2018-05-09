@@ -422,6 +422,6 @@ def userdata2():
 
 @app.route('/data3', methods=["GET"])
 def userdata3():
-    user = {'netid': "guest2"}
+    user = {'netid': "guest3"}
     if request.method == "GET":
         return str(user_info.user_query(user['netid']))
