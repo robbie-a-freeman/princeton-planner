@@ -3,6 +3,7 @@ from flask import render_template, redirect, request, url_for, flash
 from flask_cas import login_required
 from . import course_search, program_search, user_info
 from planner.forms import ContactForm, FeedbackForm
+from planner.email import send_email
 
 @app.route("/")
 def main():
@@ -92,6 +93,14 @@ def feedback():
     form = FeedbackForm()
     if form.validate_on_submit():
         #flash('Thank you for submitting feedback!')
+        bodyMessage = form.feedback.data
+        feedback = {'bodyMessage': bodyMessage}
+        send_email('Feedback for Princeton Planner',
+                    sender=app.config['ADMINS'][0],
+                    recipients=[app.config['ADMINS'][0]],
+                    text_body=render_template('email/feedback.txt', feedback=feedback),
+                    html_body=render_template('email/feedback.html', feedback=feedback)
+                    )
         return render_template('feedbackthankyou.html')
     return render_template('feedback.html', title='Feedback', form=form)
 

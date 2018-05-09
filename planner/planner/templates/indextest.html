@@ -220,6 +220,7 @@
               <form action="" method="post" role="form" class="contactForm">
                 {{ form.hidden_tag() }}
                 {{ wtf.form_errors(form, hiddens="only") }}
+                <!--<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>-->
                 <div class="col-md-6 padding-right-zero">
                   <div class="form-group">
                     {{ wtf.form_field(form.name) }}
