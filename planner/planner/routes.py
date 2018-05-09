@@ -1,13 +1,12 @@
 from . import app, cas
-from flask import render_template, redirect, request
+from flask import render_template, redirect, request, url_for, flash
 from flask_cas import login_required
 from . import course_search, program_search, user_info
-
-import json
-
+from planner.forms import ContactForm, FeedbackForm
 
 @app.route("/")
 def main():
+    form = ContactForm()
     return render_template('index.html')
 
 @app.route('/plan', methods = ["GET", "POST"])
@@ -88,10 +87,26 @@ def index():
 def index1():
     return redirect('/')
 
-@app.route('/login')
-@login_required
-def login():
-    return redirect('/plan')
+@app.route('/feedback', methods=["GET", "POST"])
+def feedback():
+    form = FeedbackForm()
+    if form.validate_on_submit():
+        #flash('Thank you for submitting feedback!')
+        return render_template('feedbackthankyou.html')
+    return render_template('feedback.html', title='Feedback', form=form)
+
+@app.route('/indextest', methods=["GET", "POST"])
+def indextest():
+    form = ContactForm()
+    if form.validate_on_submit():
+        user = {'name': form.name.data}
+        return render_template('contactthankyou.html', user=user)
+    return render_template('indextest.html', form=form)
+
+#@app.route('/login')
+#@login_required
+#def login():
+#    return redirect('/plan')
 
 @app.route('/userdata', methods=["GET"])
 @login_required

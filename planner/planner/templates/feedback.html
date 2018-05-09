@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+<!--{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}-->
+{% block content %}
+  <div class="banner-info text-center wow fadeIn delay-05s">
+    <h1 class="bnr-title">Princeton <span class="logo-dec">Planner</span></h1>
+    <h2 class="bnr-sub-title">Give us some feedback!</h2>
+    <p class="bnr-para"><br></p>
+    {{ wtf.quick_form(form) }}
+    <!--<form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.feedback.label }}<br>
+            {{ form.feedback(cols=50, rows=4) }}
+            {% for error in form.feedback.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>-->
+    <div class="brn-btn">
+        <a href="{{ url_for('main') }}" title="Back to Home Page" class="btn btn-download">Back to Home Page</a>
+    </div>
+  </div>
+{% endblock %}

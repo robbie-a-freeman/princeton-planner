@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Princeton Planner</title>
+  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+  <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">-->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/jquery.bxslider.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/font-awesome.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/animate.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
+  <!-- =======================================================
+    Theme Name: Baker
+    Theme URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/static/ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/static/ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/static/ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/static/ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/static/ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/static/ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/static/ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/static/ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/static/ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/ico/favicon-16x16.png">
+  <link rel="manifest" href="/static/ico/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/static/ico/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <!-- -->
+
+</head>
+
+<body>
+
+  <div class="loader"></div>
+  <div id="myDiv">
+    <!--HEADER-->
+    <div class="header">
+        <div class="bg-color">
+          <header id="main-header">
+          </header>
+          <div class="wrapper">
+            <div class="container">
+              <div class="row">
+                {% block content %}{% endblock %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--HEADER-->
+
+    <footer id="footer">
+      <div class="container">
+        <div class="row text-center">
+          <p>&copy; Princeton Planner. All Rights Reserved.</p>
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Baker
+            -->
+            Based on a template by <a href="https://bootstrapmade.com/">Bootstrap Templates</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!---->
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.easing.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/wow.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'js/jquery.bxslider.min.js') }}"></script>
+  <!--script src="{{ url_for('static', filename = 'js/custom.js') }}"></script-->
+  <script src="{{ url_for('static', filename = 'contactform/contactform.js') }}"></script>
+
+</body>
+</html>
