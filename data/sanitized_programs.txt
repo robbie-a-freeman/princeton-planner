@@ -1,4 +1,5 @@
 Majors:
+MAE - Dynamic Systems and Design - Phillip Yoon
 
 Certificates:
 Statistics ands Machine Learning (SML) - Phillip Yoon
