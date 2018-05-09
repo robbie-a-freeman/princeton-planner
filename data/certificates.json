@@ -2579,108 +2579,89 @@
          "short_name": "robotics",
          "requirements": [
             {
-               "type": "math",
-               "number": 2,
-               "score": 1,
-               "courses": [
-                  "MAT 202",
-                  "MAT 204"
-               ]
+                "type": "laboratory",
+                "number": 1,
+                "score": 2,
+                "courses": [
+                    "ELE 206",
+                    "MAE 224",
+                    "PHY 210"
+                ]
             },
             {
-               "type": "computing",
-               "number": 2,
-               "score": 1,
-               "courses": [
-                  "COS 126",
-                  "ORF 201"
-               ]
+                "type": "control systems",
+                "number": 1,
+                "score": 2,
+                "courses": [
+                    "CBE 445",
+                    "ELE 301",
+                    "MAE 345",
+                    "MAE 433",
+                    "MAE 434"
+                ]
             },
             {
-               "type": "lab",
-               "number": 1,
-               "score": 2,
-               "courses": [
-                  "ELE 206",
-                  "MAE 224",
-                  "PHY 210"
-               ]
+                "type": "cognition",
+                "number": 1,
+                "score": 2,
+                "courses": [
+                    "CGS 207",
+                    "CGS 255",
+                    "PSY 258",
+                    "PSY 259",
+                    "PSY 330",
+                    "NEU 316",
+                    "PSY 321"
+                ]
             },
             {
-               "type": "control-system",
-               "number": 1,
-               "score": 2,
-               "courses": [
-                  "CBE 445",
-                  "ELE 301",
-                  "MAE 345",
-                  "MAE 433",
-                  "MAE 434"
-               ]
-            },
-            {
-               "type": "cognition",
-               "number": 1,
-               "score": 2,
-               "courses": [
-                  "CGS 207",
-                  "CGS 255",
-                  "PSY 258",
-                  "PSY 259",
-                  "PSY 330",
-                  "NEU 316",
-                  "PSY 321",
-                  "NEU 331"
-               ]
-            },
-            {
-               "type": "electives",
-               "number": 3,
-               "score": 0,
-               "courses": [
-                  "CBE 442",
-                  "CBE 447",
-                  "CBE 448",
-                  "CEE 361",
-                  "COS 217",
-                  "COS 226",
-                  "COS 333",
-                  "COS 340",
-                  "COS 402",
-                  "COS 424",
-                  "COS 426",
-                  "COS 429",
-                  "COS 461",
-                  "ECO 202",
-                  "ELE 201",
-                  "ELE 302",
-                  "ELE 381",
-                  "ELE 486",
-                  "ELE 488",
-                  "LIN 306",
-                  "LIN 412",
-                  "MAE 206",
-                  "MAE 321",
-                  "MAE 322",
-                  "MAE 331",
-                  "MAE 332",
-                  "MAE 341",
-                  "MAE 342",
-                  "MAE 412",
-                  "MOL 408",
-                  "ORF 245",
-                  "ORF 307",
-                  "ORF 309",
-                  "ORF 311",
-                  "ORF 363",
-                  "ORF 405",
-                  "ORF 411",
-                  "ORF 467",
-                  "PHI 212",
-                  "PSY 345"
-               ]
+                "type": "electives",
+                "number": 3,
+                "score": 0,
+                "courses": [
+                    "CBE 442",
+                    "CBE 447",
+                    "CEE 361",
+                    "COS 217",
+                    "COS 226",
+                    "COS 333",
+                    "COS 340",
+                    "COS 402",
+                    "COS 424",
+                    "COS 426",
+                    "COS 429",
+                    "COS 461",
+                    "ECO 202",
+                    "ELE 201",
+                    "ELE 302",
+                    "ELE 381",
+                    "ELE 482",
+                    "ELE 486",
+                    "MAE 206",
+                    "MAE 321",
+                    "MAE 322",
+                    "MAE 331",
+                    "MAE 332",
+                    "MAE 341",
+                    "MAE 342",
+                    "MAE 412",
+                    "ORF 245",
+                    "ORF 307",
+                    "ORF 309",
+                    "ORF 311",
+                    "ORF 350",
+                    "ORF 363",
+                    "ORF 405",
+                    "ORF 467",
+                    "PHI 207",
+                    "PSY 259",
+                    "PSY 309",
+                    "PSY 345",
+                    "PSY 422",
+                    "PSY 475"
+                ]
             }
-         ]
+        ]
       },
       {
          "name": "Visual arts",
