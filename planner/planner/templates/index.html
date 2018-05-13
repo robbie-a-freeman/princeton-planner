@@ -76,7 +76,6 @@
                   <!-- Should be CAS authentication link-->
                   <li class=""><a href="login" title="Login">Login</a></li>
                   <li class=""><a href="#contact">Contact Us</a></li>
-                  <li class=""><a href="{{ url_for('plan') }}" title="Plan your path!" class="btn btn-plan">Plan</a></li>
                 </ul>
               </div>
             </div>
@@ -215,8 +214,7 @@
               <div id="sendmessage">Your message has been sent. Thank you!</div>
               <div id="errormessage"></div>
               <form action="" method="post" role="form" class="contactForm">
-                <!--{{ form.hidden_tag() }}
-                {{ wtf.form_errors(form, hiddens="only") }}-->
+                <!--Have hidden input for csrf protection.-->
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <div class="col-md-6 padding-right-zero">
                   <div class="form-group">

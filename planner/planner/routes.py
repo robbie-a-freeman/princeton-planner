@@ -8,6 +8,8 @@ from planner.email import send_email
 @app.route("/", methods = ["GET", "POST"])
 def main():
     #form = ContactForm()
+    # <!--{{ form.hidden_tag() }}
+    # {{ wtf.form_errors(form, hiddens="only") }}-->
     if request.method == 'POST':
         name = request.form['name']
         emailAddress = request.form['email']

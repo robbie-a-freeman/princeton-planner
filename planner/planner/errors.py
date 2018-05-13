@@ -24,8 +24,3 @@ def forbidden_error(error):
 @app.errorhandler(400)
 def bad_request_error(error):
     return render_template('400.html'), 400
-
-#@app.errorhandler(500)
-#def internal_error(error):
-#    db.session.rollback()
-#    return render_template('500.html'), 500
