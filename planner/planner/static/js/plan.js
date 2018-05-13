@@ -229,8 +229,10 @@ function semesterChangeHandler(event) {
   // Update the currently visible courses.
   updateCurrentSemester();
 
-  // Refresh the search results.
-  courseSearchSubmit();
+  // Refresh the search results, if a search query exists in box
+  if ($("#courseSearch").val() != "") {
+    courseSearchSubmit();
+  }
 }
 
 // Delete all of a user's database info, and re-render the display
@@ -842,7 +844,7 @@ function createTableRow(result, resultsType, semesterOverride) {
   // Create course-type labels.
   if (resultsType == "course") {
     // Create info button.
-    var infoBut = createInfoButton(result);
+    var infoBut = createInfoButton(result, semesterOverride);
 
     // Create label and onclick listener
     label = text(createCourseTag(result));
@@ -870,41 +872,47 @@ function createTableRow(result, resultsType, semesterOverride) {
   return tr;
 }
 
-// Creates a "more info" button for a single course search result
-function createInfoButton(courseJSON) {
+// Creates a "more info" button for a single course search result,
+// taken in the given semester
+function createInfoButton(courseJSON, semester) {
     var infoBut = document.createElement("a");
     var address = "https://www.princetoncourses.com/course/";
-    if (getShortSemester() == "F18" || getShortSemester() == "F20") {
+
+    // If no semester offered, pretend it's the currently selected one
+    if (semester == null) {
+      semester = getShortSemester();
+    }
+    if (semester == "F18" || semester == "F20") {
         address += "1192";
     }
-    else if (getShortSemester() == "S18" || getShortSemester() == "S20") {
+    else if (semester == "S18" || semester == "S20") {
         address += "1184";
     }
-    else if (getShortSemester() == "F17" || getShortSemester() == "F19") {
+    else if (semester == "F17" || semester == "F19") {
         address += "1182";
     }
-    else if (getShortSemester() == "S17" || getShortSemester() == "S19") {
+    else if (semester == "S17" || semester == "S19") {
         address += "1174";
     }
-    else if (getShortSemester() == "F16") {
+    else if (semester == "F16") {
         address += "1172";
     }
-    else if (getShortSemester() == "S16") {
+    else if (semester == "S16") {
         address += "1164";
     }
-    else if (getShortSemester() == "F15") {
+    else if (semester == "F15") {
         address += "1162";
     }
-    else if (getShortSemester() == "S15") {
+    else if (semester == "S15") {
         address += "1154";
     }
-    else if (getShortSemester() == "F14") {
+    else if (semester == "F14") {
         address += "1152";
     }
-    else if (getShortSemester().includes("F")) {
+    else if (semester.includes("F")) {
         address += "1192";
     }
-    else if (getShortSemester().includes("S")) {
+    else if (semester.includes("S")) {
         address += "1184";
     }
     address += courseJSON["courseid"];

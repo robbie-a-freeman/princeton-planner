@@ -131,32 +131,12 @@
     <div class="col-sm-2 sidenav">
 
         <h3>Select semester</h3>
-        <!-- Remove this dropdown code!! -->
-        <div style="display: none;" class="form-group">
-        <select class="form-control" id="semester" form="courseSearchForm_disable" onchange="semesterChangeHandler()" name="semester">
-            <optgroup label="Current and Previous Semesters">
-                <option>Fall 2018</option>
-                <option>Spring 2018</option>
-                <option>Fall 2017</option>
-                <option>Spring 2017</option>
-                <option>Fall 2016</option>
-                <option>Spring 2016</option>
-            </optgroup>
-            <optgroup label="Future semesters (WARNING: May not be accurate)">
-                <option>Spring 2019</option>
-                <option>Fall 2019</option>
-                <option>Spring 2020</option>
-                <option>Fall 2020</option>
-            </optgroup>
-        </select>
-        </div>
-        <!-- -->
 
         <!-- Selecting a semester -->
         <div id="semesterRadioDiv" onclick="semesterChangeHandler()">
           <!-- Fall -->
           <span class="radio-row">
-            <span class="radio-row-label">&nbsp;&nbsp;&nbsp;&nbsp; Fall</span>
+            <span class="radio-row-label">Fall</span>
             <div class="radio-group">
               <input type="radio" form="courseSearchForm" id="radioF16" value="F16" name="semester"
               ><label class="radio-label" for="radioF16">16</label

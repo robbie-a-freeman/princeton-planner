@@ -229,6 +229,8 @@ label + input[type=radio] + label {
 
 .radio-row {
   display: inline-block;
+  margin: auto;
+  width:110px;
 }
 
 .radio-row-label {
