@@ -10,7 +10,7 @@ def main():
     #form = ContactForm()
     # <!--{{ form.hidden_tag() }}
     # {{ wtf.form_errors(form, hiddens="only") }}-->
-    if request.method == 'POST':
+    if request.method == 'POST' and request.cache_control:
         name = request.form['name']
         emailAddress = request.form['email']
         subject = request.form['subject']
@@ -35,7 +35,6 @@ def plan():
         # Figure out which form submitted the request.
         # TODO this is a potential security risk; user can spoof any form they want.
         form_name = request.form['form_name']
-        #print("request received for ", form_name)
 
         # Handle searches for courses
         if form_name == 'COURSE_QUERY':
@@ -123,19 +122,6 @@ def feedback():
                     )
         return render_template('feedbackthankyou.html')
     return render_template('feedback.html', title='Feedback', form=form)
-
-@app.route('/indextest', methods=["GET", "POST"])
-def indextest():
-    form = ContactForm()
-    if form.validate_on_submit():
-        user = {'name': form.name.data}
-        return render_template('contactthankyou.html', user=user)
-    return render_template('indextest.html', form=form)
-
-#@app.route('/login')
-#@login_required
-#def login():
-#    return redirect('/plan')
 
 @app.route('/userdata', methods=["GET"])
 @login_required
