@@ -238,7 +238,7 @@ function semesterChangeHandler(event) {
 function deleteUserHandler() {
   // Prompt confirmation, and return w/o deleting if not provided.
   var c = window.confirm("Are you sure you want to delete all of your user data from our database? This action cannot be undone.");
-  console.log("Delete user called but not implemented!" + " " + c);
+  // console.log("Delete user called but not implemented!" + " " + c);
   if (!c) return;
 
   // Remove all courses from each semester box
@@ -256,6 +256,7 @@ function deleteUserHandler() {
   programInfoDiv.innerHTML = "";
 
   // Send a DB request to drop the user's entry in DB.
+  deleteUser()
 
   // Reload user's data to create them a new (empty) DB.
 }
@@ -808,6 +809,12 @@ function createResultsTable(resultsObj, resultsType) {
   if (resultsObj.length == 0 && resultsType == "course") {
     resultTableDiv.style = "padding: 6px; font-family: Amiko;";
     resultTableDiv.innerText = "No courses found! Maybe it's offered in a different semester?";
+    return resultTableDiv;
+  }
+
+  else if (resultsObj.length == 0 && resultsType == "program") {
+    resultTableDiv.style = "padding: 6px; font-family: Amiko;";
+    resultTableDiv.innerText = "No programs found! Try searching with a different term?";
     return resultTableDiv;
   }
 

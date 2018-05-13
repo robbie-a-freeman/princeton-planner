@@ -218,6 +218,11 @@ def guest_plan():
             semester = request.form['semester']
             user_info.remove_override(user['netid'], program, category, course, semester)
 
+        # delete user from database (and then promptly add back to database)
+        elif form_name == 'DELETE_USER':
+            user_info.delete_user(user['netid'])
+            user_info.user_query(user['netid'])
+
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
         # are arbitrary and we can't depend on the fact that they are upper/lowercase
@@ -289,6 +294,11 @@ def guest1():
             semester = request.form['semester']
             user_info.remove_override(user['netid'], program, category, course, semester)
 
+        # delete user from database (and then promptly add back to database)
+        elif form_name == 'DELETE_USER':
+            user_info.delete_user(user['netid'])
+            user_info.user_query(user['netid'])
+
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
         # are arbitrary and we can't depend on the fact that they are upper/lowercase
@@ -359,6 +369,10 @@ def guest2():
             semester = request.form['semester']
             user_info.remove_override(user['netid'], program, category, course, semester)
 
+        elif form_name == 'DELETE_USER':
+            user_info.delete_user(user['netid'])
+            user_info.user_query(user['netid'])
+
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'
         # are arbitrary and we can't depend on the fact that they are upper/lowercase
@@ -428,6 +442,11 @@ def guest3():
             category = request.form['category']
             semester = request.form['semester']
             user_info.remove_override(user['netid'], program, category, course, semester)
+
+        # delete user from database (and then promptly add back to database)
+        elif form_name == 'DELETE_USER':
+            user_info.delete_user(user['netid'])
+            user_info.user_query(user['netid'])
 
 
         # NOTE the strings 'PROGRAM_QUERY' vs 'program_query'

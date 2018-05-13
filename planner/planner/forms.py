@@ -12,15 +12,3 @@ class ContactForm(FlaskForm):
 class FeedbackForm(FlaskForm):
     feedback = TextAreaField('Feedback', validators=[Length(min=1, max=1000)])
     submit = SubmitField('Submit')
-
-
-class StartMealExchangeForm(FlaskForm):
-    guest = TextField('guest', validators=[DataRequired()])
-    date = DateField(validators=[DataRequired()])
-    meal = SelectField(u'Meal', choices=[(
-        'breakfast', 'Breakfast'), ('lunch', 'Lunch'), ('dinner', 'Dinner')])
-
-
-class EndMealExchangeForm(FlaskForm):
-    # We don't need this right now but we might want it later.
-    date = DateField(validators=[DataRequired()])
