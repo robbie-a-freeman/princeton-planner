@@ -215,6 +215,9 @@
               <div id="sendmessage">Your message has been sent. Thank you!</div>
               <div id="errormessage"></div>
               <form action="" method="post" role="form" class="contactForm">
+                <!--{{ form.hidden_tag() }}
+                {{ wtf.form_errors(form, hiddens="only") }}-->
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <div class="col-md-6 padding-right-zero">
                   <div class="form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -241,7 +244,6 @@
                   <button type="submit" class="btn btn-primary btn-submit">SEND NOW</button>
                 </div>
               </form>
-
             </div>
           </div>
         </div>
@@ -281,4 +283,17 @@
   <script src="{{ url_for('static', filename = 'contactform/contactform.js') }}"></script>
 
 </body>
+
+<script type="text/javascript">
+  var csrf_token = "{{ csrf_token() }}";
+
+  $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+          if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrf_token);
+          }
+      }
+  });
+</script>
+
 </html>

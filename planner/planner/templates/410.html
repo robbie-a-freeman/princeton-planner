@@ -3,9 +3,8 @@
 {% block content %}
   <div class="banner-info text-center wow fadeIn delay-05s">
     <h1 class="bnr-title">Princeton <span class="logo-dec">Planner</span></h1>
-    <h2 class="bnr-sub-title">Thank you for the message, {{ contact.name }}!</h2>
-    <p class="bnr-para">We will get back to you as soon as possible at {{ contact.emailAddress }}!<br></p>
-    <p class="bnr-para">You will be redirected to the home page after a short while. If nothing happens, click below to navigate back to the home page.<br></p>
+    <h2 class="bnr-sub-title">The requested page seems to be gone!</h2>
+    <p class="bnr-para">You will be redirected to the home page after 5 seconds. If nothing happens, click below to navigate back to the home page.<br></p>
     <div class="brn-btn">
         <a href="{{ url_for('main') }}" title="Back to Home Page" class="btn btn-download">Back to Home Page</a>
     </div>
@@ -14,7 +13,7 @@
         {  
         window.location="{{ url_for('main') }}"; 
         } 
-        setTimeout('Redirect()', 10000);   
+        setTimeout('Redirect()', 5000);   
     </script>
   </div>
 {% endblock %}
