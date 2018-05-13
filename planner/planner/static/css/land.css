@@ -265,6 +265,11 @@ ratio.completed-ratio {
   display: none;
 }
 
+#programHelpDiv {
+  padding-top: 30px;
+  font-size: large;
+}
+
 
 /***************************/
 
