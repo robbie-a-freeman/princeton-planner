@@ -230,7 +230,7 @@ label + input[type=radio] + label {
 .radio-row {
   display: inline-block;
   margin: auto;
-  width:110px;
+  width:120px;
 }
 
 .radio-row-label {
@@ -263,6 +263,11 @@ ratio.completed-ratio {
 
 .hidden {
   display: none;
+}
+
+#programHelpDiv {
+  padding-top: 30px;
+  font-size: large;
 }
 
 

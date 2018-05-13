@@ -72,7 +72,7 @@
                ]
             },
             {
-               "type": "distribution-areas",
+               "type": "distribution areas",
                "number": 4,
                "score": 0,
                "courses": [
@@ -85,7 +85,7 @@
                ]
             },
             {
-               "type": "distribution-additional",
+               "type": "distribution additional",
                "number": 3,
                "score": 0,
                "courses": [

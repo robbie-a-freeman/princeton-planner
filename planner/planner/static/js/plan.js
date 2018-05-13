@@ -15,7 +15,7 @@ function plan_init() {
   var programSearchBox = $("#programSearch")[0];
   programSearchBox.addEventListener("keyup", keyEventHandler);
 
-  // for guest testing // TODO track this hole
+  // for guest testing
   var guestModeBox = $("#guest_mode")[0];
   if ($("#guest_mode").text() == "true") {
     PLAN_PATH = "/guest_plan";
@@ -36,7 +36,13 @@ function plan_init() {
   // Unhide active semester
   updateCurrentSemester();
 
+  // Place user data on the page.
   loadUserData();
+
+  // If the user has no selected programs, give a help popup, else hide it
+  if (numSelectedPrograms() > 0) {
+    hideCenterHelpText();
+  }
 }
 
 // Reinitialize all popovers.
@@ -109,6 +115,9 @@ function programResultHandler(event) {
 
   // Add the program to the database.
   addProgramToUser(getText(td));
+
+  // Hide the center div.
+  hideCenterHelpText();
 }
 
 // Called when course search results are clicked.
@@ -210,6 +219,11 @@ function removeProgramHandler(event) {
 
   // Update mongodb
   removeProgramFromUser(getText(tr.children[0]));
+
+  // If this was the last program, show the center text.
+  if (numSelectedPrograms() == 0) {
+    showCenterHelpText();
+  }
 }
 
 // Called when the semester dropdown changes value.
@@ -243,11 +257,18 @@ function deleteUserHandler() {
 
   // Remove all accordions
   var programInfoDiv = $("#programInfoDiv")[0];
-  programInfoDiv.innerHTML = "";
+  var programInfoKids = programInfoDiv.children;
+  var startLength = programInfoKids.length;
+  for (var i = 1; i < startLength; i++) {
+    programInfoDiv.removeChild(programInfoKids[1]);
+  }
 
   // Send a DB request to drop the user's entry in DB.
   // Reload user's data to create them a new (empty) DB.
   deleteUser()
+
+  // Show the center help text;
+  showCenterHelpText();
 }
 
 // ======================== COURSE ENROLLING HELPERS ===================
@@ -1117,6 +1138,23 @@ function createProgramTag(programJSON) {
 // Get the innerText of an HTML element, without any of the text of its nested children.
 function getText(element) {
   return element.childNodes[0].nodeValue;
+}
+
+// Get the number of programs currently being displayed in the center div.
+function numSelectedPrograms() {
+  var programInfoDiv = $("#programInfoDiv")[0];
+  var kids = programInfoDiv.children;
+  return kids.length - 1;
+}
+
+// Display the central help text.
+function showCenterHelpText() {
+  $("#programHelpDiv").removeClass("hidden");
+}
+
+// Hide the central help text.
+function hideCenterHelpText() {
+  $("#programHelpDiv").addClass("hidden");
 }
 
 // Gets the currently active semester, as a full string
