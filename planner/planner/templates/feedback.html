@@ -15,7 +15,8 @@
     <h1 class="bnr-title">Princeton <span class="logo-dec">Planner</span></h1>
     <h2 class="bnr-sub-title">Give us some feedback!</h2>
     <p class="bnr-para"><br></p>
-    {{ wtf.quick_form(form) }}
+    <style>textarea.form-control {background-color: #00000080;}</style>
+    <div> {{ wtf.quick_form(form, button_map={'submit': 'btn btn-primary btn-submit'}) }} </div>
     <!--<form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
