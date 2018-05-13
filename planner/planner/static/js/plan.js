@@ -166,18 +166,6 @@ function courseResultHandler(event) {
 // Called when info button next to search results is clicked.
 function courseInfoHandler(event) {
   event.stopPropagation();
-  // Pop up with the extra info
-  //console.log("HEELO");
-  //window.alert( event.target.myParam );
-
-  /* var listings = courseJSON['listings'];
-    var listingArr = [];
-    for (var i = 0; i < listings.length; i++) {
-      var listing = listings[i];
-      listingArr.push(listing['dept'] + " " + listing['number']);
-    }
-    return listingArr.join(" / "); */
-
 }
 
 // Called when the remove course button is pressed.
@@ -258,9 +246,8 @@ function deleteUserHandler() {
   programInfoDiv.innerHTML = "";
 
   // Send a DB request to drop the user's entry in DB.
-  deleteUser()
-
   // Reload user's data to create them a new (empty) DB.
+  deleteUser()
 }
 
 // ======================== COURSE ENROLLING HELPERS ===================
