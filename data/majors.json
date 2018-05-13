@@ -562,6 +562,14 @@
 				]
 			},
 			{
+				"type": "independent",
+				"number": 1,
+				"score": 1,
+				"courses": [
+					"COS 397 | COS 398 | COS 497 | COS 498"
+				]
+			},
+			{
 				"type": "departmentals",
 				"number": 2,
 				"score": 0,
@@ -575,14 +583,6 @@
 					"MAE 345",
 					"PHI 312",
 					"ORF 309"
-				]
-			},
-			{
-				"type": "independent",
-				"number": 1,
-				"score": 1,
-				"courses": [
-					"COS 397 | COS 398 | COS 497 | COS 498"
 				]
 			}
 		]
