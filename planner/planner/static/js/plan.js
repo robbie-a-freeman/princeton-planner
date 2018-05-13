@@ -257,11 +257,18 @@ function deleteUserHandler() {
 
   // Remove all accordions
   var programInfoDiv = $("#programInfoDiv")[0];
-  programInfoDiv.innerHTML = "";
+  var programInfoKids = programInfoDiv.children;
+  var startLength = programInfoKids.length;
+  for (var i = 1; i < startLength; i++) {
+    programInfoDiv.removeChild(programInfoKids[1]);
+  }
 
   // Send a DB request to drop the user's entry in DB.
   // Reload user's data to create them a new (empty) DB.
   deleteUser()
+
+  // Show the center help text;
+  showCenterHelpText();
 }
 
 // ======================== COURSE ENROLLING HELPERS ===================
