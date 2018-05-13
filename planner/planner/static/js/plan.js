@@ -706,10 +706,22 @@ function updateCourseResults(jsonResponse) {
 function programSearchSubmit() {
   updateTimestamps();
   var programSearchForm = $("#programSearchForm");
+  //var csrf_token = "{{ csrf_token() }}";
   $.post(PLAN_PATH,
-         programSearchForm.serialize(),
-         updateProgramResults
-       );
+    programSearchForm.serialize(),
+    updateProgramResults
+  );
+  /*$.ajax({
+    type: "POST",
+    url: PLAN_PATH,
+    beforeSend: function(xhr, settings) {
+      if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrf_token);
+      }
+    },
+    data: programSearchForm.serialize(),
+    success: updateProgramResults
+  });*/
 }
 
 // Set the timestamps of the searches.

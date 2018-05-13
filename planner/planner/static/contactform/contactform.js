@@ -80,9 +80,9 @@ jQuery(document).ready(function($) {
         else var str = $(this).serialize();		
             $.ajax({
                 type: "POST",
-                url: "contactform/contactform.php",
+                url: "/",
                 data: str,
-                success: function(msg){
+                /*success: function(msg){
                    // alert(msg);
                     if(msg == 'OK') {
                         $("#sendmessage").addClass("show");			
@@ -94,9 +94,9 @@ jQuery(document).ready(function($) {
                         $('#errormessage').html(msg);
                     }
                     
-                }
+                }*/
             });
-        return false;
+        //return false;
     });
 
 });
