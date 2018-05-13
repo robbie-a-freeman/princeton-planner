@@ -131,7 +131,7 @@
                ]
             },
             {
-               "type": "ams-courses",
+               "type": "AMS courses",
                "number": 3,
                "score": 1,
                "courses": [
@@ -385,7 +385,7 @@
          "short_name": "CWR",
          "requirements": [
             {
-               "type": "200-lvl",
+               "type": "200 level",
                "number": 2,
                "score": 2,
                "courses": [
@@ -393,7 +393,7 @@
                ]
             },
             {
-               "type": "300-lvl",
+               "type": "300 level",
                "score": 2,
                "number": 2,
                "courses": [
@@ -407,7 +407,7 @@
          "short_name": "DAN",
          "requirements": [
             {
-               "type": "studio-performance",
+               "type": "studio: performance",
                "number": 2,
                "score": 2,
                "courses": [
@@ -418,7 +418,7 @@
                ]
             },
             {
-               "type": "studio-spring",
+               "type": "studio: spring",
                "number": 1,
                "score": 2,
                "courses": [
@@ -429,7 +429,7 @@
                ]
             },
             {
-               "type": "studio-gen",
+               "type": "studio: general",
                "number": 1,
                "score": 2,
                "courses": [
@@ -482,7 +482,7 @@
                ]
             },
             {
-               "type": "general-200",
+               "type": "general: 200",
                "number": 1,
                "score": 1,
                "courses": [
@@ -490,7 +490,7 @@
                ]
             },
             {
-               "type": "general-other",
+               "type": "general: other",
                "number": 3,
                "score": 1,
                "courses": [
@@ -585,7 +585,7 @@
                ]
             },
             {
-               "type": "adv-biology",
+               "type": "adv. biology",
                "number": 2,
                "score": 1,
                "courses": [
@@ -610,7 +610,7 @@
                ]
             },
             {
-               "type": "adv-engineering",
+               "type": "adv. engineering",
                "number": 2,
                "score": 2,
                "courses": [
@@ -731,7 +731,7 @@
                ]
             },
             {
-               "type": "social-sciences",
+               "type": "social sciences",
                "number": 1,
                "score": 1,
                "courses": [
@@ -743,7 +743,7 @@
                ]
             },
             {
-               "type": "natural-sciences",
+               "type": "natural sciences",
                "number": 1,
                "score": 1,
                "courses": [
@@ -771,7 +771,7 @@
          "short_name": "ENV biodiversity",
          "requirements": [
             {
-               "type": "env-science",
+               "type": "env. science",
                "number": 1,
                "score": 1,
                "courses": [
@@ -781,7 +781,7 @@
                ]
             },
             {
-               "type": "env-policy",
+               "type": "env. policy",
                "number": 1,
                "score": 1,
                "courses": [
@@ -826,7 +826,7 @@
          "short_name": "ENV climate",
          "requirements": [
             {
-               "type": "env-science",
+               "type": "env. science",
                "number": 1,
                "score": 1,
                "courses": [
@@ -836,7 +836,7 @@
                ]
             },
             {
-               "type": "env-policy",
+               "type": "env. policy",
                "number": 1,
                "score": 1,
                "courses": [
@@ -899,7 +899,7 @@
          "short_name": "ENV earth systems",
          "requirements": [
             {
-               "type": "env-science",
+               "type": "env. science",
                "number": 1,
                "score": 1,
                "courses": [
@@ -909,7 +909,7 @@
                ]
             },
             {
-               "type": "env-policy",
+               "type": "env. policy",
                "number": 1,
                "score": 1,
                "courses": [
@@ -963,7 +963,7 @@
          "short_name": "ENV policy",
          "requirements": [
             {
-               "type": "env-science",
+               "type": "env. science",
                "number": 1,
                "score": 1,
                "courses": [
@@ -973,7 +973,7 @@
                ]
             },
             {
-               "type": "env-policy",
+               "type": "env. policy",
                "number": 1,
                "score": 1,
                "courses": [
@@ -1029,7 +1029,7 @@
          "short_name": "ENV water",
          "requirements": [
             {
-               "type": "env-science",
+               "type": "env. science",
                "number": 1,
                "score": 1,
                "courses": [
@@ -1039,7 +1039,7 @@
                ]
             },
             {
-               "type": "env-policy",
+               "type": "env. policy",
                "number": 1,
                "score": 1,
                "courses": [
@@ -1189,7 +1189,7 @@
          "short_name": "finance",
          "requirements": [
             {
-               "type": "prerequisite-math",
+               "type": "prerequisite math",
                "number": 3,
                "score": 2,
                "courses": [
@@ -1199,7 +1199,7 @@
                ]
             },
             {
-               "type": "prerequisite-statistics",
+               "type": "prerequisite statistics",
                "number": 1,
                "score": 2,
                "courses": [
@@ -1320,7 +1320,7 @@
       {
          "name": "Geological Engineering",
          "url": "https://ua.princeton.edu/academic-units/program-geological-engineering",
-         "short_name": "geo-engineering",
+         "short_name": "geo engineering",
          "requirements": [
             {
                "type": "B.S.E.",
@@ -1364,7 +1364,7 @@
          "short_name": "GHP",
          "requirements": [
             {
-               "type": "science-prerequisite",
+               "type": "science prerequisite",
                "name": "Basic Science Prerequisites",
                "number": 1,
                "score": 2,
@@ -1453,7 +1453,7 @@
                ]
             },
             {
-               "type": "summer-research",
+               "type": "summer research",
                "name": "Summer Research Project",
                "number": 1,
                "score": 2,
@@ -1679,7 +1679,7 @@
                ]
             },
             {
-               "type": "independent-work",
+               "type": "independent work",
                "name": "Independent Work",
                "number": 1,
                "score": 1,
@@ -1728,7 +1728,7 @@
       {
          "name": "Judaic Studies thesis track",
          "url": "http://www.princeton.edu/judaic/certificate-program/",
-         "short_name": "JDS-thesis",
+         "short_name": "JDS thesis",
          "requirements": [
             {
                "type": "prerequisite",
@@ -1857,7 +1857,7 @@
                ]
             },
             {
-               "type": "brazilian-culture",
+               "type": "brazilian culture",
                "name": "Brazilian Culture",
                "number": 1,
                "score": 1,
@@ -1886,7 +1886,7 @@
                ]
             },
             {
-               "type": "core-200",
+               "type": "core 200",
                "name": "Core Requirements",
                "number": 1,
                "score": 2,
@@ -1899,7 +1899,7 @@
                ]
             },
             {
-               "type": "independent-work",
+               "type": "independent work",
                "name": "Independent Work",
                "number": 1,
                "score": 1,
@@ -1942,7 +1942,7 @@
                ]
             },
             {
-               "type": "language-proficiency",
+               "type": "language proficiency",
                "name": "Language Proficiency",
                "number": 3,
                "score": 1,
@@ -1985,7 +1985,7 @@
                ]
             },
             {
-               "type": "language-proficiency",
+               "type": "language proficiency",
                "name": "Language Proficiency",
                "number": 3,
                "score": 1,
@@ -2028,7 +2028,7 @@
                ]
             },
             {
-               "type": "language-proficiency",
+               "type": "language proficiency",
                "name": "Language Proficiency",
                "number": 3,
                "score": 1,
@@ -2070,7 +2070,7 @@
                ]
             },
             {
-               "type": "independent-work",
+               "type": "independent work",
                "name": "Independent Work",
                "number": 1,
                "score": 1,
@@ -2438,7 +2438,7 @@
          "short_name": "NEU",
          "requirements": [
             {
-               "type": "core-part1",
+               "type": "core part 1",
                "number": 1,
                "score": 2,
                "courses": [
@@ -2447,7 +2447,7 @@
                ]
             },
             {
-               "type": "core-part2",
+               "type": "core part 2",
                "number": 1,
                "score": 2,
                "courses": [
@@ -2717,7 +2717,7 @@
                ]
             },
             {
-               "type": "social-sciences",
+               "type": "social sciences",
                "number": 1,
                "score": 1,
                "courses": [
@@ -2767,7 +2767,7 @@
                ]
             },
             {
-               "type": "engineering-and-natural-sciences",
+               "type": "engineering and natural sciences",
                "number": 2,
                "score": 1,
                "courses": [
@@ -3011,7 +3011,7 @@
          "short_name": "sustainable energy",
          "requirements": [
             {
-               "type": "core-a1",
+               "type": "core a1",
                "number": 1,
                "score": 2,
                "courses": [
@@ -3020,7 +3020,7 @@
                ]
             },
             {
-               "type": "core-a2",
+               "type": "core a2",
                "number": 1,
                "score": 2,
                "notes": "both of EEB 417A/B must be taken to satisfy requirement",
@@ -3033,7 +3033,7 @@
                ]
             },
             {
-               "type": "elective-energy-science-and-technology",
+               "type": "elective energy science and technology",
                "number": 1,
                "score": 1,
                "notes": "both of ELE 441/442 must be taken to satisfy requirement",
@@ -3060,7 +3060,7 @@
                ]
             },
             {
-               "type": "elective-environmental-science-and-geoscience",
+               "type": "elective environmental science and geoscience",
                "number": 1,
                "score": 1,
                "notes": "both of EEB 417A/B and ENV 201A/B must be taken to satisfy requirement",
@@ -3085,7 +3085,7 @@
                ]
             },
             {
-               "type": "elective-general",
+               "type": "elective general",
                "number": 2,
                "score": 0,
                "notes": "both of ELE 441/442, EEB 417A/B, and ENV 201A/B must be taken to satisfy requirement",
@@ -3227,7 +3227,7 @@
          "short_name": "SPA",
          "requirements": [
             {
-               "type": "core-upper-level",
+               "type": "core: upper level",
                "number": 3,
                "notes": "cannot be PDF'ed",
                "score": 2,
@@ -3236,7 +3236,7 @@
                ]
             },
             {
-               "type": "core-general",
+               "type": "core: general",
                "number": 1,
                "score": 2,
                "notes": "cannot be PDF'ed",
@@ -3359,7 +3359,7 @@
                ]
             },
             {
-               "type": "social-sciences",
+               "type": "social sciences",
                "number": 2,
                "score": 2,
                "notes": "courses should treat the Near East and be chosen from the the Departments of ANT, NES, POL, REL, SOC, and WWS.",
@@ -3374,7 +3374,7 @@
          "short_name": "GER",
          "requirements": [
             {
-               "type": "core-upper-level",
+               "type": "core: upper level",
                "number": 2,
                "score": 2,
                "courses": [
@@ -3382,7 +3382,7 @@
                ]
             },
             {
-               "type": "core-general",
+               "type": "core: general",
                "number": 2,
                "score": 2,
                "courses": [
