@@ -81,22 +81,8 @@ jQuery(document).ready(function($) {
             $.ajax({
                 type: "POST",
                 url: "/",
-                data: str,
-                /*success: function(msg){
-                   // alert(msg);
-                    if(msg == 'OK') {
-                        $("#sendmessage").addClass("show");			
-                        $("#errormessage").removeClass("show");	
-                    }
-                    else {
-                        $("#sendmessage").removeClass("show");
-                        $("#errormessage").addClass("show");
-                        $('#errormessage').html(msg);
-                    }
-                    
-                }*/
+                data: str
             });
-        //return false;
     });
 
 });
