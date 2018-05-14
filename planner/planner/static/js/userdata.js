@@ -35,6 +35,11 @@ function renderUserData(jsonResponse) {
 
   // Done loading data; set LOADING_FROM_DB back to false to enable flashing
   LOADING_FROM_DB = false;
+
+  // If the user has no selected programs, give a help popup, else hide it
+  if (numSelectedPrograms() == 0) {
+    showCenterHelpText();
+  }
 }
 
 // ========================= DB ADD/REMOVE FUNCTIONS ==================================

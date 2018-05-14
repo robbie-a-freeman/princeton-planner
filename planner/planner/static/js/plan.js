@@ -38,11 +38,6 @@ function plan_init() {
 
   // Place user data on the page.
   loadUserData();
-
-  // If the user has no selected programs, give a help popup, else hide it
-  if (numSelectedPrograms() > 0) {
-    hideCenterHelpText();
-  }
 }
 
 // Reinitialize all popovers.
