@@ -17,33 +17,15 @@
 # ============================================================================
 # We define a user as follows:
 #
-# USER:
-#     COURSE:
-#         PROGRAMS:
-#
-#
-# Note: We assume that the "accordions" for each track/program only have at
-#       most one level.
-#
-# Note1: If we map courses to programs, then removing programs can be hard.
-#        Do we have to linear scan essentially???
-#
-# Note2: If we map programs to courses, there are more values to store for sure.
-#
-# THE ABOVE IS DEPRECATED.
-# THE ABOVE IS WRONG.
-#
-# We define a user in a different potentially more natural way.
+# netid: 'test'
+# programs: []
+# semesters: []
+# overrides: []
+# 
 
 import re, os
 from pymongo import MongoClient
 from pymongo import collection
-
-
-#client = MongoClient('localhost', 27017)
-#db = client.test      # Remember to change in vagrant_up if this changes
-#courses = db.courses
-
 
 # Fetch the URI from environment variable to avoid leaking credentials.
 mongoURI = os.environ.get('MONGOLAB_URI')
@@ -57,16 +39,12 @@ AFTER = collection.ReturnDocument.AFTER
 # the semesters provided
 semesterCodes = ["F14", "S15", "F15", "S16", "F16", "S17", "F17", "S18", "F18", "S19" , "F19", "S20", "F20", "S21"]
 
-# Sanitize the input string.
-# MUST IMPLEMENT THIS!!!
-# Actually, I don't think we need to sanitize this...
+# Sanitizes input (keep in case future inputs change)
 def sanitize(unsafe):
-    # This doesn't do much sanitizing right now!
     return unsafe
 
 # Given a user, add user if new and return information if existing user
 def user_query(user):
-    #users.findAndModify({"query": {"user": user }, "new": True, "upsert": True})
     userInfo = users.find_one({'netid': user})
     # if the user doesn't exist in the database yet
     if userInfo is None:
@@ -79,7 +57,6 @@ def user_query(user):
             upsert=True,
             return_document=AFTER
         )
-    #userInfo = users.find_one_and_update({'netid': 'test'}, {"$set": {"exists":"True"}}, upsert=True, return_document=AFTER)
 
     # Gather information about the user's enrolled programs from the database.
     programsInfo = []
@@ -135,19 +112,7 @@ def user_query(user):
     return results
 
 
-# Given a user and a program and the associated categories, add the program and list of categories to existing programs
-#def add_program(user, program, categories):
-    #if not users.find_one({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"MUS"}}}]}):
-    #    # categories is a list. We need to feed in a list to find_one_and_update()
-    #    listCat = []
-    #    for cat in categories:
-    #        listCat.append({"category": cat, "courses": []})
-    #    users.find_one_and_update(
-    #        {"netid": "test"},
-    #        {"$addToSet": {"programs" : {"program": "MUS", "categories": listCat}}},
-    #        upsert=False,
-    #        return_document=AFTER
-    #    )
+# Given a user and a program, add the program to existing programs
 def add_program(user, program):
     if not users.find_one({"$and": [{"netid": user}, {"programs": program}]}):
         users.find_one_and_update(
@@ -162,12 +127,10 @@ def add_course(user, semester, course):
     if users.find_one({"$and": [{"netid": user}, {"semesters": {"$elemMatch": {"semester": semester, "courses": course}}}]}) is None:
         users.find_one_and_update(
             {"$and": [{"netid": user}, {"semesters": {"$elemMatch": {"semester": semester}}}]},
-            #{"$addToSet": {"semesters.$.semester" : {"program": "MUS", "categories": []}}},
             {"$addToSet": {"semesters.$.courses": course}},
             upsert=False,
             return_document=AFTER
         )
-    # Should the front-end handle if a user wants to put the same course down twice for a semester???
 
 # Given a user and a semester, add semester to existing user
 def add_semester(user, semester):
@@ -191,7 +154,6 @@ def add_override(user, program, category, course, semester):
 
 # Given a user and a program, remove the program
 def remove_program(user, program):
-    #if users.find_one({"$and": [{"netid": "test"}, {"programs": {"$elemMatch": {"program": "Electrical Engineering"}}}]}):
     users.find_one_and_update(
         {"netid": user},
         {"$pull": {"programs": program}}
@@ -215,5 +177,3 @@ def remove_override(user, program, category, course, semester):
 # Delete user
 def delete_user(user):
     users.delete_one({"netid": user})
-
-# main()

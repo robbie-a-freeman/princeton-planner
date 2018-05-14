@@ -37,6 +37,4 @@ if not app.debug:
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
 
-#app.secret_key = '\xe6\xde\xa5\xccUb\xc3\nv\xf7\x89\xc4\xec\x98\xe1\x14\xf1\x06\xcam\xa27t\x9b'
-
 from . import routes, models, errors

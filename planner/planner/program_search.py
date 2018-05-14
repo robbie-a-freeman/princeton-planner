@@ -5,12 +5,6 @@
 import os, re
 from pymongo import MongoClient
 
-
-#client = MongoClient('localhost', 27017)
-#db = client.test      # Remember to change in vagrant_up if this changes
-#courses = db.courses
-
-
 # Fetch the URI from environment variable to avoid leaking credentials.
 mongoURI = os.environ.get('MONGOLAB_URI')
 client = MongoClient(mongoURI)
@@ -19,11 +13,8 @@ majors = db.majors
 certificates = db.certificates
 #programs = db.programs
 
-# Sanitize the input string.
-# MUST IMPLEMENT THIS!!!
+# Sanitizes input (keep in case future inputs change)
 def sanitize(unsafe):
-
-    # This doesn't do much sanitizing right now!
     return unsafe
 
 # Given a single sub-part of the query string, generate the
@@ -64,7 +55,6 @@ def queryAllWords(safe):
 
 # public variant of queryAllWords called by landing.py
 def program_db_query(query):
-    # NEED TO IMPLEMENT SANITIZE!
     safe = sanitize(query)
     return queryOneWord(safe)
 
@@ -77,17 +67,17 @@ def queryOneTest(testWord):
     print("Querying MongoDB for \"%s\"..." % testWord)
     results = queryOneWord(testWord)
     for result in results:
-        print(getCourseTag(result))
+        print(result)
     print("\n")
 
 # Run several queries and print results.
 def main():
     queryOneTest("COS")
-    queryOneTest("333")
-    queryOneTest("600")
+    queryOneTest("sMl")
+    queryOneTest("...")
     queryOneTest("ABC")
     queryOneTest("MUS")
-    queryOneTest("DAN")
+    queryOneTest("engineering")
     queryOneTest("IMPLICATIONS")
 
 

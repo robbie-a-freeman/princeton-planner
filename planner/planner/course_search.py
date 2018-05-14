@@ -11,18 +11,6 @@
 # Sending the MongoDB query to MongoDB, or receiving the results of the mongodb
 # query, or repackaging the results for use in the frontend HTMLself.
 
-# TO DO:
-#   Reconsider design. Could greatly simplify using the MongoPy library!
-#   Add in support for querying ANY semester's courses, not just the most recent one.
-#   Add in support for upper/lower case-insensitivity
-#   Modify getCourseTag() to account for cross listings ('COS333/MUS211/EGR209')
-#   Add error checking -- What if Mongo refuses to connect? It likes to do this a lot for some reason.
-#   Reconsider return format of the query functions:
-#           Perhaps it would be better for the frontend if we returned something like:
-#        {"tag": "COS126/PHI201", "name": "Computer Science: An Interdisciplinary Approach"}
-#   Revise so that it is possible to return searches from multiple categories
-#       i.e. "COS" would match EITHER the dept id or the course name, returning both results lists
-#
 #   We consider a type of search which is a slightly more complex form of the intersection
 #   of queries that we implemented in reg.py. We will consider the query string types
 #   and take the intersection of the courses in each query string type.
@@ -32,8 +20,6 @@
 #   We take the intersection of the types of courses to obtain the final result list.
 #
 #   However, we need to consider names/titles of courses. If there is any query longer than 4 letters...
-#
-#
 #   For example, if "COS" is contained within the title of a course, then check department. IF "COS"
 #   is a department, then dont' check titles.
 #   However, if we have a query like "SYS", then we check if the "SYS" department exists. If it doesn't,
@@ -92,17 +78,10 @@ from pymongo import MongoClient
 # to handle BSON types
 from bson.json_util import dumps, loads
 
-
-#client = MongoClient('localhost', 27017)
-#db = client.test      # Remember to change in vagrant_up if this changes
-#courses = db.courses
-
-
 # Fetch the URI from environment variable to avoid leaking credentials.
 mongoURI = os.environ.get('MONGOLAB_URI')
 client = MongoClient(mongoURI)
 db = client.plannerdb
-#courses = db['coursesS18']
 
 # TYPES OF QUERIES
 ZERO = 0
@@ -136,11 +115,8 @@ dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
 # Two letter course codes for Princeton University course distribution areas
 dist_ids = set(("EC", "EM", "HA", "LA", "QR", "SA", "STL", "STN"))
 
-# Sanitize the input string.
-# MUST IMPLEMENT THIS!!!
+# Sanitizes input (keep in case future inputs change)
 def sanitize(unsafe):
-
-    # This doesn't do much sanitizing right now!
     return unsafe
 
 # Given a single sub-part of the query string, generate the
@@ -201,10 +177,6 @@ def queryOneWord(word, semester):
         results = results.union([dumps(course) for course in courses.find( {"listings.number": re_obj} )])
         results = results.union([dumps(course) for course in courses.find( {"title":           re_obj} )])
         queryType = TIT1
-        # FIXED! :) - see above :)
-        # TODO fix bug where courses satisfying mutliple conditions are duplicated (use a set)
-        #results += [json.dumps(course) for course in courses.find( {"listings.number": re_obj} )]
-        #results += [json.dumps(course) for course in courses.find( {"title":           re_obj} )]
 
     # Len >= 3:
     else:
@@ -247,23 +219,8 @@ def parse_semester(semester):
 
 # public variant of queryAllWords called by landing.py
 def course_db_query(query, semester):
-    # TODO
-    # NEED TO SANITIZE
     safe = sanitize(query)
-    #courses = db['courses' + parse_semester(semester)]
     return queryAllWords(safe, parse_semester(semester))
-    # version with just one word
-    #print(safe)
-    #return queryOneWord(safe)
-    ### Debug version
-    # return "query to query_parser was: " + safe
-    ### Old version
-    #results = queryOneWord(safe) # queryAllWords bugged for some reason. TODO
-    #out_results = [result for result in results]
-    #return out_results
-    ### Very old version (it's very old for a reason)
-    #output_strings = [getCourseTag(result) for result in results]
-    #return "Query: %s <br>\n" % safe + "<br>\n".join(output_strings)
 
 
 ### Helper functions
@@ -279,7 +236,7 @@ def getCourseTag(result):
 # Run a single query for the given testWord and print result tags
 def queryOneTest(testWord):
     print("Querying MongoDB for \"%s\"..." % testWord)
-    results, queryType = queryOneWord(testWord)
+    results = queryAllWords(testWord)
     for result in list(results):
         print(getCourseTag(loads(result)))
     print("\n")
@@ -294,5 +251,3 @@ def main():
     queryOneTest("DAN")
     queryOneTest("IMPLICATIONS")
 
-
-# main()

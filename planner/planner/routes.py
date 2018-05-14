@@ -7,9 +7,6 @@ from planner.email import send_email
 
 @app.route("/", methods = ["GET", "POST"])
 def main():
-    #form = ContactForm()
-    # <!--{{ form.hidden_tag() }}
-    # {{ wtf.form_errors(form, hiddens="only") }}-->
     if request.method == 'POST' and request.cache_control:
         name = request.form['name']
         emailAddress = request.form['email']
@@ -111,7 +108,6 @@ def index1():
 def feedback():
     form = FeedbackForm()
     if form.validate_on_submit():
-        #flash('Thank you for submitting feedback!')
         bodyMessage = form.feedback.data
         feedback = {'bodyMessage': bodyMessage}
         send_email('Feedback for Princeton Planner',
@@ -127,7 +123,6 @@ def feedback():
 @login_required
 def userdata():
     user = {'netid': cas.username}
-    #form_name = request.form['form_name']
     # Get current user's data.
     if request.method == "GET":
         #user_info.add_program(user['netid'], 'COS BSE')
@@ -140,7 +135,6 @@ def userdata():
         #user_info.remove_override(user['netid'], 'Computer Science', 'Departmentals', 'COS445', 'S18')
         #user_info.delete_user(user['netid'])
         return str(user_info.user_query(user['netid']))
-        #return str(user_info.user_query('test'))
 
 # Login for non-CAS guests (mainly for testing, not production)
 @app.route('/guest_plan', methods = ["GET", "POST"])
