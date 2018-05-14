@@ -93,7 +93,6 @@ TIT2 = 5
 DENUM1 = 6
 DENUM2 = 7
 DENUM3 = 8
-DENUM4 = 9
 
 # Three letter course codes for Princeton University departments
 dept_ids = set(("AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA",
@@ -148,12 +147,6 @@ def queryOneWord(word, semester):
     elif re.match("\d\d\d", word):
         results = set([dumps(course) for course in courses.find( {"listings.number":uWord} ) ])
         queryType = NUM
-
-    # Dept. ID no spaces followed by course number:
-    elif re.match("[A-Z][A-Z][A-Z]\d\d\d\d", uWord):
-        results = set([dumps(course) for course in courses.find( {"listings.dept":uWord[0:3]} ) ])
-        results = results.intersection([dumps(course) for course in courses.find( {"listings.number":uWord[3:]} ) ])
-        queryType = DENUM4
 
     # Dept. ID no spaces followed by course number:
     elif re.match("[A-Z][A-Z][A-Z]\d\d\d", uWord):
